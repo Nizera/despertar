@@ -1,0 +1,157 @@
+Produto 1
+
+Você é um designer editorial profissional especializado em livros premium.
+
+Sua missão é criar um HTML COMPLETO para exportação em PDF A4 chamado:
+
+DIÁRIO DOS SONHOS PREMIUM
+
+Ele faz parte da coleção "Desperte no Sonho™".
+
+IMPORTANTE:
+
+Utilize exatamente a mesma identidade visual do ebook principal.
+
+Mantenha:
+
+• mesmas cores
+• mesma tipografia
+• mesmas margens
+• mesmo estilo editorial
+• mesmos componentes
+• mesmo acabamento
+• mesma qualidade
+
+O PDF deve parecer produzido pela mesma editora.
+
+Quantidade:
+
+50 a 60 páginas.
+
+Estrutura:
+
+- Capa premium
+- Direitos autorais
+- Como utilizar
+- Como lembrar sonhos
+- Como preencher corretamente
+- Exemplo preenchido
+- 30 páginas de diário
+- Revisão semanal
+- Revisão mensal
+- Mapa dos personagens
+- Mapa dos lugares
+- Mapa das emoções
+- Mapa dos animais
+- Mapa dos símbolos
+- Mapa dos sonhos recorrentes
+- Estatísticas
+- Página de conquistas
+- Meu primeiro sonho lúcido
+- Página final incentivando continuar a jornada
+
+Cada página deve conter ilustrações leves em SVG.
+
+Utilize muitos detalhes editoriais.
+
+O PDF deve parecer um Journal vendido por R$97.
+
+Não economize código.
+
+Produza um HTML único completo pronto para exportação em PDF.
+
+__________________________________________________________________
+
+Produto 2
+
+Crie um HTML editorial premium chamado
+
+PLANNER 21 DIAS PARA SONHOS LÚCIDOS
+
+Mesmo estilo do ebook principal.
+
+Mesmo CSS.
+
+Mesmo acabamento.
+
+A4.
+
+45 páginas.
+
+Cada dia ocupa duas páginas.
+
+Cada dia possui:
+
+Objetivo
+
+Checklist
+
+Reality Checks
+
+Técnica do dia
+
+Diário
+
+Reflexão
+
+Meta
+
+Espaço para escrever.
+
+Adicionar frases motivacionais.
+
+Adicionar caixas premium.
+
+Adicionar pequenos elementos lunares.
+
+No final criar:
+
+Meu Primeiro Sonho Lúcido
+
+Minha Evolução
+
+Próximos Objetivos
+
+Tudo pronto para PDF.
+
+____________________________
+
+Produto 3
+
+Criar um ebook premium chamado
+
+MANUAL OFICIAL DOS REALITY CHECKS
+
+Mesmo padrão gráfico do ebook principal.
+
+35 páginas.
+
+Cada Reality Check possui:
+
+História
+
+Como funciona
+
+Passo a passo
+
+Quando utilizar
+
+Erros comuns
+
+Nível de dificuldade
+
+Taxa de sucesso
+
+Ilustração
+
+Exercícios
+
+Tabela comparativa
+
+Checklist
+
+No final criar um plano diário de prática durante 14 dias.
+
+Visual extremamente premium.
+
+Pronto para PDF.

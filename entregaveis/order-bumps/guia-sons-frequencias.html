@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Sons e Frequências para Sonhos Lúcidos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #1a0a3c;
+    --color-secondary: #7b2fff;
+    --color-accent: #c9a4ff;
+    --color-gold: #f0c060;
+    --color-bg-page: #f7f4ff;
+    --color-text: #1e1530;
+    --color-text-muted: #5a4e72;
+    --color-highlight: #e8dcff;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Karla', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0c8e0; font-family: var(--font-body); color: var(--color-text); }
+
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    margin: 0 auto 32px;
+    padding: 60px 72px;
+    background: var(--color-bg-page);
+    position: relative;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .page-footer {
+    position: absolute;
+    bottom: 28px; left: 72px; right: 72px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid #c8b8f0;
+    padding-top: 10px;
+  }
+  .footer-brand { font-size: 11px; color: var(--color-text-muted); letter-spacing: 1px; text-transform: uppercase; }
+  .footer-page { font-size: 11px; color: var(--color-secondary); font-weight: 700; }
+  .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding-bottom: 12px; border-bottom: 1px solid #d8c8f8; }
+  .section-label { font-size: 11px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
+  .display-title { font-family: var(--font-display); font-size: 56px; font-weight: 700; line-height: 1.1; color: #f7f0ff; }
+  .display-subtitle { font-family: var(--font-body); font-size: 17px; font-weight: 300; color: #d8c8f8; line-height: 1.6; margin-top: 16px; }
+  .chapter-number { font-family: var(--font-display); font-size: 96px; font-weight: 700; color: var(--color-secondary); opacity: 0.18; line-height: 1; }
+  .chapter-title { font-family: var(--font-display); font-size: 38px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-top: -16px; }
+  .chapter-intro { font-size: 14px; color: var(--color-text-muted); line-height: 1.7; margin-top: 14px; max-width: 520px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--color-primary); margin-bottom: 12px; margin-top: 24px; }
+  .body-text { font-size: 14px; line-height: 1.85; color: var(--color-text); margin-bottom: 14px; }
+  .highlight-box { border-left: 4px solid var(--color-secondary); background: #ede5ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0; }
+  .highlight-text { font-family: var(--font-display); font-size: 16px; font-style: italic; color: var(--color-primary); line-height: 1.6; }
+  .tip-box { background: #f0eaff; border: 1px solid #c8a8ff; border-radius: 10px; padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; margin: 16px 0; }
+  .tip-icon { font-size: 20px; flex-shrink: 0; }
+  .tip-text { font-size: 13px; line-height: 1.7; color: var(--color-text); }
+  .tip-label { font-weight: 700; color: var(--color-secondary); display: block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .step-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+  .step-number { width: 36px; height: 36px; border-radius: 50%; background: var(--color-secondary); color: white; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-content strong { font-size: 14px; color: var(--color-primary); display: block; margin-bottom: 4px; font-weight: 700; }
+  .step-content p { font-size: 13px; color: var(--color-text-muted); line-height: 1.7; }
+  .icon-list { list-style: none; margin: 12px 0; }
+  .icon-list li { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; font-size: 14px; line-height: 1.6; }
+  .icon-list li .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-secondary); margin-top: 6px; flex-shrink: 0; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+  .data-table th { background: var(--color-primary); color: white; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid #e0d4f8; vertical-align: top; line-height: 1.5; }
+  .data-table tr:nth-child(even) td { background: #f5f0ff; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .line { width: 100%; height: 1px; background: #c8b8e8; margin: 18px 0; }
+  .page-cover { background: #07050f !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; padding: 60px !important; }
+  #cover-canvas { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+  .page-cover > *:not(#cover-canvas) { position: relative; z-index: 1; }
+  .cover-tag { display: inline-block; border: 1px solid rgba(201,164,255,0.5); color: var(--color-accent); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; font-weight: 500; }
+  .cover-divider { width: 60px; height: 2px; background: var(--color-gold); margin: 20px 0; }
+  .author-block { display: flex; align-items: center; gap: 10px; }
+  .author-label { font-size: 12px; color: rgba(255,255,255,0.4); font-style: italic; font-family: var(--font-display); }
+  .author-name { font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 600; letter-spacing: 1px; }
+  .page-chapter { background: #1a0a3c !important; color: white !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .page-chapter .chapter-title { color: white !important; }
+  .page-chapter .chapter-intro { color: #c9a4ff !important; }
+  .page-chapter .chapter-number { color: white !important; opacity: 0.12 !important; }
+  .page-chapter .page-footer { border-top-color: rgba(255,255,255,0.15) !important; }
+  .page-chapter .footer-brand { color: rgba(255,255,255,0.4) !important; }
+  .page-chapter .footer-page { color: var(--color-gold) !important; }
+  .playlist-card { background: white; border-radius: 12px; border: 1px solid #d8c8f8; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(123,47,255,0.06); }
+  .playlist-tag { display: inline-block; background: var(--color-secondary); color: white; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase; }
+  .playlist-name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px; }
+  .playlist-desc { font-size: 13px; line-height: 1.6; color: var(--color-text); margin-bottom: 8px; }
+  .playlist-meta { font-size: 11px; color: var(--color-text-muted); }
+  .freq-card { background: white; border-radius: 12px; border-left: 4px solid var(--color-secondary); padding: 18px 20px; margin-bottom: 14px; box-shadow: 0 2px 6px rgba(123,47,255,0.06); display: flex; gap: 20px; align-items: center; }
+  .freq-value { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--color-secondary); min-width: 80px; text-align: center; }
+  .freq-name { font-size: 13px; font-weight: 700; color: var(--color-primary); text-transform: uppercase; letter-spacing: 0.5px; }
+  .freq-desc { font-size: 12.5px; color: var(--color-text-muted); line-height: 1.6; margin-top: 4px; }
+  .check-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+  .checkbox { width: 20px; height: 20px; border: 2px solid var(--color-secondary); border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+  .check-label { font-size: 13.5px; line-height: 1.6; color: var(--color-text); }
+  .link-card { display: flex; gap: 12px; align-items: flex-start; background: white; border-radius: 10px; border: 1px solid #d8c8f8; padding: 14px 16px; margin-bottom: 10px; }
+  .link-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--color-secondary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: white; font-size: 16px; font-weight: 700; }
+  .link-name { font-weight: 700; font-size: 14px; color: var(--color-primary); }
+  .link-url { font-size: 11px; color: var(--color-secondary); }
+  .link-desc { font-size: 12.5px; color: var(--color-text-muted); line-height: 1.5; margin-top: 4px; }
+
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    body { background: white; }
+    .page { width: 210mm; min-height: 297mm; padding: 15mm 18mm; margin: 0; page-break-after: always; box-shadow: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page page-cover" id="cover-page">
+  <canvas id="cover-canvas" width="794" height="1123"></canvas>
+  <svg style="position:absolute;top:52px;right:60px;z-index:1;pointer-events:none;" width="72" height="72" viewBox="0 0 72 72">
+    <defs><radialGradient id="moonG" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs>
+    <circle cx="36" cy="36" r="28" fill="url(#moonG)" opacity="0.95"/>
+    <circle cx="36" cy="36" r="28" fill="none" stroke="rgba(245,236,208,0.3)" stroke-width="1"/>
+    <circle cx="36" cy="36" r="36" fill="none" stroke="rgba(245,236,208,0.08)" stroke-width="1"/>
+  </svg>
+  <div><span class="cover-tag">✦ Material Complementar ✦</span></div>
+  <div style="text-align:center;margin-top:60px;">
+    <h1 class="display-title" style="font-size:48px;max-width:500px;margin:0 auto;">Guia de Sons e Frequências para Sonhos Lúcidos</h1>
+    <div class="cover-divider" style="margin:24px auto;"></div>
+    <p class="display-subtitle" style="text-align:center;max-width:440px;margin:0 auto;">Como usar ondas sonoras para induzir,<br>estabilizar e aprofundar seus sonhos lúcidos</p>
+  </div>
+  <div class="author-block" style="justify-content:center;">
+    <span class="author-label">por</span><span class="author-name">Luna Vieira</span>
+  </div>
+</div>
+
+<!-- DIREITOS AUTORAIS -->
+<div class="page" style="justify-content:center;align-items:center;text-align:center;">
+  <div style="max-width:480px;margin:auto;">
+    <svg width="48" height="48" viewBox="0 0 48 48" style="margin-bottom:24px;"><circle cx="24" cy="24" r="22" fill="none" stroke="#7b2fff" stroke-width="1.5"/><path d="M12 30 C12 30 18 16 24 24 C30 32 36 18 36 18" fill="none" stroke="#7b2fff" stroke-width="2" opacity="0.6"/><circle cx="14" cy="26" r="2" fill="#f0c060"/><circle cx="24" cy="22" r="2.5" fill="#f0c060"/><circle cx="34" cy="24" r="2" fill="#f0c060"/></svg>
+    <h2 style="font-family:var(--font-display);font-size:28px;color:var(--color-primary);margin-bottom:20px;">Guia de Sons e Frequências</h2>
+    <div style="height:1px;background:linear-gradient(90deg,transparent,#c9a4ff,transparent);margin-bottom:24px;"></div>
+    <p style="font-size:13px;line-height:1.8;color:var(--color-text-muted);">© 2025 — Todos os direitos reservados.</p>
+    <p style="font-size:13px;line-height:1.8;color:var(--color-text-muted);margin-top:12px;">Este material complementar faz parte do programa Desperte no Sonho e é destinado exclusivamente para fins educativos e informativos.</p>
+    <div style="margin-top:32px;padding:16px;background:#f0eaff;border-radius:10px;">
+      <p style="font-size:12px;color:var(--color-text-muted);"><strong style="color:var(--color-secondary);">Edição 2025</strong><br>Material complementar ao ebook principal Desperte no Sonho.</p>
+    </div>
+  </div>
+</div>
+
+<!-- INTRODUÇÃO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Introdução</span><span style="font-size:11px;color:var(--color-text-muted);">03</span></div>
+  <h2 class="chapter-title" style="margin-top:0;">A Ciência dos Sons<br>e Sonhos</h2>
+  <div class="line"></div>
+  <p class="body-text">Você já percebeu como certos sons podem mudar completamente o seu humor, nível de energia ou até mesmo o conteúdo dos seus sonhos? Essa não é coincidência — é neurociência.</p>
+  <p class="body-text">Desde os tempos antigos, civilizações ao redor do mundo utilizavam tambores, cantos e sons da natureza para induzir estados alterados de consciência. Hoje, a ciência moderna confirmou o que esses povos já sabiam: o som tem um poder extraordinário sobre a mente humana.</p>
+  <div class="highlight-box">
+    <p class="highlight-text">"O cérebro é um órgão eletroquímico que vibra em diferentes frequências. Ao introduzir sons específicos, podemos guiar essas vibrações para estados desejados — incluindo o limiar entre vigília e sono."</p>
+  </div>
+  <p class="body-text">Pesquisas em neurociência mostram que diferentes frequências sonoras estimulam diferentes ondas cerebrais. Isso significa que, ao escolher os sons certos, podemos preparar o cérebro para:</p>
+  <ul class="icon-list">
+    <li><span class="dot"></span><span><strong style="color:var(--color-primary);">Entrar no sono conscientemente</strong> — mantendo uma faixa de consciência ativa enquanto o corpo relaxa</span></li>
+    <li><span class="dot"></span><span><strong style="color:var(--color-primary);">Estabilizar sonhos lúcidos</strong> — evitando que você acorde repentinamente ao perceber que está sonhando</span></li>
+    <li><span class="dot"></span><span><strong style="color:var(--color-primary);">Aprofundar a experiência onírica</strong> — aumentando a clareza, cores e detalhes dos sonhos</span></li>
+    <li><span class="dot"></span><span><strong style="color:var(--color-primary);">Melhorar a qualidade do sono</strong> — promovendo descanso mais reparador e despertar mais natural</span></li>
+  </ul>
+  <p class="body-text">Neste guia, você vai descobrir como funciona a ciência por trás dos sons para sonhos lúcidos e como aplicar essas técnicas na sua rotina noturna.</p>
+  <div class="page-footer"><span class="footer-brand">Guia de Sons e Frequências</span><span class="footer-page">03</span></div>
+</div>
+
+<!-- ONDAS BINAURAIS -->
+<div class="page page-chapter">
+  <div class="chapter-number">01</div>
+  <h2 class="chapter-title">O Que São Ondas Binaurais</h2>
+  <p class="chapter-intro">A tecnologia sonora mais poderosa para induzir estados alterados de consciência e preparar o cérebro para sonhos lúcidos.</p>
+  <div class="page-footer"><span class="footer-brand">Guia de Sons e Frequências</span><span class="footer-page">04</span></div>
+</div>
+
+<!-- EXPLICAÇÃO DAS ONDAS BINAURAIS -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Ondas Binaurais</span><span style="font-size:11px;color:var(--color-text-muted);">05</span></div>
+  <h2 class="section-title" style="margin-top:0;">Como Funcionam as Ondas Binaurais</h2>
+  <p class="body-text">Ondas binaurais são um fenômeno auditivo perceptivo que ocorre quando dois tons de frequências ligeiramente diferentes são apresentados separadamente a cada ouvido. O cérebro percebe uma terceira "batida" — uma frequência que corresponde à diferença entre as duas originais.</p>
+  <div class="highlight-box">
+    <p class="highlight-text">Exemplo: Se o ouvido esquerdo recebe 200 Hz e o ouvido direito 210 Hz, o cérebro percebe uma batida de 10 Hz — correspondente ao estado Alfa (relaxamento).</p>
+  </div>
+  <div class="tip-box">
+    <span class="tip-icon">🎧</span>
+    <div class="tip-text"><span class="tip-label">Importante</span>Para funcionar, as ondas binaurais exigem fones de ouvido estéreo (over-ear ou in-ear). Funciona melhor em ambientes silenciosos, sem interrupções externas.</div>
+  </div>
+  <h2 class="section-title">Etapas do Efeito Binaural</h2>
+  <div class="step-item">
+    <div class="step-number">1</div>
+    <div class="step-content"><strong>Estímulo Sonoro</strong><p>Dois tons de frequências diferentes são enviados simultaneamente, um para cada ouvido.</p></div>
+  </div>
+  <div class="step-item">
+    <div class="step-number">2</div>
+    <div class="step-content"><strong>Processamento Cerebral</strong><p>O córtex auditivo processa as duas frequências e gera a percepção da batida binaural.</p></div>
+  </div>
+  <div class="step-item">
+    <div class="step-number">3</div>
+    <div class="step-content"><strong>Entrainment (Sincronização)</strong><p>As ondas cerebrais começam a sincronizar com a frequência da batida binaural.</p></div>
+  </div>
+  <div class="step-item">
+    <div class="step-number">4</div>
+    <div class="step-content"><strong>Estado Alvo</strong><p>O cérebro atinge o estado desejado — relaxamento, foco, ou o limiar entre vigília e sono.</p></div>
+  </div>
+  <p class="body-text">Para sonhos lúcidos, o mais efetivo é usar ondas binaurais na faixa Theta (4-8 Hz), que corresponde ao estado entre vigília e sono profundo — o momento perfeito para induzir consciência dentro do sonho.</p>
+  <div class="page-footer"><span class="footer-brand">Guia de Sons e Frequências</span><span class="footer-page">05</span></div>
+</div>
+
+<!-- TABELA DE FREQUÊNCIAS -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Frequências</span><span style="font-size:11px;color:var(--color-text-muted);">06</span></div>
+  <h2 class="section-title" style="margin-top:0;">Tabela de Frequências Recomendadas</h2>
+  <p class="body-text">Cada frequência sonora ativa um estado cerebral diferente. Abaixo, as principais frequências para a prática de sonhos lúcidos:</p>
+
+  <div class="freq-card">
+    <div class="freq-value">40 Hz</div>
+    <div>
+      <div class="freq-name">Gamma — Lucidez</div>
+      <div class="freq-desc">Associated to heightened awareness and perception. Stimulates the prefrontal cortex, enhancing self-awareness and cognitive clarity. Ideal for maintaining lucidity within dreams.</div>
+    </div>
+  </div>
+
+  <div class="freq-card" style="border-left-color: #c9a4ff;">
+    <div class="freq-value" style="color:#c9a4ff;">10 Hz</div>
+    <div>
+      <div class="freq-name">Alfa — Relaxamento Consciente</div>
+      <div class="freq-desc">Promove relaxamento sem sono profundo. Ideal para meditação pré-sono e práticas de reality checks enquanto mantém uma faixa de consciência ativa.</div>
+    </div>
+  </div>
+
+  <div class="freq-card" style="border-left-color: #f0c060;">
+    <div class="freq-value" style="color:#f0c060;">6 Hz</div>
+    <div>
+      <div class="freq-name">Theta — Transição Onírica</div>
+      <div class="freq-desc">A frequência do sono REM e dos sonhos vívidos. Estimula a imaginação, memória e criatividade. A mais poderosa para induzir sonhos lúcidos e transições conscientes entre vigília e sono.</div>
+    </div>
+  </div>
+
+  <div class="freq-card" style="border-left-color: #1a0a3c;">
+    <div class="freq-value" style="color:#1a0a3c;">100 Hz</div>
+    <div>
+      <div class="freq-name">Relaxamento Profundo</div>
+      <div class="freq-desc">Som de frequência mais alta, usado em sons da natureza e baterias de fundo. Promove relaxamento muscular e mental, preparando o corpo para o sono profundo.</div>
+    </div>
+  </div>
+
+  <div class="freq-card" style="border-left-color: #2d8f5e;">
+    <div class="freq-value" style="color:#2d8f5e;">528 Hz</div>
+    <div>
+      <div class="freq-name">Solfeggio — Cura e Renovação</div>
+      <div class="freq-desc">Conhecida como "frequência do amor" ou "frequência da transformação". Na tradição Solfeggio, esta frequência está associada à reparação do DNA e cura emocional. Muito usada em meditação e práticas espirituais.</div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <span class="tip-icon">⚡</span>
+    <div class="tip-text"><span class="tip-label">Dica Rápida</span>Comece com frequências Alfa (10 Hz) nos primeiros dias para se acostumar. Depois, avance para Theta (6 Hz) para as práticas de indução de sonhos lúcidos.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Guia de Sons e Frequências</span><span class="footer-page">06</span></div>
+</div>
+
+<!-- GUIA DE USO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Guia de Uso</span><span style="font-size:11px;color:var(--color-text-muted);">07</span></div>
+  <h2 class="section-title" style="margin-top:0;">Quando e Como Ouvir</h2>
+  <p class="body-text">Para maximizar os benefícios dos sons para sonhos lúcidos, é essencial saber o momento certo e a forma correta de utilizá-los.</p>
+
+  <h3 class="section-title" style="font-size:18px;">Horários Recomendados</h3>
+  <table class="data-table">
+    <thead>
+      <tr><th>Momento</th><th>Frequência</th><th>Duração</th><th>Objetivo</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Pré-sono</strong> (deitar)</td><td>Theta 6 Hz</td><td>20-30 min</td><td>Induzir estado liminar</td></tr>
+      <tr><td><strong>Fase intermediária</strong> (após 15 min)</td><td>Delta 2 Hz</td><td>30-45 min</td><td>Profundizar sono sem perder consciência</td></tr>
+      <tr><td><strong>WBTB</strong> (despertar e voltar)</td><td>Theta 4-6 Hz</td><td>15-20 min</td><td>Reentrar no sono com consciência</td></tr>
+      <tr><td><strong>Madrugada</strong> (5h-6h)</td><td>Alfa 10 Hz</td><td>10-15 min</td><td>Estimular despertar consciente</td></tr>
+      <tr><td><strong>Meditação</strong> (qualquer hora)</td><td>Gamma 40 Hz</td><td>10-20 min</td><td>Treinar foco e consciência</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="section-title" style="font-size:18px;">Como Usar Corretamente</h3>
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-label"><strong>Sempre use fones de ouvido</strong> — Ondas binaurais não funcionam em caixas de som. Use fones over-ear para melhor imersão e conforto.</div>
+  </div>
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-label"><strong>Comece em volume baixo</strong> — Inicie com 30-40% do volume máximo. Aumente gradualmente até encontrar o nível confortável.</div>
+  </div>
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-label"><strong>Use timer automático</strong> — Configure o player para desligar após 30-60 minutos para não interromper o sono profundo.</div>
+  </div>
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-label"><strong>Ambiente adequado</strong> — Escuro, silencioso e com temperatura agradável (18-21°C). Evite fones desconfortáveis que prejudiquem o sono.</div>
+  </div>
+  <div class="check-item">
+    <div class="checkbox"></div>
+    <div class="check-label"><strong>Consistência</strong> — Use todos os dias por pelo menos 21 dias para formar hábito e permitir que o cérebro se adapte aos novos padrões.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Guia de Sons e Frequências</span><span class="footer-page">07</span></div>
+</div>
+
+<!-- PLAYLISTS -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Playlists</span><span style="font-size:11px;color:var(--color-text-muted);">08</span></div>
+  <h2 class="section-title" style="margin-top:0;">5 Playlists Sugeridas</h2>
+  <p class="body-text">Cada playlist foi pensada para um objetivo específico. Escolha a que melhor se adapta ao seu momento na prática de sonhos lúcidos.</p>
+
+  <div class="playlist-card">
+    <div class="playlist-tag">Indução</div>
+    <div class="playlist-name">Portal do Sonho Lucido</div>
+    <div class="playlist-desc">Sequência progressiva de Theta → Delta para induzir sono consciente. Ideal para o momento de deitar.</div>
+    <div class="playlist-meta">⏱ 45 min · 🎧 Fones obrigatórios · 🌙 Usar ao deitar</div>
+  </div>
+
+  <div class="playlist-card">
+    <div class="playlist-tag" style="background:#f0c060;color:#1a0a3c;">Estabilização</div>
+    <div class="playlist-name">Ancoragem Onírica</div>
+    <div class="playlist-desc">Frequências Gamma e sons da natureza para estabilizar sonhos lúcidos e evitar despertar repentino. Ative ao perceber que está sonhando.</div>
+    <div class="playlist-meta">⏱ 30 min · 🎧 Usar dentro do sonho (via timer) · 🌿 Sons de floresta</div>
+  </div>
+
+  <div class="playlist-card">
+    <div class="playlist-tag" style="background:#c9a4ff;color:#1a0a3c;">WBTB</div>
+    <div class="playlist-name">Retorno Consciente</div>
+    <div class="playlist-desc">Alfa → Theta para reentrar no sono após despertar na madrugada. Perfeita para a técnica Wake Back to Bed.</div>
+    <div class="playlist-meta">⏱ 20 min · ⏰ Usar entre 4h-5h da manhã · 🔄 Com WBTB</div>
+  </div>
+
+  <div class="playlist-card">
+    <div class="playlist-tag" style="background:#2d8f5e;">Solfeggio</div>
+    <div class="playlist-name">Cura e Renovação</div>
+    <div class="playlist-desc">Sequência de frequências Solfeggio (396Hz → 528Hz → 639Hz) para meditação profunda, limpeza emocional e preparação espiritual para sonhos lúcidos.</div>
+    <div class="playlist-meta">⏱ 30 min · 🧘 Meditação · 🌿 Sons de água</div>
+  </div>
+
+  <div class="playlist-card">
+    <div class="playlist-tag" style="background:var(--color-primary);">Foco</div>
+    <div class="playlist-name">Mente Lúcida</div>
+    <div class="playlist-desc">Gamma 40 Hz contínuo para treinar consciência e foco durante o dia. Use em meditações matinais ou antes de reality checks.</div>
+    <div class="playlist-meta">⏱ 15 min · ☀️ Qualquer hora · 🧠 Treino de consciência</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Guia de Sons e Frequências</span><span class="footer-page">08</span></div>
+</div>
+
+<!-- ONDE ENCONTRAR -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Recursos</span><span style="font-size:11px;color:var(--color-text-muted);">09</span></div>
+  <h2 class="section-title" style="margin-top:0;">Onde Encontrar Sons Gratuitos</h2>
+  <p class="body-text">Existem diversas plataformas e aplicativos que oferecem ondas binaurais, frequências Solfeggio e sons da natureza gratuitamente.</p>
+
+  <div class="link-card">
+    <div class="link-icon">▶</div>
+    <div>
+      <div class="link-name">YouTube</div>
+      <div class="link-url">youtube.com</div>
+      <div class="link-desc">Busque por "binaural beats lucid dreaming" ou "frequência theta para sonhos". Canais como <strong>Minds in Unison</strong> e <strong>Good Vibes</strong> oferecem playlists completas e gratuitas.</div>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-icon">🎵</div>
+    <div>
+      <div class="link-name">MyNoise.net</div>
+      <div class="link-url">mynoise.net</div>
+      <div class="link-desc">Gerador personalizado de sons com controle total de frequência e camadas de som. Perfeito para criar trilhas sonoras sob medida para seus sonhos.</div>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-icon">📱</div>
+    <div>
+      <div class="link-name">App: Brainwave Entrainment</div>
+      <div class="link-url">Disponível para iOS e Android</div>
+      <div class="link-desc">Aplicativos específicos para gerar ondas binaurais com timer automático e seleção de frequências. Opções: <strong>Binaural Beats Therapy</strong>, <strong>Medito</strong>, <strong>Pzizz</strong>.</div>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-icon">🔊</div>
+    <div>
+      <div class="link-name">Freesound.org</div>
+      <div class="link-url">freesound.org</div>
+      <div class="link-desc">Banco de dados aberto com milhões de sons gratuitos. Busque por "sine wave", "nature sounds" ou "meditation" para criar suas próprias trilhas.</div>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-icon">🎧</div>
+    <div>
+      <div class="link-name">Insight Timer</div>
+      <div class="link-url">insighttimer.com</div>
+      <div class="link-desc">App de meditação com biblioteca gratuita de sons binaurais e guias para sono lúcido. Comunidade ativa com milhares de meditações guiadas.</div>
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <div class="tip-text"><span class="tip-label">Dica Pro</span>Crie uma pasta dedicada no seu celular com playlists offline. Assim, você nunca ficará sem acesso aos sons, mesmo sem conexão com a internet.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Guia de Sons e Frequências</span><span class="footer-page">09</span></div>
+</div>
+
+<!-- DICAS -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dicas Avançadas</span><span style="font-size:11px;color:var(--color-text-muted);">10</span></div>
+  <h2 class="section-title" style="margin-top:0;">Dicas para Melhorar a Experiência</h2>
+
+  <div class="step-item">
+    <div class="step-number">1</div>
+    <div class="step-content"><strong>Combine com Journaling</strong><p>Após cada sessão de som, anote seus sonhos imediatamente ao acordar. O ato de registrar fortalece a conexão entre o inconsciente e a consciência, aumentando a clareza dos sonhos ao longo do tempo.</p></div>
+  </div>
+
+  <div class="step-item">
+    <div class="step-number">2</div>
+    <div class="step-content"><strong>Integração com Reality Checks</strong><p>Use a hora do som como lembrete para fazer reality checks. Pergunte: "Estou sonhando?" ao colocar os fones. Isso cria uma associação poderosa que se manifesta dentro dos sonhos.</p></div>
+  </div>
+
+  <div class="step-item">
+    <div class="step-number">3</div>
+    <div class="step-content"><strong>Use como Âncora Sonora</strong><p>Escolha um som ou música específica como sua "âncora". Sempre que ouvir esse som dentro de um sonho, ele pode funcionar como gatilho de lucidez — o cérebro reconhece o som como "este é o meu sinal de que estou sonhando".</p></div>
+  </div>
+
+  <div class="step-item">
+    <div class="step-number">4</div>
+    <div class="step-content"><strong>Rotacione as Frequências</strong><p>Não use sempre a mesma frequência. Alterne entre Theta, Alfa e Gamma ao longo da semana para evitar habituação e manter a eficácia dos estímulos sonoros.</p></div>
+  </div>
+
+  <div class="step-item">
+    <div class="step-number">5</div>
+    <div class="step-content"><strong>Ambiente de Som Imersivo</strong><p>Se possível, use sistema de som surround ou fones 3D para uma experiência mais envolvente. Sons espaciais estimulam mais áreas do cérebro simultaneamente.</p></div>
+  </div>
+
+  <div class="highlight-box" style="margin-top:12px;">
+    <p class="highlight-text">"A combinação de sons estratégicos com técnicas de sonhos lúcidos cria um sistema poderoso. O som prepara o terreno; sua intenção planta a semente da lucidez."</p>
+    <p style="font-size:12px;color:var(--color-secondary);margin-top:10px;font-weight:600;">— Luna Vieira</p>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Guia de Sons e Frequências</span><span class="footer-page">10</span></div>
+</div>
+
+<!-- PÁGINA FINAL -->
+<div class="page page-chapter" style="justify-content:center;align-items:center;text-align:center;">
+  <div class="chapter-number" style="font-size:120px;">∞</div>
+  <h2 class="chapter-title" style="text-align:center;font-size:42px;margin-top:-24px;">Comece a Ouvir<br>Hoje</h2>
+  <p class="chapter-intro" style="text-align:center;max-width:440px;margin:20px auto 0;font-size:15px;">Agora você tem todas as ferramentas sonoras para transformar seus sonhos. Escolha uma playlist, coloque os fones e permita que o som guie sua mente ao limiar da consciência.</p>
+  <div style="margin-top:40px;width:80px;height:2px;background:var(--color-gold);margin-left:auto;margin-right:auto;"></div>
+  <p style="font-size:13px;color:var(--color-accent);margin-top:24px;font-style:italic;font-family:var(--font-display);font-size:18px;">"Cada frequência é uma chave.<br>Cada sonho, uma porta."</p>
+  <div style="margin-top:40px;">
+    <span class="cover-tag">✦ Desperte no Sonho ✦</span>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Guia de Sons e Frequências</span><span class="footer-page">11</span></div>
+</div>
+
+</body>
+</html>

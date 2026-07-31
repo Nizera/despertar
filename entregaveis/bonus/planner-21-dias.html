@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planner 21 Dias Para Sonhos Lúcidos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #1a0a3c;
+    --color-secondary: #7b2fff;
+    --color-accent: #c9a4ff;
+    --color-gold: #f0c060;
+    --color-bg-page: #f7f4ff;
+    --color-bg-dark: #0d0720;
+    --color-text: #1e1530;
+    --color-text-muted: #5a4e72;
+    --color-highlight: #e8dcff;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Karla', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0c8e0; font-family: var(--font-body); color: var(--color-text); }
+
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    margin: 0 auto 32px;
+    padding: 60px 72px;
+    background: var(--color-bg-page);
+    position: relative;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .page-footer {
+    position: absolute;
+    bottom: 28px; left: 72px; right: 72px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid #c8b8f0;
+    padding-top: 10px;
+  }
+  .footer-brand { font-size: 11px; color: var(--color-text-muted); letter-spacing: 1px; text-transform: uppercase; }
+  .footer-page { font-size: 11px; color: var(--color-secondary); font-weight: 700; }
+  .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid #d8c8f8; }
+  .section-label { font-size: 11px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
+  .highlight-box { border-left: 4px solid var(--color-secondary); background: #ede5ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 16px 0; }
+  .highlight-text { font-family: var(--font-display); font-size: 16px; font-style: italic; color: var(--color-primary); line-height: 1.6; }
+  .tip-box { background: #f0eaff; border: 1px solid #c8a8ff; border-radius: 10px; padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; margin: 14px 0; }
+  .tip-icon { font-size: 20px; flex-shrink: 0; }
+  .tip-text { font-size: 13px; line-height: 1.7; color: var(--color-text); }
+  .tip-label { font-weight: 700; color: var(--color-secondary); display: block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .check-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
+  .checkbox { width: 20px; height: 20px; border: 2px solid var(--color-secondary); border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+  .check-label { font-size: 13.5px; line-height: 1.6; color: var(--color-text); }
+  .writing-section { margin: 12px 0; }
+  .write-label { font-size: 12px; color: var(--color-text-muted); margin-bottom: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+  .line { width: 100%; height: 1px; background: #c8b8e8; margin: 16px 0; }
+  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 12px 0; }
+  .cal-header { font-size: 10px; font-weight: 700; text-align: center; color: var(--color-text-muted); text-transform: uppercase; padding: 4px; }
+  .cal-day { border: 1px solid #d4c4f0; border-radius: 6px; padding: 6px 4px; text-align: center; min-height: 44px; display: flex; flex-direction: column; align-items: center; }
+  .cal-day .day-num { font-size: 11px; font-weight: 700; color: var(--color-primary); }
+  .cal-day .day-line { width: 100%; height: 1px; background: #d4c4f0; margin: 4px 0; }
+  .technique-card { background: white; border-radius: 12px; border: 1px solid #d8c8f8; padding: 20px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(123,47,255,0.06); }
+  .technique-badge { display: inline-block; background: var(--color-secondary); color: white; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }
+  .technique-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px; }
+  .technique-desc { font-size: 13px; line-height: 1.7; color: var(--color-text); }
+  .week-card { background: white; border-radius: 12px; border-left: 4px solid var(--color-secondary); padding: 16px 20px; margin-bottom: 14px; box-shadow: 0 2px 6px rgba(123,47,255,0.06); }
+  .week-label { font-size: 11px; font-weight: 700; color: var(--color-secondary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+  .week-title { font-family: var(--font-display); font-size: 18px; color: var(--color-primary); font-weight: 700; margin-bottom: 8px; }
+  .week-items { font-size: 13px; line-height: 1.7; color: var(--color-text); }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+  .data-table th { background: var(--color-primary); color: white; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid #e0d4f8; vertical-align: top; line-height: 1.5; }
+  .data-table tr:nth-child(even) td { background: #f5f0ff; }
+  .data-table tr:last-child td { border-bottom: none; }
+
+  /* Page cover */
+  .page-cover { background: #07050f !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; padding: 60px !important; }
+  #cover-canvas { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+  .page-cover > *:not(#cover-canvas) { position: relative; z-index: 1; }
+  .cover-tag { display: inline-block; border: 1px solid rgba(201,164,255,0.5); color: var(--color-accent); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; font-weight: 500; }
+  .cover-divider { width: 60px; height: 2px; background: var(--color-gold); margin: 20px 0; }
+  .author-block { display: flex; align-items: center; gap: 10px; }
+  .author-label { font-size: 12px; color: rgba(255,255,255,0.4); font-style: italic; font-family: var(--font-display); }
+  .author-name { font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 600; letter-spacing: 1px; }
+
+  /* Day pages */
+  .day-hero { text-align: center; margin: 0 auto 24px; }
+  .day-number-big { font-family: var(--font-display); font-size: 120px; font-weight: 700; color: var(--color-secondary); opacity: 0.12; line-height: 1; }
+  .day-number-label { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--color-secondary); text-transform: uppercase; letter-spacing: 3px; margin-top: -20px; }
+  .day-title { font-family: var(--font-display); font-size: 30px; font-weight: 700; color: var(--color-primary); margin-top: 8px; line-height: 1.2; }
+  .day-subtitle { font-size: 13px; color: var(--color-text-muted); margin-top: 8px; line-height: 1.6; }
+  .motivation-box { background: linear-gradient(135deg, #f0eaff, #e8dcff); border: 1px solid #c8a8ff; border-radius: 12px; padding: 18px 22px; margin: 18px 0; text-align: center; }
+  .motivation-text { font-family: var(--font-display); font-size: 17px; font-style: italic; color: var(--color-primary); line-height: 1.6; }
+  .section-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--color-primary); margin-bottom: 10px; margin-top: 18px; }
+  .body-text { font-size: 13.5px; line-height: 1.8; color: var(--color-text); margin-bottom: 12px; }
+  .page-chapter{background:#1a0a3c!important;color:white!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .page-chapter .chapter-title { color: white !important; }
+  .page-chapter .chapter-intro { color: #c9a4ff !important; }
+  .page-chapter .chapter-number { color: white !important; opacity: 0.12 !important; }
+  .page-chapter .page-footer { border-top-color: rgba(255,255,255,0.15) !important; }
+  .page-chapter .footer-brand { color: rgba(255,255,255,0.4) !important; }
+  .page-chapter .footer-page { color: var(--color-gold) !important; }
+  .chapter-number { font-family: var(--font-display); font-size: 96px; font-weight: 700; color: var(--color-secondary); opacity: 0.18; line-height: 1; }
+  .chapter-title { font-family: var(--font-display); font-size: 38px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-top: -16px; }
+  .chapter-intro { font-size: 14px; color: var(--color-text-muted); line-height: 1.7; margin-top: 14px; max-width: 520px; }
+  .week-indicator { display: inline-block; background: var(--color-gold); color: var(--color-primary); font-size: 10px; font-weight: 700; padding: 3px 12px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .progress-bar { width: 100%; height: 6px; background: #e0d4f8; border-radius: 3px; margin: 12px 0; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--color-secondary), var(--color-gold)); border-radius: 3px; }
+  .luna-mini { display: inline-block; vertical-align: middle; margin-right: 6px; }
+
+  /* Final page sections */
+  .final-section { margin-bottom: 28px; }
+  .final-title { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--color-primary); margin-bottom: 14px; }
+  .evolution-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 12px 0; }
+  .evolution-table th { background: var(--color-primary); color: white; padding: 8px 10px; text-align: center; font-weight: 600; font-size: 11px; }
+  .evolution-table td { padding: 8px 10px; border: 1px solid #d4c4f0; text-align: center; min-height: 36px; }
+  .evolution-table tr:nth-child(even) td { background: #f5f0ff; }
+
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    body { background: white; }
+    .page { width: 210mm; min-height: 297mm; padding: 15mm 18mm; margin: 0; page-break-after: always; box-shadow: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- CAPA -->
+<!-- ============================================================ -->
+<div class="page page-cover" id="cover-page">
+  <canvas id="cover-canvas" width="794" height="1123"></canvas>
+  <svg style="position:absolute;top:52px;right:60px;z-index:1;pointer-events:none;" width="72" height="72" viewBox="0 0 72 72">
+    <defs><radialGradient id="moonG" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs>
+    <circle cx="36" cy="36" r="28" fill="url(#moonG)" opacity="0.95"/>
+    <circle cx="36" cy="36" r="28" fill="none" stroke="rgba(245,236,208,0.3)" stroke-width="1"/>
+    <circle cx="36" cy="36" r="36" fill="none" stroke="rgba(245,236,208,0.08)" stroke-width="1"/>
+    <circle cx="26" cy="26" r="4" fill="rgba(180,140,60,0.25)"/>
+    <circle cx="44" cy="32" r="2.5" fill="rgba(180,140,60,0.2)"/>
+    <circle cx="32" cy="46" r="3" fill="rgba(180,140,60,0.18)"/>
+  </svg>
+  <div><span class="cover-tag">✦ Planner Editorial Premium ✦</span></div>
+  <div style="text-align:center;margin-top:30px;">
+    <div style="margin-bottom:20px;">
+      <svg width="80" height="80" viewBox="0 0 80 80" style="margin-bottom:16px;">
+        <defs><radialGradient id="moonBig" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs>
+        <circle cx="40" cy="40" r="34" fill="url(#moonBig)" opacity="0.9"/>
+        <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(245,236,208,0.3)" stroke-width="1.5"/>
+        <circle cx="40" cy="40" r="40" fill="none" stroke="rgba(245,236,208,0.1)" stroke-width="1"/>
+        <circle cx="28" cy="30" r="5" fill="rgba(180,140,60,0.25)"/>
+        <circle cx="50" cy="36" r="3.5" fill="rgba(180,140,60,0.2)"/>
+        <circle cx="36" cy="52" r="4" fill="rgba(180,140,60,0.18)"/>
+      </svg>
+    </div>
+    <h1 style="font-family:var(--font-display);font-size:52px;font-weight:700;color:#f7f0ff;line-height:1.1;">PLANNER 21 DIAS</h1>
+    <div class="cover-divider" style="margin:16px auto;"></div>
+    <h2 style="font-family:var(--font-display);font-size:30px;font-weight:600;color:var(--color-gold);line-height:1.3;">Para Sonhos Lúcidos</h2>
+    <p style="font-family:var(--font-body);font-size:15px;font-weight:300;color:#d8c8f8;line-height:1.6;margin-top:16px;max-width:480px;margin-left:auto;margin-right:auto;">Seu guia diário para despertar dentro dos seus sonhos.<br>21 dias de prática, reflexão e evolução consciente.</p>
+  </div>
+  <div>
+    <div style="display:flex;justify-content:center;gap:40px;margin:24px 0;">
+      <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:32px;color:var(--color-gold);font-weight:700;">21</div><div style="font-size:10px;color:#c9a4ff;margin-top:2px;letter-spacing:1px;text-transform:uppercase;">Dias de Prática</div></div>
+      <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+      <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:32px;color:var(--color-gold);font-weight:700;">45</div><div style="font-size:10px;color:#c9a4ff;margin-top:2px;letter-spacing:1px;text-transform:uppercase;">Páginas</div></div>
+      <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+      <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:32px;color:var(--color-gold);font-weight:700;">∞</div><div style="font-size:10px;color:#c9a4ff;margin-top:2px;letter-spacing:1px;text-transform:uppercase;">Possibilidades</div></div>
+    </div>
+    <div class="author-block" style="justify-content:center;margin-top:16px;">
+      <span class="author-label">por</span><span class="author-name">Luna Vieira</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CALENDARIO VISUAL -->
+<!-- ============================================================ -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Visão Geral</span><span style="font-size:11px;color:var(--color-text-muted);">02</span></div>
+  <h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:16px;">Seu Calendário<br>de 21 Dias</h2>
+  <p class="body-text" style="margin-bottom:14px;">Marque cada dia concluído. Cada checkmark é um passo mais perto do seu primeiro sonho lúcido.</p>
+  
+  <div style="margin-bottom:12px;">
+    <div style="font-size:11px;font-weight:700;color:#a78bfa;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #d4c4f0;">Semana 1 — Consciência e Fundação</div>
+    <div class="calendar-grid">
+      <div class="cal-header">Dom</div><div class="cal-header">Seg</div><div class="cal-header">Ter</div><div class="cal-header">Qua</div><div class="cal-header">Qui</div><div class="cal-header">Sex</div><div class="cal-header">Sáb</div>
+      <div class="cal-day"><div class="day-num">1</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">2</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">3</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">4</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">5</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">6</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">7</div><div class="day-line"></div></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:12px;">
+    <div style="font-size:11px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #d4c4f0;">Semana 2 — Primeiras Tentativas</div>
+    <div class="calendar-grid">
+      <div class="cal-header">Dom</div><div class="cal-header">Seg</div><div class="cal-header">Ter</div><div class="cal-header">Qua</div><div class="cal-header">Qui</div><div class="cal-header">Sex</div><div class="cal-header">Sáb</div>
+      <div class="cal-day"><div class="day-num">8</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">9</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">10</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">11</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">12</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">13</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">14</div><div class="day-line"></div></div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:14px;">
+    <div style="font-size:11px;font-weight:700;color:#d4a017;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #d4c4f0;">Semana 3 — Consolidação e Primeiro Lúcido</div>
+    <div class="calendar-grid">
+      <div class="cal-header">Dom</div><div class="cal-header">Seg</div><div class="cal-header">Ter</div><div class="cal-header">Qua</div><div class="cal-header">Qui</div><div class="cal-header">Sex</div><div class="cal-header">Sáb</div>
+      <div class="cal-day"><div class="day-num">15</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">16</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">17</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">18</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">19</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">20</div><div class="day-line"></div></div>
+      <div class="cal-day"><div class="day-num">21</div><div class="day-line"></div></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;">
+    <div class="week-card" style="border-left-color:#a78bfa;">
+      <div class="week-label" style="color:#a78bfa;">Semana 1</div>
+      <div class="week-title">Fundação</div>
+      <div class="week-items">Diário de Sonhos · Reality Checks · Rotina Noturna</div>
+    </div>
+    <div class="week-card">
+      <div class="week-label">Semana 2</div>
+      <div class="week-title">Técnicas</div>
+      <div class="week-items">WBTB · MILD · SSILD · Sinais de Sonho</div>
+    </div>
+    <div class="week-card" style="border-left-color:var(--color-gold);">
+      <div class="week-label" style="color:#d4a017;">Semana 3</div>
+      <div class="week-title">Consolidação</div>
+      <div class="week-items">Combinações · Estabilização · Primeiro Lúcido</div>
+    </div>
+    <div class="week-card" style="border-left-color:var(--color-gold);background:linear-gradient(135deg,#f0eaff,#e8dcff);">
+      <div class="week-label" style="color:#d4a017;">Meta Final</div>
+      <div class="week-title" style="color:var(--color-secondary);">Sonho Lúcido</div>
+      <div class="week-items">Primeiro sonho lúcido confirmado!</div>
+    </div>
+  </div>
+
+  <div class="tip-box" style="margin-top:10px;">
+    <span class="tip-icon">🌙</span>
+    <div class="tip-text"><span class="tip-label">Como usar este planner</span>Cada dia ocupa duas páginas: a primeira com o objetivo e checklist, a segunda com a técnica e espaço para diário. Respeite o ritmo — a consistência supera a intensidade.</div>
+  </div>
+
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">02</span></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SEMANA 1 — ABERTURA -->
+<!-- ============================================================ -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="600" cy="200" r="200" fill="#7b2fff"/><circle cx="200" cy="900" r="150" fill="#c9a4ff"/></svg>
+  <svg style="position:absolute;top:40px;right:50px;z-index:1;" width="56" height="56" viewBox="0 0 56 56"><defs><radialGradient id="moonS1" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="28" cy="28" r="22" fill="url(#moonS1)" opacity="0.85"/><circle cx="20" cy="20" r="3" fill="rgba(180,140,60,0.25)"/><circle cx="36" cy="26" r="2" fill="rgba(180,140,60,0.2)"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">SEMANA 01</div>
+    <h2 class="chapter-title" style="font-size:42px;">Consciência<br>e Fundação</h2>
+    <p class="chapter-intro" style="font-size:15px;max-width:440px;">Dias 1 a 7 — Construa os alicerces da prática. Diário de sonhos, reality checks e rotina noturna. Sem pressa, sem expectativa exagerada. Apenas presença.</p>
+    <div style="margin-top:36px;padding:16px;background:rgba(255,255,255,0.08);border-radius:10px;border-left:3px solid var(--color-gold);">
+      <p style="font-size:13px;color:#e8dcff;line-height:1.7;">Nesta semana: iniciar diário de sonhos · praticar reality checks 5-8x/dia · criar rotina noturna · primeiros passos com MILD</p>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page" style="color:var(--color-gold);">03</span></div>
+</div>
+
+<!-- DIA 1 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 1 · Fundação</span><span style="font-size:11px;color:var(--color-text-muted);">04</span></div>
+  <span class="week-indicator">Dia 1 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:4.7%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">01</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Comece o Diário de Sonhos</div>
+    <div class="day-subtitle">O primeiro passo para conhecer seu mundo interior</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m1" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m1)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Cada sonho que você registra é um mapa do seu inconsciente. Comece a desenhar o seu."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Iniciar seu Diário de Sonhos. Colocar um caderno ao lado da cama e escrever qualquer coisa que lembrar ao acordar — mesmo que sejam apenas fragmentos.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Escolher um caderno ou app exclusivo para sonhos</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Colocar ao lado da cama com caneta</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Ao acordar, ficar imóvel por 30 segundos e recordar</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Escrever tudo que lembrar — mesmo fragmentos</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Incluir emoções e sensações do sonho</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Marcar a data e hora de despertar</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">👁️</span>
+    <div class="tip-text"><span class="tip-label">Prática</span>Faça pelo menos 3 Reality Checks hoje: olhar para as mãos, tampar o nariz e ler um texto. Em cada um, pergunte genuinamente: "Estou sonhando agora?"</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">04</span></div>
+</div>
+
+<!-- DIA 1 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 1 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">05</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">O Diário de Sonhos</div>
+    <p class="technique-desc">O Diário de Sonhos é a ferramenta mais poderosa para desenvolver a lucidez. Estudos mostram que registrar sonhos por 2 semanas aumenta a memória de sonhos em 40-60%. Ao escrever, você sinaliza ao cérebro que os sonhos são importantes.</p>
+  </div>
+  <div class="section-title">Como Usar Hoje</div>
+  <p class="body-text">1. Ao acordar, <strong>não se mova</strong> por 30 segundos<br>2. Tente reconstruir o sonho mentalmente<br>3. Escreva tudo: cenários, pessoas, emoções, cores<br>4. Se não lembrou de nada, escreva "Não lembrei — mas estou prestando atenção"</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"Mesmo registrar 'não sonhei' cria o hábito e treina o cérebro para prestar atenção aos sonhos nas noites seguintes."</span>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Como foi acordar e escrever imediatamente?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">05</span></div>
+</div>
+
+<!-- DIA 2 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 1 · Fundação</span><span style="font-size:11px;color:var(--color-text-muted);">06</span></div>
+  <span class="week-indicator">Dia 2 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:9.5%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">02</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">A Arte de Lembrar</div>
+    <div class="day-subtitle">Treine sua memória onírica com intenção</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m2" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m2)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Você já sonha toda noite. O que muda agora é que você escolhe lembrar."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Melhorar sua capacidade de lembrar dos sonhos. Hoje você vai praticar a técnica de "replay" ao acordar.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Acordar sem alarme se possível</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Ficar de olhos fechados por 1 minuto ao acordar</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reviver mentalmente qualquer fragmento de sonho</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Escrever no diário com detalhes</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Praticar 3 Reality Checks ao longo do dia</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reler o diário de ontem antes de dormir</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">🖐️</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>Olhar para as mãos. Observe seus dedos com atenção. Conte-os. Pergunte: "Estou sonhando?" Faça isso em pelo menos 5 momentos diferentes.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">06</span></div>
+</div>
+
+<!-- DIA 2 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 2 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">07</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Técnica do Replay</div>
+    <p class="technique-desc">Ao acordar, antes de qualquer movimento, feche os olhos e tente reviver o sonho como um filme. Comece pelo último cenário e vá voltando. Mesmo fragmentos de 3 segundos já são valiosos.</p>
+  </div>
+  <div class="section-title">Como Usar Hoje</div>
+  <p class="body-text">1. Ao acordar, <strong>não abra os olhos</strong> ainda<br>2. Tente reconstruir: onde estava? Com quem? O que acontecia?<br>3. Não force — deixe as imagens virem<br>4. Depois de 1 minuto, escreva tudo no diário</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"A memória dos sonhos é como um músculo. Quanto mais você a usa, mais forte ela fica."</span>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">A técnica do replay ajudou a lembrar mais?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">07</span></div>
+</div>
+
+<!-- DIA 3 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 1 · Fundação</span><span style="font-size:11px;color:var(--color-text-muted);">08</span></div>
+  <span class="week-indicator">Dia 3 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:14.3%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">03</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Reality Checks</div>
+    <div class="day-subtitle">Treine sua mente a questionar a realidade</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m3" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m3)" opacity="0.85"/></svg>
+    <span class="motivation-text">"O hábito de questionar a realidade acordado é a chave que abre a porta da lucidez no sonho."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Dominar os 5 principais Reality Checks. Hoje você vai praticar cada um pelo menos uma vez.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Escrever no diário ao acordar (replay + escrita)</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">RC: Olhar para as mãos (3x ao dia)</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">RC: Tampar o nariz e respirar (2x ao dia)</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">RC: Ler um texto e releia-lo (2x ao dia)</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">RC: Testar interruptor de luz (2x ao dia)</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">RC: Olhar no espelho (1x ao dia)</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">⚡</span>
+    <div class="tip-text"><span class="tip-label">Estratégia</span>Faça o RC sempre que algo estranho acontecer. Treinar em situações incomuns ativa o reflexo dentro dos sonhos.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">08</span></div>
+</div>
+
+<!-- DIA 3 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 3 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">09</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Os 5 Reality Checks</div>
+    <p class="technique-desc">Um Reality Check é pausar e se perguntar genuinamente: "Estou sonhando agora?". A chave é a intenção — não basta fazer mecanicamente.</p>
+  </div>
+  <table class="data-table">
+    <thead><tr><th>Técnica</th><th>Como Fazer</th><th>No Sonho</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Olhar para as mãos</strong></td><td>Observe por 5-10s. Conte os dedos.</td><td>Dedos extras, fundindo, mudando</td></tr>
+      <tr><td><strong>Tampar o nariz</strong></td><td>Tampe e tente respirar.</td><td>Consegue respirar mesmo tampado</td></tr>
+      <tr><td><strong>Ler um texto</strong></td><td>Leia, desvie, releia.</td><td>Texto muda ou é ilegível</td></tr>
+      <tr><td><strong>Interruptor</strong></td><td>Acenda/apague uma luz.</td><td>Luz não funciona corretamente</td></tr>
+      <tr><td><strong>Espelho</strong></td><td>Olhe com atenção.</td><td>Reflexo distorcido ou outra pessoa</td></tr>
+    </tbody>
+  </table>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Qual Reality Check parece mais natural para mim?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">09</span></div>
+</div>
+
+<!-- DIA 4 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 1 · Fundação</span><span style="font-size:11px;color:var(--color-text-muted);">10</span></div>
+  <span class="week-indicator">Dia 4 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:19%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">04</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Rotina Noturna</div>
+    <div class="day-subtitle">Prepare seu cérebro para sonhos lúcidos</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m4" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m4)" opacity="0.85"/></svg>
+    <span class="motivation-text">"A rotina noturna é o ritual que diz ao cérebro: esta noite, vou estar atento."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Estabelecer uma rotina noturna completa. O cérebro precisa de sinais consistentes para entrar no modo "lucidez".</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks ao longo do dia (mínimo 5x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Zero telas 30 minutos antes de dormir</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Ler diário de sonhos anteriores por 5 min</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">5 minutos de respiração consciente</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Afirmação: "Esta noite, vou perceber que estou sonhando"</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Caderno e caneta ao alcance da mão</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">👃</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>Tampar o nariz. Tampe firmemente e tente respirar. Se conseguir — está sonhando! Pratique 5x ao longo do dia.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">10</span></div>
+</div>
+
+<!-- DIA 4 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 4 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">11</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">A Rotina do Sonhador Lúcido</div>
+    <p class="technique-desc">Uma rotina consistente sinaliza ao cérebro que o sono está próximo e que a lucidez é uma prioridade. Execute este protocolo todas as noites.</p>
+  </div>
+  <div class="section-title">Protocolo Noturno</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0;">
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">🌅 Tarde (2h antes)</div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Evitar cafeína após 14h</span></div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Jantar leve, sem álcool</span></div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Definir intenção de sonho lúcido</span></div>
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">🌙 Noite (30 min antes)</div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Guardar celular e telas</span></div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Releia seus sonhos anteriores</span></div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Respiração consciente por 5 min</span></div>
+    </div>
+  </div>
+  <div class="highlight-box">
+    <span class="highlight-text">"A intenção é o ingrediente secreto. Antes de dormir, diga com convicção: Esta noite, vou perceber que estou sonhando."</span>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Como foi a rotina noturna? O que senti?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">11</span></div>
+</div>
+
+<!-- DIA 5 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 1 · Fundação</span><span style="font-size:11px;color:var(--color-text-muted);">12</span></div>
+  <span class="week-indicator">Dia 5 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:23.8%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">05</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Explorando seus Sonhos</div>
+    <div class="day-subtitle">Encontre seus sinais pessoais de sonho</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m5" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m5)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Seus sonhos têm uma linguagem própria. Hoje você começa a decifrá-la."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Releia seus primeiros 4 dias de diário e comece a identificar padrões recorrentes — lugares, pessoas, emoções que se repetem.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 5x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Releia diário dos últimos 4 dias</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Identifique 2-3 lugares recorrentes</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Identifique emoções que se repetem</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">📱</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>Ler um texto. Leia algo, desvie o olhar por 5 segundos, e releia. No sonho, o texto sempre muda.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">12</span></div>
+</div>
+
+<!-- DIA 5 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 5 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">13</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Identificação de Sinais de Sonho</div>
+    <p class="technique-desc">Seus sonhos têm elementos recorrentes. Reconhecer esses sinais é a chave para a lucidez espontânea (DILD).</p>
+  </div>
+  <div class="section-title">Exercício Prático</div>
+  <div class="writing-section"><div class="write-label">Que lugares aparecem com frequência?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Que pessoas ou personagens se repetem?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Que situações impossíveis eu aceito como normais?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Minhas 3 principais emoções nos sonhos:</div><div class="line"></div></div>
+  <div class="highlight-box">
+    <span class="highlight-text">"Reconhecer que está sonhando é impossível se você não sabe como seus sonhos parecem. O diário é o mapa do seu mundo interior."</span>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Que padrões comecei a notar?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">13</span></div>
+</div>
+
+<!-- DIA 6 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 1 · Fundação</span><span style="font-size:11px;color:var(--color-text-muted);">14</span></div>
+  <span class="week-indicator">Dia 6 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:28.6%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">06</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Padrões e Sinais</div>
+    <div class="day-subtitle">Aprofunde o reconhecimento dos seus gatilhos</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m6" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m6)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Os sinais de sonho são como portas invisíveis. Quando você as reconhece, a lucidez surge."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Consolidar seus sinais de sonho. Escolha seus 3 principais sinais e crie uma "âncora" — um objeto físico que você toca e questiona a realidade toda vez que o vê.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 5x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Escolher 3 sinais de sonho pessoais</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Criar uma âncora de lucidez (objeto físico)</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Tocar a âncora e fazer RC toda vez que a vir</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>Interruptor de luz. Tente acender/apagar luzes ao longo do dia. No sonho, luzes quase nunca funcionam corretamente.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">14</span></div>
+</div>
+
+<!-- DIA 6 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 6 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">15</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Ancoragem de Lucidez</div>
+    <p class="technique-desc">Escolha um objeto que você carrega no bolso ou usa todos os dias. Toda vez que tocar nele, faça um Reality Check. Esse condicionamento se transfere para os sonhos.</p>
+  </div>
+  <div class="section-title">Como Criar sua Âncora</div>
+  <p class="body-text">1. Escolha um objeto que você toca várias vezes ao dia<br>2. Ao tocá-lo, pare e pergunte: "Estou sonhando?"<br>3. Olhe ao redor: tudo parece normal?<br>4. Repita 10+ vezes ao dia por pelo menos 3 dias<br>5. Seu subconsciente vai incorporar esse gatilho</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"A âncora é a ponte entre o mundo acordado e o sonho. Quanto mais vezes você a usa acordado, mais vezes ela aparecerá no sonho."</span>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Qual objeto escolhi como âncora e por quê?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">15</span></div>
+</div>
+
+<!-- DIA 7 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 1 · Reflexão</span><span style="font-size:11px;color:var(--color-text-muted);">16</span></div>
+  <span class="week-indicator">Dia 7 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:33.3%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">07</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Reflexão da Semana 1</div>
+    <div class="day-subtitle">Consolide os aprendizados e prepare-se para a Semana 2</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m7" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m7)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Uma semana de presença vale mais que um mês de distração. Você já está no caminho."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Revisar toda a primeira semana. Avaliar o progresso, consolidar os hábitos e preparar a mente para as técnicas mais avançadas.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 5x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Releia todos os 7 dias de diário</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Liste seus 3 principais sinais de sonho</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Marque seus sonhos mais vívidos da semana</span></div>
+  <div class="section-title">Avaliação da Semana 1</div>
+  <table class="data-table">
+    <thead><tr><th>Hábito</th><th>Frequência</th><th>Nota</th></tr></thead>
+    <tbody>
+      <tr><td>Diário de sonhos</td><td>de 7 dias</td><td></td></tr>
+      <tr><td>Reality Checks/dia</td><td>média</td><td></td></tr>
+      <tr><td>Rotina noturna</td><td>de 7 noites</td><td></td></tr>
+      <tr><td>Sonhos lembrados</td><td>total na semana</td><td></td></tr>
+      <tr><td>Sinais identificados</td><td>quantos?</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">16</span></div>
+</div>
+
+<!-- DIA 7 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 7 — Reflexão e Preparo</span><span style="font-size:11px;color:var(--color-text-muted);">17</span></div>
+  <div class="section-title">Reflexão da Semana 1</div>
+  <div class="writing-section"><div class="write-label">Qual foi o momento mais marcante da semana?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Que sonhos me surpreenderam?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">O que foi mais difícil manter?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">O que aprendi sobre meus sonhos?</div><div class="line"></div><div class="line"></div></div>
+  <div class="highlight-box">
+    <span class="highlight-text">"A primeira semana não é sobre ter sonhos lúcidos — é sobre criar o terreno fértil. E você já está fazendo isso."</span>
+  </div>
+  <div class="section-title">Preparação para a Semana 2</div>
+  <p class="body-text">A partir de amanhã, você começa a usar o WBTB (acordar e voltar a dormir).</p>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Definir horário de WBTB (5-6h após dormir)</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Preparar material de leitura sobre sonhos lúcidos</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Escolher noites da semana para WBTB (3x)</span></div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">Como vou me preparar para a Semana 2?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">17</span></div>
+</div>
+
+<!-- SEMANA 2 — ABERTURA -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="700" cy="200" r="220" fill="#c9a4ff"/><circle cx="100" cy="900" r="160" fill="#7b2fff"/></svg>
+  <svg style="position:absolute;bottom:60px;left:50px;z-index:1;" width="48" height="48" viewBox="0 0 48 48"><defs><radialGradient id="moonS2" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="24" cy="24" r="18" fill="url(#moonS2)" opacity="0.7"/><circle cx="17" cy="17" r="2.5" fill="rgba(180,140,60,0.25)"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">SEMANA 02</div>
+    <h2 class="chapter-title" style="font-size:42px;">Primeiras<br>Tentativas</h2>
+    <p class="chapter-intro" style="font-size:15px;max-width:440px;">Dias 8 a 14 — Hora de acelerar. WBTB, MILD e SSILD entram em ação. Suas primeiras tentativas reais de indução.</p>
+    <div style="margin-top:36px;padding:16px;background:rgba(255,255,255,0.08);border-radius:10px;border-left:3px solid var(--color-gold);">
+      <p style="font-size:13px;color:#e8dcff;line-height:1.7;">Nesta semana: WBTB 3 noites · MILD aprofundado · SSILD · Âncoras de lucidez · Hipnagogia</p>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page" style="color:var(--color-gold);">18</span></div>
+</div>
+
+<!-- DIA 8 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 2 · Técnicas</span><span style="font-size:11px;color:var(--color-text-muted);">19</span></div>
+  <span class="week-indicator">Dia 8 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:38.1%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">08</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">WBTB</div>
+    <div class="day-subtitle">Acordar e voltar — a técnica mais poderosa</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m8" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m8)" opacity="0.85"/></svg>
+    <span class="motivation-text">"O WBTB não é apenas uma técnica — é o potencializador que torna todas as outras mais eficazes."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Primeira prática de WBTB. Acorde após 5-6h de sono, fique acordado 20-30 minutos, e retorne ao sono com intenção.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 5x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB: acordar às ~5h da manhã</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Ficar acordado 20-30 minutos (ler, meditar)</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Voltar ao sono com afirmação MILD</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">🪞</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>Espelho. Olhe para seu reflexo com atenção durante 10 segundos. No sonho, o reflexo pode ser distorcido.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">19</span></div>
+</div>
+
+<!-- DIA 8 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 8 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">20</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">WBTB — Wake Back to Bed</div>
+    <p class="technique-desc">O WBTB explora o fato de que os ciclos REM mais longos ocorrem nas últimas horas de sono. Ao acordar e retornar, você entra diretamente nessa janela privilegiada.</p>
+  </div>
+  <div class="section-title">Protocolo WBTB</div>
+  <p class="body-text">1. Programe alarme para 5-6h após dormir<br>2. Ao acordar, fique acordado 20-30 minutos<br>3. Leia sobre sonhos lúcidos ou escreva no diário<br>4. Não use telas — luz azul prejudica a retorno<br>5. Ao deitar, repita: "Vou entrar em um sonho lúcido"</p>
+  <div class="tip-box">
+    <span class="tip-icon">⏰</span>
+    <div class="tip-text"><span class="tip-label">Dica WBTB</span>Se não conseguir acordar com o alarme leve, beba um copo grande de água antes de dormir.</div>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Como foi o WBTB? O que senti ao voltar a dormir?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">20</span></div>
+</div>
+
+<!-- DIA 9 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 2 · Técnicas</span><span style="font-size:11px;color:var(--color-text-muted);">21</span></div>
+  <span class="week-indicator">Dia 9 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:42.9%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">09</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">MILD</div>
+    <div class="day-subtitle">Indução Mnemônica — programe sua mente</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m9" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m9)" opacity="0.85"/></svg>
+    <span class="motivation-text">"A intenção plantada antes do sono floresce como consciência dentro do sonho."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Praticar o MILD pela primeira vez. Ao adormecer, combine visualização e afirmação para programar a lucidez.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 5x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">MILD ao adormecer: afirmação + visualização</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Use âncora de lucidez antes de dormir</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Registrar qualquer quasi-lucidez no diário</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">🖐️</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>Todos os 5 RCs ao longo do dia. Pratique cada pelo menos uma vez, sempre com intenção genuína.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">21</span></div>
+</div>
+
+<!-- DIA 9 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 9 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">22</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">MILD — Mnemonic Induction of Lucid Dreams</div>
+    <p class="technique-desc">Desenvolvida por Stephen LaBerge, o MILD usa memória prospectiva: você treina sua mente para lembrar de um plano dentro do sonho.</p>
+  </div>
+  <div class="section-title">Protocolo MILD</div>
+  <p class="body-text">1. Ao adormecer, visualize-se dentro de um sonho<br>2. Imagine que está sonhando e <em>reconhece</em> isso<br>3. Veja-se fazendo um Reality Check no sonho<br>4. Repita: <em>"Da próxima vez que estiver sonhando, vou lembrar que estou sonhando"</em><br>5. Continue até adormecer</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"O MILD é como programar um alarme na sua mente: quando o sinal certo aparecer no sonho, o alarme toca e você desperta — dentro do próprio sonho."</span>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Como foi o MILD? Consegui manter a intenção até dormir?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">22</span></div>
+</div>
+
+<!-- DIA 10 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 2 · Técnicas</span><span style="font-size:11px;color:var(--color-text-muted);">23</span></div>
+  <span class="week-indicator">Dia 10 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:47.6%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">10</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">SSILD</div>
+    <div class="day-subtitle">Sentidos em ação — a técnica sensorial</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m10" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m10)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Os sentidos são a ponte entre a vigília e o sonho. Use-os com atenção e a lucidez se abrirá."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Experimentar o SSILD pela primeira vez. Combine com WBTB: ao voltar a dormir, faça ciclos de atenção sensorial até adormecer.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 5x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB esta noite</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">SSILD: 4-6 ciclos sensoriais ao deitar</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Registrar qualquer experiência hipnagógica</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">🌙</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>Tampar o nariz + olhar para as mãos combinados. Faça ambos no mesmo RC.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">23</span></div>
+</div>
+
+<!-- DIA 10 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 10 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">24</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">SSILD — Sense Induced Lucid Dream</div>
+    <p class="technique-desc">O SSILD usa ciclos de atenção sensorial para induzir a lucidez. Ideal para quem tem dificuldade com visualização — não exige imaginar nada.</p>
+  </div>
+  <div class="section-title">Protocolo SSILD</div>
+  <div style="background:#f0eaff;border-radius:12px;padding:18px;margin:12px 0;">
+    <div style="display:flex;gap:14px;margin-bottom:12px;">
+      <div style="width:30px;height:30px;border-radius:50%;background:var(--color-secondary);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:13px;">1</div>
+      <div><strong style="font-size:13px;color:var(--color-primary);">Visão — 20 segundos</strong><p style="font-size:12px;color:var(--color-text-muted);line-height:1.6;margin-top:3px;">Observe o campo visual atrás das pálpebras.</p></div>
+    </div>
+    <div style="display:flex;gap:14px;margin-bottom:12px;">
+      <div style="width:30px;height:30px;border-radius:50%;background:var(--color-secondary);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:13px;">2</div>
+      <div><strong style="font-size:13px;color:var(--color-primary);">Audição — 20 segundos</strong><p style="font-size:12px;color:var(--color-text-muted);line-height:1.6;margin-top:3px;">Ouça sons ao redor. Batimentos do coração.</p></div>
+    </div>
+    <div style="display:flex;gap:14px;">
+      <div style="width:30px;height:30px;border-radius:50%;background:var(--color-secondary);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:13px;">3</div>
+      <div><strong style="font-size:13px;color:var(--color-primary);">Tato — 20 segundos</strong><p style="font-size:12px;color:var(--color-text-muted);line-height:1.6;margin-top:3px;">Sinta o peso do corpo, o contato com a cama.</p></div>
+    </div>
+  </div>
+  <p class="body-text">Repita 4-6 vezes. Adormecer durante os ciclos é parte do processo.</p>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Como foi o SSILD? Alguma experiência hipnagógica?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">24</span></div>
+</div>
+
+<!-- DIA 11 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 2 · Técnicas</span><span style="font-size:11px;color:var(--color-text-muted);">25</span></div>
+  <span class="week-indicator">Dia 11 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:52.4%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">11</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Âncoras de Lucidez</div>
+    <div class="day-subtitle">Consolide seus gatilhos de consciência</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m11" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m11)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Cada vez que você questiona a realidade acordado, treina sua mente a fazer o mesmo no sonho."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Reforçar suas âncoras de lucidez. Pelo menos 8 RCs ao dia, sempre ligados a sinais de sonho.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x hoje) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB + MILD ou SSILD esta noite</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">RC toda vez que tocar sua âncora</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">RC em situações incomuns do dia</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">⭐</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>Todos os 5 RCs com intensidade. Use sua âncora. Hoje é dia de criar o máximo de "memórias de questionamento".</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">25</span></div>
+</div>
+
+<!-- DIA 11 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 11 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">26</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Ancoragem Intensiva</div>
+    <p class="technique-desc">Hoje é dia de refinar suas âncoras. Não basta tocar o objeto — crie uma resposta emocional associada. Ao tocar, sinta curiosidade genuína.</p>
+  </div>
+  <div class="section-title">Protocolo de Ancoragem</div>
+  <p class="body-text">1. Toque sua âncora (anel, pulso, caneta)<br>2. Pare por 3 segundos — respire fundo<br>3. Olhe ao redor com atenção<br>4. Pergunte com curiosidade: "Posso estar sonhando?"<br>5. Faça um RC completo<br>6. Repita 8-10 vezes ao dia</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"O segredo não é a quantidade de RCs — é a qualidade da intenção. Um RC feito com genuína curiosidade vale mais que dez feitos mecanicamente."</span>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Como está a consistência dos RCs? Sinto diferença?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">26</span></div>
+</div>
+
+<!-- DIA 12 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 2 · Técnicas</span><span style="font-size:11px;color:var(--color-text-muted);">27</span></div>
+  <span class="week-indicator">Dia 12 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:57.1%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">12</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Hipnagogia</div>
+    <div class="day-subtitle">A porta entre mundos — transição consciente</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m12" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m12)" opacity="0.85"/></svg>
+    <span class="motivation-text">"A hipnagogia é o corredor entre dois mundos. Aprenda a caminhar nele com os olhos abertos."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Observar as imagens e sensações hipnagógicas ao adormecer. Deite de costas e note as transições.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB + MILD/SSILD esta noite</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Observar hipnagogia ao adormecer</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Não se apegar às imagens — apenas observe</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">👁️</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>RCs rápidos e frequentes. O objetivo é tornar o questionamento um reflexo automático.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">27</span></div>
+</div>
+
+<!-- DIA 12 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 12 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">28</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Observação Hipnagógica</div>
+    <p class="technique-desc">A hipnagogia é o estado de transição entre vigília e sono, com imagens, sons e sensações vívidas. Observá-la conscientemente é um dos caminhos mais diretos para o sonho lúcido.</p>
+  </div>
+  <div class="section-title">Como Observar</div>
+  <p class="body-text">1. Deite de costas, relaxe completamente<br>2. Feche os olhos e observe o campo visual<br>3. Nota cores, formas, padrões surgindo<br>4. <strong>Não force nada</strong> — apenas observe passivamente<br>5. Se surgirem sons ou sensações, observe também<br>6. Deixe a mente entrar em sono enquanto observa</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"No estado hipnagógico, a consciência pode deslizar suavemente para um sonho lúcido. A chave é manter a observação sem esforço."</span>
+  </div>
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <div class="tip-text"><span class="tip-label">Atenção</span>Paralisia do sono pode ocorrer. É normal e segura. Se ficar desconfortável, mova um dedo intencionalmente.</div>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Observei alguma coisa durante a transição?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">28</span></div>
+</div>
+
+<!-- DIA 13 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 2 · Técnicas</span><span style="font-size:11px;color:var(--color-text-muted);">29</span></div>
+  <span class="week-indicator">Dia 13 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:61.9%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">13</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Meditação e Foco</div>
+    <div class="day-subtitle">Acelere sua consciência com meditação</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m13" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m13)" opacity="0.85"/></svg>
+    <span class="motivation-text">"A meditação não é sobre esvaziar a mente — é sobre observá-la. Essa habilidade é exatamente a lucidez desperta."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Incluir 5-10 minutos de meditação no seu dia. A meditação desenvolve a metacognição — a base da lucidez.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Meditação de 5-10 minutos</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB + MILD/SSILD esta noite</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Manter RCs com intenção o dia todo</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">🧘</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>Use a meditação como "treino de RC". Durante 5 minutos, observe seus pensamentos. Quando perceber um, pergunte: "Isso é real ou sonho?"</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">29</span></div>
+</div>
+
+<!-- DIA 13 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 13 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">30</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Meditação de Metacognição</div>
+    <p class="technique-desc">Sente-se confortavelmente, feche os olhos, e observe seus pensamentos como nuvens passando. Essa prática fortalece a habilidade que permite reconhecer um sonho de dentro dele.</p>
+  </div>
+  <div class="section-title">Protocolo de Meditação</div>
+  <p class="body-text">1. Sente-se com a coluna ereta, olhos fechados<br>2. Foque na respiração por 2 minutos<br>3. Observe seus pensamentos sem julgamento<br>4. Quando perceber um pensamento, note: "pensamento"<br>5. Retorne à respiração<br>6. Repita por 5-10 minutos</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"Estudos mostram que meditadores regulares têm 4x mais probabilidade de ter sonhos lúcidos. A meditação é o atalho mais subestimado."</span>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Como foi a meditação? Sinto diferença na consciência?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">30</span></div>
+</div>
+
+<!-- DIA 14 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 2 · Reflexão</span><span style="font-size:11px;color:var(--color-text-muted);">31</span></div>
+  <span class="week-indicator">Dia 14 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:66.7%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">14</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Reflexão da Semana 2</div>
+    <div class="day-subtitle">Consolide as técnicas e prepare a Semana 3</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m14" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m14)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Duas semanas de presença. Você já é uma pessoa diferente da que começou este planner."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Revisar toda a segunda semana. Avaliar o progresso com as técnicas de indução.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Releia diários da Semana 2</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Identifique qualquer quasi-lucidez</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Preparar plano para Semana 3</span></div>
+  <div class="section-title">Avaliação da Semana 2</div>
+  <table class="data-table">
+    <thead><tr><th>Técnica</th><th>Vezes Praticada</th><th>Eficácia</th></tr></thead>
+    <tbody>
+      <tr><td>WBTB</td><td>de 3 noites</td><td></td></tr>
+      <tr><td>MILD</td><td>de 7 noites</td><td></td></tr>
+      <tr><td>SSILD</td><td>de 2 noites</td><td></td></tr>
+      <tr><td>Quasi-lucidez</td><td>vezes?</td><td></td></tr>
+      <tr><td>Sonhos vívidos</td><td>vezes?</td><td></td></tr>
+    </tbody>
+  </table>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">31</span></div>
+</div>
+
+<!-- DIA 14 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 14 — Reflexão e Preparo</span><span style="font-size:11px;color:var(--color-text-muted);">32</span></div>
+  <div class="section-title">Reflexão da Semana 2</div>
+  <div class="writing-section"><div class="write-label">Qual técnica me parece mais promissora?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Tive alguma experiência de quasi-lucidez?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">O que mudou na qualidade dos meus sonhos?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">O que preciso melhorar na Semana 3?</div><div class="line"></div><div class="line"></div></div>
+  <div class="highlight-box">
+    <span class="highlight-text">"Quasi-lucidez é quase um sonho lúcido. Se você teve, está a beira. Se não teve, está construindo o terreno. Ambos são progresso."</span>
+  </div>
+  <div class="section-title">Preparação para a Semana 3</div>
+  <p class="body-text">Na Semana 3, você vai intensificar tudo: WBTB 4-5 noites, combinações de técnicas.</p>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Planejar noites de WBTB (4-5 vezes)</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Combinar WBTB + MILD + SSILD</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Definir o que fará no primeiro sonho lúcido</span></div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">Como vou intensificar a Semana 3?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">32</span></div>
+</div>
+
+<!-- SEMANA 3 — ABERTURA -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="400" cy="400" r="300" fill="#7b2fff"/><circle cx="150" cy="800" r="150" fill="#c9a4ff"/></svg>
+  <svg style="position:absolute;top:50px;left:50px;z-index:1;" width="64" height="64" viewBox="0 0 64 64"><defs><radialGradient id="moonS3" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="32" cy="32" r="25" fill="url(#moonS3)" opacity="0.8"/><circle cx="23" cy="23" r="3.5" fill="rgba(180,140,60,0.25)"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">SEMANA 03</div>
+    <h2 class="chapter-title" style="font-size:42px;">Consolidação e<br>Primeiro Lúcido</h2>
+    <p class="chapter-intro" style="font-size:15px;max-width:440px;">Dias 15 a 21 — A reta final. Intensifique a prática, combine técnicas e mantenha a fé. O primeiro sonho lúcido está mais perto do que imagina.</p>
+    <div style="margin-top:36px;padding:16px;background:rgba(240,192,96,0.12);border-radius:12px;border:1px solid rgba(240,192,96,0.3);">
+      <p style="font-size:14px;color:var(--color-gold);font-family:var(--font-display);font-style:italic;line-height:1.7;">"A maioria dos primeiros sonhos lúcidos acontece quando a pressão é aliviada. Continue — a janela está se abrindo."</p>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page" style="color:var(--color-gold);">33</span></div>
+</div>
+
+<!-- DIA 15 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 3 · Consolidação</span><span style="font-size:11px;color:var(--color-text-muted);">34</span></div>
+  <span class="week-indicator">Dia 15 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:71.4%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">15</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">WILD</div>
+    <div class="day-subtitle">A técnica avançada — entrar consciente no sonho</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m15" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m15)" opacity="0.85"/></svg>
+    <span class="motivation-text">"No WILD, você não dorme — você desliza consciência adentro do sonho como um viajante silencioso."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Experimentar o WILD pela primeira vez. Você mantém a consciência durante toda a transição vigília-sono.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB + tentativa de WILD</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Ficar imóvel e observar transição</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Meditação de 5 min antes de dormir</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">⚠️</span>
+    <div class="tip-text"><span class="tip-label">Atenção</span>O WILD pode causar paralisia do sono. É normal e seguro. Se ficar desconfortável, mova um dedo.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">34</span></div>
+</div>
+
+<!-- DIA 15 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 15 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">35</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">WILD — Wake Initiated Lucid Dream</div>
+    <p class="technique-desc">O WILD é a técnica mais avançada: você entra diretamente em um sonho lúcido mantendo a consciência durante toda a transição.</p>
+  </div>
+  <div class="section-title">Protocolo WILD</div>
+  <p class="body-text">1. Use após WBTB (ideal)<br>2. Deite de costas, fique completamente imóvel<br>3. Observe as hipnagógia (imagens, sons, luzes)<br>4. <strong>Não as siga</strong> — apenas observe como espectador<br>5. Deixe o sonho se formar ao redor de você<br>6. Quando o cenário se tornar sólido — você entrou!</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"O WILD é como assistir ao nascer de um universo: as primeiras imagens hipnagógicas gradualmente se tornam tridimensionais."</span>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Como foi a tentativa de WILD? O que senti?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">35</span></div>
+</div>
+
+<!-- DIA 16 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 3 · Consolidação</span><span style="font-size:11px;color:var(--color-text-muted);">36</span></div>
+  <span class="week-indicator">Dia 16 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:76.2%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">16</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Combinando Técnicas</div>
+    <div class="day-subtitle">Crie seu protocolo personalizado</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m16" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m16)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Combinar técnicas é como criar uma receita única — a que funciona melhor para você."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Combine WBTB + MILD + SSILD na mesma noite. Use WBTB para entrar na janela REM, MILD para programar a intenção, e SSILD para amplificar a consciência.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB + MILD + SSILD combinados</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Meditação antes de dormir</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Usar sinais de sonho como gatilho</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">🔥</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>Intensidade máxima. RCs a cada oportunidade. Use sua âncora. Hoje é dia de sobrecarregar o subconsciente.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">36</span></div>
+</div>
+
+<!-- DIA 16 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 16 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">37</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Combinação WBTB + MILD + SSILD</div>
+    <p class="technique-desc">Esta é a combinação mais eficaz para iniciantes: WBTB na janela REM, MILD programando a intenção, SSILD ampliando a consciência.</p>
+  </div>
+  <div class="section-title">Protocolo Combinado</div>
+  <p class="body-text">1. <strong>WBTB:</strong> Acorde após 5-6h de sono<br>2. Fique acordado 20-30 min<br>3. <strong>MILD:</strong> Ao deitar, visualize-se lúcido, repita afirmação<br>4. <strong>SSILD:</strong> 4-6 ciclos sensoriais<br>5. Adormeça durante os ciclos</p>
+  <div class="tip-box">
+    <span class="tip-icon">💎</span>
+    <div class="tip-text"><span class="tip-label">Tabela Comparativa</span><strong>MILD:</strong> Fácil, bom para iniciantes.<br><strong>SSILD:</strong> Médio, sem visualização.<br><strong>WILD:</strong> Difícil, resultados instantâneos.<br><strong>DILD:</strong> Fácil, espontâneo, depende de RCs.<br><strong>WBTB:</strong> Potencializador universal.</div>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Qual combinação senti mais eficaz?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">37</span></div>
+</div>
+
+<!-- DIA 17 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 3 · Consolidação</span><span style="font-size:11px;color:var(--color-text-muted);">38</span></div>
+  <span class="week-indicator">Dia 17 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:81%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">17</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Estabilização</div>
+    <div class="day-subtitle">Aprenda a não acordar do sonho lúcido</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m17" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m17)" opacity="0.85"/></svg>
+    <span class="motivation-text">"O momento mais crítico do sonho lúcido são os primeiros 30 segundos. Domine-os e o sonho é seu."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Estudar e praticar as técnicas de estabilização. Prepare-se para quando o sonho lúcido acontecer.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB + combinação preferida</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Meditação de 5 min antes de dormir</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Praticar técnicas de estabilização mentalmente</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">🎯</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>RCs com visualização: ao fazer o RC, visualize como seria se desse errado no sonho.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">38</span></div>
+</div>
+
+<!-- DIA 17 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 17 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">39</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Protocolo de Estabilização</div>
+    <p class="technique-desc">Quando ficar lúcido, a excitação pode acordá-lo. Estas técnicas reduzem a ativação e mantêm o sonho estável.</p>
+  </div>
+  <div class="section-title">5 Técnicas de Estabilização</div>
+  <p class="body-text"><strong>1. Respiração consciente</strong> — respire fundo e controlado<br><strong>2. Toque o chão</strong> — esfregue as palmas, sinta texturas<br><strong>3. Olhe para as mãos</strong> — foque nos detalhes visuais<br><strong>4. Gire o corpo</strong> — spining reinicia a projeção<br><strong>5. Afirme verbalmente</strong> — "Este sonho está ficando mais claro"</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"Se o sonho começar a desaparecer — tudo escurecendo — feche os olhos DENTRO do sonho e espere. Frequentemente o cenário se reconstrói."</span>
+  </div>
+  <div class="tip-box">
+    <span class="tip-icon">🔮</span>
+    <div class="tip-text"><span class="tip-label">O Princípio da Expectativa</span>Intenção clara + ausência de dúvida = resultado. A dúvida é o único obstáculo real ao controle.</div>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Memorizei as técnicas de estabilização?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">39</span></div>
+</div>
+
+<!-- DIA 18 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 3 · Consolidação</span><span style="font-size:11px;color:var(--color-text-muted);">40</span></div>
+  <span class="week-indicator">Dia 18 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:85.7%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">18</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Exploração Consciente</div>
+    <div class="day-subtitle">Planeje o que fará no sonho lúcido</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m18" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m18)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Ter um plano para o sonho lúcido aumenta drasticamente suas chances de estabilidade e controle."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Planeje exatamente o que fará quando ficar lúcido. Um roteiro mental aumenta a estabilidade.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB + combinação preferida</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Escrever plano detalhado do sonho lúcido</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Visualizar o plano antes de dormir</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">✨</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>RCs com planejamento: ao cada RC, imagine o que fará se descobrir que está sonhando.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">40</span></div>
+</div>
+
+<!-- DIA 18 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 18 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">41</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Planejamento do Sonho Lúcido</div>
+    <p class="technique-desc">Ter um plano aumenta a estabilidade e o controle. Sonhadores que planejam têm sonhos 2x mais longos e estáveis.</p>
+  </div>
+  <div class="section-title">Seu Plano de Sonho</div>
+  <div class="writing-section"><div class="write-label">Primeiro, vou...</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Depois, quero explorar...</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Um lugar que gostaria de visitar no sonho:</div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Alguém que gostaria de encontrar:</div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Uma habilidade que gostaria de praticar:</div><div class="line"></div></div>
+  <div class="highlight-box">
+    <span class="highlight-text">"Ao visualizar seu plano detalhadamente antes de dormir, você está programando o subconsciente para executá-lo dentro do sonho."</span>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Meu plano está claro e viável?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">41</span></div>
+</div>
+
+<!-- DIA 19 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 3 · Consolidação</span><span style="font-size:11px;color:var(--color-text-muted);">42</span></div>
+  <span class="week-indicator">Dia 19 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:90.5%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">19</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Voo e Criação</div>
+    <div class="day-subtitle">As experiências mais poderosas do sonho lúcido</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m19" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m19)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Voar em um sonho lúcido é a experiência mais libertadora que a mente humana pode gerar."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Prepare-se para voar, criar objetos e explorar lugares impossíveis. Visualize cada uma antes de dormir.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB + combinação máxima</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Visualizar voar por 2 minutos</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Meditação + intenção antes de dormir</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">✈️</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>RCs com visualização de voo: imagine-se levitando a cada RC.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">42</span></div>
+</div>
+
+<!-- DIA 19 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 19 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">43</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Voo e Criação no Sonho</div>
+    <p class="technique-desc">O voo é a experiência mais relatada em sonhos lúcidos. Não tente "decolar" — incline o corpo, estenda os braços e acredite.</p>
+  </div>
+  <div class="section-title">Como Voar</div>
+  <p class="body-text">1. Ao ficar lúcido, respire fundo e estabilize<br>2. Incline levemente o corpo para frente<br>3. Estenda os braços como asas<br>4. <strong>Acredite</strong> que vai voar — não tente "forçar"<br>5. Deixe a intenção guiar o movimento<br>6. Comece devagar, aumente a velocidade</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"No sonho lúcido, não é o esforço que gera o resultado — é a expectativa relaxada. Acredite e aconteça."</span>
+  </div>
+  <div class="tip-box">
+    <span class="tip-icon">🚪</span>
+    <div class="tip-text"><span class="tip-label">Técnica da Porta</span>Encontre uma porta, declare: "Atrás desta porta está o lugar X", abra com expectativa genuína.</div>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Consigo visualizar o voo com clareza?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">O que vou fazer diferente amanhã?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">43</span></div>
+</div>
+
+<!-- DIA 20 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 3 · Consolidação</span><span style="font-size:11px;color:var(--color-text-muted);">44</span></div>
+  <span class="week-indicator">Dia 20 de 21</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:95.2%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">20</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Autoconhecimento</div>
+    <div class="day-subtitle">Use os sonhos para se conhecer profundamente</div>
+  </div>
+  <div class="motivation-box">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m20" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m20)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Os sonhos lúcidos não são apenas aventura — são o espelho mais honesto da sua mente."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Reflita sobre o autoconhecimento que os sonhos podem oferecer. Conversar com personagens do subconsciente.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB + combinação máxima</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Formular pergunta para o subconsciente</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Meditação de 10 min antes de dormir</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">🧠</span>
+    <div class="tip-text"><span class="tip-label">Foco hoje</span>RCs com pergunta introspectiva: "O que meu subconsciente quer me dizer hoje?"</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">44</span></div>
+</div>
+
+<!-- DIA 20 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 20 — Técnica e Diário</span><span style="font-size:11px;color:var(--color-text-muted);">45</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica do Dia</div>
+    <div class="technique-name">Diálogo com o Subconsciente</div>
+    <p class="technique-desc">Os personagens do sonho são criações da sua mente. Ao conversar com eles, você acessa diretamente o subconsciente.</p>
+  </div>
+  <div class="section-title">Protocolo de Diálogo</div>
+  <p class="body-text">1. Ao ficar lúcido, encontre um personagem<br>2. Pergunte: "O que você representa na minha vida?"<br>3. Ouça a resposta — pode ser visual, metafórica<br>4. Pergunte: "O que meu subconsciente quer me dizer?"<br>5. Agradeça e registre ao acordar</p>
+  <div class="highlight-box">
+    <span class="highlight-text">"Muitos praticantes relatam respostas surpreendentes, metafóricas e profundamente reveladoras dos personagens do sonho."</span>
+  </div>
+  <div class="tip-box">
+    <span class="tip-icon">🎨</span>
+    <div class="tip-text"><span class="tip-label">Para Artistas</span>Dentro do sonho lúcido, peça para ver uma obra de arte que jamais imaginou. O cérebro gerará algo genuinamente novo.</div>
+  </div>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei esta noite?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão do Dia</div>
+  <div class="writing-section"><div class="write-label">Que pergunta gostaria de fazer ao meu subconsciente?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Meta para Amanhã</div>
+  <div class="writing-section"><div class="write-label">Último dia! O que vou fazer especial?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">45</span></div>
+</div>
+
+<!-- DIA 21 — PÁGINA 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Semana 3 · Celebração</span><span style="font-size:11px;color:var(--color-text-muted);">46</span></div>
+  <span class="week-indicator" style="background:var(--color-gold);color:var(--color-primary);">Dia 21 de 21 — ÚLTIMO DIA!</span>
+  <div class="progress-bar"><div class="progress-fill" style="width:100%;"></div></div>
+  <div class="day-hero">
+    <div class="day-number-big">21</div>
+    <div class="day-number-label">Dia</div>
+    <div class="day-title">Consolidação</div>
+    <div class="day-subtitle">Você completou os 21 dias. Celebre e continue.</div>
+  </div>
+  <div class="motivation-box" style="background:linear-gradient(135deg,#f0eaff,#e8dcff);border:2px solid var(--color-gold);">
+    <svg class="luna-mini" width="18" height="18" viewBox="0 0 18 18"><defs><radialGradient id="m21" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="9" cy="9" r="7" fill="url(#m21)" opacity="0.85"/></svg>
+    <span class="motivation-text">"Você não apenas aprendeu sobre sonhos lúcidos — você construiu a base para uma vida inteira de consciência noturna."</span>
+  </div>
+  <div class="section-title">Objetivo do Dia</div>
+  <p class="body-text">Celebrar a conclusão dos 21 dias. Revisar todo o percurso e definir os próximos passos.</p>
+  <div class="section-title">Checklist Diário</div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Diário de sonhos ao acordar ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Reality Checks (mínimo 8x) ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Rotina noturna completa ✓</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">WBTB + combinação máxima esta noite</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Releia seus 21 dias de diário</span></div>
+  <div class="check-item"><div class="checkbox"></div><span class="check-label">Escreva uma mensagem para seu "eu" futuro</span></div>
+  <div class="section-title">Reality Checks do Dia</div>
+  <div class="tip-box">
+    <span class="tip-icon">🌟</span>
+    <div class="tip-text"><span class="tip-label">Último dia</span>Faça seus RCs com gratidão. Cada um é um lembrete de que você está desperto — tanto acordado quanto nos sonhos.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">46</span></div>
+</div>
+
+<!-- DIA 21 — PÁGINA 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dia 21 — Celebração e Próximos Passos</span><span style="font-size:11px;color:var(--color-text-muted);">47</span></div>
+  <div class="section-title">Sua Jornada de 21 Dias</div>
+  <table class="data-table">
+    <thead><tr><th>Semana</th><th>Foco</th><th>Progresso</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Semana 1</strong></td><td>Consciência e Fundação</td><td>Diário · RCs · Rotina</td></tr>
+      <tr><td><strong>Semana 2</strong></td><td>Primeiras Tentativas</td><td>WBTB · MILD · SSILD</td></tr>
+      <tr><td><strong>Semana 3</strong></td><td>Consolidação</td><td>Combinações · WILD · Exploração</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">
+    <span class="highlight-text">"Não existe fracasso na prática de sonhos lúcidos. Existe apenas prática e mais prática. Cada noite que você manteve o diário está construindo algo dentro de você."</span>
+  </div>
+  <div class="section-title">Após os 21 Dias</div>
+  <p class="body-text">Continue com o que funcionou. Se não teve um sonho lúcido ainda, não desanime — a maioria relata o primeiro nas semanas seguintes quando a pressão diminui.</p>
+  <div class="section-title">Diário do Dia</div>
+  <div class="writing-section"><div class="write-label">O que sonhei nesta última noite do planner?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Reflexão Final</div>
+  <div class="writing-section"><div class="write-label">Como eu era antes de começar? Como sou agora?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">O que mais me surpreendeu nestes 21 dias?</div><div class="line"></div><div class="line"></div></div>
+  <div class="section-title">Próximos Objetivos</div>
+  <div class="writing-section"><div class="write-label">O que vou manter a partir de agora?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Qual é a minha próxima meta de sonhos lúcidos?</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page">47</span></div>
+</div>
+
+<!-- PÁGINA FINAL — MEU PRIMEIRO SONHO LÚCIDO -->
+<div class="page" style="justify-content:center;align-items:center;">
+  <svg style="position:absolute;top:0;left:0;opacity:0.05;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="397" cy="561" r="400" fill="#7b2fff"/><circle cx="397" cy="561" r="280" fill="#7b2fff"/><circle cx="397" cy="561" r="160" fill="#7b2fff"/></svg>
+  <div style="width:100%;max-width:580px;margin:auto;">
+    <div style="text-align:center;margin-bottom:28px;">
+      <svg width="56" height="56" viewBox="0 0 56 56" style="margin-bottom:14px;"><defs><radialGradient id="moonFinal" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs><circle cx="28" cy="28" r="22" fill="url(#moonFinal)" opacity="0.9"/><circle cx="20" cy="20" r="3" fill="rgba(180,140,60,0.25)"/><circle cx="36" cy="26" r="2" fill="rgba(180,140,60,0.2)"/></svg>
+      <h2 style="font-family:var(--font-display);font-size:32px;color:var(--color-primary);line-height:1.2;margin-bottom:8px;">Meu Primeiro<br>Sonho Lúcido</h2>
+      <div style="width:50px;height:2px;background:var(--color-gold);margin:12px auto;"></div>
+    </div>
+    <div class="final-section">
+      <div class="writing-section"><div class="write-label">Data do primeiro sonho lúcido:</div><div class="line"></div></div>
+      <div class="writing-section"><div class="write-label">Como percebi que estava sonhando?</div><div class="line"></div><div class="line"></div></div>
+      <div class="writing-section"><div class="write-label">O que aconteceu no sonho?</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+      <div class="writing-section"><div class="write-label">Como me senti?</div><div class="line"></div><div class="line"></div></div>
+      <div class="writing-section"><div class="write-label">Quanto tempo durou?</div><div class="line"></div></div>
+      <div class="writing-section"><div class="write-label">O que aprendi com essa experiência?</div><div class="line"></div><div class="line"></div></div>
+    </div>
+    <div style="background:linear-gradient(135deg,#1a0a3c,#2d1060);border-radius:14px;padding:24px;text-align:center;margin-top:16px;">
+      <p style="font-family:var(--font-display);font-size:18px;color:white;margin-bottom:6px;">Parabéns!</p>
+      <p style="font-size:13px;color:#c9a4ff;line-height:1.6;">Você completou os 21 dias de prática. Independentemente de ter tido um sonho lúcido ou não, você construiu uma base sólida que vai frutificar nas noites seguintes.</p>
+    </div>
+    <div style="text-align:center;margin-top:20px;">
+      <p style="font-family:var(--font-display);font-size:15px;color:var(--color-text-muted);font-style:italic;">"Boa noite — e bom despertar."</p>
+    </div>
+    <div style="margin-top:24px;">
+      <div style="font-size:11px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Minha Evolução</div>
+      <table class="evolution-table">
+        <thead><tr><th>Semana</th><th>Sonhos Lembrados</th><th>RCs/Dia</th><th>Práticas</th><th>Quasi-Lúcido</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:700;">1</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td style="font-weight:700;">2</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td style="font-weight:700;">3</td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="page-footer"><span class="footer-brand">Planner 21 Dias · Sonhos Lúcidos</span><span class="footer-page" style="color:var(--color-gold);">48</span></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('cover-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = 794, H = 1123;
+  function rand(a, b) { return Math.random() * (b - a) + a; }
+  const stars = Array.from({length: 180}, () => ({
+    x: rand(0, W), y: rand(0, H),
+    r: rand(0.3, 1.6), op: rand(0.2, 0.85),
+    base: rand(0.25, 0.8), speed: rand(0.004, 0.018),
+    dir: Math.random() > 0.5 ? 1 : -1
+  }));
+  const clouds = Array.from({length: 8}, () => ({
+    x: rand(0, W), y: rand(H * 0.03, H * 0.58),
+    opacity: rand(0.03, 0.07), scaleX: rand(1.0, 2.6),
+    scaleY: rand(0.5, 1.0), speed: rand(0.04, 0.18),
+    puffs: Array.from({length: Math.floor(rand(4,8))}, () => ({
+      ox: rand(-110, 110), oy: rand(-28, 28), r: rand(48, 105)
+    }))
+  }));
+  function drawFrame() {
+    ctx.clearRect(0, 0, W, H);
+    const sky = ctx.createLinearGradient(0, 0, 0, H);
+    sky.addColorStop(0, '#07050f'); sky.addColorStop(0.38, '#0d0820'); sky.addColorStop(1, '#140b30');
+    ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
+    const orb = ctx.createRadialGradient(160, 900, 0, 160, 900, 420);
+    orb.addColorStop(0, 'rgba(100,40,200,0.18)'); orb.addColorStop(1, 'rgba(100,40,200,0)');
+    ctx.fillStyle = orb; ctx.fillRect(0, 0, W, H);
+    const orb2 = ctx.createRadialGradient(660, 180, 0, 660, 180, 300);
+    orb2.addColorStop(0, 'rgba(80,30,160,0.12)'); orb2.addColorStop(1, 'rgba(80,30,160,0)');
+    ctx.fillStyle = orb2; ctx.fillRect(0, 0, W, H);
+    for (const s of stars) {
+      s.op += s.speed * s.dir;
+      if (s.op >= s.base || s.op <= 0.05) s.dir *= -1;
+      ctx.save(); ctx.globalAlpha = s.op; ctx.fillStyle = '#e8d8ff';
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+      if (s.r > 1.1) {
+        const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 5);
+        g.addColorStop(0, 'rgba(200,160,255,0.25)'); g.addColorStop(1, 'rgba(200,160,255,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(s.x, s.y, s.r * 5, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.restore();
+    }
+    for (const c of clouds) {
+      c.x += c.speed;
+      if (c.x > W + 420) { c.x = -420; c.y = rand(H * 0.03, H * 0.58); }
+      ctx.save(); ctx.translate(c.x, c.y); ctx.scale(c.scaleX, c.scaleY); ctx.globalAlpha = c.opacity;
+      for (const p of c.puffs) {
+        const g = ctx.createRadialGradient(p.ox, p.oy, 0, p.ox, p.oy, p.r);
+        g.addColorStop(0, 'rgba(200,170,255,1)'); g.addColorStop(0.5, 'rgba(155,110,230,0.5)'); g.addColorStop(1, 'rgba(110,70,200,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.ox, p.oy, p.r, 0, Math.PI * 2); ctx.fill();
+      }
+      ctx.restore();
+    }
+    requestAnimationFrame(drawFrame);
+  }
+  drawFrame();
+})();
+</script>
+</body>
+</html>

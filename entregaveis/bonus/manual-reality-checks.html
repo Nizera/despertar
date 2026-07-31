@@ -1,0 +1,1051 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual Oficial dos Reality Checks</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--color-primary:#1a0a3c;--color-secondary:#7b2fff;--color-accent:#c9a4ff;--color-gold:#f0c060;--color-bg-page:#f7f4ff;--color-bg-dark:#0d0720;--color-text:#1e1530;--color-text-muted:#5a4e72;--color-highlight:#e8dcff;--font-display:'Cormorant Garamond',serif;--font-body:'Karla',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#d0c8e0;font-family:var(--font-body);color:var(--color-text)}
+.page{width:794px;min-height:1123px;margin:0 auto 32px;padding:60px 72px;background:var(--color-bg-page);position:relative;box-shadow:0 4px 32px rgba(0,0,0,0.18);display:flex;flex-direction:column;overflow:visible}
+.page-footer{position:absolute;bottom:28px;left:72px;right:72px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #c8b8f0;padding-top:10px}
+.footer-brand{font-size:11px;color:var(--color-text-muted);letter-spacing:1px;text-transform:uppercase}
+.footer-page{font-size:11px;color:var(--color-secondary);font-weight:700}
+.page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:12px;border-bottom:1px solid #d8c8f8}
+.section-label{font-size:11px;color:var(--color-text-muted);text-transform:uppercase;letter-spacing:1.5px}
+.chapter-number{font-family:var(--font-display);font-size:96px;font-weight:700;color:var(--color-secondary);opacity:0.18;line-height:1}
+.chapter-title{font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--color-primary);line-height:1.2;margin-top:-16px}
+.chapter-intro{font-size:14px;color:var(--color-text-muted);line-height:1.7;margin-top:14px;max-width:520px}
+.section-title{font-family:var(--font-display);font-size:24px;font-weight:600;color:var(--color-primary);margin-bottom:12px;margin-top:24px}
+.body-text{font-size:14px;line-height:1.85;color:var(--color-text);margin-bottom:14px}
+.highlight-box{border-left:4px solid var(--color-secondary);background:#ede5ff;padding:16px 20px;border-radius:0 10px 10px 0;margin:20px 0}
+.highlight-text{font-family:var(--font-display);font-size:16px;font-style:italic;color:var(--color-primary);line-height:1.6}
+.tip-box{background:#f0eaff;border:1px solid #c8a8ff;border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;margin:16px 0}
+.tip-icon{font-size:20px;flex-shrink:0}
+.tip-text{font-size:13px;line-height:1.7;color:var(--color-text)}
+.tip-label{font-weight:700;color:var(--color-secondary);display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+.step-item{display:flex;gap:16px;align-items:flex-start;margin-bottom:18px}
+.step-number{width:36px;height:36px;border-radius:50%;background:var(--color-secondary);color:white;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-content strong{font-size:14px;color:var(--color-primary);display:block;margin-bottom:4px;font-weight:700}
+.step-content p{font-size:13px;color:var(--color-text-muted);line-height:1.7}
+.icon-list{list-style:none;margin:12px 0}
+.icon-list li{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;font-size:14px;line-height:1.6}
+.icon-list li .dot{width:8px;height:8px;border-radius:50%;background:var(--color-secondary);margin-top:6px;flex-shrink:0}
+.data-table{width:100%;border-collapse:collapse;font-size:13px;margin:16px 0}
+.data-table th{background:var(--color-primary);color:white;padding:10px 14px;text-align:left;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:0.5px}
+.data-table td{padding:10px 14px;border-bottom:1px solid #e0d4f8;vertical-align:top;line-height:1.5}
+.data-table tr:nth-child(even) td{background:#f5f0ff}
+.data-table tr:last-child td{border-bottom:none}
+.check-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+.checkbox{width:20px;height:20px;border:2px solid var(--color-secondary);border-radius:4px;flex-shrink:0;margin-top:1px}
+.check-label{font-size:13.5px;line-height:1.6;color:var(--color-text)}
+.writing-section{margin:14px 0}
+.write-label{font-size:12px;color:var(--color-text-muted);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:0.8px}
+.line{width:100%;height:1px;background:#c8b8e8;margin:18px 0}
+.page-cover{background:#07050f!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;padding:60px!important}
+#cover-canvas{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.page-cover>*:not(#cover-canvas){position:relative;z-index:1}
+.cover-tag{display:inline-block;border:1px solid rgba(201,164,255,0.5);color:var(--color-accent);font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:20px;font-weight:500}
+.cover-divider{width:60px;height:2px;background:var(--color-gold);margin:20px 0}
+.author-block{display:flex;align-items:center;gap:10px}
+.author-label{font-size:12px;color:rgba(255,255,255,0.4);font-style:italic;font-family:var(--font-display)}
+.author-name{font-size:14px;color:rgba(255,255,255,0.8);font-weight:600;letter-spacing:1px}
+.page-chapter{background:#1a0a3c!important;color:white!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+.page-chapter .chapter-title{color:white!important}
+.page-chapter .chapter-intro{color:#c9a4ff!important}
+.page-chapter .chapter-number{color:white!important;opacity:0.12!important}
+.page-chapter .page-footer{border-top-color:rgba(255,255,255,0.15)!important}
+.page-chapter .footer-brand{color:rgba(255,255,255,0.4)!important}
+.page-chapter .footer-page{color:var(--color-gold)!important}
+.technique-card{background:white;border-radius:12px;border:1px solid #d8c8f8;padding:20px;margin-bottom:18px;box-shadow:0 2px 8px rgba(123,47,255,0.06)}
+.technique-badge{display:inline-block;background:var(--color-secondary);color:white;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;margin-bottom:10px;text-transform:uppercase}
+.technique-name{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--color-primary);margin-bottom:8px}
+.technique-desc{font-size:13px;line-height:1.7;color:var(--color-text)}
+.week-card{background:white;border-radius:12px;border-left:4px solid var(--color-secondary);padding:16px 20px;margin-bottom:14px;box-shadow:0 2px 6px rgba(123,47,255,0.06)}
+.week-label{font-size:11px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.week-title{font-family:var(--font-display);font-size:18px;color:var(--color-primary);font-weight:700;margin-bottom:8px}
+.week-items{font-size:13px;line-height:1.7;color:var(--color-text)}
+.origin-tag{display:inline-block;background:var(--color-gold);color:var(--color-primary);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.error-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;padding:10px 14px;background:#fff5f5;border-radius:8px;border-left:3px solid #e74c3c}
+.error-icon{color:#e74c3c;font-size:14px;flex-shrink:0;margin-top:2px}
+.error-text{font-size:13px;line-height:1.6;color:var(--color-text)}
+.exercise-box{background:linear-gradient(135deg,#f0eaff,#e8dcff);border-radius:12px;padding:16px 20px;margin:12px 0;border:1px solid #c9a4ff}
+.exercise-label{font-size:11px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.exercise-text{font-size:13px;line-height:1.7;color:var(--color-text)}
+.plan-table{width:100%;border-collapse:collapse;font-size:12px;margin:12px 0}
+.plan-table th{background:var(--color-primary);color:white;padding:8px 10px;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.5px}
+.plan-table td{padding:8px 10px;border-bottom:1px solid #e0d4f8;vertical-align:top;line-height:1.4}
+.plan-table tr:nth-child(even) td{background:#f5f0ff}
+.plan-table tr:last-child td{border-bottom:none}
+.plan-meta{font-size:10px;color:var(--color-text-muted);margin-top:4px}
+.faq-item{border-bottom:1px solid #e0d4f8;padding:14px 0}
+.faq-q{font-weight:700;font-size:14px;color:var(--color-primary);margin-bottom:6px;display:flex;gap:10px}
+.faq-icon{color:var(--color-secondary)}
+.faq-a{font-size:13px;line-height:1.7;color:var(--color-text-muted);padding-left:20px}
+.quick-ref-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.quick-ref-card{background:white;border-radius:10px;border:1px solid #d8c8f8;padding:14px;text-align:center}
+.quick-ref-num{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--color-gold);margin-bottom:4px}
+.quick-ref-name{font-size:12px;font-weight:700;color:var(--color-primary);margin-bottom:4px}
+.quick-ref-short{font-size:11px;color:var(--color-text-muted);line-height:1.5}
+@media print{@page{size:A4 portrait;margin:0}body{background:white}.page{width:210mm;min-height:297mm;padding:15mm 18mm;margin:0;page-break-after:always;box-shadow:none!important}}
+</style>
+</head>
+<body>
+
+<!-- PAGE 01: CAPA -->
+<div class="page page-cover" id="cover-page">
+<canvas id="cover-canvas" width="794" height="1123"></canvas>
+<svg style="position:absolute;top:52px;right:60px;z-index:1;pointer-events:none;" width="72" height="72" viewBox="0 0 72 72">
+<defs><radialGradient id="moonG" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs>
+<circle cx="36" cy="36" r="28" fill="url(#moonG)" opacity="0.95"/>
+<circle cx="36" cy="36" r="28" fill="none" stroke="rgba(245,236,208,0.3)" stroke-width="1"/>
+<circle cx="36" cy="36" r="36" fill="none" stroke="rgba(245,236,208,0.08)" stroke-width="1"/>
+<circle cx="26" cy="26" r="4" fill="rgba(180,140,60,0.25)"/><circle cx="44" cy="32" r="2.5" fill="rgba(180,140,60,0.2)"/><circle cx="32" cy="46" r="3" fill="rgba(180,140,60,0.18)"/>
+</svg>
+<div><span class="cover-tag">&#10022; Manual de Referencia &#10022;</span></div>
+<div style="text-align:center;margin-top:40px;">
+<svg width="120" height="120" viewBox="0 0 120 120" style="display:block;margin:0 auto 24px;">
+<defs>
+<radialGradient id="eyeG" cx="50%" cy="50%"><stop offset="0%" stop-color="#c9a4ff"/><stop offset="100%" stop-color="#7b2fff"/></radialGradient>
+<radialGradient id="irisG" cx="45%" cy="40%"><stop offset="0%" stop-color="#f0c060"/><stop offset="100%" stop-color="#c8a848"/></radialGradient>
+</defs>
+<ellipse cx="60" cy="60" rx="55" ry="35" fill="none" stroke="#c9a4ff" stroke-width="2" opacity="0.6"/>
+<ellipse cx="60" cy="60" rx="55" ry="35" fill="url(#eyeG)" opacity="0.15"/>
+<circle cx="60" cy="60" r="22" fill="#1a0a3c" stroke="#7b2fff" stroke-width="1.5"/>
+<circle cx="60" cy="60" r="14" fill="url(#irisG)"/>
+<circle cx="60" cy="60" r="6" fill="#1a0a3c"/>
+<circle cx="54" cy="54" r="3" fill="rgba(255,255,255,0.5)"/>
+<circle cx="68" cy="65" r="1.5" fill="rgba(255,255,255,0.3)"/>
+</svg>
+<h1 style="font-family:var(--font-display);font-size:44px;font-weight:700;color:#f7f0ff;line-height:1.15;margin-bottom:8px;">Manual Oficial<br>dos Reality Checks</h1>
+<div class="cover-divider" style="margin:20px auto;"></div>
+<p style="font-family:var(--font-body);font-size:17px;font-weight:300;color:#d8c8f8;line-height:1.6;max-width:480px;margin:0 auto;">10 tecnicas cientificas para questionar a realidade<br>e despertar dentro dos seus sonhos</p>
+</div>
+<div style="display:flex;justify-content:center;gap:32px;margin-top:32px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:28px;color:var(--color-gold);font-weight:700;">10</div><div style="font-size:10px;color:#c9a4ff;margin-top:2px;letter-spacing:1px;text-transform:uppercase;">Reality Checks</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:28px;color:var(--color-gold);font-weight:700;">14</div><div style="font-size:10px;color:#c9a4ff;margin-top:2px;letter-spacing:1px;text-transform:uppercase;">Dias de Plano</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:28px;color:var(--color-gold);font-weight:700;">100%</div><div style="font-size:10px;color:#c9a4ff;margin-top:2px;letter-spacing:1px;text-transform:uppercase;">Pratico</div></div>
+</div>
+<div class="author-block" style="justify-content:center;margin-top:16px;">
+<span class="author-label">por</span><span class="author-name">Luna Vieira</span>
+</div>
+</div>
+
+<!-- PAGE 02: DIREITOS AUTORAIS -->
+<div class="page" style="justify-content:center;align-items:center;text-align:center;">
+<div style="max-width:480px;margin:auto;">
+<svg width="48" height="48" viewBox="0 0 48 48" style="margin-bottom:24px;"><circle cx="24" cy="24" r="22" fill="none" stroke="#7b2fff" stroke-width="1.5"/><path d="M12 24L24 12L36 24L24 36Z" fill="#7b2fff" opacity="0.15"/><circle cx="24" cy="24" r="6" fill="#7b2fff" opacity="0.5"/></svg>
+<h2 style="font-family:var(--font-display);font-size:28px;color:var(--color-primary);margin-bottom:20px;">Manual Oficial dos<br>Reality Checks</h2>
+<div style="height:1px;background:linear-gradient(90deg,transparent,#c9a4ff,transparent);margin-bottom:24px;"></div>
+<p style="font-size:13px;line-height:1.8;color:var(--color-text-muted);">&#169; 2025 &#8212; Todos os direitos reservados.</p>
+<p style="font-size:13px;line-height:1.8;color:var(--color-text-muted);margin-top:12px;">Este manual e protegido por direitos autorais. Nenhuma parte desta publicacao pode ser reproduzida, distribuida ou transmitida sob qualquer forma sem permissao expressa do autor.</p>
+<p style="font-size:13px;line-height:1.8;color:var(--color-text-muted);margin-top:12px;">Bonus exclusivo do e-book "Desperte no Sonho". Material complementar destinado exclusivamente para fins educativos.</p>
+<div style="margin-top:32px;padding:16px;background:#f0eaff;border-radius:10px;">
+<p style="font-size:12px;color:var(--color-text-muted);"><strong style="color:var(--color-secondary);">Edicao 2025</strong><br>Manual de referencia rapida para praticantes de sonhos lucidos.</p>
+</div>
+</div>
+</div>
+
+<!-- PAGE 03: INTRODUCAO -->
+<div class="page">
+<div class="page-header"><span class="section-label">Introducao</span><span style="font-size:11px;color:var(--color-text-muted);">03</span></div>
+<h2 style="font-family:var(--font-display);font-size:36px;color:var(--color-primary);margin-bottom:20px;">O que sao<br>Reality Checks?</h2>
+<p class="body-text">Um <strong>Reality Check</strong> (Verificacao de Realidade) e o ato deliberado de pausar, observar seu ambiente e se perguntar genuinamente: <em>&#8220;Estou sonhando agora?&#8221;</em>. E a tecnica mais acessivel, mais poderosa e mais estudada para induzir sonhos lucidos.</p>
+<p class="body-text">O principio e elegante na sua simplicidade: se voce desenvolver o habito de questionar a realidade enquanto acordado, esse reflexo eventualmente se manifestara dentro de um sonho &#8212; e ai, ao verificar, voce descobrira que as leis da fisica nao se aplicam.</p>
+<div class="highlight-box">
+<p class="highlight-text">&#8220;O Reality Check nao e apenas uma tecnica &#8212; e uma filosofia de vida. E treinar sua mente a nunca assumir que a consciencia que voce experimenta e a unica forma possivel de realidade.&#8221;</p>
+</div>
+<h3 class="section-title">Por que funcionam?</h3>
+<p class="body-text">O cerebro opera em &#8220;modo automatico&#8221; durante a maior parte do dia. Aceitamos a realidade como ela e apresentada sem questionar. Os Reality Checks quebram esse modo automatico, ativando o <strong>cortex pre-frontal</strong> &#8212; a mesma regiao que precisa estar ativa para reconhecer um sonho como sonho.</p>
+<p class="body-text">Estudos com ressonancia magnetica funcional mostram que praticantes regulares de Reality Checks apresentam maior ativacao pre-frontal durante o sono, o que aumenta significativamente as chances de lucidez onirica.</p>
+<h3 class="section-title">As 3 regras de ouro</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Intencao genuina</strong><p>Nao basta fazer o gesto mecanicamente. Pare, respire e realmente pergunte-se: &#8220;Posso estar sonhando agora?&#8221;</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Frequencia</strong><p>Quanto mais vezes praticar durante o dia, maior a chance de o reflexo aparecer no sonho. Meta minima: 8-10 vezes por dia.</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Contexto emocional</strong><p>Pratique especialmente quando algo estranho ou emocional acontecer. Situacoes incomuns ativam o mesmo circuito neural dos sonhos lucidos.</p></div></div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">03</span></div>
+</div>
+
+<!-- PAGE 04: RC01 DIVIDER -->
+<div class="page page-chapter">
+<svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="600" cy="200" r="200" fill="#7b2fff"/><circle cx="200" cy="900" r="150" fill="#c9a4ff"/></svg>
+<div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+<div class="chapter-number">01</div>
+<h2 class="chapter-title">Olhar para<br>as Maos</h2>
+<p class="chapter-intro">O Reality Check mais iconico e mais utilizado por praticantes ao redor do mundo. Simples, visual e extraordinariamente eficaz.</p>
+<div style="margin-top:36px;display:flex;gap:30px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">&#9733;&#9734;&#9734;&#9734;&#9734;</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Dificuldade</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">87%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Taxa de sucesso</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">#1</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Mais usado no mundo</div></div>
+</div>
+</div>
+<div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">04</span></div>
+</div>
+
+<!-- PAGE 05: RC01 DETAIL -->
+<div class="page">
+<div class="page-header"><span class="section-label">RC 01 &#8212; Olhar para as Maos</span><span style="font-size:11px;color:var(--color-text-muted);">05</span></div>
+<span class="origin-tag">Desde o Yoga Tibetano do Sonho</span>
+<h3 class="section-title" style="margin-top:0;">A origem milenar</h3>
+<p class="body-text">O habito de observar as maos como verificacao de realidade remonta aos monges tibetanos do seculo VIII, que praticavam o <em>Yoga do Sonho</em> (Milam). Os monges aprendiam a reconhecer sonhos observando detalhes sutis &#8212; e as maos eram o objeto preferido por estarem sempre acessiveis.</p>
+<h3 class="section-title">Como funciona (ciencia)</h3>
+<p class="body-text">Durante o sono REM, o cortex visual gera imagens de forma autonoma, mas a representacao corporal e frequentemente distorcida. As maos, mapeadas com enorme detalhe no cortex somatossensorial, sao uma das primeiras partes a apresentar distorcoes na representacao neural onirica.</p>
+<h3 class="section-title">Passo a passo</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Segure suas maos na frente dos olhos</strong><p>Bracos estendidos, maos abertas, palmas para voce. Observe por pelo menos 5 segundos.</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Conte os dedos</strong><p>Um por um, mentalmente. &#8220;Um, dois, tres, quatro, cinco.&#8221; Sao 5 em cada mao?</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Observe os detalhes</strong><p>Linhas da palma, unhas, articulacoes. No sonho, esses detalhes estao distorcidos ou em constante mudanca.</p></div></div>
+<div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Questione genuinamente</strong><p>&#8220;Posso estar sonhando agora? Como cheguei aqui?&#8221;</p></div></div>
+<h3 class="section-title">O que acontece no sonho</h3>
+<ul class="icon-list">
+<li><span class="dot"></span><span>Dedos extras aparecem (6, 7 ou mais)</span></li>
+<li><span class="dot"></span><span>Dedos desaparecem ou ficam transparentes</span></li>
+<li><span class="dot"></span><span>Dedos se fundem entre si</span></li>
+<li><span class="dot"></span><span>Linhas da palma ficam borradas ou somem</span></li>
+<li><span class="dot"></span><span>As maos mudam de tamanho ou forma</span></li>
+</ul>
+<div class="tip-box">
+<span class="tip-icon">&#128161;</span>
+<div class="tip-text"><span class="tip-label">Dica de ouro</span>Faca o RC de maos toda vez que olhar para suas maos durante o dia. O habito de observar as maos se tornara automatico e aparecera no sonho.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#128221; Exercicio pratico</div>
+<div class="exercise-text">3 vezes ao dia, pare por 10 segundos e observe suas maos com atencao. Conte os dedos, observe as linhas e pergunte-se se voce esta sonhando.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">05</span></div>
+</div>
+
+<!-- PAGE 06: RC02 DIVIDER -->
+<div class="page page-chapter">
+<svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="180" cy="300" r="220" fill="#c9a4ff"/><circle cx="620" cy="850" r="180" fill="#7b2fff"/></svg>
+<div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+<div class="chapter-number">02</div>
+<h2 class="chapter-title">Tampar<br>o Nariz</h2>
+<p class="chapter-intro">Um teste fisico surpreendente que funciona de forma inexplicavel dentro dos sonhos. Rapido, discreto e altamente eficaz.</p>
+<div style="margin-top:36px;display:flex;gap:30px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">&#9733;&#9734;&#9734;&#9734;&#9734;</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Dificuldade</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">92%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Taxa de sucesso</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">#2</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Mais confiavel</div></div>
+</div>
+</div>
+<div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">06</span></div>
+</div>
+
+<!-- PAGE 07: RC02 DETAIL -->
+<div class="page">
+<div class="page-header"><span class="section-label">RC 02 &#8212; Tampar o Nariz</span><span style="font-size:11px;color:var(--color-text-muted);">07</span></div>
+<span class="origin-tag">Pratica comunitaria moderna</span>
+<h3 class="section-title" style="margin-top:0;">A origem</h3>
+<p class="body-text">Embora nao tenha uma linhagem historica como as maos, o RC de tampar o nariz se tornou popular entre praticantes online na decada de 2000. A sua eficacia se deve ao fato de que o sistema respiratorio e menos consistente na representacao onirica do que o visual.</p>
+<h3 class="section-title">Como funciona (ciencia)</h3>
+<p class="body-text">No sonho, o cerebro simula a sensacao de respiracao mas nao consegue replicar a bloqueio fisico do ar. Quando voce tampe o nariz no sonho, o ar continua fluindo porque o cerebro nao processa a restricao real do fluxo de ar.</p>
+<h3 class="section-title">Passo a passo</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Tampe o nariz com os dedos</strong><p>Use o indicador e o polegar para fechar completamente as narinas.</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Tente respirar normalmente</strong><p>Na vida real, voce nao consegue inspirar. No sonho, o ar passa normalmente.</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Sinta a diferenca</strong><p>Ao acordado, voce sente a obstrucao total. No sonho, voce sente o ar passando &#8212; um sinal claro de que esta sonhando.</p></div></div>
+<div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Questione genuinamente</strong><p>&#8220;Se estou respirando com o nariz tampado, posso estar sonhando?&#8221;</p></div></div>
+<h3 class="section-title">O que acontece no sonho</h3>
+<ul class="icon-list">
+<li><span class="dot"></span><span>Voce respira normalmente mesmo com o nariz tampado</span></li>
+<li><span class="dot"></span><span>O ar parece passar por qualquer caminho</span></li>
+<li><span class="dot"></span><span>Voce pode ate&#771; submergir em agua e continuar respirando</span></li>
+<li><span class="dot"></span><span>Sensacao de que o nariz nao existe fisicamente</span></li>
+</ul>
+<div class="tip-box">
+<span class="tip-icon">&#128161;</span>
+<div class="tip-text"><span class="tip-label">Por que funciona tao bem</span>O nariz e uma verificacao &#8220;binaria&#8221; &#8212; ou voce respira ou nao. Nao ha ambiguidade. No sonho, o resultado e sempre o oposto do real, tornando-o extremamente confiavel.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#128221; Exercicio pratico</div>
+<div class="exercise-text">Tampar o nariz e tentar respirar 5 vezes ao dia, especialmente antes de entrar em um elevador, ao abrir uma porta ou ao sentar no carro.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">07</span></div>
+</div>
+
+<!-- PAGE 08: RC03 DIVIDER -->
+<div class="page page-chapter">
+<svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="500" cy="250" r="200" fill="#7b2fff"/><circle cx="300" cy="800" r="170" fill="#c9a4ff"/></svg>
+<div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+<div class="chapter-number">03</div>
+<h2 class="chapter-title">Ler<br>um Texto</h2>
+<p class="chapter-intro">Teste a estabilidade do mundo onirico observando como o cerebro lida com simbolos e linguagem escrita.</p>
+<div style="margin-top:36px;display:flex;gap:30px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">&#9733;&#9734;&#9734;&#9734;&#9734;</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Dificuldade</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">85%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Taxa de sucesso</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">#3</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Mais visual</div></div>
+</div>
+</div>
+<div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">08</span></div>
+</div>
+
+<!-- PAGE 09: RC03 DETAIL -->
+<div class="page">
+<div class="page-header"><span class="section-label">RC 03 &#8212; Ler um Texto</span><span style="font-size:11px;color:var(--color-text-muted);">09</span></div>
+<span class="origin-tag">Observacao clinica moderna</span>
+<h3 class="section-title" style="margin-top:0;">A origem</h3>
+<p class="body-text">O RC de leitura foi documentado por praticantes como Stephen LaBerge e outros pesquisadores de sonhos lucidos. A observacao de que textos sao instaveis em sonhos revelou uma das limitacoes cognitivas mais intrigantes do cerebro durante o REM.</p>
+<h3 class="section-title">Como funciona (ciencia)</h3>
+<p class="body-text">A area de Broca e a area de Wernicke &#8212; responsaveis pela producao e compreensao da linguagem &#8212; apresentam atividade reduzida durante o sono REM. O cerebro consegue gerar a aparencia de texto, mas nao consegue manter sua consistencia entre observacoes.</p>
+<h3 class="section-title">Passo a passo</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Encontre um texto</strong><p>Placa, livro, celular, poster &#8212; qualquer coisa com escrita legivel.</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Leia atentamente</strong><p>Memorize uma frase ou palavra especifica. Observe cada letra.</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Desvie o olhar e releia</strong><p>Espere 5 segundos e olhe novamente para o mesmo texto.</p></div></div>
+<div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Compare as duas leituras</strong><p>No sonho, o texto muda drasticamente entre as leituras. Na realidade, permanece identico.</p></div></div>
+<h3 class="section-title">O que acontece no sonho</h3>
+<ul class="icon-list">
+<li><span class="dot"></span><span>As letras se reorganizam ou viram caracteres aleatorios</span></li>
+<li><span class="dot"></span><span>O texto fica completamente ilegivel</span></li>
+<li><span class="dot"></span><span>As palavras mudam de significado ou idioma</span></li>
+<li><span class="dot"></span><span>O texto cresce ou encolhe entre as leituras</span></li>
+<li><span class="dot"></span><span>Novas frases aparecem onde nao havia nada antes</span></li>
+</ul>
+<div class="tip-box">
+<span class="tip-icon">&#128161;</span>
+<div class="tip-text"><span class="tip-label">Dica de ouro</span>Pratique com placas de rua ou livros. Quanto mais longo o texto, mais facil e detectar a instabilidade.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#128221; Exercicio pratico</div>
+<div class="exercise-text">3 vezes ao dia, leia um texto e releia depois de 30 segundos. Observe se algo mudou. Este e o treino perfeito para o habito de verificacao.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">09</span></div>
+</div>
+
+<!-- PAGE 10: RC04 DIVIDER -->
+<div class="page page-chapter">
+<svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="650" cy="300" r="200" fill="#c9a4ff"/><circle cx="150" cy="800" r="160" fill="#7b2fff"/></svg>
+<div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+<div class="chapter-number">04</div>
+<h2 class="chapter-title">Interruptor<br>de Luz</h2>
+<p class="chapter-intro">Um teste simples e instantaneo que revela a instabilidade do controle ambiental dentro dos sonhos.</p>
+<div style="margin-top:36px;display:flex;gap:30px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Dificuldade</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">78%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Taxa de sucesso</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">#4</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Mais pratico</div></div>
+</div>
+</div>
+<div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">10</span></div>
+</div>
+
+<!-- PAGE 11: RC04 DETAIL -->
+<div class="page">
+<div class="page-header"><span class="section-label">RC 04 &#8212; Interruptor de Luz</span><span style="font-size:11px;color:var(--color-text-muted);">11</span></div>
+<span class="origin-tag">Observacao empirica</span>
+<h3 class="section-title" style="margin-top:0;">A origem</h3>
+<p class="body-text">O RC de interruptor de luz surgiu da observacao empirica de que a iluminacao nos sonhos e notoriamente instavel. Praticantes notaram que interruptores raramente funcionam como esperado dentro dos sonhos, tornando-o um teste confiavel.</p>
+<h3 class="section-title">Como funciona (ciencia)</h3>
+<p class="body-text">O controle luminoso em sonhos depende da atividade do cortex visual e do sistema de percepcao de brilho. Durante o REM, esses sistemas operam de forma imprevisivel, resultando em iluminacao que nao responde adequadamente a comandos conscientes.</p>
+<h3 class="section-title">Passo a passo</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Encontre um interruptor</strong><p>Qualquer interruptor de luz, lampada com interruptor ou controle remoto.</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Tente acender</strong><p>Pressione o interruptor esperando que a luz acenda normalmente.</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Observe a reacao</strong><p>Na realidade, a luz acende ou apaga imediatamente. No sonho, nada acontece ou a luz se comporta de forma estranha.</p></div></div>
+<div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Repita varias vezes</strong><p>Alterne entre acender e apagar. No sonho, o resultado e sempre inconsistente.</p></div></div>
+<h3 class="section-title">O que acontece no sonho</h3>
+<ul class="icon-list">
+<li><span class="dot"></span><span>O interruptor nao faz nada ao ser pressionado</span></li>
+<li><span class="dot"></span><span>A luz muda de cor em vez de acender/apagar</span></li>
+<li><span class="dot"></span><span>A iluminacao do ambiente nao muda</span></li>
+<li><span class="dot"></span><span>O interruptor some ou muda de lugar</span></li>
+<li><span class="dot"></span><span>A luz acende mas o ambiente permanece escuro</span></li>
+</ul>
+<div class="tip-box">
+<span class="tip-icon">&#128161;</span>
+<div class="tip-text"><span class="tip-label">Dica de ouro</span>Use este RC sempre que entrar em um comodo e precisar acender a luz. E um gatilho natural e facil de lembrar.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#128221; Exercicio pratico</div>
+<div class="exercise-text">Ao entrar em qualquer comodo durante o dia, pare 3 segundos e verifique o interruptor de luz. Funciona normalmente? Entao voce esta acordado.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">11</span></div>
+</div>
+
+<!-- PAGE 12: RC05 DIVIDER -->
+<div class="page page-chapter">
+<svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="400" cy="400" r="250" fill="#7b2fff"/><circle cx="650" cy="750" r="150" fill="#c9a4ff"/></svg>
+<div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+<div class="chapter-number">05</div>
+<h2 class="chapter-title">Espelho</h2>
+<p class="chapter-intro">Enfrente seu reflexo onirico e descubra as distorcoes que o cerebro gera quando tenta se representar durante o sono.</p>
+<div style="margin-top:36px;display:flex;gap:30px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Dificuldade</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">91%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Taxa de sucesso</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">#5</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Mais impressionante</div></div>
+</div>
+</div>
+<div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">12</span></div>
+</div>
+
+<!-- PAGE 13: RC05 DETAIL -->
+<div class="page">
+<div class="page-header"><span class="section-label">RC 05 &#8212; Espelho</span><span style="font-size:11px;color:var(--color-text-muted);">13</span></div>
+<span class="origin-tag">Yoga Tibetano + Psicologia Moderna</span>
+<h3 class="section-title" style="margin-top:0;">A origem</h3>
+<p class="body-text">Olhar no espelho como verificacao de realidade combina a tradicao tibetana de observacao com a psicologia moderna. A imagem espelhada e uma das representacoes mais complexas que o cerebro gera, tornando-a altamente propensa a distorcoes oniricas.</p>
+<h3 class="section-title">Como funciona (ciencia)</h3>
+<p class="body-text">A representacao do rosto proprio envolve o giro temporal e o cortex fusiforme, areas que funcionam de forma instavel durante o sono REM. O cerebro tenta gerar uma imagem espelhada mas frequentemente falha em manter a coerencia.</p>
+<h3 class="section-title">Passo a passo</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Encontre um espelho</strong><p>Banheiro, vaidoso, elevador &#8212; qualquer superficie reflexiva.</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Olhe diretamente para o reflexo</strong><p>Fixe o olhar no seu rosto por pelo menos 10 segundos.</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Observe detalhes</strong><p>Olhos, nariz, boca, cor do cabelo. Tudo esta normal?</p></div></div>
+<div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Desvie e olhe novamente</strong><p>Apos 5 segundos, olhe novamente. O reflexo mudou?</p></div></div>
+<h3 class="section-title">O que acontece no sonho</h3>
+<ul class="icon-list">
+<li><span class="dot"></span><span>O reflexo e de outra pessoa completamente</span></li>
+<li><span class="dot"></span><span>Faccao muda (idade, genero, expressao)</span></li>
+<li><span class="dot"></span><span>O rosto distorce ou derrete</span></li>
+<li><span class="dot"></span><span>Olhos brilham ou mudam de cor</span></li>
+<li><span class="dot"></span><span>O espelho mostra um cenario em vez do reflexo</span></li>
+<li><span class="dot"></span><span>O reflexo se move de forma assincrona</span></li>
+</ul>
+<div class="tip-box">
+<span class="tip-icon">&#128161;</span>
+<div class="tip-text"><span class="tip-label">Aviso importante</span>Se voce tiver medo de espelhos no sonho, comecar devagar. Obras nao sao perigosas &#8212; apenas bizarras. Mantenha a calma e observe com curiosidade.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#128221; Exercicio pratico</div>
+<div class="exercise-text">Toda vez que passar por um espelho durante o dia, olhe para seu reflexo por 5 segundos e pergunte: &#8220;E eu mesmo?&#8221;</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">13</span></div>
+</div>
+
+<!-- PAGE 14: RC06 DIVIDER -->
+<div class="page page-chapter">
+<svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="350" cy="350" r="220" fill="#c9a4ff"/><circle cx="600" cy="800" r="180" fill="#7b2fff"/></svg>
+<div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+<div class="chapter-number">06</div>
+<h2 class="chapter-title">Pular /<br>Gravidade</h2>
+<p class="chapter-intro">Desafie a fisica basica do mundo onirico com o teste de gravidade. O mais simples e intuitivo de todos.</p>
+<div style="margin-top:36px;display:flex;gap:30px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">&#9733;&#9734;&#9734;&#9734;&#9734;</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Dificuldade</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">80%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Taxa de sucesso</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">#6</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Mais divertido</div></div>
+</div>
+</div>
+<div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">14</span></div>
+</div>
+
+<!-- PAGE 15: RC06 DETAIL -->
+<div class="page">
+<div class="page-header"><span class="section-label">RC 06 &#8212; Pular / Gravidade</span><span style="font-size:11px;color:var(--color-text-muted);">15</span></div>
+<span class="origin-tag">Pratica intuitiva ancestral</span>
+<h3 class="section-title" style="margin-top:0;">A origem</h3>
+<p class="body-text">A sensacao de queda livre ou flutuacao e uma das experiencias mais relatadas em sonhos. O teste de gravidade capitaliza sobre esse fenomeno, oferecendo uma verificacao fisica imediata e intuitiva.</p>
+<h3 class="section-title">Como funciona (ciencia)</h3>
+<p class="body-text">O cerebelo, responsavel pela percepcao de gravidade e equilibrio, opera de forma diferente durante o sono REM. A sensacao de queda e frequentemente suprimida ou alterada, resultando em pulos que duram mais que o normal.</p>
+<h3 class="section-title">Passo a passo</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Pule verticalmente</strong><p>De pe, pule o mais alto que puder. Observe a duracao da queda.</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Sinta o peso do corpo</strong><p>Na realidade, voce cai imediatamente. No sonho, a queda e lenta ou flutuante.</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Experimente pular mais uma vez</strong><p>Compare as duas experiencias. A diferenca e clara e imediata.</p></div></div>
+<div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Questione a realidade</strong><p>&#8220;Por que estou flutuando? Posso estar sonhando?&#8221;</p></div></div>
+<h3 class="section-title">O que acontece no sonho</h3>
+<ul class="icon-list">
+<li><span class="dot"></span><span>A queda e extremamente lenta</span></li>
+<li><span class="dot"></span><span>Voce permanece no ar por varios segundos</span></li>
+<li><span class="dot"></span><span>A queda e suave, sem impacto ao tocar o chao</span></li>
+<li><span class="dot"></span><span>Voce flutua em vez de cair</span></li>
+<li><span class="dot"></span><span>Pulos levam voce a alturas inacreditaveis</span></li>
+</ul>
+<div class="tip-box">
+<span class="tip-icon">&#128161;</span>
+<div class="tip-text"><span class="tip-label">Dica de ouro</span>Pratique este RC ao caminhar. De vez em quando, pule levemente. Se perceber que a queda nao e normal, voce descobriu que esta sonhando.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#128221; Exercicio pratico</div>
+<div class="exercise-text">5 vezes ao dia, pule verticalmente e observe a duracao da queda. Registre mentalmente como &#8220;normal&#8221; &#8212; isso criara um padrao para comparar nos sonhos.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">15</span></div>
+</div>
+
+<!-- PAGE 16: RC07 DIVIDER -->
+<div class="page page-chapter">
+<svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="550" cy="250" r="200" fill="#7b2fff"/><circle cx="200" cy="750" r="190" fill="#c9a4ff"/></svg>
+<div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+<div class="chapter-number">07</div>
+<h2 class="chapter-title">Relogio<br>Digital</h2>
+<p class="chapter-intro">Teste a capacidade do cerebro de processar informacao numerica durante o sono REM.</p>
+<div style="margin-top:36px;display:flex;gap:30px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Dificuldade</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">83%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Taxa de sucesso</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">#7</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Mais preciso</div></div>
+</div>
+</div>
+<div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">16</span></div>
+</div>
+
+<!-- PAGE 17: RC07 DETAIL -->
+<div class="page">
+<div class="page-header"><span class="section-label">RC 07 &#8212; Relogio Digital</span><span style="font-size:11px;color:var(--color-text-muted);">17</span></div>
+<span class="origin-tag">Observacao cognitiva moderna</span>
+<h3 class="section-title" style="margin-top:0;">A origem</h3>
+<p class="body-text">O RC de relogio digital foi documentado por praticantes que notaram a extrema dificuldade do cerebro onirico em processar e manter numeros. A informacao numerica e uma das primeiras a se deteriorar durante o sono REM.</p>
+<h3 class="section-title">Como funciona (ciencia)</h3>
+<p class="body-text">A regiao parietal, responsavel pelo processamento numerico e logico, apresenta atividade significativamente reduzida durante o sono. O cerebro gera numeros que parecem reais mas nao conseguem manter consistencia entre observacoes.</p>
+<h3 class="section-title">Passo a passo</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Olhe para um relogio digital</strong><p>Celular, relogio de parede, forno, micro-ondas &#8212; qualquer display numerico.</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Memorize a hora</strong><p>Ex: &#8220;Sao 14:32&#8221;. Memorize exatamente.</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Desvie o olhar e olhe novamente</strong><p>Complete uma tarefa simples (olhar ao redor) e volte ao relogio.</p></div></div>
+<div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Compare os numeros</strong><p>No sonho, a hora muda drasticamente. Na realidade, avanca apenas segundos.</p></div></div>
+<h3 class="section-title">O que acontece no sonho</h3>
+<ul class="icon-list">
+<li><span class="dot"></span><span>A hora muda completamente entre leituras</span></li>
+<li><span class="dot"></span><span>Os numeros se tornam ilegivelmente distorcidos</span></li>
+<li><span class="dot"></span><span>Simbolos estranhos substituem os numeros</span></li>
+<li><span class="dot"></span><span>O display pisca ou muda de cor</span></li>
+<li><span class="dot"></span><span>Os numeros tem mais de 2 digitos nas horas</span></li>
+</ul>
+<div class="tip-box">
+<span class="tip-icon">&#128161;</span>
+<div class="tip-text"><span class="tip-label">Dica de ouro</span>Pratique olhar para o celular 5 vezes ao dia. A repeticao cria um habito que se manifesta naturalmente nos sonhos.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#128221; Exercicio pratico</div>
+<div class="exercise-text">5 vezes ao dia, olhe para qualquer numero digital, memorize, desvie o olhar por 5 segundos e releia. Compare os resultados.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">17</span></div>
+</div>
+
+<!-- PAGE 18: RC08 DIVIDER -->
+<div class="page page-chapter">
+<svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="300" cy="280" r="200" fill="#c9a4ff"/><circle cx="550" cy="850" r="170" fill="#7b2fff"/></svg>
+<div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+<div class="chapter-number">08</div>
+<h2 class="chapter-title">Dedo na<br>Palma</h2>
+<p class="chapter-intro">Uma verificacao tattile precisa que capitaliza sobre a representacao corporal alterada nos sonhos.</p>
+<div style="margin-top:36px;display:flex;gap:30px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">&#9733;&#9733;&#9734;&#9734;&#9734;</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Dificuldade</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">88%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Taxa de sucesso</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">#8</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Mais sutil</div></div>
+</div>
+</div>
+<div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">18</span></div>
+</div>
+
+<!-- PAGE 19: RC08 DETAIL -->
+<div class="page">
+<div class="page-header"><span class="section-label">RC 08 &#8212; Dedo na Palma</span><span style="font-size:11px;color:var(--color-text-muted);">19</span></div>
+<span class="origin-tag">Pratica de praticantes experientes</span>
+<h3 class="section-title" style="margin-top:0;">A origem</h3>
+<p class="body-text">O RC de dedo na palma surgiu entre praticantes experientes que buscavam verificacoes mais discretas. A sensacao de pressao e textura e mais facil de testar em qualquer situacao social sem chamar atencao.</p>
+<h3 class="section-title">Como funciona (ciencia)</h3>
+<p class="body-text">A representacao proprioceptiva &#8212; a consciencia da posicao do proprio corpo &#8212; e menos precisa durante o sono REM. A sensacao de pressao e textura da palma e frequentemente alterada, criando uma discrepancia detectavel.</p>
+<h3 class="section-title">Passo a passo</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Pressione o dedo indicador contra a palma</strong><p>Use a ponta do indicador da mao direita e pressione contra a palma da mao esquerda.</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Sinta a pressao e textura</strong><p>Na realidade, voce sente o dedo pressionando a palma de forma solida.</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Observe a profundidade</strong><p>No sonho, o dedo pode atravessar a palma ou a sensacao de pressao e ausente.</p></div></div>
+<div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Repita e compare</strong><p>3 pressoes rapidas. A consistencia da sensacao indica se voce esta acordado.</p></div></div>
+<h3 class="section-title">O que acontece no sonho</h3>
+<ul class="icon-list">
+<li><span class="dot"></span><span>O dedo atravessa a palma sem resistencia</span></li>
+<li><span class="dot"></span><span>Nenhuma sensacao de pressao e sentida</span></li>
+<li><span class="dot"></span><span>A sensacao e de&#771;bil ou fantasmagorica</span></li>
+<li><span class="dot"></span><span>O dedo e mais longo que o normal</span></li>
+<li><span class="dot"></span><span>A palma parece ser de outro material (agua, ar)</span></li>
+</ul>
+<div class="tip-box">
+<span class="tip-icon">&#128161;</span>
+<div class="tip-text"><span class="tip-label">Dica de ouro</span>Este e o RC perfeito para reunioes, aulas ou conversas. Ninguem percebe que voce esta verificando a realidade.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#128221; Exercicio pratico</div>
+<div class="exercise-text">3 vezes ao dia, pressione o indicador contra a palma por 3 segundos. Sinta a pressao real e memorize a sensacao &#8220;acordada&#8221;.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">19</span></div>
+</div>
+
+<!-- PAGE 20: RC09 DIVIDER -->
+<div class="page page-chapter">
+<svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="450" cy="300" r="230" fill="#7b2fff"/><circle cx="200" cy="800" r="160" fill="#c9a4ff"/></svg>
+<div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+<div class="chapter-number">09</div>
+<h2 class="chapter-title">Contar<br>Dedos Pes</h2>
+<p class="chapter-intro">Use seu corpo como instrumento de verificacao. Os pes e maos sao os objetos mais instaveis nos sonhos.</p>
+<div style="margin-top:36px;display:flex;gap:30px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">&#9733;&#9734;&#9734;&#9734;&#9734;</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Dificuldade</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">85%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Taxa de sucesso</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">#9</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Mais acessivel</div></div>
+</div>
+</div>
+<div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">20</span></div>
+</div>
+
+<!-- PAGE 21: RC09 DETAIL -->
+<div class="page">
+<div class="page-header"><span class="section-label">RC 09 &#8212; Contar Dedos Pes</span><span style="font-size:11px;color:var(--color-text-muted);">21</span></div>
+<span class="origin-tag">Extensao do RC de maos</span>
+<h3 class="section-title" style="margin-top:0;">A origem</h3>
+<p class="body-text">Uma extensao natural do RC de maos, o teste de dedos dos pes e util para praticantes que querem uma verificacao adicional. Os pes, por serem menos mapeados no cortex, apresentam distorcoes ainda maiores que as maos.</p>
+<h3 class="section-title">Como funciona (ciencia)</h3>
+<p class="body-text">A representacao dos pes no homunculus sensorial e menor e menos detalhada que a das maos. Isso significa que o cerebro tem menos &#8220;dados&#8221; para gerar uma representacao precisa, tornando os pes ainda mais propensos a distorcoes nos sonhos.</p>
+<h3 class="section-title">Passo a passo</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Olhe para seus pes</strong><p>Tire os sapatos e observe seus pes com atencao.</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Conte os dedos de cada pe</strong><p>Comece pelo pe direito: &#8220;Um, dois, tres, quatro, cinco.&#8221;</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Repita com o pe esquerdo</strong><p>Confirme que ha 5 dedos em cada pe.</p></div></div>
+<div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Observe os detalhes</strong><p>Unhas, juntas, formato. Tudo esta como o normal?</p></div></div>
+<h3 class="section-title">O que acontece no sonho</h3>
+<ul class="icon-list">
+<li><span class="dot"></span><span>Dedos extras ou faltando</span></li>
+<li><span class="dot"></span><span>Dedos com tamanhos desiguais</span></li>
+<li><span class="dot"></span><span>Dedos fundidos entre si</span></li>
+<li><span class="dot"></span><span>Os pes mudam de forma completamente</span></li>
+<li><span class="dot"></span><span>Os dedos parecem borrados ou transparentes</span></li>
+</ul>
+<div class="tip-box">
+<span class="tip-icon">&#128161;</span>
+<div class="tip-text"><span class="tip-label">Dica de ouro</span>Combine com o RC de maos. Primeiro conte os dedos da mao, depois os do pe. Se ambos apresentarem anomalias, a certeza de sonho e maxima.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#128221; Exercicio pratico</div>
+<div class="exercise-text">2 vezes ao dia (ao acordar e ao dormir), conte os dedos dos pes. Memorize a sensacao de &#8220;5 dedos&#8221; &#8212; isso se tornara seu gatilho de verificacao.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">21</span></div>
+</div>
+
+<!-- PAGE 22: RC10 DIVIDER -->
+<div class="page page-chapter">
+<svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="600" cy="350" r="210" fill="#c9a4ff"/><circle cx="180" cy="750" r="180" fill="#7b2fff"/></svg>
+<div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+<div class="chapter-number">10</div>
+<h2 class="chapter-title">Verificar<br>Sombras</h2>
+<p class="chapter-intro">Analise a coerencia da luz e sombras ao seu redor. A iluminacao nos sonhos e notoriamente inconsistente.</p>
+<div style="margin-top:36px;display:flex;gap:30px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">&#9733;&#9733;&#9733;&#9734;&#9734;</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Dificuldade</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">75%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Taxa de sucesso</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">#10</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Mais avancado</div></div>
+</div>
+</div>
+<div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">22</span></div>
+</div>
+
+<!-- PAGE 23: RC10 DETAIL -->
+<div class="page">
+<div class="page-header"><span class="section-label">RC 10 &#8212; Verificar Sombras</span><span style="font-size:11px;color:var(--color-text-muted);">23</span></div>
+<span class="origin-tag">Pratica avancada</span>
+<h3 class="section-title" style="margin-top:0;">A origem</h3>
+<p class="body-text">O RC de sombras e uma tecnica mais avancada que requer observacao atenta. Embora menos popular, e um dos testes mais confiaveis porque a consistencia de luz e sombra exige processamento cognitivo complexo que o cerebro onirico nao consegue manter.</p>
+<h3 class="section-title">Como funciona (ciencia)</h3>
+<p class="body-text">A percepcao de iluminacao e sombras envolve o processamento simultaneo de multiplas variaveis: direcao da luz, opacidade dos objetos, angulo de projecao. O cerebro durante o REM simplifica drasticamente esse processamento.</p>
+<h3 class="section-title">Passo a passo</h3>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Observe as sombras ao redor</strong><p>Onde esta a fonte de luz? As sombras apontam na direcao correta?</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Olhe para sua propria sombra</strong><p>Ela segue seus movimentos? A forma corresponde ao seu corpo?</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Verifique a consistencia</strong><p>Todos os objetos tem sombras na mesma direcao? Objetos proximos tem sombras proporcionais?</p></div></div>
+<div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Compare com a realidade</strong><p>Na vida real, as sombras sao consistentes e logicas. Nos sonhos, frequentemente nao sao.</p></div></div>
+<h3 class="section-title">O que acontece no sonho</h3>
+<ul class="icon-list">
+<li><span class="dot"></span><span>Sombras apontam para direcoes diferentes</span></li>
+<li><span class="dot"></span><span>Objetos nao projetam sombras</span></li>
+<li><span class="dot"></span><span>A sombra nao corresponde ao objeto</span></li>
+<li><span class="dot"></span><span>Fonte de luz e invisivel ou impossivel</span></li>
+<li><span class="dot"></span><span>Sombras se movem de forma independente</span></li>
+</ul>
+<div class="tip-box">
+<span class="tip-icon">&#9888;&#65039;</span>
+<div class="tip-text"><span class="tip-label">Atencao</span>Este RC e mais dificil de praticar conscientemente porque exige um ambiente iluminado. Use quando estiver ao ar livre ou em comodos bem iluminados.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#128221; Exercicio pratico</div>
+<div class="exercise-text">Ao caminhar ao ar livre, observe as sombras dos objetos e das pessoas. Verifique se sao logicas e consistentes. Pratique 3 vezes por semana.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">23</span></div>
+</div>
+
+<!-- PAGE 24: TABELA COMPARATIVA -->
+<div class="page">
+<div class="page-header"><span class="section-label">Tabela Comparativa</span><span style="font-size:11px;color:var(--color-text-muted);">24</span></div>
+<h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:16px;">Comparacao dos 10<br>Reality Checks</h2>
+<p class="body-text" style="margin-bottom:14px;">Cada RC tem seu perfil ideal. Use esta tabela para escolher os 3-4 que melhor se adaptam ao seu estilo de vida.</p>
+<table class="data-table">
+<thead><tr><th>RC</th><th>Nome</th><th>Dificuldade</th><th>Taxa Sucesso</th><th>Melhor Para</th></tr></thead>
+<tbody>
+<tr><td><strong>01</strong></td><td>Olhar para as Maos</td><td style="color:#7b2fff;">&#9733;&#9734;&#9734;&#9734;&#9734;</td><td>87%</td><td>Iniciantes, qualquer hora</td></tr>
+<tr><td><strong>02</strong></td><td>Tampar o Nariz</td><td style="color:#7b2fff;">&#9733;&#9734;&#9734;&#9734;&#9734;</td><td>92%</td><td>Verificacao rapida e confiavel</td></tr>
+<tr><td><strong>03</strong></td><td>Ler um Texto</td><td style="color:#7b2fff;">&#9733;&#9734;&#9734;&#9734;&#9734;</td><td>85%</td><td>Ambientes com escrita</td></tr>
+<tr><td><strong>04</strong></td><td>Interruptor de Luz</td><td style="color:#7b2fff;">&#9733;&#9733;&#9734;&#9734;&#9734;</td><td>78%</td><td>Dentro de casa, comodos</td></tr>
+<tr><td><strong>05</strong></td><td>Espelho</td><td style="color:#7b2fff;">&#9733;&#9733;&#9734;&#9734;&#9734;</td><td>91%</td><td>Banheiro, vestiarios</td></tr>
+<tr><td><strong>06</strong></td><td>Pular / Gravidade</td><td style="color:#7b2fff;">&#9733;&#9734;&#9734;&#9734;&#9734;</td><td>80%</td><td>Ao ar livre, caminhada</td></tr>
+<tr><td><strong>07</strong></td><td>Relogio Digital</td><td style="color:#7b2fff;">&#9733;&#9733;&#9734;&#9734;&#9734;</td><td>83%</td><td>Com celulares, relogios</td></tr>
+<tr><td><strong>08</strong></td><td>Dedo na Palma</td><td style="color:#7b2fff;">&#9733;&#9733;&#9734;&#9734;&#9734;</td><td>88%</td><td>Reunioes, aulas (discreto)</td></tr>
+<tr><td><strong>09</strong></td><td>Contar Dedos Pes</td><td style="color:#7b2fff;">&#9733;&#9734;&#9734;&#9734;&#9734;</td><td>85%</td><td>Em casa, antes de dormir</td></tr>
+<tr><td><strong>10</strong></td><td>Verificar Sombras</td><td style="color:#7b2fff;">&#9733;&#9733;&#9733;&#9734;&#9734;</td><td>75%</td><td>Ao ar livre, praticantes avancados</td></tr>
+</tbody>
+</table>
+<div class="highlight-box" style="margin-top:16px;">
+<p class="highlight-text">&#8220;Nao existe o RC perfeito. Existe a combinacao perfeita para voce. Escolha 3-4 RCs e pratique-os todos os dias.&#8221;</p>
+</div>
+<div class="tip-box">
+<span class="tip-icon">&#128736;&#65039;</span>
+<div class="tip-text"><span class="tip-label">Estrategia recomendada</span>Combine o RC de maos (visual) com o de nariz (tattil) e o de texto (cognitivo). Essa combinacao cobre diferentes sistemas sensoriais e maximiza as chances de deteccao no sonho.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">24</span></div>
+</div>
+
+<!-- PAGE 25: CHECKLIST DIARIO -->
+<div class="page">
+<div class="page-header"><span class="section-label">Checklist Diario</span><span style="font-size:11px;color:var(--color-text-muted);">25</span></div>
+<h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:16px;">Checklist de<br>Pratica Diaria</h2>
+<p class="body-text" style="margin-bottom:14px;">Marque cada RC que voce praticou hoje. Meta: pelo menos 8-10 verificacoes por dia.</p>
+<div style="font-size:12px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px;">Manha (ao acordar)</div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Olhar para as maos ao levantar</span></div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Tampar o nariz ao lavar o rosto</span></div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Verificar espelho no banheiro</span></div>
+<div class="line"></div>
+<div style="font-size:12px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin:12px 0 8px;">Tarde (durante o dia)</div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Ler e releer um texto (placa, livro, celular)</span></div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Testar interruptor de luz ao entrar em comodo</span></div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Pular e observar a queda</span></div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Olhar relogio digital e releiar</span></div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Dedo na palma (em qualquer situacao)</span></div>
+<div class="line"></div>
+<div style="font-size:12px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin:12px 0 8px;">Noite (antes de dormir)</div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Contar dedos dos pes</span></div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Verificar sombras (se houver luz)</span></div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Repetir afirmacao: &#8220;Vou notar que estou sonhando&#8221;</span></div>
+<div class="line"></div>
+<div class="writing-section"><div class="write-label">Total de Reality Checks hoje:</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Algum RC funcionou de forma estranha? Qual?</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Sonho da noite (descreva rapidamente):</div><div class="line"></div><div class="line"></div></div>
+<div class="tip-box">
+<span class="tip-icon">&#128200;</span>
+<div class="tip-text"><span class="tip-label">Meta semanal</span>Praticar pelo menos 8 RCs por dia, todos os dias. A consistencia e mais importante que a perfeicao.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">25</span></div>
+</div>
+
+<!-- PAGE 26: PLANO 14 DIAS - PARTE 1 -->
+<div class="page">
+<div class="page-header"><span class="section-label">Plano 14 Dias &#8212; Semana 1</span><span style="font-size:11px;color:var(--color-text-muted);">26</span></div>
+<h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:16px;">Plano de 14 Dias<br>Dias 1 a 7</h2>
+<p class="body-text" style="margin-bottom:14px;">A primeira semana foca em construir o habito de verificacao e comecar a registrar sonhos.</p>
+<table class="plan-table">
+<thead><tr><th>Dia</th><th>RCs Principais</th><th>Meta do Dia</th><th>Extras</th></tr></thead>
+<tbody>
+<tr><td><strong>Dia 1</strong></td><td>Maos + Nariz</td><td>Fazer 5 RCs</td><td>Comecar diario de sonhos</td></tr>
+<tr><td><strong>Dia 2</strong></td><td>Maos + Nariz + Texto</td><td>Fazer 6 RCs</td><td>Leer sobre sonhos lucidos (10 min)</td></tr>
+<tr><td><strong>Dia 3</strong></td><td>Maos + Nariz + Texto</td><td>Fazer 7 RCs</td><td>Adicionar RC de espelho</td></tr>
+<tr><td><strong>Dia 4</strong></td><td>Maos + Nariz + Espelho</td><td>Fazer 8 RCs</td><td>Praticar afirmação ao dormir</td></tr>
+<tr><td><strong>Dia 5</strong></td><td>Maos + Nariz + Interr. Luz</td><td>Fazer 8 RCs</td><td>Adicionar RC de interruptor</td></tr>
+<tr><td><strong>Dia 6</strong></td><td>Maos + Nariz + Pular</td><td>Fazer 8 RCs</td><td>Experimentar RC de gravidade</td></tr>
+<tr><td><strong>Dia 7</strong></td><td>Todos os praticados</td><td>Fazer 10 RCs</td><td>Revisar diário e escolher 3 favoritos</td></tr>
+</tbody>
+</table>
+<div class="highlight-box" style="margin-top:14px;">
+<p class="highlight-text">&#8220;A primeira semana e sobre construir o habito. Nao se preocupe com sonhos lucidos ainda &#8212; foque em tornar os Reality Checks automaticos.&#8221;</p>
+</div>
+<div class="tip-box">
+<span class="tip-icon">&#128161;</span>
+<div class="tip-text"><span class="tip-label">Dica da Semana 1</span>Use alarmes no celular para lembrar de fazer os RCs. Programe 5-6 alarmes ao longo do dia ate o habito se tornar natural.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">26</span></div>
+</div>
+
+<!-- PAGE 27: PLANO 14 DIAS - PARTE 2 -->
+<div class="page">
+<div class="page-header"><span class="section-label">Plano 14 Dias &#8212; Semana 2</span><span style="font-size:11px;color:var(--color-text-muted);">27</span></div>
+<h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:16px;">Plano de 14 Dias<br>Dias 8 a 14</h2>
+<p class="body-text" style="margin-bottom:14px;">A segunda semana intensifica a pratica e comeca a integrar RCs com contexto emocional.</p>
+<table class="plan-table">
+<thead><tr><th>Dia</th><th>RCs Principais</th><th>Meta do Dia</th><th>Extras</th></tr></thead>
+<tbody>
+<tr><td><strong>Dia 8</strong></td><td>3 favoritos + 2 novos</td><td>Fazer 10 RCs</td><td>Praticar RCs em situacoes incomuns</td></tr>
+<tr><td><strong>Dia 9</strong></td><td>3 favoritos + Dedos Pes</td><td>Fazer 10 RCs</td><td>Adicionar RC de dedos dos pes</td></tr>
+<tr><td><strong>Dia 10</strong></td><td>Todos os 10 RCs</td><td>Fazer 12 RCs</td><td>Experimentar todos pelo menos 1x</td></tr>
+<tr><td><strong>Dia 11</strong></td><td>3 favoritos + Sombras</td><td>Fazer 10 RCs</td><td>Experimentar RC de sombras</td></tr>
+<tr><td><strong>Dia 12</strong></td><td>5 RCs variados</td><td>Fazer 12 RCs</td><td>Praticar MILD ao dormir</td></tr>
+<tr><td><strong>Dia 13</strong></td><td>5 RCs variados</td><td>Fazer 12 RCs</td><td>Revisar sinais de sonho do diário</td></tr>
+<tr><td><strong>Dia 14</strong></td><td>Todos os favoritos</td><td>Fazer 15 RCs</td><td>Meta maxima: consistencia total</td></tr>
+</tbody>
+</table>
+<div class="highlight-box" style="margin-top:14px;">
+<p class="highlight-text">&#8220;Na segunda semana, o habito ja esta formado. Agora e hora de intensificar e comecar a integrar os RCs com contexto emocional e situacional.&#8221;</p>
+</div>
+<div class="tip-box">
+<span class="tip-icon">&#128170;</span>
+<div class="tip-text"><span class="tip-label">Dica da Semana 2</span>Faca os RCs sempre que algo estranho acontecer. Um objeto fora do lugar, uma conversa incomum &#8212; esses momentos sao ouro para condicionar o reflexo de verificacao.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">27</span></div>
+</div>
+
+<!-- PAGE 28: DICAS AVANCADAS 1 -->
+<div class="page">
+<div class="page-header"><span class="section-label">Dicas Avancadas</span><span style="font-size:11px;color:var(--color-text-muted);">28</span></div>
+<h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:16px;">Dicas Avancadas<br>para Praticantes</h2>
+<p class="body-text" style="margin-bottom:14px;">Apos dominar o basico, essas estrategias elevam sua pratica a outro nivel.</p>
+<div class="technique-card">
+<div class="technique-badge">Estrategia 01</div>
+<div class="technique-name">Ancoras Emocionais</div>
+<p class="technique-desc">Faca os RCs sempre que sentir uma emocao intensa &#8212; alegria, medo, surpresa, confusao. As emocoes ativam o hipocampo, que e o mesmo circuito envolvido na formacao de memoria dos sonhos. Condicionar RCs a emocoes aumenta drasticamente a aparencia nos sonhos.</p>
+</div>
+<div class="technique-card">
+<div class="technique-badge">Estrategia 02</div>
+<div class="technique-name">RCs em Contexto Estranho</div>
+<p class="technique-desc">Pratique RCs especialmente quando algo incomum acontecer: um objeto fora do lugar, uma pessoa estranha, uma situacao inesperada. Situacoes incomuns ativam o cortex pre-frontal, o mesmo que precisa estar ativo para reconhecer um sonho.</p>
+</div>
+<div class="technique-card">
+<div class="technique-badge">Estrategia 03</div>
+<div class="technique-name">RCs em Grupo Social</div>
+<p class="technique-desc">Peca para amigos ou familiares tambem fazerem os RCs. Criar um grupo de pratica aumenta a consistencia e cria gatilhos sociais. Quando seu amigo faz um RC, voce lembra de fazer o seu.</p>
+</div>
+<div class="tip-box">
+<span class="tip-icon">&#128640;</span>
+<div class="tip-text"><span class="tip-label">Nivel expert</span>Quando os RCs se tornarem totalmente automaticos, comecar a &#8220;duvidar&#8221; ativamente da realidade durante o dia. Pergunte-se: &#8220;Como eu chegui aqui? O que eu estava fazendo ha 5 minutos?&#8221; Essa metacognicao e o pre para a lucidez.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">28</span></div>
+</div>
+
+<!-- PAGE 29: DICAS AVANCADAS 2 -->
+<div class="page">
+<div class="page-header"><span class="section-label">Dicas Avancadas</span><span style="font-size:11px;color:var(--color-text-muted);">29</span></div>
+<h3 class="section-title">Erros comuns e como evita-los</h3>
+<div class="error-item"><div class="error-icon">&#10060;</div><div class="error-text"><strong>Fazer RCs mecanicamente.</strong> Sem intencao genuina, o RC e inutil. Pare, respire e realmente pergunte-se se esta sonhando.</div></div>
+<div class="error-item"><div class="error-icon">&#10060;</div><div class="error-text"><strong>Fazer poucos RCs por dia.</strong> Menos de 5 RCs diarios raramente geram resultados. Meta minima: 8-10.</div></div>
+<div class="error-item"><div class="error-icon">&#10060;</div><div class="error-text"><strong>Escolher apenas 1 RC.</strong> Um unico RC pode falhar. Combine pelo menos 3 para maximizar as chances.</div></div>
+<div class="error-item"><div class="error-icon">&#10060;</div><div class="error-text"><strong>Nao registrar sonhos.</strong> Sem diario de sonhos, voce pode estar tendo sonhos lucidos e nao perceber.</div></div>
+<div class="error-item"><div class="error-icon">&#10060;</div><div class="error-text"><strong>Desistir apos 3-4 dias.</strong> O habito leva 2-3 semanas para se consolidar. A persistencia e a chave.</div></div>
+<div class="line"></div>
+<h3 class="section-title">Como escolher seus 3-4 RCs favoritos</h3>
+<p class="body-text">Escolha baseado em 3 criterios:</p>
+<div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Facilidade de integrar no dia a dia</strong><p>O RC que voce faz mais vezes e o que se manifesta mais nos sonhos.</p></div></div>
+<div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Quebra de expectativa clara</strong><p>Escolha RCs onde a diferenca entre &#8220;real&#8221; e &#8220;sonho&#8221; e inconfundivel.</p></div></div>
+<div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Combinacao de sentidos</strong><p>Combine RCs visuais (maos, espelho), tateis (nariz, palma) e cognitivos (texto, relogio).</p></div></div>
+<div class="tip-box">
+<span class="tip-icon">&#127919;</span>
+<div class="tip-text"><span class="tip-label">Recomendacao final</span>Os 3 RCs mais populares entre praticantes lucidos sao: Maos + Tampar o Nariz + Ler Texto. Eles cobrem os 3 sistemas sensoriais principais.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">29</span></div>
+</div>
+
+<!-- PAGE 30: COMBINACOES -->
+<div class="page">
+<div class="page-header"><span class="section-label">Combinacoes de RCs</span><span style="font-size:11px;color:var(--color-text-muted);">30</span></div>
+<h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:16px;">Guia de<br>Combinacoes</h2>
+<p class="body-text" style="margin-bottom:14px;">Combinar 2-3 RCs em sequencia aumenta enormemente a confiabilidade da verificacao.</p>
+<div class="technique-card">
+<div class="technique-badge">Combinacao Classica</div>
+<div class="technique-name">Maos + Nariz + Texto</div>
+<p class="technique-desc">A combinacao mais popular e recomendada para iniciantes. Olhe para as maos, tampe o nariz, leia um texto. Se qualquer um falhar, voce esta sonhando.</p>
+</div>
+<div class="technique-card">
+<div class="technique-badge">Combinacao Visual</div>
+<div class="technique-name">Maos + Espelho + Sombras</div>
+<p class="technique-desc">Para quem tem facilidade com verificacoes visuais. Observe suas maos, seu reflexo e as sombras ao redor. Uma bateria completa de verificacao visual.</p>
+</div>
+<div class="technique-card">
+<div class="technique-badge">Combinacao Tattil</div>
+<div class="technique-name">Nariz + Palma + Gravidade</div>
+<p class="technique-desc">Perfeita para quem prefere testes fisicos. Tampe o nariz, pressione o dedo na palma, pule. Tudo baseado em sensacao corporal.</p>
+</div>
+<div class="technique-card">
+<div class="technique-badge">Combinacao Cognitiva</div>
+<div class="technique-name">Texto + Relogio + Dedos Pes</div>
+<p class="technique-desc">Para praticantes avancados. Testa o processamento numerico, linguistico e corporal em sequencia. Extremamente confiavel.</p>
+</div>
+<div class="highlight-box">
+<p class="highlight-text">&#8220;A melhor combinacao e aquela que voce faz com consistencia. Nao existe combinacao perfeita &#8212; existe a sua.&#8221;</p>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">30</span></div>
+</div>
+
+<!-- PAGE 31: MODELO DE DIARIO 1 -->
+<div class="page">
+<div class="page-header"><span class="section-label">Modelo de Diario</span><span style="font-size:11px;color:var(--color-text-muted);">31</span></div>
+<h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:16px;">Modelo de<br>Diario de Pratica</h2>
+<p class="body-text" style="margin-bottom:14px;">Use este modelo para registrar sua pratica diaria de Reality Checks e sonhos.</p>
+<div style="background:white;border-radius:12px;border:1px solid #d8c8f8;padding:20px;margin-bottom:16px;">
+<div style="font-size:13px;font-weight:700;color:var(--color-primary);margin-bottom:12px;">&#128197; Dia: _____ / _____ / _____</div>
+<div style="font-size:12px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin:12px 0 8px;">Reality Checks Realizados</div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Maos (&#9744;) &nbsp; Nariz (&#9744;) &nbsp; Texto (&#9744;) &nbsp; Luz (&#9744;)</span></div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Espelho (&#9744;) &nbsp; Pular (&#9744;) &nbsp; Relogio (&#9744;) &nbsp; Palma (&#9744;)</span></div>
+<div class="check-item"><div class="checkbox"></div><span class="check-label">Pes (&#9744;) &nbsp; Sombras (&#9744;) &nbsp; Total: _____ RCs</span></div>
+<div class="line"></div>
+<div style="font-size:12px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin:12px 0 8px;">Observacoes do Dia</div>
+<div class="writing-section"><div class="write-label">Situacao incomum que ativou um RC:</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Qual RC se sentiu mais &#8220;natural&#8221; hoje:</div><div class="line"></div></div>
+</div>
+<div style="background:white;border-radius:12px;border:1px solid #d8c8f8;padding:20px;">
+<div style="font-size:13px;font-weight:700;color:var(--color-primary);margin-bottom:12px;">&#127769; Registro de Sonho</div>
+<div class="writing-section"><div class="write-label">Hora que dormiu:</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Hora que acordou:</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Lembrei de sonhos? (&#9744; Sim &#9744; Nao)</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Descreva o(s) sonho(s):</div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Fiz algum RC dentro do sonho? (&#9744; Sim &#9744; Nao)</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Tive algum sinal de sonho incomum?</div><div class="line"></div></div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">31</span></div>
+</div>
+
+<!-- PAGE 32: MODELO DE DIARIO 2 -->
+<div class="page">
+<div class="page-header"><span class="section-label">Modelo de Diario</span><span style="font-size:11px;color:var(--color-text-muted);">32</span></div>
+<h3 class="section-title">Resumo Semanal</h3>
+<p class="body-text" style="margin-bottom:14px;">Ao final de cada semana, responda para acompanhar seu progresso.</p>
+<div style="background:white;border-radius:12px;border:1px solid #d8c8f8;padding:20px;margin-bottom:16px;">
+<div style="font-size:13px;font-weight:700;color:var(--color-primary);margin-bottom:12px;">Semana de ___/___ a ___/___</div>
+<div class="writing-section"><div class="write-label">Media de RCs por dia:</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">RC que mais funcionou:</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">RC que menos funcionou:</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Sonhos mais memoraveis da semana:</div><div class="line"></div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Sinais de sonho identificados:</div><div class="line"></div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">Progresso geral (escala 1-10):</div><div class="line"></div></div>
+<div class="writing-section"><div class="write-label">O que vou melhorar na proxima semana:</div><div class="line"></div></div>
+</div>
+<div class="highlight-box">
+<p class="highlight-text">&#8220;O diario e o espelho da sua mente onirica. Quanto mais voce registra, mais padroes voce identifica e mais facil se torna reconhecer um sonho de dentro dele.&#8221;</p>
+</div>
+<div class="tip-box">
+<span class="tip-icon">&#128221;</span>
+<div class="tip-text"><span class="tip-label">Como usar o diario</span>Escreva IMEDIATAMENTE ao acordar. Nao cheque o celular. Nao va ao banheiro. Cada minuto que passa apaga fragmentos do sonho de forma irreversivel.</div>
+</div>
+<div class="exercise-box">
+<div class="exercise-label">&#9889; Desafio de 14 dias</div>
+<div class="exercise-text">Registre seus sonhos por 14 dias consecutivos. Mesmo que nao lembre de nada, escreva &#8220;Nao lembrei de sonhos&#8221;. O simples ato de escrever cria o habito e sinaliza ao cerebro sua intencao.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">32</span></div>
+</div>
+
+<!-- PAGE 33: REFERENCIA RAPIDA -->
+<div class="page">
+<div class="page-header"><span class="section-label">Referencia Rapida</span><span style="font-size:11px;color:var(--color-text-muted);">33</span></div>
+<h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:16px;">Cartao de<br>Referencia Rapida</h2>
+<p class="body-text" style="margin-bottom:14px;">Imprima esta pagina e mantenha visivel. Resumo de todos os 10 Reality Checks.</p>
+<div class="quick-ref-grid">
+<div class="quick-ref-card"><div class="quick-ref-num">01</div><div class="quick-ref-name">Maos</div><div class="quick-ref-short">Olhe, conte dedos,<br>observe detalhes</div></div>
+<div class="quick-ref-card"><div class="quick-ref-num">02</div><div class="quick-ref-name">Nariz</div><div class="quick-ref-short">Tampe, tente respirar.<br>No sonho, ar passa.</div></div>
+<div class="quick-ref-card"><div class="quick-ref-num">03</div><div class="quick-ref-name">Texto</div><div class="quick-ref-short">Leia, desvie, releia.<br>Muda no sonho.</div></div>
+<div class="quick-ref-card"><div class="quick-ref-num">04</div><div class="quick-ref-name">Luz</div><div class="quick-ref-short">Acenda/apague.<br>Nao funciona no sonho.</div></div>
+<div class="quick-ref-card"><div class="quick-ref-num">05</div><div class="quick-ref-name">Espelho</div><div class="quick-ref-short">Olhe seu reflexo.<br>Distorcido no sonho.</div></div>
+<div class="quick-ref-card"><div class="quick-ref-num">06</div><div class="quick-ref-name">Pular</div><div class="quick-ref-short">Pule alto, observe a queda.<br>Lenta no sonho.</div></div>
+<div class="quick-ref-card"><div class="quick-ref-num">07</div><div class="quick-ref-name">Relogio</div><div class="quick-ref-short">Leia hora, releia.<br>Muda no sonho.</div></div>
+<div class="quick-ref-card"><div class="quick-ref-num">08</div><div class="quick-ref-name">Palma</div><div class="quick-ref-short">Dedo na palma.<br>Atravessa no sonho.</div></div>
+<div class="quick-ref-card"><div class="quick-ref-num">09</div><div class="quick-ref-name">Pes</div><div class="quick-ref-short">Conte dedos dos pes.<br>Distorcidos no sonho.</div></div>
+<div class="quick-ref-card"><div class="quick-ref-num">10</div><div class="quick-ref-name">Sombras</div><div class="quick-ref-short">Observe direcao.<br>Inconsistente no sonho.</div></div>
+</div>
+<div class="line"></div>
+<div class="highlight-box">
+<p class="highlight-text">&#8220;Regra de ouro: Se qualquer coisa parecer estranha, faca um RC IMEDIATAMENTE. Nao espere.&#8221;</p>
+</div>
+<div style="background:linear-gradient(135deg,#f0eaff,#e8dcff);border-radius:12px;padding:16px 20px;margin:12px 0;border:1px solid #c9a4ff;text-align:center;">
+<p style="font-family:var(--font-display);font-size:18px;color:var(--color-primary);font-weight:700;">Meta Diaria: 8-10 Reality Checks</p>
+<p style="font-size:13px;color:var(--color-text-muted);margin-top:6px;">Pratique todos os dias, sem excecao. A consistencia e a chave.</p>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">33</span></div>
+</div>
+
+<!-- PAGE 34: FAQ -->
+<div class="page">
+<div class="page-header"><span class="section-label">Perguntas Frequentes</span><span style="font-size:11px;color:var(--color-text-muted);">34</span></div>
+<h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:20px;">FAQ</h2>
+<div class="faq-item">
+<div class="faq-q"><span class="faq-icon">01</span>Quanto tempo leva para funcionar?</div>
+<div class="faq-a">A media e de 2-4 semanas de pratica consistente (8-10 RCs por dia). Algumas pessoas tem resultados na primeira semana; outras levam mais tempo. A consistencia e mais importante que a velocidade.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span class="faq-icon">02</span>Posso usar apenas 1 Reality Check?</div>
+<div class="faq-a">Sim, mas e menos eficaz. Combinar 3-4 RCs diferentes maximiza as chances porque cada um testa um sistema sensorial diferente.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span class="faq-icon">03</span>Funciona para todo mundo?</div>
+<div class="faq-a">A grande maioria consegue. Estudos mostram que 55% ja tiveram ao menos 1 sonho lucido espontaneo. Com pratica, a taxa aumenta significativamente.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span class="faq-icon">04</span>Devo fazer RCs durante o dia ou a noite?</div>
+<div class="faq-a">Durante o dia! O objetivo e condicionar o reflexo na vigilia para que ele apareca no sonho. Faca RCs ao acordar, ao longo do dia e antes de dormir.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span class="faq-icon">05</span>O que fazer se nenhum RC funciona?</div>
+<div class="faq-a">Verifique se voce esta realmente fazendo com intencao genuina. Mude de RCs. Adicione contexto emocional. Consulte a secao de erros comuns.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span class="faq-icon">06</span>Posso combinar RCs com outras tecnicas?</div>
+<div class="faq-a">Sim! RCs combinados com diario de sonhos, MILD e WBTB formam a combinacao mais poderosa para sonhos lucidos.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span class="faq-icon">07</span>Os RCs funcionam melhor em que hora do dia?</div>
+<div class="faq-a">Todos os horarios sao validos. Porem, RCs feitos apos acordar de um sonho (madrugada) tem maior chance de aparecer no proximo ciclo REM.</div>
+</div>
+<div class="page-footer"><span class="footer-brand">Manual dos Reality Checks</span><span class="footer-page">34</span></div>
+</div>
+
+<!-- PAGE 35: MOTIVACIONAL FINAL -->
+<div class="page" style="justify-content:center;align-items:center;text-align:center;background:linear-gradient(160deg,#1a0a3c 0%,#0d0720 100%);">
+<div style="max-width:520px;margin:auto;color:white;">
+<svg width="80" height="80" viewBox="0 0 80 80" style="display:block;margin:0 auto 28px;">
+<defs>
+<radialGradient id="finEyeG" cx="50%" cy="50%"><stop offset="0%" stop-color="#c9a4ff"/><stop offset="100%" stop-color="#7b2fff"/></radialGradient>
+<radialGradient id="finIrisG" cx="45%" cy="40%"><stop offset="0%" stop-color="#f0c060"/><stop offset="100%" stop-color="#c8a848"/></radialGradient>
+</defs>
+<ellipse cx="40" cy="40" rx="36" ry="23" fill="none" stroke="#c9a4ff" stroke-width="1.5" opacity="0.6"/>
+<circle cx="40" cy="40" r="14" fill="#1a0a3c" stroke="#7b2fff" stroke-width="1"/>
+<circle cx="40" cy="40" r="9" fill="url(#finIrisG)"/>
+<circle cx="40" cy="40" r="4" fill="#1a0a3c"/>
+<circle cx="36" cy="36" r="2" fill="rgba(255,255,255,0.5)"/>
+</svg>
+<h2 style="font-family:var(--font-display);font-size:38px;font-weight:700;color:#f7f0ff;line-height:1.2;margin-bottom:16px;">Agora e a sua<br>vez de despertar</h2>
+<div style="width:60px;height:2px;background:var(--color-gold);margin:20px auto;"></div>
+<p style="font-size:16px;font-weight:300;color:#d8c8f8;line-height:1.8;margin-bottom:28px;">Voce tem todas as ferramentas. O manual, os exercicios, os planos. O unico ingrediente que falta agora e a consistencia.</p>
+<div style="padding:20px;background:rgba(255,255,255,0.06);border-radius:12px;border:1px solid rgba(201,164,255,0.2);margin-bottom:28px;">
+<p style="font-family:var(--font-display);font-size:22px;font-style:italic;color:#e8dcff;line-height:1.6;">&#8220;Cada Reality Check que voce faz com intencao genuina esta construindo algo dentro de voce. Cada anotacao no diario esta mapeando o territorio da sua mente. E quando os dois se encontrarem &#8212; dentro de um sonho &#8212; tudo muda.&#8221;</p>
+<p style="font-size:13px;color:var(--color-gold);margin-top:14px;font-weight:600;">&#8212; Luna Vieira</p>
+</div>
+<div style="display:flex;justify-content:center;gap:24px;margin-bottom:28px;">
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:28px;color:var(--color-gold);font-weight:700;">&#10022;</div><div style="font-size:10px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Comece Hoje</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:28px;color:var(--color-gold);font-weight:700;">&#10022;</div><div style="font-size:10px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Seja Consistente</div></div>
+<div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+<div style="text-align:center;"><div style="font-family:var(--font-display);font-size:28px;color:var(--color-gold);font-weight:700;">&#10022;</div><div style="font-size:10px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">Desperte</div></div>
+</div>
+<p style="font-size:13px;color:#c9a4ff;">Manual Oficial dos Reality Checks &#8212; Edicao 2025</p>
+<p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px;">Bonus exclusivo do e-book &#8220;Desperte no Sonho&#8221; &#8212; por Luna Vieira</p>
+</div>
+<div class="page-footer" style="border-top-color:rgba(255,255,255,0.15)!important;"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Manual dos Reality Checks</span><span class="footer-page" style="color:var(--color-gold);">35</span></div>
+</div>
+
+<script>
+(function(){
+var c=document.getElementById('cover-canvas');
+if(!c)return;
+var ctx=c.getContext('2d');
+var W=c.width,H=c.height;
+var stars=[];
+for(var i=0;i<200;i++){
+stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+0.3,a:Math.random(),s:Math.random()*0.02+0.005});
+}
+function draw(){
+ctx.clearRect(0,0,W,H);
+for(var i=0;i<stars.length;i++){
+var s=stars[i];
+s.a+=s.s;
+if(s.a>1)s.a=0;
+var alpha=s.a<0.5?s.a*2:2-s.a*2;
+ctx.beginPath();
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+ctx.fillStyle='rgba(200,190,255,'+(alpha*0.7)+')';
+ctx.fill();
+}
+requestAnimationFrame(draw);
+}
+draw();
+})();
+</script>
+
+</body>
+</html>

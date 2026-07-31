@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pack de Meditações Guiadas para Sonhos Lúcidos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #1a0a3c;
+    --color-secondary: #7b2fff;
+    --color-accent: #c9a4ff;
+    --color-gold: #f0c060;
+    --color-bg-page: #f7f4ff;
+    --color-bg-dark: #0d0720;
+    --color-text: #1e1530;
+    --color-text-muted: #5a4e72;
+    --color-highlight: #e8dcff;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Karla', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0c8e0; font-family: var(--font-body); color: var(--color-text); }
+
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    margin: 0 auto 32px;
+    padding: 60px 72px;
+    background: var(--color-bg-page);
+    position: relative;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .page-footer {
+    position: absolute;
+    bottom: 28px; left: 72px; right: 72px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid #c8b8f0;
+    padding-top: 10px;
+  }
+  .footer-brand { font-size: 11px; color: var(--color-text-muted); letter-spacing: 1px; text-transform: uppercase; }
+  .footer-page { font-size: 11px; color: var(--color-secondary); font-weight: 700; }
+  .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding-bottom: 12px; border-bottom: 1px solid #d8c8f8; }
+  .section-label { font-size: 11px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
+  .display-title { font-family: var(--font-display); font-size: 56px; font-weight: 700; line-height: 1.1; color: #f7f0ff; }
+  .display-subtitle { font-family: var(--font-body); font-size: 17px; font-weight: 300; color: #d8c8f8; line-height: 1.6; margin-top: 16px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--color-primary); margin-bottom: 12px; margin-top: 24px; }
+  .body-text { font-size: 14px; line-height: 1.85; color: var(--color-text); margin-bottom: 14px; }
+  .highlight-box { border-left: 4px solid var(--color-secondary); background: #ede5ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0; }
+  .highlight-text { font-family: var(--font-display); font-size: 16px; font-style: italic; color: var(--color-primary); line-height: 1.6; }
+  .tip-box { background: #f0eaff; border: 1px solid #c8a8ff; border-radius: 10px; padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; margin: 16px 0; }
+  .tip-icon { font-size: 20px; flex-shrink: 0; }
+  .tip-text { font-size: 13px; line-height: 1.7; color: var(--color-text); }
+  .tip-label { font-weight: 700; color: var(--color-secondary); display: block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .step-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+  .step-number { width: 36px; height: 36px; border-radius: 50%; background: var(--color-secondary); color: white; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-content strong { font-size: 14px; color: var(--color-primary); display: block; margin-bottom: 4px; font-weight: 700; }
+  .step-content p { font-size: 13px; color: var(--color-text-muted); line-height: 1.7; }
+  .page-cover { background: #07050f !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; padding: 60px !important; }
+  #cover-canvas { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+  .page-cover > *:not(#cover-canvas) { position: relative; z-index: 1; }
+  .cover-tag { display: inline-block; border: 1px solid rgba(201,164,255,0.5); color: var(--color-accent); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; font-weight: 500; }
+  .cover-divider { width: 60px; height: 2px; background: var(--color-gold); margin: 20px 0; }
+  .meditation-card { background: white; border-radius: 14px; border: 1px solid #d8c8f8; padding: 28px 24px; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(123,47,255,0.06); }
+  .meditation-number { font-family: var(--font-display); font-size: 72px; font-weight: 700; color: var(--color-secondary); opacity: 0.15; line-height: 1; position: absolute; top: 16px; right: 24px; }
+  .meditation-badge { display: inline-block; background: var(--color-secondary); color: white; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }
+  .meditation-title { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px; }
+  .meditation-time { font-size: 12px; color: var(--color-gold); font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px; }
+  .meditation-intro { font-size: 13.5px; line-height: 1.75; color: var(--color-text); margin-bottom: 16px; }
+  .breathing-visual { display: flex; align-items: center; gap: 8px; justify-content: center; margin: 16px 0; }
+  .breath-circle { border-radius: 50%; background: var(--color-accent); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--color-primary); }
+  .breath-arrow { color: var(--color-secondary); font-size: 18px; }
+  .page-chapter { background: #1a0a3c !important; color: white !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  .page-chapter .section-label { color: #c9a4ff !important; }
+  .page-chapter .page-footer { border-top-color: rgba(255,255,255,0.15) !important; }
+  .page-chapter .footer-brand { color: rgba(255,255,255,0.4) !important; }
+  .page-chapter .footer-page { color: var(--color-gold) !important; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px dashed #d0c0f0; }
+  .toc-num { font-size: 12px; color: var(--color-secondary); font-weight: 700; letter-spacing: 1px; min-width: 32px; }
+  .toc-title { font-size: 14px; font-weight: 500; color: var(--color-text); flex: 1; }
+  .toc-dots { flex: 1; border-bottom: 1px dotted #c8b8e8; height: 1px; margin: 0 6px; }
+  .toc-page { font-size: 12px; color: var(--color-text-muted); }
+  .golden-box { background: linear-gradient(135deg, #fdf6e3 0%, #fef9ed 100%); border: 1px solid #e8d48a; border-radius: 12px; padding: 18px 20px; margin: 16px 0; }
+  .golden-box .tip-label { color: #b8960a; }
+  .usage-card { background: white; border-radius: 12px; border: 1px solid #d8c8f8; padding: 20px 22px; margin-bottom: 16px; display: flex; gap: 16px; align-items: flex-start; }
+  .usage-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--color-secondary), #c9a4ff); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: white; font-size: 20px; }
+  .usage-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 4px; }
+  .usage-desc { font-size: 13px; line-height: 1.7; color: var(--color-text-muted); }
+  .line { width: 100%; height: 1px; background: #c8b8e8; margin: 18px 0; }
+  .icon-list { list-style: none; margin: 12px 0; }
+  .icon-list li { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; font-size: 14px; line-height: 1.6; }
+  .icon-list li .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-secondary); margin-top: 6px; flex-shrink: 0; }
+
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    body { background: white; }
+    .page { width: 210mm; min-height: 297mm; padding: 15mm 18mm; margin: 0; page-break-after: always; box-shadow: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page page-cover" id="cover-page">
+  <canvas id="cover-canvas" width="794" height="1123"></canvas>
+  <svg style="position:absolute;top:52px;right:60px;z-index:1;pointer-events:none;" width="72" height="72" viewBox="0 0 72 72">
+    <defs><radialGradient id="moonG" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs>
+    <circle cx="36" cy="36" r="28" fill="url(#moonG)" opacity="0.95"/>
+    <circle cx="36" cy="36" r="28" fill="none" stroke="rgba(245,236,208,0.3)" stroke-width="1"/>
+    <circle cx="36" cy="36" r="36" fill="none" stroke="rgba(245,236,208,0.08)" stroke-width="1"/>
+    <circle cx="26" cy="26" r="4" fill="rgba(180,140,60,0.25)"/>
+    <circle cx="44" cy="32" r="2.5" fill="rgba(180,140,60,0.2)"/>
+    <circle cx="32" cy="46" r="3" fill="rgba(180,140,60,0.18)"/>
+  </svg>
+  <div><span class="cover-tag">✦ Bônus Exclusivo ✦</span></div>
+  <div style="text-align:center;margin-top:60px;">
+    <div style="font-family:var(--font-display);font-size:48px;font-weight:700;color:#f7f0ff;line-height:1.15;margin-bottom:8px;">Pack de Meditações<br>Guiadas</div>
+    <div class="cover-divider" style="margin:24px auto;"></div>
+    <p style="font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--color-gold);line-height:1.3;">para Sonhos Lúcidos</p>
+    <p class="display-subtitle" style="text-align:center;max-width:440px;margin:20px auto 0;">5 meditações poderosas para preparar sua mente,<br>induzir lucidez e transformar suas noites</p>
+  </div>
+  <div style="text-align:center;">
+    <div class="cover-divider" style="margin:0 auto 16px;width:40px;"></div>
+    <p style="font-size:13px;color:rgba(255,255,255,0.4);font-style:italic;font-family:var(--font-display);">por Luna Vieira</p>
+  </div>
+</div>
+
+<!-- PAGINA 2 — CREDITOS -->
+<div class="page" style="justify-content:center;align-items:center;text-align:center;">
+  <div style="max-width:480px;margin:auto;">
+    <svg width="48" height="48" viewBox="0 0 48 48" style="margin-bottom:24px;"><circle cx="24" cy="24" r="22" fill="none" stroke="#7b2fff" stroke-width="1.5"/><path d="M24 8 C14 16 12 28 18 36 C21 40 27 40 30 36 C36 28 34 16 24 8Z" fill="#7b2fff" opacity="0.2"/><circle cx="24" cy="24" r="6" fill="#7b2fff" opacity="0.5"/></svg>
+    <h2 style="font-family:var(--font-display);font-size:28px;color:var(--color-primary);margin-bottom:20px;">Pack de Meditações<br>Guiadas para Sonhos Lúcidos</h2>
+    <div style="height:1px;background:linear-gradient(90deg,transparent,#c9a4ff,transparent);margin-bottom:24px;"></div>
+    <p style="font-size:13px;line-height:1.8;color:var(--color-text-muted);">© 2025 — Todos os direitos reservados.</p>
+    <p style="font-size:13px;line-height:1.8;color:var(--color-text-muted);margin-top:12px;">Este material é um bônus exclusivo do programa Desperte no Sonho. Não pode ser reproduzido ou distribuído.</p>
+    <div style="margin-top:32px;padding:16px;background:#f0eaff;border-radius:10px;">
+      <p style="font-size:12px;color:var(--color-text-muted);"><strong style="color:var(--color-secondary);">Edição 2025</strong><br>Acompanhe o e-book principal para o programa completo.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGINA 3 — SUMARIO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Sumário</span><span style="font-size:11px;color:var(--color-text-muted);">03</span></div>
+  <h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:28px;">O que você vai<br>encontrar aqui</h2>
+  <div class="toc-item"><span class="toc-num">01</span><span class="toc-title">Como Usar as Meditações</span><span class="toc-dots"></span><span class="toc-page">04</span></div>
+  <div class="toc-item"><span class="toc-num">02</span><span class="toc-title">Meditação 1 — Respiração 4-7-8</span><span class="toc-dots"></span><span class="toc-page">05</span></div>
+  <div class="toc-item"><span class="toc-num">03</span><span class="toc-title">Meditação 2 — Visualização da Lua</span><span class="toc-dots"></span><span class="toc-page">07</span></div>
+  <div class="toc-item"><span class="toc-num">04</span><span class="toc-title">Meditação 3 — Escaneamento Corporal</span><span class="toc-dots"></span><span class="toc-page">09</span></div>
+  <div class="toc-item"><span class="toc-num">05</span><span class="toc-title">Meditação 4 — Afirmações de Lucidez</span><span class="toc-dots"></span><span class="toc-page">11</span></div>
+  <div class="toc-item"><span class="toc-num">06</span><span class="toc-title">Meditação 5 — Transição Consciente</span><span class="toc-dots"></span><span class="toc-page">13</span></div>
+  <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Dicas de Uso e Prática</span><span class="toc-dots"></span><span class="toc-page">15</span></div>
+  <div class="highlight-box" style="margin-top:28px;">
+    <p class="highlight-text">"A meditação é a ponte entre a vigília e o sonho — domine-a, e o sonho lúcido será seu."</p>
+  </div>
+  <div class="tip-box">
+    <span class="tip-icon">🎧</span>
+    <div class="tip-text"><span class="tip-label">Dica de áudio</span>Se possível, leia as meditações em voz alta gravando-as, ou peça para alguém ler para você durante a prática.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">03</span></div>
+</div>
+
+<!-- PAGINA 4 — INTRODUCAO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Introdução</span><span style="font-size:11px;color:var(--color-text-muted);">04</span></div>
+  <h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:24px;">Como Usar<br>as Meditações</h2>
+  <p class="body-text">Este pack contém <strong>5 meditações guiadas</strong> cuidadosamente elaboradas para preparar sua mente, relaxar profundamente seu corpo e induzir o estado de consciência necessário para experimentar sonhos lúcidos.</p>
+  <p class="body-text">Cada meditação foi projetada para um momento específico da sua rotina noturna. Não é necessário usar todas todas as noites — escolha a que melhor se adapta ao seu momento.</p>
+
+  <div class="section-title">Quando praticar</div>
+  <ul class="icon-list">
+    <li><span class="dot"></span><span><strong>Antes de dormir</strong> — Use a Respiração 4-7-8 e o Escaneamento Corporal para relaxar profundamente</span></li>
+    <li><span class="dot"></span><span><strong>Na cama, com os olhos fechados</strong> — A Visualização da Lua e as Afirmações funcionam melhor em repouso</span></li>
+    <li><span class="dot"></span><span><strong>No despertar durante a noite</strong> — A Transição Consciente é ideal para retornar ao sono com lucidez</span></li>
+  </ul>
+
+  <div class="section-title">Como funciona</div>
+  <p class="body-text">As meditações seguem uma progressão natural: primeiro você relaxa o corpo, depois afina a mente, visualiza cenários oníricos, instala afirmações poderosas e, por fim, transita conscientemente para o sono.</p>
+
+  <div class="golden-box">
+    <span class="tip-label">Importante</span>
+    <p style="font-size:13px;line-height:1.7;color:var(--color-text);">Não se preocupe se as primeiras vezes parecerem "difíceis" ou "sem efeito". A prática cria os caminhos neurais necessários. Resultados reais costumam aparecer entre 7 e 21 dias de prática consistente.</p>
+  </div>
+
+  <div class="tip-box">
+    <span class="tip-icon">🌙</span>
+    <div class="tip-text"><span class="tip-label">Ambiente ideal</span>Escolha um local silencioso, com luz reduzida ou apagada. Use roupas confortáveis. Mantenha o celular no silencioso.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">04</span></div>
+</div>
+
+<!-- PAGINA 5 — CAPA SECAO: MEDITACAO 1 -->
+<div class="page page-chapter">
+  <div class="page-header"><span class="section-label">Meditação 01</span><span style="font-size:11px;color:rgba(255,255,255,0.4);">05</span></div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+    <div style="font-family:var(--font-display);font-size:96px;font-weight:700;color:white;opacity:0.1;line-height:1;">01</div>
+    <h2 style="font-family:var(--font-display);font-size:42px;font-weight:700;color:white;line-height:1.2;margin-top:-20px;">Respiração<br>4-7-8</h2>
+    <div class="cover-divider" style="margin:24px 0;width:50px;background:var(--color-gold);"></div>
+    <p style="font-size:16px;color:#c9a4ff;line-height:1.7;max-width:440px;">Uma técnica poderosa para acalmar o sistema nervoso, reduzir a ansiedade e preparar o corpo para um sono profundo e reparador.</p>
+    <div style="margin-top:32px;display:flex;gap:16px;">
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Tempo</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--color-gold);font-weight:700;">8-12 min</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Dificuldade</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--color-gold);font-weight:700;">Iniciante</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">05</span></div>
+</div>
+
+<!-- PAGINA 6 — INSTRUCAO MEDITACAO 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Meditação 01 — Instruções</span><span style="font-size:11px;color:var(--color-text-muted);">06</span></div>
+  <h2 style="font-family:var(--font-display);font-size:28px;color:var(--color-primary);margin-bottom:20px;">Respiração 4-7-8<br>Passo a Passo</h2>
+
+  <div class="breathing-visual">
+    <div class="breath-circle" style="width:60px;height:60px;">Inspire<br><strong>4s</strong></div>
+    <span class="breath-arrow">→</span>
+    <div class="breath-circle" style="width:72px;height:72px;">Segure<br><strong>7s</strong></div>
+    <span class="breath-arrow">→</span>
+    <div class="breath-circle" style="width:60px;height:60px;">Expire<br><strong>8s</strong></div>
+  </div>
+
+  <div class="step-item"><div class="step-number">1</div><div class="step-content"><strong>Posicione-se</strong><p>Deite-se de costas ou sente-se confortavelmente. Feche os olhos. Coloque a ponta da língua atrás dos dentes superiores.</p></div></div>
+  <div class="step-item"><div class="step-number">2</div><div class="step-content"><strong>Expire completamente</strong><p>Solte todo o ar dos pulmões com um som suave de "whoosh" pela boca.</p></div></div>
+  <div class="step-item"><div class="step-number">3</div><div class="step-content"><strong>Inspire pelo nariz (4 segundos)</strong><p>Conte mentalmente: 1... 2... 3... 4... Inundando os pulmões de ar fresco.</p></div></div>
+  <div class="step-item"><div class="step-number">4</div><div class="step-content"><strong>Segure a respiração (7 segundos)</strong><p>Mantenha o ar preso. Sinta o oxigênio circulando por todo o corpo. 1... 2... 3... 4... 5... 6... 7...</p></div></div>
+  <div class="step-item"><div class="step-number">5</div><div class="step-content"><strong>Expire pela boca (8 segundos)</strong><p>Solte o ar lentamente, fazendo o som de "whoosh". Sinta o corpo relaxar a cada segundo.</p></div></div>
+  <div class="step-item"><div class="step-number">6</div><div class="step-content"><strong>Repita 4 ciclos completos</strong><p>Cada ciclo dura cerca de 19 segundos. Ao final, sinta uma onda de calmia percorrendo seu corpo.</p></div></div>
+
+  <div class="tip-box" style="margin-top:12px;">
+    <span class="tip-icon">💡</span>
+    <div class="tip-text"><span class="tip-label">Dica de ouro</span>Se 7 segundos de retenção parecer muito no início, comece com 4-4-4 e aumente gradualmente. O importante é manter a proporção 4:7:8.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">06</span></div>
+</div>
+
+<!-- PAGINA 7 — CAPA SECAO: MEDITACAO 2 -->
+<div class="page page-chapter">
+  <div class="page-header"><span class="section-label">Meditação 02</span><span style="font-size:11px;color:rgba(255,255,255,0.4);">07</span></div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+    <div style="font-family:var(--font-display);font-size:96px;font-weight:700;color:white;opacity:0.1;line-height:1;">02</div>
+    <h2 style="font-family:var(--font-display);font-size:42px;font-weight:700;color:white;line-height:1.2;margin-top:-20px;">Visualização<br>da Lua</h2>
+    <div class="cover-divider" style="margin:24px 0;width:50px;background:var(--color-gold);"></div>
+    <p style="font-size:16px;color:#c9a4ff;line-height:1.7;max-width:440px;">Uma técnica de visualização poderosa que utiliza a imagem da lua como âncora para induzir estados de lucidez durante o sono.</p>
+    <div style="margin-top:32px;display:flex;gap:16px;">
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Tempo</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--color-gold);font-weight:700;">10-15 min</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Dificuldade</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--color-gold);font-weight:700;">Intermediária</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">07</span></div>
+</div>
+
+<!-- PAGINA 8 — INSTRUCAO MEDITACAO 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Meditação 02 — Instruções</span><span style="font-size:11px;color:var(--color-text-muted);">08</span></div>
+  <h2 style="font-family:var(--font-display);font-size:28px;color:var(--color-primary);margin-bottom:20px;">Visualização da Lua<br>Passo a Passo</h2>
+
+  <div class="step-item"><div class="step-number">1</div><div class="step-content"><strong>Prepare o cenário</strong><p>Deite-se confortavelmente. Imagine que está em um campo aberto, de noite, com o céu estrelado acima de você.</p></div></div>
+  <div class="step-item"><div class="step-number">2</div><div class="step-content"><strong>Invite a lua</strong><p>Visualize uma lua cheia, brilhante e dourada, surgindo lentamente no horizonte. Sente-se a luz suave iluminando seu rosto.</p></div></div>
+  <div class="step-item"><div class="step-number">3</div><div class="step-content"><strong>Focalize a luz</strong><p>Mantenha os olhos (da mente) fixos na lua. Sinta seus raios entrando pelo topo da sua cabeça, preenchendo todo o corpo de luz dourada.</p></div></div>
+  <div class="step-item"><div class="step-number">4</div><div class="step-content"><strong>Affirme sua intenção</strong><p>Em silêncio, repita mentalmente: <em>"Eu vou sonhar. Eu vou saber que estou sonhando. Eu vou estar no controle."</em></p></div></div>
+  <div class="step-item"><div class="step-number">5</div><div class="step-content"><strong>Expanda a visualização</strong><p>Comece a notar detalhes ao redor: a grama sob seu corpo, o vento na pele, os sons da noite. Quanto mais real, melhor.</p></div></div>
+  <div class="step-item"><div class="step-number">6</div><div class="step-content"><strong>Permita a transição</strong><p>Quando sentir sonolência, não lute. Deixe a imagem da lua se transformar naturalmente no cenário do seu sonho.</p></div></div>
+
+  <div class="highlight-box">
+    <p class="highlight-text">"A lua é o símbolo universal da consciência noturna. Ao visualizá-la, você cria uma ponte entre o mundo desperto e o mundo dos sonhos."</p>
+  </div>
+
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <div class="tip-text"><span class="tip-label">Dica de ouro</span>Pratique esta visualização durante o dia primeiro, com os olhos fechados. Quanto mais vívida a imagem estiver, mais eficaz será à noite.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">08</span></div>
+</div>
+
+<!-- PAGINA 9 — CAPA SECAO: MEDITACAO 3 -->
+<div class="page page-chapter">
+  <div class="page-header"><span class="section-label">Meditação 03</span><span style="font-size:11px;color:rgba(255,255,255,0.4);">09</span></div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+    <div style="font-family:var(--font-display);font-size:96px;font-weight:700;color:white;opacity:0.1;line-height:1;">03</div>
+    <h2 style="font-family:var(--font-display);font-size:42px;font-weight:700;color:white;line-height:1.2;margin-top:-20px;">Escaneamento<br>Corporal</h2>
+    <div class="cover-divider" style="margin:24px 0;width:50px;background:var(--color-gold);"></div>
+    <p style="font-size:16px;color:#c9a4ff;line-height:1.7;max-width:440px;">Uma técnica clássica de relaxamento profundo que libera tensões acumuladas e prepara o corpo para transitar suavemente para o sono.</p>
+    <div style="margin-top:32px;display:flex;gap:16px;">
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Tempo</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--color-gold);font-weight:700;">12-18 min</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Dificuldade</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--color-gold);font-weight:700;">Iniciante</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">09</span></div>
+</div>
+
+<!-- PAGINA 10 — INSTRUCAO MEDITACAO 3 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Meditação 03 — Instruções</span><span style="font-size:11px;color:var(--color-text-muted);">10</span></div>
+  <h2 style="font-family:var(--font-display);font-size:28px;color:var(--color-primary);margin-bottom:20px;">Escaneamento Corporal<br>Passo a Passo</h2>
+
+  <div class="step-item"><div class="step-number">1</div><div class="step-content"><strong>Posição inicial</strong><p>Deite-se de costas, braços ao lado do corpo com as palmas voltadas para cima. Feche os olhos. Respire profundamente 3 vezes.</p></div></div>
+  <div class="step-item"><div class="step-number">2</div><div class="step-content"><strong>Pés e tornozelos</strong><p>Redirecione toda a atenção para os pés. Sinta cada dedo. Imagine uma luz quente envolvendo-os. Ao expirar, sinta-os relaxarem completamente.</p></div></div>
+  <div class="step-item"><div class="step-number">3</div><div class="step-content"><strong>Pernas e quadril</strong><p>Mova a atenção para as panturrilhas, depois joelhos, coxas e quadril. Sinta o peso do corpo afundando no colchão. Libere toda a tensão.</p></div></div>
+  <div class="step-item"><div class="step-number">4</div><div class="step-content"><strong>Abdômen e peito</strong><p>Observe a movimentação suave da respiração. Sinta o abdômen subir e descer. Permita que a relaxação se espalhe por todo o tronco.</p></div></div>
+  <div class="step-item"><div class="step-number">5</div><div class="step-content"><strong>Braços e mãos</strong><p>Relaxe os ombros, depois braços, antebraços, mãos e cada dedo. Sinta uma sensação de peso agradável em todos os membros.</p></div></div>
+  <div class="step-item"><div class="step-number">6</div><div class="step-content"><strong>Cabeça e rosto</strong><p>Solte a tensão da mandíbula, relaxe as bochechas, a testa, os olhos. Sinta todo o rosto suave e tranquilo. Permaneça assim por 2 minutos.</p></div></div>
+
+  <div class="tip-box" style="margin-top:8px;">
+    <span class="tip-icon">💡</span>
+    <div class="tip-text"><span class="tip-label">Dica de ouro</span>Se perder a concentração, não se frustre. GENTILMENTE redirecione a atenção de volta à parte do corpo onde parou. Cada volta é um exercício mental que fortalece a consciência.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">10</span></div>
+</div>
+
+<!-- PAGINA 11 — CAPA SECAO: MEDITACAO 4 -->
+<div class="page page-chapter">
+  <div class="page-header"><span class="section-label">Meditação 04</span><span style="font-size:11px;color:rgba(255,255,255,0.4);">11</span></div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+    <div style="font-family:var(--font-display);font-size:96px;font-weight:700;color:white;opacity:0.1;line-height:1;">04</div>
+    <h2 style="font-family:var(--font-display);font-size:42px;font-weight:700;color:white;line-height:1.2;margin-top:-20px;">Afirmações<br>de Lucidez</h2>
+    <div class="cover-divider" style="margin:24px 0;width:50px;background:var(--color-gold);"></div>
+    <p style="font-size:16px;color:#c9a4ff;line-height:1.7;max-width:440px;">A programação mental poderosa que instala padrões de consciência diretamente no subconsciente, aumentando drasticamente suas chances de ter sonhos lúcidos.</p>
+    <div style="margin-top:32px;display:flex;gap:16px;">
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Tempo</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--color-gold);font-weight:700;">5-8 min</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Dificuldade</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--color-gold);font-weight:700;">Iniciante</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">11</span></div>
+</div>
+
+<!-- PAGINA 12 — INSTRUCAO MEDITACAO 4 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Meditação 04 — Instruções</span><span style="font-size:11px;color:var(--color-text-muted);">12</span></div>
+  <h2 style="font-family:var(--font-display);font-size:28px;color:var(--color-primary);margin-bottom:20px;">Afirmações de Lucidez<br>Passo a Passo</h2>
+
+  <div class="step-item"><div class="step-number">1</div><div class="step-content"><strong>Entre em relaxamento</strong><p>Deite-se e faça 3 respirações profundas. Sinta o corpo pesado e a mente quieta. Este é o momento ideal para programação.</p></div></div>
+  <div class="step-item"><div class="step-number">2</div><div class="step-content"><strong>Repita cada afirmação 3 vezes</strong><p>Fale mentalmente, com convicção e sentimento. Não é apenas repetir palavras — é CREDER nelas:</p></div></div>
+
+  <div class="highlight-box">
+    <p class="highlight-text" style="margin-bottom:8px;">"Eu sonho com consciência e clareza."</p>
+    <p class="highlight-text" style="margin-bottom:8px;">"Eu reconheço quando estou sonhando."</p>
+    <p class="highlight-text" style="margin-bottom:8px;">"Meus sonhos são vívidos e memoráveis."</p>
+    <p class="highlight-text" style="margin-bottom:8px;">"Eu tenho total controle nos meus sonhos."</p>
+    <p class="highlight-text">"Cada noite eu me torno mais lúcido."</p>
+  </div>
+
+  <div class="step-item"><div class="step-number">3</div><div class="step-content"><strong>Sinta a verdade</strong><p>Após cada afirmação, pause por 5 segundos e SINTA que aquilo já é real. O subconsciente não distingue imaginação de realidade.</p></div></div>
+  <div class="step-item"><div class="step-number">4</div><div class="step-content"><strong>Visualize o resultado</strong><p>Imagine-se dentro de um sonho, consciente de que está sonhando. Sinta a empolgação, a liberdade, o controle.</p></div></div>
+  <div class="step-item"><div class="step-number">5</div><div class="step-content"><strong>Encerre com gratidão</strong><p>Agradeça por ter esta oportunidade de explorar sua consciência. Deixe a noite levar você ao sono.</p></div></div>
+
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <div class="tip-text"><span class="tip-label">Dica de ouro</span>Grave suas afirmações com sua própria voz e ouça antes de dormir. A voz própria tem um poder especial sobre o subconsciente.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">12</span></div>
+</div>
+
+<!-- PAGINA 13 — CAPA SECAO: MEDITACAO 5 -->
+<div class="page page-chapter">
+  <div class="page-header"><span class="section-label">Meditação 05</span><span style="font-size:11px;color:rgba(255,255,255,0.4);">13</span></div>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+    <div style="font-family:var(--font-display);font-size:96px;font-weight:700;color:white;opacity:0.1;line-height:1;">05</div>
+    <h2 style="font-family:var(--font-display);font-size:42px;font-weight:700;color:white;line-height:1.2;margin-top:-20px;">Transição<br>Consciente</h2>
+    <div class="cover-divider" style="margin:24px 0;width:50px;background:var(--color-gold);"></div>
+    <p style="font-size:16px;color:#c9a4ff;line-height:1.7;max-width:440px;">A técnica avançada de transição entre a vigília e o sono, mantendo um fio de consciência que permite entrar diretamente em um sonho lúcido.</p>
+    <div style="margin-top:32px;display:flex;gap:16px;">
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Tempo</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--color-gold);font-weight:700;">15-20 min</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:12px 18px;text-align:center;">
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;">Dificuldade</div>
+        <div style="font-family:var(--font-display);font-size:22px;color:var(--color-gold);font-weight:700;">Avançada</div>
+      </div>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">13</span></div>
+</div>
+
+<!-- PAGINA 14 — INSTRUCAO MEDITACAO 5 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Meditação 05 — Instruções</span><span style="font-size:11px;color:var(--color-text-muted);">14</span></div>
+  <h2 style="font-family:var(--font-display);font-size:28px;color:var(--color-primary);margin-bottom:20px;">Transição Consciente<br>Passo a Passo</h2>
+
+  <div class="step-item"><div class="step-number">1</div><div class="step-content"><strong>Relaxe completamente</strong><p>Use qualquer uma das meditações anteriores para chegar a um estado profundo de relaxamento. O corpo deve estar pesado e imóvel.</p></div></div>
+  <div class="step-item"><div class="step-number">2</div><div class="step-content"><strong>Mantenha a mente ativa</strong><p>Enquanto o corpo adormece, mantenha um pensamento consciente: "Eu vou sonhar. Estou prestes a dormir e vou manter a consciência."</p></div></div>
+  <div class="step-item"><div class="step-number">3</div><div class="step-content"><strong>Observe as hipnagogias</strong><p>Você pode ver imagens, cores, ouvir sons ou sentir sensações estranhas. NÃO reaja — apenas observe como um espectador curioso.</p></div></div>
+  <div class="step-item"><div class="step-number">4</div><div class="step-content"><strong>Permita a dissolução</strong><p>Sinta seu corpo "desaparecendo". As sensações físicas vão sumindo. Não tenha medo — é normal. Continue observando.</p></div></div>
+  <div class="step-item"><div class="step-number">5</div><div class="step-content"><strong>Entre no sonho</strong><p>De repente, um cenário se formará. Quando perceber, você estará DENTRO do sonho, CONSCIENTE de que está sonhando. Parabéns — você acaba de ter um sonho lúcido!</p></div></div>
+
+  <div class="golden-box">
+    <span class="tip-label">Aviso importante</span>
+    <p style="font-size:13px;line-height:1.7;color:var(--color-text);">Esta é a técnica mais avançada do pack. Se não funcionar nas primeiras vezes, não se desanime. Continue praticando as meditações 1 a 4 — elas preparam o terreno para esta transição.</p>
+  </div>
+
+  <div class="tip-box">
+    <span class="tip-icon">💡</span>
+    <div class="tip-text"><span class="tip-label">Dica de ouro</span>Pratique durante sonecas diurnas de 20-30 minutos (Wake-Back-to-Bed). É mais fácil manter a consciência durante o adormecimento ao meio do dia.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">14</span></div>
+</div>
+
+<!-- PAGINA 15 — DICAS DE USO FINAL -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Dicas Finais</span><span style="font-size:11px;color:var(--color-text-muted);">15</span></div>
+  <h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:24px;">Dicas de Uso<br>e Prática</h2>
+
+  <div class="usage-card">
+    <div class="usage-icon">🌙</div>
+    <div><div class="usage-title">Pratique todas as noites</div><div class="usage-desc">A consistência é mais importante que a perfeição. Mesmo 5 minutos todos os nights produzem resultados.</div></div>
+  </div>
+  <div class="usage-card">
+    <div class="usage-icon">📓</div>
+    <div><div class="usage-title">Mantenha um diário de sonhos</div><div class="usage-desc">Ao acordar, anote imediatamente tudo que lembra. Isso treina seu cérebro a relembrar sonhos.</div></div>
+  </div>
+  <div class="usage-card">
+    <div class="usage-icon">🔄</div>
+    <div><div class="usage-title">Combine as meditações</div><div class="usage-desc">Comece com Respiração 4-7-8 → Escaneamento Corporal → Afirmações. É a sequência perfeita para iniciantes.</div></div>
+  </div>
+  <div class="usage-card">
+    <div class="usage-icon">⏰</div>
+    <div><div class="usage-title">Use o despertar programado</div><div class="usage-desc">Programe um alarme suave 5 horas após dormir. Ao acordar e voltar a dormir, as chances de sonho lúcido aumentam 5x.</div></div>
+  </div>
+  <div class="usage-card">
+    <div class="usage-icon">🧠</div>
+    <div><div class="usage-title">Faça Reality Checks</div><div class="usage-desc">Durante o dia, pergunte-se "Estou sonhando?" e teste a realidade. Esse hábito se transfere para os sonhos.</div></div>
+  </div>
+  <div class="usage-card">
+    <div class="usage-icon">💚</div>
+    <div><div class="usage-title">Seja paciente</div><div class="usage-desc">Sonhos lúcidos são uma habilidade. Alguns têm seu primeiro sonho lúcido em dias, outros em semanas. Continue firme.</div></div>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="highlight-box">
+    <p class="highlight-text" style="text-align:center;font-size:18px;">"A noite é sua escola. Os sonhos são suas aulas.<br>As meditações são seu caminho."</p>
+    <p style="font-size:12px;color:var(--color-secondary);margin-top:10px;font-weight:600;text-align:center;">— Luna Vieira</p>
+  </div>
+
+  <div class="page-footer"><span class="footer-brand">Pack de Meditações</span><span class="footer-page">15</span></div>
+</div>
+
+<!-- SCRIPT: Canvas estrelas -->
+<script>
+(function(){
+  var c = document.getElementById('cover-canvas');
+  if(!c) return;
+  var ctx = c.getContext('2d');
+  var w = c.width, h = c.height;
+  for(var i=0;i<120;i++){
+    var x = Math.random()*w;
+    var y = Math.random()*h;
+    var r = Math.random()*1.5+0.3;
+    var a = Math.random()*0.6+0.2;
+    ctx.beginPath();
+    ctx.arc(x,y,r,0,Math.PI*2);
+    ctx.fillStyle = 'rgba(200,180,255,'+a+')';
+    ctx.fill();
+  }
+  var grd = ctx.createRadialGradient(w*0.65,h*0.25,0,w*0.65,h*0.25,200);
+  grd.addColorStop(0,'rgba(123,47,255,0.08)');
+  grd.addColorStop(1,'rgba(123,47,255,0)');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0,0,w,h);
+})();
+</script>
+</body>
+</html>

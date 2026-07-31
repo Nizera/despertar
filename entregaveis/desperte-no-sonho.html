@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desperte no Sonho</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #1a0a3c;
+    --color-secondary: #7b2fff;
+    --color-accent: #c9a4ff;
+    --color-gold: #f0c060;
+    --color-bg-page: #f7f4ff;
+    --color-bg-dark: #0d0720;
+    --color-text: #1e1530;
+    --color-text-muted: #5a4e72;
+    --color-highlight: #e8dcff;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Karla', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #d0c8e0; font-family: var(--font-body); color: var(--color-text); }
+
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    margin: 0 auto 32px;
+    padding: 60px 72px;
+    background: var(--color-bg-page);
+    position: relative;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .page-footer {
+    position: absolute;
+    bottom: 28px; left: 72px; right: 72px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid #c8b8f0;
+    padding-top: 10px;
+  }
+  .footer-brand { font-size: 11px; color: var(--color-text-muted); letter-spacing: 1px; text-transform: uppercase; }
+  .footer-page { font-size: 11px; color: var(--color-secondary); font-weight: 700; }
+  .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding-bottom: 12px; border-bottom: 1px solid #d8c8f8; }
+  .section-label { font-size: 11px; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 1.5px; }
+  .display-title { font-family: var(--font-display); font-size: 56px; font-weight: 700; line-height: 1.1; color: #f7f0ff; }
+  .display-subtitle { font-family: var(--font-body); font-size: 17px; font-weight: 300; color: #d8c8f8; line-height: 1.6; margin-top: 16px; }
+  .chapter-number { font-family: var(--font-display); font-size: 96px; font-weight: 700; color: var(--color-secondary); opacity: 0.18; line-height: 1; }
+  .chapter-title { font-family: var(--font-display); font-size: 38px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-top: -16px; }
+  .chapter-intro { font-size: 14px; color: var(--color-text-muted); line-height: 1.7; margin-top: 14px; max-width: 520px; }
+  .section-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; color: var(--color-primary); margin-bottom: 12px; margin-top: 24px; }
+  .body-text { font-size: 14px; line-height: 1.85; color: var(--color-text); margin-bottom: 14px; }
+  .highlight-box { border-left: 4px solid var(--color-secondary); background: #ede5ff; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 20px 0; }
+  .highlight-text { font-family: var(--font-display); font-size: 16px; font-style: italic; color: var(--color-primary); line-height: 1.6; }
+  .tip-box { background: #f0eaff; border: 1px solid #c8a8ff; border-radius: 10px; padding: 14px 18px; display: flex; gap: 12px; align-items: flex-start; margin: 16px 0; }
+  .tip-icon { font-size: 20px; flex-shrink: 0; }
+  .tip-text { font-size: 13px; line-height: 1.7; color: var(--color-text); }
+  .tip-label { font-weight: 700; color: var(--color-secondary); display: block; margin-bottom: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+  .step-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 18px; }
+  .step-number { width: 36px; height: 36px; border-radius: 50%; background: var(--color-secondary); color: white; font-weight: 700; font-size: 14px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-content strong { font-size: 14px; color: var(--color-primary); display: block; margin-bottom: 4px; font-weight: 700; }
+  .step-content p { font-size: 13px; color: var(--color-text-muted); line-height: 1.7; }
+  .icon-list { list-style: none; margin: 12px 0; }
+  .icon-list li { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; font-size: 14px; line-height: 1.6; }
+  .icon-list li .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-secondary); margin-top: 6px; flex-shrink: 0; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 16px 0; }
+  .data-table th { background: var(--color-primary); color: white; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .data-table td { padding: 10px 14px; border-bottom: 1px solid #e0d4f8; vertical-align: top; line-height: 1.5; }
+  .data-table tr:nth-child(even) td { background: #f5f0ff; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .check-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+  .checkbox { width: 20px; height: 20px; border: 2px solid var(--color-secondary); border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+  .check-label { font-size: 13.5px; line-height: 1.6; color: var(--color-text); }
+  .writing-section { margin: 14px 0; }
+  .write-label { font-size: 12px; color: var(--color-text-muted); margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+  .line { width: 100%; height: 1px; background: #c8b8e8; margin: 18px 0; }
+  .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 12px 0; }
+  .cal-header { font-size: 10px; font-weight: 700; text-align: center; color: var(--color-text-muted); text-transform: uppercase; padding: 4px; }
+  .cal-day { border: 1px solid #d4c4f0; border-radius: 6px; padding: 6px 4px; text-align: center; min-height: 44px; display: flex; flex-direction: column; align-items: center; }
+  .cal-day .day-num { font-size: 11px; font-weight: 700; color: var(--color-primary); }
+  .cal-day .day-line { width: 100%; height: 1px; background: #d4c4f0; margin: 4px 0; }
+  .technique-card { background: white; border-radius: 12px; border: 1px solid #d8c8f8; padding: 20px; margin-bottom: 18px; box-shadow: 0 2px 8px rgba(123,47,255,0.06); }
+  .technique-badge { display: inline-block; background: var(--color-secondary); color: white; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 10px; text-transform: uppercase; }
+  .technique-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px; }
+  .technique-desc { font-size: 13px; line-height: 1.7; color: var(--color-text); }
+  .page-cover { background: #07050f !important; display: flex !important; flex-direction: column !important; justify-content: space-between !important; padding: 60px !important; }
+  #cover-canvas { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+  .page-cover > *:not(#cover-canvas) { position: relative; z-index: 1; }
+  .cover-tag { display: inline-block; border: 1px solid rgba(201,164,255,0.5); color: var(--color-accent); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; border-radius: 20px; font-weight: 500; }
+  .cover-divider { width: 60px; height: 2px; background: var(--color-gold); margin: 20px 0; }
+  .author-block { display: flex; align-items: center; gap: 10px; }
+  .author-label { font-size: 12px; color: rgba(255,255,255,0.4); font-style: italic; font-family: var(--font-display); }
+  .author-name { font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 600; letter-spacing: 1px; }
+  .author-card { display: flex; gap: 24px; align-items: flex-start; background: white; border-radius: 14px; padding: 24px; border: 1px solid #d8c8f8; margin: 20px 0; }
+  .author-avatar { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--color-secondary), #c9a4ff); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .toc-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px dashed #d0c0f0; }
+  .toc-num { font-size: 11px; color: var(--color-secondary); font-weight: 700; letter-spacing: 1px; min-width: 28px; }
+  .toc-title { font-size: 14px; font-weight: 500; color: var(--color-text); flex: 1; }
+  .toc-dots { flex: 1; border-bottom: 1px dotted #c8b8e8; height: 1px; margin: 0 6px; }
+  .toc-page { font-size: 12px; color: var(--color-text-muted); }
+  .toc-group { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--color-secondary); margin: 16px 0 6px; text-transform: uppercase; letter-spacing: 2px; }
+  .sleep-phase { display: flex; margin: 12px 0; }
+  .phase-bar { width: 8px; border-radius: 4px; margin-right: 14px; flex-shrink: 0; }
+  .phase-content strong { font-size: 13px; color: var(--color-primary); font-weight: 700; display: block; margin-bottom: 3px; }
+  .phase-content p { font-size: 12.5px; color: var(--color-text-muted); line-height: 1.6; }
+  .week-card { background: white; border-radius: 12px; border-left: 4px solid var(--color-secondary); padding: 16px 20px; margin-bottom: 14px; box-shadow: 0 2px 6px rgba(123,47,255,0.06); }
+  .week-label { font-size: 11px; font-weight: 700; color: var(--color-secondary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; }
+  .week-title { font-family: var(--font-display); font-size: 18px; color: var(--color-primary); font-weight: 700; margin-bottom: 8px; }
+  .week-items { font-size: 13px; line-height: 1.7; color: var(--color-text); }
+  .page-chapter { background: #1a0a3c !important; color: white !important; }
+  .page-chapter .chapter-title { color: white !important; }
+  .page-chapter .chapter-intro { color: #c9a4ff !important; }
+  .page-chapter .chapter-number { color: white !important; opacity: 0.12 !important; }
+  .page-chapter .page-footer { border-top-color: rgba(255,255,255,0.15) !important; }
+  .page-chapter .footer-brand { color: rgba(255,255,255,0.4) !important; }
+  .page-chapter .footer-page { color: var(--color-gold) !important; }
+  .faq-item { border-bottom: 1px solid #e0d4f8; padding: 14px 0; }
+  .faq-q { font-weight: 700; font-size: 14px; color: var(--color-primary); margin-bottom: 6px; display: flex; gap: 10px; }
+  .faq-icon { color: var(--color-secondary); }
+  .faq-a { font-size: 13px; line-height: 1.7; color: var(--color-text-muted); padding-left: 20px; }
+  .gloss-item { margin-bottom: 14px; }
+  .gloss-term { font-weight: 700; color: var(--color-secondary); font-size: 14px; }
+  .gloss-def { font-size: 13px; line-height: 1.6; color: var(--color-text); margin-top: 3px; }
+
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    body { background: white; }
+    .page { width: 210mm; min-height: 297mm; padding: 15mm 18mm; margin: 0; page-break-after: always; box-shadow: none !important; }
+    .page-chapter { background: #1a0a3c !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="page page-cover" id="cover-page">
+  <canvas id="cover-canvas" width="794" height="1123"></canvas>
+  <!-- Moon -->
+  <svg style="position:absolute;top:52px;right:60px;z-index:1;pointer-events:none;" width="72" height="72" viewBox="0 0 72 72">
+    <defs><radialGradient id="moonG" cx="38%" cy="35%"><stop offset="0%" stop-color="#f5ecd0"/><stop offset="100%" stop-color="#c8a848"/></radialGradient></defs>
+    <circle cx="36" cy="36" r="28" fill="url(#moonG)" opacity="0.95"/>
+    <circle cx="36" cy="36" r="28" fill="none" stroke="rgba(245,236,208,0.3)" stroke-width="1"/>
+    <circle cx="36" cy="36" r="36" fill="none" stroke="rgba(245,236,208,0.08)" stroke-width="1"/>
+    <circle cx="26" cy="26" r="4" fill="rgba(180,140,60,0.25)"/>
+    <circle cx="44" cy="32" r="2.5" fill="rgba(180,140,60,0.2)"/>
+    <circle cx="32" cy="46" r="3" fill="rgba(180,140,60,0.18)"/>
+  </svg>
+  <div><span class="cover-tag">✦ Guia Completo para Iniciantes ✦</span></div>
+  <div style="text-align:center;margin-top:40px;">
+    <img src="logo-capa-transparente.png"
+         style="width:420px;height:auto;object-fit:contain;display:block;margin:0 auto;"
+         alt="Desperte no Sonho"/>
+    <div class="cover-divider" style="margin:20px auto;"></div>
+    <p class="display-subtitle" style="text-align:center;max-width:480px;margin:0 auto;">O método passo a passo para ter seu primeiro<br>sonho lúcido em até 21 dias</p>
+  </div>
+  <div class="author-block" style="justify-content:center;">
+    <span class="author-label">por</span><span class="author-name">Luna Vieira</span>
+  </div>
+</div>
+
+<!-- DIREITOS AUTORAIS -->
+<div class="page" style="justify-content:center;align-items:center;text-align:center;">
+  <div style="max-width:480px;margin:auto;">
+    <svg width="48" height="48" viewBox="0 0 48 48" style="margin-bottom:24px;"><circle cx="24" cy="24" r="22" fill="none" stroke="#7b2fff" stroke-width="1.5"/><path d="M24 8 C14 16 12 28 18 36 C21 40 27 40 30 36 C36 28 34 16 24 8Z" fill="#7b2fff" opacity="0.2"/><circle cx="24" cy="24" r="6" fill="#7b2fff" opacity="0.5"/></svg>
+    <h2 style="font-family:var(--font-display);font-size:28px;color:var(--color-primary);margin-bottom:20px;">Desperte no Sonho</h2>
+    <div style="height:1px;background:linear-gradient(90deg,transparent,#c9a4ff,transparent);margin-bottom:24px;"></div>
+    <p style="font-size:13px;line-height:1.8;color:var(--color-text-muted);">© 2025 — Todos os direitos reservados.</p>
+    <p style="font-size:13px;line-height:1.8;color:var(--color-text-muted);margin-top:12px;">Este e-book é protegido por direitos autorais. Nenhuma parte desta publicação pode ser reproduzida, distribuída ou transmitida sob qualquer forma sem a permissão expressa do autor.</p>
+    <p style="font-size:13px;line-height:1.8;color:var(--color-text-muted);margin-top:12px;">Este material é destinado exclusivamente para fins educativos e informativos. As técnicas apresentadas não substituem orientação médica ou psicológica profissional.</p>
+    <div style="margin-top:32px;padding:16px;background:#f0eaff;border-radius:10px;">
+      <p style="font-size:12px;color:var(--color-text-muted);"><strong style="color:var(--color-secondary);">Edição 2025</strong><br>Produzido com amor para transformar a sua relação com o sono e a consciência.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SOBRE O AUTOR -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Sobre o Autor</span><span style="font-size:11px;color:var(--color-text-muted);">03</span></div>
+  <h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:24px;">Quem escreveu<br>este guia?</h2>
+  <div class="author-card">
+    <div class="author-avatar"><svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="20" r="10" fill="white" opacity="0.7"/><path d="M8 44 C8 32 40 32 40 44" fill="white" opacity="0.5"/></svg></div>
+    <div>
+      <strong style="font-size:18px;color:var(--color-primary);font-family:var(--font-display);">Luna Vieira</strong>
+      <p style="font-size:12px;color:var(--color-secondary);margin-top:4px;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Pesquisador & Praticante de Sonhos Lúcidos</p>
+      <p style="font-size:13px;color:var(--color-text-muted);line-height:1.7;margin-top:10px;">Luna Vieira é pesquisadora independente do universo onírico e praticante de sonhos lúcidos há mais de 8 anos. Após transformar sua própria relação com o sono e a consciência, decidiu compartilhar esse conhecimento de forma acessível com quem busca despertar dentro dos próprios sonhos.</p>
+    </div>
+  </div>
+  <p class="body-text" style="margin-top:20px;">Formada em Psicologia e especializada em estados alterados de consciência, Luna une ciência e espiritualidade para guiar iniciantes na jornada dos sonhos lúcidos.</p>
+  <div class="highlight-box" style="margin-top:16px;">
+    <p class="highlight-text">"Eu nunca pensei que seria possível controlar meus sonhos. Hoje, anos depois de descobrir os sonhos lúcidos, cada noite é uma aventura consciente que transformou minha mente, minha criatividade e minha autoconfiança."</p>
+    <p style="font-size:12px;color:var(--color-secondary);margin-top:10px;font-weight:600;">— Luna Vieira</p>
+  </div>
+  <div class="tip-box" style="margin-top:16px;">
+    <span class="tip-icon">✉️</span>
+    <div class="tip-text"><span class="tip-label">Contato & Redes</span>Email: contato@lunavieira.com.br · Site: lunavieira.com.br</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">03</span></div>
+</div>
+
+<!-- SUMÁRIO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Sumário</span><span style="font-size:11px;color:var(--color-text-muted);">04</span></div>
+  <h2 style="font-family:var(--font-display);font-size:36px;color:var(--color-primary);margin-bottom:28px;">O que você vai<br>aprender</h2>
+  <div class="toc-group">Fundamentos</div>
+  <div class="toc-item"><span class="toc-num">00</span><span class="toc-title">O Que São Sonhos Lúcidos?</span><span class="toc-dots"></span><span class="toc-page">06</span></div>
+  <div class="toc-item"><span class="toc-num">01</span><span class="toc-title">A Ciência do Sono</span><span class="toc-dots"></span><span class="toc-page">09</span></div>
+  <div class="toc-group" style="margin-top:14px;">Prática</div>
+  <div class="toc-item"><span class="toc-num">02</span><span class="toc-title">Preparando o Terreno</span><span class="toc-dots"></span><span class="toc-page">13</span></div>
+  <div class="toc-item"><span class="toc-num">03</span><span class="toc-title">As 5 Técnicas Principais</span><span class="toc-dots"></span><span class="toc-page">18</span></div>
+  <div class="toc-item"><span class="toc-num">04</span><span class="toc-title">Seu Plano de 21 Dias</span><span class="toc-dots"></span><span class="toc-page">24</span></div>
+  <div class="toc-group" style="margin-top:14px;">Dentro do Sonho</div>
+  <div class="toc-item"><span class="toc-num">05</span><span class="toc-title">Dentro do Sonho: O Que Fazer</span><span class="toc-dots"></span><span class="toc-page">30</span></div>
+  <div class="toc-item"><span class="toc-num">06</span><span class="toc-title">Usos Avançados e Transformadores</span><span class="toc-dots"></span><span class="toc-page">35</span></div>
+  <div class="toc-item"><span class="toc-num">07</span><span class="toc-title">Próximos Passos e Comunidade</span><span class="toc-dots"></span><span class="toc-page">38</span></div>
+  <div class="toc-group" style="margin-top:14px;">Recursos</div>
+  <div class="toc-item"><span class="toc-num">—</span><span class="toc-title">FAQ — 10 Perguntas Frequentes</span><span class="toc-dots"></span><span class="toc-page">41</span></div>
+  <div class="toc-item"><span class="toc-num">—</span><span class="toc-title">Glossário de Termos</span><span class="toc-dots"></span><span class="toc-page">44</span></div>
+  <div class="tip-box" style="margin-top:24px;">
+    <span class="tip-icon">🌙</span>
+    <div class="tip-text"><span class="tip-label">Como usar este e-book</span>Leia em ordem na primeira vez. Nas semanas seguintes, consulte os módulos conforme sua evolução. O Módulo 04 é seu guia prático diário — volte a ele sempre que precisar.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">04</span></div>
+</div>
+
+<!-- CARTA AO LEITOR -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Introdução</span><span style="font-size:11px;color:var(--color-text-muted);">05</span></div>
+  <h2 style="font-family:var(--font-display);font-size:36px;color:var(--color-primary);margin-bottom:20px;">Uma carta<br>para você</h2>
+  <p class="body-text">Existe um mundo inteiro que você visita todas as noites — e você nunca soube que poderia explorá-lo de olhos abertos.</p>
+  <p class="body-text">Cada ser humano passa, em média, <strong>6 anos de sua vida</strong> sonhando. São 6 anos de experiências, emoções e aventuras que simplesmente desaparecem ao despertar — como névoa dissolvida pelo sol da manhã.</p>
+  <p class="body-text">E se você pudesse permanecer consciente durante esses sonhos? E se, em vez de ser arrastado por narrativas aleatórias, você pudesse <em>escolher</em> o que experimenta, quem encontra e onde vai?</p>
+  <div class="highlight-box">
+    <p class="highlight-text">"O sonho lúcido não é magia. É uma habilidade — e como toda habilidade, pode ser aprendida, praticada e dominada por qualquer pessoa disposta a tentar."</p>
+  </div>
+  <p class="body-text">Este guia foi construído do zero para quem nunca teve um sonho lúcido na vida. Não precisa de experiência prévia, não precisa meditar há anos, não precisa de equipamentos especiais.</p>
+  <p class="body-text">O que você precisa é de <strong>consistência, curiosidade e as ferramentas certas</strong>. E isso é exatamente o que você tem nas próximas páginas.</p>
+  <p class="body-text">Em 21 dias, com dedicação genuína, você terá as condições ideais para seu primeiro sonho lúcido. E depois do primeiro, tudo muda.</p>
+  <div class="tip-box">
+    <span class="tip-icon">🔮</span>
+    <div class="tip-text"><span class="tip-label">Sua promessa</span>Ao final deste guia, você terá: compreensão completa da ciência dos sonhos, domínio das 5 técnicas de indução, um plano prático de 21 dias e ferramentas para usar os sonhos como aliados no seu desenvolvimento pessoal.</div>
+  </div>
+  <p class="body-text" style="margin-top:16px;font-style:italic;color:var(--color-text-muted);">Bem-vindo ao lado consciente dos sonhos.</p>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">05</span></div>
+</div>
+
+<!-- ABERTURA MÓDULO 0 -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="600" cy="200" r="200" fill="#7b2fff"/><circle cx="200" cy="900" r="150" fill="#c9a4ff"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">00</div>
+    <h2 class="chapter-title" style="font-size:44px;">O Que São<br>Sonhos Lúcidos?</h2>
+    <p class="chapter-intro" style="font-size:15px;max-width:440px;">Entenda o fenômeno que fascina cientistas, filósofos e praticantes há séculos — e por que ele pode mudar a forma como você vive cada noite.</p>
+    <div style="margin-top:40px;display:flex;gap:30px;">
+      <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">55%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">das pessoas já tiveram<br>ao menos 1 sonho lúcido</div></div>
+      <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+      <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">23%</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">experienciam mensalmente<br>de forma espontânea</div></div>
+      <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+      <div style="text-align:center;"><div style="font-family:var(--font-display);font-size:36px;color:var(--color-gold);font-weight:700;">1975</div><div style="font-size:11px;color:#c9a4ff;margin-top:4px;letter-spacing:1px;text-transform:uppercase;">primeira prova<br>científica do fenômeno</div></div>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Desperte no Sonho</span><span class="footer-page" style="color:var(--color-gold);">06</span></div>
+</div>
+
+<!-- MÓDULO 0 – PÁG 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 00 — O Que São Sonhos Lúcidos</span><span style="font-size:11px;color:var(--color-text-muted);">07</span></div>
+  <h3 class="section-title">A definição que muda tudo</h3>
+  <p class="body-text">Um <strong>sonho lúcido</strong> é qualquer sonho no qual o sonhador está consciente de que está sonhando. Essa definição simples esconde uma profundidade extraordinária: enquanto seu corpo dorme, sua mente pode estar completamente acordada, explorando um universo construído inteiramente por ela mesma.</p>
+  <p class="body-text">O termo foi popularizado pelo psicólogo holandês <strong>Frederik van Eeden</strong> em 1913, mas relatos de sonhos lúcidos existem há milênios — no Yoga Tibetano do Sonho (século 8 d.C.), nos escritos de Aristóteles e nas práticas xamânicas de diversas culturas.</p>
+  <div class="highlight-box">
+    <p class="highlight-text">"Em um sonho lúcido, você não apenas assiste à história — você é o diretor, o roteirista e o ator principal ao mesmo tempo."</p>
+  </div>
+  <h3 class="section-title">O que é possível fazer</h3>
+  <ul class="icon-list">
+    <li><span class="dot"></span><span><strong>Voar e explorar</strong> — um dos usos mais relatados; a sensação é descrita como completamente realista e euforizante.</span></li>
+    <li><span class="dot"></span><span><strong>Encontrar personagens</strong> — conversar com figuras do seu subconsciente, versões de si mesmo ou personagens históricos.</span></li>
+    <li><span class="dot"></span><span><strong>Praticar habilidades</strong> — atletas e músicos usam sonhos lúcidos para ensaio mental com resultados comprovados.</span></li>
+    <li><span class="dot"></span><span><strong>Resolver problemas criativos</strong> — inventores, escritores e cientistas relatam breakthroughs que aconteceram dentro de sonhos.</span></li>
+    <li><span class="dot"></span><span><strong>Superar medos e pesadelos</strong> — ao reconhecer que é um sonho, você pode transformar cenários aterrorizantes em experiências de cura.</span></li>
+    <li><span class="dot"></span><span><strong>Autoconhecimento profundo</strong> — dialogar com o próprio subconsciente de forma direta e simbólica.</span></li>
+  </ul>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">07</span></div>
+</div>
+
+<!-- MÓDULO 0 – PÁG 3 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 00 — O Que São Sonhos Lúcidos</span><span style="font-size:11px;color:var(--color-text-muted);">08</span></div>
+  <h3 class="section-title">Isso é ciência, não ficção científica</h3>
+  <p class="body-text">Em 1975, o psicólogo britânico <strong>Keith Hearne</strong> foi o primeiro a registrar cientificamente um sonho lúcido. Seu protocolo era simples: o sonhador, ao se tornar lúcido, moveria os olhos em um padrão pré-combinado, registrado por polissonografia. Em 1980, <strong>Stephen LaBerge</strong> da Universidade de Stanford repetiu e expandiu o experimento, tornando-se o nome mais influente da lucidologia moderna.</p>
+  <div class="tip-box">
+    <span class="tip-icon">🧪</span>
+    <div class="tip-text"><span class="tip-label">Dado científico</span>Estudos de neuroimagem mostram que durante o sonho lúcido o córtex pré-frontal — área responsável pelo julgamento e autoconsciência — permanece ativo, ao contrário do sonho comum onde essa região é suprimida.</div>
+  </div>
+  <h3 class="section-title">Mitos que precisamos derrubar</h3>
+  <table class="data-table">
+    <thead><tr><th>Mito</th><th>Verdade</th></tr></thead>
+    <tbody>
+      <tr><td>"É coisa de gente com poderes especiais"</td><td>Qualquer pessoa com sono regular pode aprender. É uma habilidade, não um dom.</td></tr>
+      <tr><td>"Pode causar paralisia permanente"</td><td>A paralisia do sono é temporária, segura e separada da prática. Não é causada pelos sonhos lúcidos.</td></tr>
+      <tr><td>"Quem pratica não dorme bem"</td><td>Praticantes regulares reportam melhora na qualidade do sono e maior sensação de descanso.</td></tr>
+      <tr><td>"É impossível controlar o sonho"</td><td>O controle aumenta progressivamente. Nos primeiros sonhos, manter a lucidez já é uma vitória enorme.</td></tr>
+      <tr><td>"Só acontece espontaneamente"</td><td>As técnicas deste guia aumentam drasticamente a frequência de sonhos lúcidos induzidos.</td></tr>
+    </tbody>
+  </table>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">08</span></div>
+</div>
+
+<!-- ABERTURA MÓDULO 1 -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="100" cy="300" r="250" fill="#c9a4ff"/><circle cx="700" cy="800" r="180" fill="#7b2fff"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">01</div>
+    <h2 class="chapter-title">A Ciência<br>do Sono</h2>
+    <p class="chapter-intro">Para dominar os sonhos lúcidos, você precisa entender o terreno onde eles acontecem. Descubra o que ocorre no seu cérebro e corpo enquanto você dorme — e por que o estágio REM é a porta de entrada para a lucidez.</p>
+    <div style="margin-top:36px;padding:16px 20px;background:rgba(255,255,255,0.08);border-radius:10px;border-left:3px solid var(--color-gold);">
+      <p style="font-size:13px;color:#e8dcff;line-height:1.7;">Neste módulo: as 4 fases do sono · o ciclo REM · o que acontece no cérebro durante um sonho lúcido · como otimizar seu sono para sonhos mais vívidos</p>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Desperte no Sonho</span><span class="footer-page" style="color:var(--color-gold);">09</span></div>
+</div>
+
+<!-- MÓDULO 1 – FASES DO SONO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 01 — A Ciência do Sono</span><span style="font-size:11px;color:var(--color-text-muted);">10</span></div>
+  <h3 class="section-title">As 4 fases do sono</h3>
+  <p class="body-text">Seu sono não é um estado único e uniforme — é uma jornada ciclicamente repetida, composta por 4 fases distintas. Cada ciclo completo dura entre 90 e 110 minutos, e você percorre 4 a 6 ciclos por noite.</p>
+  <div class="sleep-phase" style="margin-top:16px;">
+    <div class="phase-bar" style="background:#a78bfa;height:60px;"></div>
+    <div class="phase-content"><strong>N1 — Sono Superficial (5–10 min)</strong><p>A transição entre vigília e sono. Músculos relaxam, consciência flutua. Você pode sentir espasmos e ver imagens passageiras. Fácil de ser acordado.</p></div>
+  </div>
+  <div class="sleep-phase">
+    <div class="phase-bar" style="background:#7c3aed;height:70px;"></div>
+    <div class="phase-content"><strong>N2 — Sono Leve (20–30 min)</strong><p>Temperatura corporal cai, frequência cardíaca diminui. Aparecem os "fusos do sono" — surtos de atividade cerebral que consolidam a memória. Representa ~50% do sono total.</p></div>
+  </div>
+  <div class="sleep-phase">
+    <div class="phase-bar" style="background:#5b21b6;height:65px;"></div>
+    <div class="phase-content"><strong>N3 — Sono Profundo / Ondas Lentas (20–40 min)</strong><p>O sono mais restaurador fisicamente. Hormônio do crescimento é liberado, tecidos se regeneram. Mais difícil de acordar. Domina a primeira metade da noite.</p></div>
+  </div>
+  <div class="sleep-phase">
+    <div class="phase-bar" style="background:#f0c060;height:80px;"></div>
+    <div class="phase-content"><strong>REM — Movimento Rápido dos Olhos (10–60 min) ⭐</strong><p>A fase dos sonhos. Cérebro extremamente ativo, olhos se movem rapidamente, corpo em paralisia muscular voluntária. Cada ciclo de REM é mais longo — os maiores ocorrem nas últimas horas da manhã. <strong>É aqui que os sonhos lúcidos acontecem.</strong></p></div>
+  </div>
+  <div class="tip-box" style="margin-top:14px;">
+    <span class="tip-icon">💡</span>
+    <div class="tip-text"><span class="tip-label">Insight Estratégico</span>Por isso a técnica WBTB (acordar e voltar a dormir às 5–6h) é tão poderosa: você entra diretamente nos ciclos REM mais longos, maximizando a janela para sonhos lúcidos.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">10</span></div>
+</div>
+
+<!-- MÓDULO 1 – CÉREBRO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 01 — A Ciência do Sono</span><span style="font-size:11px;color:var(--color-text-muted);">11</span></div>
+  <h3 class="section-title">O que acontece no cérebro durante o sonho lúcido</h3>
+  <p class="body-text">Durante o sonho lúcido, o cérebro apresenta um padrão único que combina características do sonho normal com atividade típica da vigília, confirmado por estudos com ressonância magnética funcional (fMRI) e eletroencefalograma (EEG).</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;">
+    <div style="background:white;border-radius:12px;padding:18px;border:1px solid #d8c8f8;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--color-secondary);font-weight:700;margin-bottom:8px;">Sonho Comum</div>
+      <ul class="icon-list" style="margin:0;">
+        <li><span class="dot" style="background:#c8b8e8;"></span><span style="font-size:12.5px;">Córtex pré-frontal <strong>inativo</strong></span></li>
+        <li><span class="dot" style="background:#c8b8e8;"></span><span style="font-size:12.5px;">Sem autoconsciência</span></li>
+        <li><span class="dot" style="background:#c8b8e8;"></span><span style="font-size:12.5px;">Sem julgamento crítico</span></li>
+        <li><span class="dot" style="background:#c8b8e8;"></span><span style="font-size:12.5px;">Aceita tudo como real</span></li>
+      </ul>
+    </div>
+    <div style="background:linear-gradient(135deg,#f0eaff,#e8dcff);border-radius:12px;padding:18px;border:1px solid #c9a4ff;">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--color-secondary);font-weight:700;margin-bottom:8px;">Sonho Lúcido ✦</div>
+      <ul class="icon-list" style="margin:0;">
+        <li><span class="dot"></span><span style="font-size:12.5px;">Córtex pré-frontal <strong>ativo</strong></span></li>
+        <li><span class="dot"></span><span style="font-size:12.5px;">Autoconsciência presente</span></li>
+        <li><span class="dot"></span><span style="font-size:12.5px;">Raciocínio lógico disponível</span></li>
+        <li><span class="dot"></span><span style="font-size:12.5px;">Sabe que está sonhando</span></li>
+      </ul>
+    </div>
+  </div>
+  <h3 class="section-title">Por que lembrar dos sonhos é fundamental</h3>
+  <p class="body-text">Você tem sonhos toda noite — mesmo que não se lembre de nenhum. A memória dos sonhos é como um músculo: quanto menos você a usa, mais fraca ela fica. A maioria das pessoas esquece 95% dos sonhos em menos de 5 minutos após acordar.</p>
+  <p class="body-text">Para ter sonhos lúcidos, você precisa primeiro <strong>reconhecer os padrões dos seus sonhos</strong>. O Diário de Sonhos, que veremos no próximo módulo, é a ferramenta mais importante de todo este guia.</p>
+  <div class="highlight-box">
+    <p class="highlight-text">"Lembrar dos sonhos não é um pré-requisito para a lucidez — é o que torna a lucidez reconhecível. Sem memória, você pode estar sonhando lúcido todas as noites sem saber."</p>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">11</span></div>
+</div>
+
+<!-- MÓDULO 1 – HIGIENE DO SONO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 01 — A Ciência do Sono</span><span style="font-size:11px;color:var(--color-text-muted);">12</span></div>
+  <h3 class="section-title">Otimizando seu sono para sonhos mais vívidos</h3>
+  <p class="body-text">A qualidade dos seus sonhos é diretamente afetada pela qualidade do sono. Sonhos lúcidos exigem ciclos REM longos e intactos — o que só acontece em um sono bem estruturado.</p>
+  <div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Durma entre 7 e 9 horas</strong><p>Menos de 7 horas reduz dramaticamente o tempo total em REM. Cada hora adicional nas últimas horas da manhã pode dobrar o período REM disponível.</p></div></div>
+  <div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Mantenha horários consistentes</strong><p>Acordar e dormir no mesmo horário regulariza seu ritmo circadiano, tornando os ciclos REM mais previsíveis e intensos.</p></div></div>
+  <div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Evite álcool e cannabis antes de dormir</strong><p>Ambas as substâncias suprimem o sono REM. Uma noite com álcool pode reduzir o tempo em REM em até 40%.</p></div></div>
+  <div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Temperatura do quarto entre 18–20°C</strong><p>O corpo precisa baixar sua temperatura central para iniciar o sono. Quartos frios facilitam a entrada em sono profundo e ciclos REM mais ricos.</p></div></div>
+  <div class="step-item"><div class="step-number">05</div><div class="step-content"><strong>Zero telas 30 min antes de dormir</strong><p>A luz azul dos dispositivos suprime a melatonina. Substitua por leitura leve, meditação ou escrita no diário de sonhos.</p></div></div>
+  <div class="tip-box">
+    <span class="tip-icon">🌿</span>
+    <div class="tip-text"><span class="tip-label">Dica Extra</span>Suplementos como Vitamina B6 (100mg) e chá de artemísia são usados por praticantes para aumentar a vivacidade dos sonhos. Consulte um médico antes de usar qualquer suplemento.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">12</span></div>
+</div>
+
+<!-- ABERTURA MÓDULO 2 -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="700" cy="200" r="220" fill="#c9a4ff"/><circle cx="100" cy="900" r="160" fill="#7b2fff"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">02</div>
+    <h2 class="chapter-title">Preparando<br>o Terreno</h2>
+    <p class="chapter-intro">Antes de tentar qualquer técnica de indução, você precisa construir três fundações essenciais: o Diário de Sonhos, os Reality Checks e a rotina noturna. Pule esses passos e as técnicas terão metade da eficácia.</p>
+    <div style="display:flex;gap:16px;margin-top:36px;">
+      <div style="flex:1;background:rgba(255,255,255,0.07);border-radius:10px;padding:16px;text-align:center;"><div style="font-size:28px;margin-bottom:8px;">📔</div><div style="font-size:13px;color:#e8dcff;font-weight:600;">Diário de Sonhos</div></div>
+      <div style="flex:1;background:rgba(255,255,255,0.07);border-radius:10px;padding:16px;text-align:center;"><div style="font-size:28px;margin-bottom:8px;">👁️</div><div style="font-size:13px;color:#e8dcff;font-weight:600;">Reality Checks</div></div>
+      <div style="flex:1;background:rgba(255,255,255,0.07);border-radius:10px;padding:16px;text-align:center;"><div style="font-size:28px;margin-bottom:8px;">🌙</div><div style="font-size:13px;color:#e8dcff;font-weight:600;">Rotina Noturna</div></div>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Desperte no Sonho</span><span class="footer-page" style="color:var(--color-gold);">13</span></div>
+</div>
+
+<!-- DIÁRIO DE SONHOS -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 02 — Preparando o Terreno</span><span style="font-size:11px;color:var(--color-text-muted);">14</span></div>
+  <h3 class="section-title">O Diário de Sonhos — sua ferramenta mais poderosa</h3>
+  <p class="body-text">O Diário de Sonhos é, sem exagero, a prática mais transformadora que você pode começar hoje. Em 2 semanas de registro consistente, a maioria das pessoas passa de "não lembro nenhum sonho" para "lembro de 2 a 4 sonhos por noite".</p>
+  <p class="body-text">Ao relê-lo, você começa a identificar seus <strong>sinais de sonho</strong> — padrões recorrentes que sinalizam que você está sonhando: um lugar que sempre aparece, uma pessoa específica, uma situação impossível que você aceita como normal.</p>
+  <div class="highlight-box">
+    <p class="highlight-text">"Reconhecer que você está sonhando é impossível se você não sabe como seus sonhos parecem. O diário é o mapa do seu mundo interior."</p>
+  </div>
+  <h3 class="section-title">Como usar o Diário de Sonhos</h3>
+  <div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Deixe o caderno ao lado da cama</strong><p>Ou use um app de notas com celular no modo noturno. O importante é que esteja ao alcance imediato — sem precisar se levantar.</p></div></div>
+  <div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Escreva IMEDIATAMENTE ao acordar</strong><p>Não cheque o celular. Não vá ao banheiro. Escreva primeiro. Cada minuto que passa apaga fragmentos do sonho de forma irreversível.</p></div></div>
+  <div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Escreva tudo, mesmo fragmentos</strong><p>"Vi uma porta azul" já é suficiente. Não espere ter a narrativa completa. Detalhes incompletos são melhores que nada.</p></div></div>
+  <div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Inclua emoções e sensações</strong><p>A qualidade emocional do sonho é tão importante quanto os eventos. "Senti uma paz enorme" ou "havia uma tensão inexplicável" são dados valiosos.</p></div></div>
+  <div class="step-item"><div class="step-number">05</div><div class="step-content"><strong>Identifique sinais de sonho semanalmente</strong><p>A cada 7 dias, releia suas entradas e sublinhe elementos que se repetem. Esses são seus triggers pessoais de lucidez.</p></div></div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">14</span></div>
+</div>
+
+<!-- REALITY CHECKS -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 02 — Preparando o Terreno</span><span style="font-size:11px;color:var(--color-text-muted);">15</span></div>
+  <h3 class="section-title">Reality Checks — treinando sua mente a questionar</h3>
+  <p class="body-text">Um Reality Check é o hábito de pausar, algumas vezes ao dia, e se perguntar genuinamente: <em>"Estou sonhando agora?"</em>. Se você desenvolver esse hábito acordado, ele eventualmente aparece dentro dos sonhos.</p>
+  <p class="body-text">A chave é a <strong>intenção genuína</strong>. Não basta olhar para a mão mecanicamente — você precisa realmente questionar a realidade ao redor. Sinta texturas, observe detalhes, pergunte-se como chegou ao lugar onde está.</p>
+  <h3 class="section-title" style="margin-top:16px;">Os 5 melhores Reality Checks</h3>
+  <table class="data-table">
+    <thead><tr><th>Técnica</th><th>Como fazer</th><th>O que indica no sonho</th></tr></thead>
+    <tbody>
+      <tr><td><strong>🖐️ Olhar para as mãos</strong></td><td>Observe suas mãos por 5–10 segundos. Conte os dedos.</td><td>Dedos extras, faltando, fundindo ou mudando de forma.</td></tr>
+      <tr><td><strong>👃 Tampar o nariz</strong></td><td>Tampe o nariz e tente respirar normalmente.</td><td>Você consegue respirar mesmo com o nariz tampado.</td></tr>
+      <tr><td><strong>📱 Ler um texto</strong></td><td>Leia algo, desvie o olhar, releia.</td><td>O texto muda, é ilegível ou não faz sentido.</td></tr>
+      <tr><td><strong>💡 Interruptor de luz</strong></td><td>Tente acender/apagar uma luz.</td><td>A luz geralmente não funciona corretamente.</td></tr>
+      <tr><td><strong>🪞 Espelho</strong></td><td>Olhe para seu reflexo com atenção.</td><td>O reflexo pode ser distorcido ou ser outra pessoa.</td></tr>
+    </tbody>
+  </table>
+  <div class="tip-box" style="margin-top:14px;">
+    <span class="tip-icon">⚡</span>
+    <div class="tip-text"><span class="tip-label">Estratégia de ouro</span>Faça o Reality Check SEMPRE que algo estranho acontecer na vida real — um objeto fora do lugar, uma conversa estranha, uma situação inesperada. Treinar esse reflexo em situações incomuns ativa o mesmo reflexo dentro dos sonhos.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">15</span></div>
+</div>
+
+<!-- ROTINA NOTURNA -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 02 — Preparando o Terreno</span><span style="font-size:11px;color:var(--color-text-muted);">16</span></div>
+  <h3 class="section-title">A Rotina Noturna do Sonhador Lúcido</h3>
+  <p class="body-text">Uma rotina noturna consistente sinaliza ao cérebro que o sono está próximo, facilitando a transição consciente para o estado de sonho.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;">
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🌅 Tarde (2h antes)</div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Evitar cafeína após 14h</span></div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Reduzir atividade física intensa</span></div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Jantar leve (sem álcool)</span></div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Definir intenção de sonho lúcido</span></div>
+    </div>
+    <div>
+      <div style="font-size:12px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🌙 Noite (30 min antes)</div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Guardar celular e telas</span></div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Ler diário de sonhos anteriores</span></div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">5 minutos de respiração consciente</span></div>
+      <div class="check-item"><div class="checkbox"></div><span class="check-label">Afirmação: "Vou notar que estou sonhando"</span></div>
+    </div>
+  </div>
+  <div style="margin:8px 0 16px;">
+    <div style="font-size:12px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">🛏️ Ao deitar</div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Posição confortável (de costas tende a gerar sonhos mais vívidos)</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Caderno e caneta ao alcance da mão</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Repetir mentalmente a intenção de tornar-se lúcido</span></div>
+    <div class="check-item"><div class="checkbox"></div><span class="check-label">Observar as imagens hipnagógicas sem se apegar</span></div>
+  </div>
+  <div class="highlight-box">
+    <p class="highlight-text">"A intenção é o ingrediente secreto. Antes de dormir, diga com convicção: <em>Esta noite, vou perceber que estou sonhando.</em>"</p>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">16</span></div>
+</div>
+
+<!-- SINAIS DE SONHO – EXERCÍCIO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 02 — Exercício Prático</span><span style="font-size:11px;color:var(--color-text-muted);">17</span></div>
+  <div style="display:inline-block;background:var(--color-secondary);color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:1px;margin-bottom:16px;text-transform:uppercase;">✦ Exercício Prático</div>
+  <h3 class="section-title" style="margin-top:0;">Identifique seus Sinais de Sonho</h3>
+  <p class="body-text">Após 7 dias de diário de sonhos, responda as perguntas abaixo. Se ainda não completou os 7 dias, volte a esta página depois.</p>
+  <div class="writing-section"><div class="write-label">Que lugares aparecem com frequência nos seus sonhos?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Que pessoas ou personagens aparecem repetidamente?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Que situações impossíveis você costuma aceitar como normais?</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Que emoções dominam seus sonhos? (ansiedade, alegria, medo...)</div><div class="line"></div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">Seus 3 principais sinais de sonho pessoais:</div><div class="line"></div><div class="line"></div><div class="line"></div></div>
+  <div class="tip-box">
+    <span class="tip-icon">🔑</span>
+    <div class="tip-text"><span class="tip-label">Use esses sinais</span>Toda vez que identificar um desses sinais na vida real, faça um Reality Check imediatamente. Dentro do sonho, seu subconsciente condicionado vai disparar o alerta de lucidez.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">17</span></div>
+</div>
+
+<!-- ABERTURA MÓDULO 3 -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="400" cy="400" r="300" fill="#7b2fff"/><circle cx="150" cy="800" r="150" fill="#c9a4ff"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">03</div>
+    <h2 class="chapter-title">As 5 Técnicas<br>Principais</h2>
+    <p class="chapter-intro">O arsenal completo de indução. Cada técnica tem seu perfil ideal de praticante. Conheça todas, experimente, e encontre a combinação que funciona melhor para você.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:32px;">
+      <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;text-align:center;font-size:13px;color:#e8dcff;font-weight:600;">MILD</div>
+      <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;text-align:center;font-size:13px;color:#e8dcff;font-weight:600;">WILD</div>
+      <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;text-align:center;font-size:13px;color:#e8dcff;font-weight:600;">WBTB</div>
+      <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;text-align:center;font-size:13px;color:#e8dcff;font-weight:600;">DILD</div>
+      <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;text-align:center;font-size:13px;color:#e8dcff;font-weight:600;">SSILD</div>
+      <div style="background:rgba(240,192,96,0.15);border-radius:8px;padding:12px;text-align:center;font-size:13px;color:var(--color-gold);font-weight:600;">+ Tabela Comparativa</div>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Desperte no Sonho</span><span class="footer-page" style="color:var(--color-gold);">18</span></div>
+</div>
+
+<!-- TÉCNICA MILD -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 03 — As 5 Técnicas Principais</span><span style="font-size:11px;color:var(--color-text-muted);">19</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica 01</div>
+    <div class="technique-name">MILD — Mnemonic Induction of Lucid Dreams</div>
+    <p class="technique-desc">Desenvolvida por Stephen LaBerge. É a técnica mais recomendada para iniciantes e a mais estudada cientificamente. Funciona através do condicionamento da memória prospectiva — você treina sua mente para lembrar de um plano futuro dentro do sonho.</p>
+  </div>
+  <h3 class="section-title" style="margin-top:4px;">Como praticar o MILD</h3>
+  <div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Acorde naturalmente no meio de um sonho</strong><p>Geralmente após 4–6h de sono. Pode usar um alarme leve ou esperar acordar naturalmente.</p></div></div>
+  <div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Reviva o sonho mentalmente</strong><p>Com os olhos fechados, replaye o sonho que acabou de ter. Memorize detalhes, personagens, cenários.</p></div></div>
+  <div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Visualize-se tornando lúcido</strong><p>Imagine que está de volta ao mesmo sonho — e desta vez, você percebe que é um sonho. Veja-se fazendo um reality check e reconhecendo a lucidez.</p></div></div>
+  <div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Repita a afirmação</strong><p>Enquanto adormece, repita mentalmente: <em>"Da próxima vez que estiver sonhando, vou lembrar que estou sonhando."</em> Continue até dormir.</p></div></div>
+  <div class="tip-box">
+    <span class="tip-icon">⭐</span>
+    <div class="tip-text"><span class="tip-label">Por que funciona?</span>O MILD aproveita o estado hipnagógico para "programar" uma intenção diretamente no próximo ciclo REM. A combinação de memória + visualização + afirmação cria uma âncora poderosa de lucidez.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">19</span></div>
+</div>
+
+<!-- TÉCNICA WILD -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 03 — As 5 Técnicas Principais</span><span style="font-size:11px;color:var(--color-text-muted);">20</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica 02</div>
+    <div class="technique-name">WILD — Wake Initiated Lucid Dream</div>
+    <p class="technique-desc">A técnica mais avançada e mais recompensadora. Você mantém a consciência durante toda a transição do estado de vigília para o sonho — sem perder a consciência em momento algum. É como entrar em um sonho com passaporte.</p>
+  </div>
+  <div class="highlight-box">
+    <p class="highlight-text">"No WILD, você não acorda dentro de um sonho — você nunca dorme no sentido convencional. Sua consciência desliza suavemente do mundo real para o mundo onírico."</p>
+  </div>
+  <h3 class="section-title">Como praticar o WILD</h3>
+  <div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Use após o WBTB (ideal)</strong><p>Acorde após 5–6h de sono, fique acordado 20–30 minutos, deite novamente. Seu cérebro estará pronto para entrar em REM rapidamente.</p></div></div>
+  <div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Fique completamente imóvel</strong><p>Não mexa o corpo. Isso acelera a paralisia muscular natural do sono. Se sentir coceira, ignore — ela passa.</p></div></div>
+  <div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Observe as hipnagogia</strong><p>Sons, imagens, luzes e sensações vão aparecer. Não as siga — apenas observe como um espectador neutro. É o sinal de que a transição está acontecendo.</p></div></div>
+  <div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Deixe o sonho se formar ao redor de você</strong><p>As imagens hipnagógicas gradualmente tornam-se tridimensionais. Quando sentir que o ambiente ao redor é sólido, você entrou no sonho lúcido.</p></div></div>
+  <div class="tip-box">
+    <span class="tip-icon">⚠️</span>
+    <div class="tip-text"><span class="tip-label">Atenção</span>O WILD pode ser acompanhado de paralisia do sono e sensações intensas. Isso é completamente normal e seguro. Se ficar desconfortável, simplesmente mova um dedo intencionalmente para interromper o processo.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">20</span></div>
+</div>
+
+<!-- TÉCNICAS WBTB + DILD -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 03 — As 5 Técnicas Principais</span><span style="font-size:11px;color:var(--color-text-muted);">21</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica 03</div>
+    <div class="technique-name">WBTB — Wake Back to Bed</div>
+    <p class="technique-desc">Mais do que uma técnica isolada, o WBTB é um potencializador universal. Ao acordar no meio da noite e retornar ao sono, você entra diretamente nos ciclos REM mais longos da manhã — onde os sonhos são mais vívidos e fáceis de controlar.</p>
+  </div>
+  <div class="step-item" style="margin-top:14px;"><div class="step-number">01</div><div class="step-content"><strong>Programe um alarme para 5–6h após dormir</strong><p>Para a maioria, isso significa acordar entre 4h e 6h da manhã. Experimente diferentes horários para encontrar o ideal.</p></div></div>
+  <div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Fique acordado por 20–40 minutos</strong><p>Use esse tempo para ler sobre sonhos lúcidos, escrever no diário, meditar levemente ou praticar afirmações. Ative a parte responsável pela autoconsciência.</p></div></div>
+  <div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Retorne ao sono com intenção clara</strong><p>Combine com MILD ou SSILD. Ao deitar novamente, sua mente estará "aquecida" para a lucidez.</p></div></div>
+  <div class="technique-card" style="margin-top:18px;">
+    <div class="technique-badge">Técnica 04</div>
+    <div class="technique-name">DILD — Dream Initiated Lucid Dream</div>
+    <p class="technique-desc">O sonho lúcido mais comum — você percebe que está sonhando <em>de dentro</em> do sonho. Geralmente acontece quando algo absurdo ocorre e você questiona a realidade. É o resultado direto do treinamento de Reality Checks e da consciência dos seus sinais de sonho.</p>
+  </div>
+  <div class="tip-box">
+    <span class="tip-icon">🎯</span>
+    <div class="tip-text"><span class="tip-label">Como aumentar DILD</span>Pratique Reality Checks obsessivamente durante o dia, especialmente em situações incomuns. Quanto mais automático esse reflexo, maior a chance de ele aparecer espontaneamente dentro de um sonho.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">21</span></div>
+</div>
+
+<!-- TÉCNICA SSILD -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 03 — As 5 Técnicas Principais</span><span style="font-size:11px;color:var(--color-text-muted);">22</span></div>
+  <div class="technique-card">
+    <div class="technique-badge">Técnica 05</div>
+    <div class="technique-name">SSILD — Sense Induced Lucid Dream</div>
+    <p class="technique-desc">Desenvolvida pela comunidade online em 2011, o SSILD utiliza ciclos de atenção sensorial para induzir a lucidez. É considerada uma das técnicas mais fáceis para iniciantes — não exige visualização intensa nem alto nível de concentração.</p>
+  </div>
+  <h3 class="section-title">Como praticar o SSILD</h3>
+  <p class="body-text">Após um WBTB (20–30 min acordado), deite confortavelmente e realize 4–6 ciclos do seguinte processo:</p>
+  <div style="background:#f0eaff;border-radius:12px;padding:20px;margin:16px 0;">
+    <div style="display:flex;gap:16px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--color-secondary);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:13px;">1</div>
+      <div><strong style="font-size:14px;color:var(--color-primary);">Visão — 20 segundos</strong><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;margin-top:4px;">Foque no campo visual atrás das pálpebras. Observe cores, padrões, escuridão. Não force nada — apenas observe passivamente.</p></div>
+    </div>
+    <div style="display:flex;gap:16px;margin-bottom:14px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--color-secondary);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:13px;">2</div>
+      <div><strong style="font-size:14px;color:var(--color-primary);">Audição — 20 segundos</strong><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;margin-top:4px;">Direcione a atenção para os sons ao redor. Sons do ambiente, batimentos do coração, silêncio. Ouça sem julgamento.</p></div>
+    </div>
+    <div style="display:flex;gap:16px;">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--color-secondary);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;font-size:13px;">3</div>
+      <div><strong style="font-size:14px;color:var(--color-primary);">Tato/Corpo — 20 segundos</strong><p style="font-size:13px;color:var(--color-text-muted);line-height:1.6;margin-top:4px;">Sinta o peso do corpo, o contato com a cama, temperatura da pele. Explore as sensações físicas com curiosidade.</p></div>
+    </div>
+  </div>
+  <p class="body-text">Repita os ciclos lentamente até adormecer. Os últimos ciclos podem ser mais rápidos — sinal de que a transição está próxima.</p>
+  <div class="tip-box">
+    <span class="tip-icon">💤</span>
+    <div class="tip-text"><span class="tip-label">Dica SSILD</span>Não tente manter-se acordado durante os ciclos. O objetivo é deixar a mente entrar em um estado de semi-atenção. Adormecer durante os ciclos é parte do processo, não um erro.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">22</span></div>
+</div>
+
+<!-- TABELA COMPARATIVA -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 03 — Comparativo das Técnicas</span><span style="font-size:11px;color:var(--color-text-muted);">23</span></div>
+  <h3 class="section-title">Qual técnica é ideal para você?</h3>
+  <p class="body-text">Não existe a técnica "certa" — existe a técnica certa <em>para você</em>. Use a tabela abaixo para identificar seu ponto de partida ideal.</p>
+  <table class="data-table">
+    <thead><tr><th>Técnica</th><th>Dificuldade</th><th>Melhor Para</th><th>Quando Usar</th></tr></thead>
+    <tbody>
+      <tr><td><strong>MILD</strong></td><td style="color:#7b2fff;">★★☆☆☆</td><td>Iniciantes, qualquer perfil</td><td>Após acordar no meio de um sonho</td></tr>
+      <tr><td><strong>DILD</strong></td><td style="color:#7b2fff;">★☆☆☆☆</td><td>Iniciantes absolutos</td><td>Qualquer horário, via RC</td></tr>
+      <tr><td><strong>WBTB</strong></td><td style="color:#7b2fff;">★★☆☆☆</td><td>Quem pode acordar às 5h</td><td>Combinado com MILD ou SSILD</td></tr>
+      <tr><td><strong>SSILD</strong></td><td style="color:#7b2fff;">★★★☆☆</td><td>Quem tem dif. em visualizar</td><td>Após WBTB</td></tr>
+      <tr><td><strong>WILD</strong></td><td style="color:#7b2fff;">★★★★★</td><td>Praticantes com experiência</td><td>Após WBTB, sesta do meio-dia</td></tr>
+    </tbody>
+  </table>
+  <h3 class="section-title" style="margin-top:20px;">Combinações recomendadas por semana</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px;">
+    <div class="week-card">
+      <div class="week-label">Semana 1–2</div>
+      <div class="week-title">Fundação</div>
+      <div class="week-items">Diário de sonhos diário<br>Reality Checks 5–8x/dia<br>MILD ao dormir toda noite</div>
+    </div>
+    <div class="week-card">
+      <div class="week-label">Semana 2–3</div>
+      <div class="week-title">Primeiro Lúcido</div>
+      <div class="week-items">Adicionar WBTB 3x/semana<br>MILD ou SSILD após WBTB<br>Revisar sinais de sonho</div>
+    </div>
+  </div>
+  <div class="tip-box" style="margin-top:14px;">
+    <span class="tip-icon">🧭</span>
+    <div class="tip-text"><span class="tip-label">Recomendação do Guia</span>Comece com MILD + Reality Checks por 7 dias. Na segunda semana, adicione WBTB + SSILD 3 vezes por semana. Esta combinação tem a maior taxa de sucesso para iniciantes absolutos.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">23</span></div>
+</div>
+
+<!-- ABERTURA MÓDULO 4 -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="400" cy="561" r="350" fill="#7b2fff"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">04</div>
+    <h2 class="chapter-title">Seu Plano<br>de 21 Dias</h2>
+    <p class="chapter-intro">O plano completo e estruturado para ter seu primeiro sonho lúcido. Semana a semana, dia a dia — com calendário de acompanhamento e estratégias para superar os obstáculos mais comuns.</p>
+    <div style="margin-top:40px;padding:20px;background:rgba(240,192,96,0.12);border-radius:12px;border:1px solid rgba(240,192,96,0.3);">
+      <p style="font-size:14px;color:var(--color-gold);font-family:var(--font-display);font-style:italic;line-height:1.7;">"21 dias é o tempo mínimo para formar um hábito. E o hábito mais importante que você vai criar não é só o de sonhar lucidamente — é o de prestar atenção à sua própria consciência."</p>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Desperte no Sonho</span><span class="footer-page" style="color:var(--color-gold);">24</span></div>
+</div>
+
+<!-- AS 3 SEMANAS -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 04 — Plano de 21 Dias</span><span style="font-size:11px;color:var(--color-text-muted);">25</span></div>
+  <h3 class="section-title">Visão geral das 3 semanas</h3>
+  <div class="week-card" style="border-left-color:#a78bfa;">
+    <div class="week-label" style="color:#a78bfa;">Semana 01 — Dias 1 a 7</div>
+    <div class="week-title">Consciência e Fundação</div>
+    <div class="week-items"><strong>Foco:</strong> Construir os hábitos base sem se preocupar com sonhos lúcidos ainda.<br><br>• Iniciar Diário de Sonhos (escrever todo dia ao acordar)<br>• Reality Checks 5–8 vezes por dia com intenção genuína<br>• Rotina noturna de 30 minutos (sem telas, respiração, afirmação)<br>• MILD simples ao adormecer<br>• Leitura de 10 minutos sobre sonhos lúcidos diariamente<br><br><strong>Meta:</strong> Lembrar de pelo menos 1 sonho por noite e registrar no diário.</div>
+  </div>
+  <div class="week-card" style="border-left-color:var(--color-secondary);">
+    <div class="week-label">Semana 02 — Dias 8 a 14</div>
+    <div class="week-title">Primeiras Tentativas</div>
+    <div class="week-items"><strong>Foco:</strong> Introduzir as técnicas mais poderosas e criar os primeiros gatilhos de lucidez.<br><br>• Manter tudo da Semana 1<br>• Adicionar WBTB 3 noites (ex: terça, quinta, sábado)<br>• Após WBTB: praticar MILD aprofundado ou SSILD<br>• Identificar e registrar seus sinais de sonho pessoais<br>• Criar "âncora de lucidez" — objeto físico que você toca e questiona a realidade<br><br><strong>Meta:</strong> Ter ao menos 1 experiência de quasi-lucidez ou estado hipnagógico intenso.</div>
+  </div>
+  <div class="week-card" style="border-left-color:var(--color-gold);">
+    <div class="week-label" style="color:#d4a017;">Semana 03 — Dias 15 a 21</div>
+    <div class="week-title">Consolidação e Primeiro Lúcido</div>
+    <div class="week-items"><strong>Foco:</strong> Intensificar a prática e ter o primeiro sonho lúcido confirmado.<br><br>• WBTB 4–5 noites por semana<br>• Combinar WBTB + MILD + SSILD em rotação<br>• Revisitar e usar os sinais de sonho identificados<br>• Meditação de 5 minutos antes de dormir (foco na intenção)<br>• Preparar o que fará no primeiro sonho lúcido (ter um plano aumenta a estabilidade)<br><br><strong>Meta:</strong> Primeiro sonho lúcido confirmado — mesmo que breve!</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">25</span></div>
+</div>
+
+<!-- CALENDÁRIO DOS 21 DIAS -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 04 — Calendário de Acompanhamento</span><span style="font-size:11px;color:var(--color-text-muted);">26</span></div>
+  <h3 class="section-title">Calendário dos 21 Dias</h3>
+  <p class="body-text" style="margin-bottom:16px;">Marque cada prática concluída. Use símbolos: ✓ feito · 💤 sonho lúcido · ★ sonho especialmente vívido</p>
+  <div style="margin-bottom:10px;">
+    <div style="font-size:11px;font-weight:700;color:#a78bfa;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #d4c4f0;">Semana 1 — Consciência e Fundação</div>
+    <div class="calendar-grid">
+      <div class="cal-header">Dom</div><div class="cal-header">Seg</div><div class="cal-header">Ter</div><div class="cal-header">Qua</div><div class="cal-header">Qui</div><div class="cal-header">Sex</div><div class="cal-header">Sáb</div>
+      <div class="cal-day"><div class="day-num">1</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">2</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">3</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">4</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">5</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">6</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">7</div><div class="day-line"></div></div>
+    </div>
+  </div>
+  <div style="margin-bottom:10px;">
+    <div style="font-size:11px;font-weight:700;color:var(--color-secondary);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #d4c4f0;">Semana 2 — Primeiras Tentativas</div>
+    <div class="calendar-grid">
+      <div class="cal-header">Dom</div><div class="cal-header">Seg</div><div class="cal-header">Ter</div><div class="cal-header">Qua</div><div class="cal-header">Qui</div><div class="cal-header">Sex</div><div class="cal-header">Sáb</div>
+      <div class="cal-day"><div class="day-num">8</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">9</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">10</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">11</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">12</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">13</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">14</div><div class="day-line"></div></div>
+    </div>
+  </div>
+  <div style="margin-bottom:16px;">
+    <div style="font-size:11px;font-weight:700;color:#d4a017;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #d4c4f0;">Semana 3 — Consolidação e Primeiro Lúcido</div>
+    <div class="calendar-grid">
+      <div class="cal-header">Dom</div><div class="cal-header">Seg</div><div class="cal-header">Ter</div><div class="cal-header">Qua</div><div class="cal-header">Qui</div><div class="cal-header">Sex</div><div class="cal-header">Sáb</div>
+      <div class="cal-day"><div class="day-num">15</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">16</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">17</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">18</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">19</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">20</div><div class="day-line"></div></div><div class="cal-day"><div class="day-num">21</div><div class="day-line"></div></div>
+    </div>
+  </div>
+  <div class="writing-section"><div class="write-label">Meu primeiro sonho lúcido aconteceu no dia:</div><div class="line"></div></div>
+  <div class="writing-section"><div class="write-label">O que aconteceu (descreva em poucas palavras):</div><div class="line"></div><div class="line"></div></div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">26</span></div>
+</div>
+
+<!-- QUANDO NÃO ESTÁ FUNCIONANDO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 04 — Solução de Problemas</span><span style="font-size:11px;color:var(--color-text-muted);">27</span></div>
+  <h3 class="section-title">Quando parece que não está funcionando</h3>
+  <p class="body-text">A jornada para o primeiro sonho lúcido raramente é linear. A maioria das pessoas passa por períodos de frustração. Este é o momento onde 90% dos iniciantes desistem — e exatamente onde os 10% restantes chegam à virada.</p>
+  <table class="data-table">
+    <thead><tr><th>Problema</th><th>Causa Provável</th><th>Solução</th></tr></thead>
+    <tbody>
+      <tr><td>"Não me lembro de nenhum sonho"</td><td>Músculo de memória atrofiado</td><td>Fique imóvel ao acordar por 2 min antes de se mover. Escreva qualquer fragmento, mesmo "sonhei com cores".</td></tr>
+      <tr><td>"Faço os RCs mas não funciona"</td><td>RCs mecânicos, sem intenção genuína</td><td>Pause, respire e realmente pergunte: "Posso estar sonhando agora?" Adicione uma âncora emocional.</td></tr>
+      <tr><td>"Adormeço antes de terminar a técnica"</td><td>Bom sinal de relaxamento!</td><td>Repita a afirmação mais rápido e com mais energia. Tente a posição semi-sentada.</td></tr>
+      <tr><td>"Fico lúcido mas acordo imediatamente"</td><td>Excitação excessiva ao perceber a lucidez</td><td>Ao ficar lúcido: respire fundo, olhe para as mãos, toque o chão. Use as técnicas de estabilização (Módulo 05).</td></tr>
+      <tr><td>"Não consigo acordar para o WBTB"</td><td>Alarme insuficiente ou sono profundo</td><td>Use dois alarmes com 5 min de diferença. Beba um copo d'água antes de dormir.</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box" style="margin-top:16px;">
+    <p class="highlight-text">"A consistência supera a perfeição. Uma semana de prática imperfeita todos os dias vale mais do que uma prática perfeita uma vez por semana."</p>
+  </div>
+  <div class="tip-box">
+    <span class="tip-icon">💪</span>
+    <div class="tip-text"><span class="tip-label">Lembre-se</span>O primeiro sonho lúcido de muitos praticantes acontece justamente após um período de "desistência" — quando a pressão é aliviada e o subconsciente finalmente relaxa. Continue. A janela está mais perto do que parece.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">27</span></div>
+</div>
+
+<!-- ABERTURA MÓDULO 5 -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="150" cy="300" r="200" fill="#f0c060" opacity="0.6"/><circle cx="650" cy="700" r="250" fill="#7b2fff"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">05</div>
+    <h2 class="chapter-title">Dentro do Sonho:<br>O Que Fazer</h2>
+    <p class="chapter-intro">Você ficou lúcido! Agora o desafio é não acordar de susto e saber o que fazer com essa consciência extraordinária. Aprenda a estabilizar, controlar e explorar com maestria.</p>
+    <div style="margin-top:32px;padding:16px;background:rgba(240,192,96,0.12);border-radius:10px;border-left:3px solid var(--color-gold);">
+      <p style="font-size:14px;color:#e8dcff;line-height:1.7;font-style:italic;">"O primeiro instinto ao ficar lúcido é a excitação — e a excitação acorda você. A chave é celebrar internamente enquanto permanece calmo externamente."</p>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Desperte no Sonho</span><span class="footer-page" style="color:var(--color-gold);">28</span></div>
+</div>
+
+<!-- ESTABILIZANDO O SONHO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 05 — Dentro do Sonho</span><span style="font-size:11px;color:var(--color-text-muted);">29</span></div>
+  <h3 class="section-title">Os primeiros 30 segundos — como não acordar</h3>
+  <p class="body-text">O momento mais crítico de qualquer sonho lúcido são os primeiros instantes após a lucidez. A excitação gera ativação que sinaliza ao cérebro para sair do estado de sonho. Esses são os protocolos de estabilização mais eficazes:</p>
+  <div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Respire fundo conscientemente</strong><p>Uma respiração longa e controlada ativa o sistema nervoso parassimpático, reduzindo a excitação. Apenas uma respiração já pode estabilizar o sonho.</p></div></div>
+  <div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Toque o chão ou uma parede</strong><p>O tato é o sentido mais poderoso para ancorar a consciência dentro do sonho. Esfregue as palmas, toque texturas, segure objetos.</p></div></div>
+  <div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Olhe para suas mãos</strong><p>Focar nas mãos desvia a atenção do esforço de "permanecer lúcido" — o paradoxo é que quanto menos você tenta, mais estável o sonho fica.</p></div></div>
+  <div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Gire o corpo (Spinning)</strong><p>Gire sobre si mesmo com os braços abertos ao sentir o sonho dissolvendo. Esse movimento parece reiniciar a projeção sensorial e frequentemente estabiliza o cenário.</p></div></div>
+  <div class="step-item"><div class="step-number">05</div><div class="step-content"><strong>Afirme verbalmente</strong><p>Diga em voz alta: <em>"Este sonho está se tornando mais claro e estável agora."</em> O cérebro responde às afirmações mesmo dentro do sonho.</p></div></div>
+  <div class="highlight-box">
+    <p class="highlight-text">"Se o sonho começar a desaparecer — tudo escurecendo, sensação de acordar — feche os olhos DENTRO do sonho e espere. Frequentemente o cenário se reconstrói sozinho em segundos."</p>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">29</span></div>
+</div>
+
+<!-- CONTROLANDO O SONHO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 05 — Dentro do Sonho</span><span style="font-size:11px;color:var(--color-text-muted);">30</span></div>
+  <h3 class="section-title">Controlando o ambiente e as experiências</h3>
+  <p class="body-text">O controle do sonho lúcido funciona de forma diferente do que imaginamos. Não é como um videogame com botões — é mais parecido com a expectativa. O sonho tende a entregar aquilo que você genuinamente espera encontrar.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;">
+    <div style="background:white;border-radius:12px;padding:16px;border:1px solid #d8c8f8;">
+      <div style="font-size:20px;margin-bottom:8px;">✈️</div><strong style="font-size:14px;color:var(--color-primary);display:block;margin-bottom:6px;">Voar</strong><p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;">Não tente "decolar" como um foguete. Incline o corpo, estenda os braços e acredite que vai voar. A intenção relaxada funciona melhor que o esforço.</p>
+    </div>
+    <div style="background:white;border-radius:12px;padding:16px;border:1px solid #d8c8f8;">
+      <div style="font-size:20px;margin-bottom:8px;">🌅</div><strong style="font-size:14px;color:var(--color-primary);display:block;margin-bottom:6px;">Mudar de Cenário</strong><p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;">Técnica da porta: encontre uma porta, declare "atrás desta porta está o lugar X", abra com expectativa genuína. Girar de costas e imaginar o novo local também funciona.</p>
+    </div>
+    <div style="background:white;border-radius:12px;padding:16px;border:1px solid #d8c8f8;">
+      <div style="font-size:20px;margin-bottom:8px;">👥</div><strong style="font-size:14px;color:var(--color-primary);display:block;margin-bottom:6px;">Convocar Personagens</strong><p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;">Dobre uma esquina esperando encontrar a pessoa. Grite o nome. Procure atrás de portas. O sonho geralmente entrega quem você espera encontrar.</p>
+    </div>
+    <div style="background:white;border-radius:12px;padding:16px;border:1px solid #d8c8f8;">
+      <div style="font-size:20px;margin-bottom:8px;">🔮</div><strong style="font-size:14px;color:var(--color-primary);display:block;margin-bottom:6px;">Criar Objetos</strong><p style="font-size:12.5px;color:var(--color-text-muted);line-height:1.6;">Olhe para o chão esperando encontrar o objeto quando olhar para cima. Abra um bolso imaginário. A expectativa é o mecanismo criativo principal do sonho lúcido.</p>
+    </div>
+  </div>
+  <div class="tip-box">
+    <span class="tip-icon">🧠</span>
+    <div class="tip-text"><span class="tip-label">O Princípio da Expectativa</span>O sonho lúcido é gerado pelo seu próprio cérebro. Isso significa que ele conhece seus desejos antes de você verbalizá-los. Intenção clara + ausência de dúvida = resultado. A dúvida é o único obstáculo real ao controle.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">30</span></div>
+</div>
+
+<!-- PESADELOS -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 05 — Dentro do Sonho</span><span style="font-size:11px;color:var(--color-text-muted);">31</span></div>
+  <h3 class="section-title">Pesadelos e figuras assustadoras</h3>
+  <p class="body-text">Um dos usos mais poderosos dos sonhos lúcidos é transformar pesadelos. As figuras ameaçadoras frequentemente representam aspectos de nós mesmos que precisam de atenção — e o sonho lúcido permite abordá-los com segurança e consciência.</p>
+  <div class="highlight-box">
+    <p class="highlight-text">"Em vez de fugir do monstro do sonho, aproxime-se dele e pergunte: O que você representa? O que você quer me dizer? As respostas podem surpreender."</p>
+  </div>
+  <h3 class="section-title">Abordagens para figuras sombrias</h3>
+  <ul class="icon-list">
+    <li><span class="dot"></span><span><strong>Não fuja.</strong> Fugir amplifica o medo. Lúcido, você sabe que não pode ser machucado.</span></li>
+    <li><span class="dot"></span><span><strong>Enfrente com curiosidade.</strong> Pergunte: "Quem é você? Por que você está aqui? O que você representa na minha vida?"</span></li>
+    <li><span class="dot"></span><span><strong>Expresse amor ou gratidão.</strong> Abraçar ou agradecer figuras ameaçadoras frequentemente as transforma em aliadas — soa inusitado, mas funciona.</span></li>
+    <li><span class="dot"></span><span><strong>Use a luz.</strong> Visualize luz saindo das suas mãos. Figuras sombrias frequentemente se dissolvem ao contato com luz intencional.</span></li>
+    <li><span class="dot"></span><span><strong>Mude o cenário.</strong> Se a presença for muito intensa, use a técnica da porta para se transportar a um local seguro e agradável.</span></li>
+  </ul>
+  <div class="tip-box" style="margin-top:16px;">
+    <span class="tip-icon">💫</span>
+    <div class="tip-text"><span class="tip-label">Pesadelos Recorrentes</span>Se você tem um pesadelo que se repete há anos, o sonho lúcido pode ser a ferramenta mais eficaz que você jamais usou. Ao enfrentar e transformar o pesadelo conscientemente, muitos praticantes relatam que ele simplesmente para de acontecer.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">31</span></div>
+</div>
+
+<!-- ABERTURA MÓDULO 6 -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.1;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="400" cy="300" r="280" fill="#f0c060"/><circle cx="200" cy="900" r="200" fill="#c9a4ff"/><circle cx="700" cy="600" r="180" fill="#7b2fff"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">06</div>
+    <h2 class="chapter-title">Usos Avançados<br>e Transformadores</h2>
+    <p class="chapter-intro">Os sonhos lúcidos vão muito além do entretenimento. Descubra como usar essa habilidade para autoconhecimento profundo, criatividade, crescimento pessoal e desenvolvimento de habilidades reais.</p>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Desperte no Sonho</span><span class="footer-page" style="color:var(--color-gold);">32</span></div>
+</div>
+
+<!-- AUTOCONHECIMENTO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 06 — Usos Avançados</span><span style="font-size:11px;color:var(--color-text-muted);">33</span></div>
+  <h3 class="section-title">Sonhos lúcidos para autoconhecimento</h3>
+  <p class="body-text">O sonho lúcido oferece algo que nenhuma terapia, meditação ou retiro consegue oferecer: acesso direto ao seu subconsciente em um ambiente completamente imersivo e sem filtros. Os personagens do sonho são criados pela sua mente — e isso os torna representações simbólicas dos seus próprios aspectos internos.</p>
+  <div class="technique-card">
+    <div class="technique-badge">Prática</div>
+    <div class="technique-name">Diálogo com o Subconsciente</div>
+    <p class="technique-desc">Ao ficar lúcido, encontre um personagem do sonho e pergunte: "O que você representa na minha vida?" ou "O que meu subconsciente quer me dizer?" Muitos praticantes relatam respostas surpreendentes, metafóricas e profundamente reveladoras.</p>
+  </div>
+  <h3 class="section-title">Criatividade e resolução de problemas</h3>
+  <p class="body-text">Alguns dos maiores criadores da história atribuíram suas ideias a sonhos: Mary Shelley (Frankenstein), Paul McCartney (Yesterday), Nikola Tesla (visualizações técnicas), Salvador Dalí (inúmeras obras). O sonho lúcido coloca você diretamente nesse território criativo — com a vantagem de estar consciente para observar e memorizar.</p>
+  <ul class="icon-list">
+    <li><span class="dot"></span><span><strong>Antes de dormir, formule uma pergunta específica.</strong> "Como posso resolver o problema X?" ou "Qual é o próximo passo no projeto Y?"</span></li>
+    <li><span class="dot"></span><span><strong>Ao ficar lúcido, procure um "sábio" ou "biblioteca do conhecimento"</strong> — um personagem que representa sabedoria — e faça sua pergunta diretamente.</span></li>
+    <li><span class="dot"></span><span><strong>Registre imediatamente ao acordar.</strong> Insights criativos dos sonhos se evaporam ainda mais rápido que narrativas normais.</span></li>
+  </ul>
+  <div class="tip-box">
+    <span class="tip-icon">🎨</span>
+    <div class="tip-text"><span class="tip-label">Para Artistas e Criativos</span>Dentro de um sonho lúcido, peça para ver uma obra de arte que você jamais imaginou. O cérebro irá gerar algo genuinamente novo — frequentemente com uma profundidade e beleza que surpreende o próprio sonhador.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">33</span></div>
+</div>
+
+<!-- PRATICAR HABILIDADES -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 06 — Usos Avançados</span><span style="font-size:11px;color:var(--color-text-muted);">34</span></div>
+  <h3 class="section-title">Praticar habilidades reais dentro do sonho</h3>
+  <p class="body-text">Estudos em neurociência mostram que a <strong>prática mental vívida</strong> — imaginar fazer algo com detalhes sensoriais completos — ativa os mesmos circuitos neurais que a prática física. O sonho lúcido leva isso ao extremo: você não apenas imagina, você experimenta com todos os sentidos.</p>
+  <div class="highlight-box">
+    <p class="highlight-text">"Pesquisas com atletas demonstram que a prática mental vívida pode melhorar o desempenho em 13–14%. Combine com prática física e o resultado é potencializado."</p>
+  </div>
+  <h3 class="section-title">Como praticar habilidades no sonho lúcido</h3>
+  <div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Defina a habilidade antes de dormir</strong><p>Seja específico: não "tocar violão" mas "praticar o acorde de Fá maior com a transição para Dó".</p></div></div>
+  <div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Crie o ambiente no sonho</strong><p>Use a técnica da porta para se transportar ao local ideal — um estúdio, um campo, um palco. O ambiente realista amplifica o aprendizado.</p></div></div>
+  <div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Pratique com intenção</strong><p>Repita o movimento, gesto ou sequência múltiplas vezes. Sinta cada detalhe sensorial como se fosse real — porque para o cérebro, é.</p></div></div>
+  <h3 class="section-title" style="margin-top:16px;">Superando medos e fobias</h3>
+  <p class="body-text">O ambiente seguro do sonho lúcido permite a <strong>exposição controlada a medos</strong> sem risco real. Medo de altura? Voe. Medo de falar em público? Monte um auditório. O cérebro não distingue totalmente entre experiência real e sonhada — mas você sabe que está seguro.</p>
+  <div class="tip-box">
+    <span class="tip-icon">🏆</span>
+    <div class="tip-text"><span class="tip-label">Habilidades mais relatadas</span>Música (tocar instrumentos), esportes (golfe, tênis, artes marciais), dança, idiomas (praticar conversação), apresentações públicas, escalada, natação e até procedimentos médicos por profissionais da área.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">34</span></div>
+</div>
+
+<!-- ABERTURA MÓDULO 7 -->
+<div class="page page-chapter">
+  <svg style="position:absolute;top:0;left:0;opacity:0.12;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="600" cy="300" r="220" fill="#c9a4ff"/><circle cx="200" cy="700" r="280" fill="#7b2fff"/></svg>
+  <div style="margin-top:auto;margin-bottom:auto;padding:40px 0;">
+    <div class="chapter-number">07</div>
+    <h2 class="chapter-title">Próximos Passos<br>e Comunidade</h2>
+    <p class="chapter-intro">Você está no início de uma jornada que pode durar uma vida inteira. Descubra como continuar evoluindo, que recursos usar e onde encontrar uma comunidade de praticantes para acelerar seu progresso.</p>
+  </div>
+  <div class="page-footer"><span class="footer-brand" style="color:rgba(255,255,255,0.4);">Desperte no Sonho</span><span class="footer-page" style="color:var(--color-gold);">35</span></div>
+</div>
+
+<!-- PRÓXIMOS PASSOS -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 07 — Próximos Passos</span><span style="font-size:11px;color:var(--color-text-muted);">36</span></div>
+  <h3 class="section-title">Após o primeiro sonho lúcido</h3>
+  <p class="body-text">O primeiro sonho lúcido é um marco, não um destino. Muitas pessoas têm o primeiro e não conseguem repetir imediatamente — isso é normal. A chave é manter a prática com um novo ingrediente: a <em>memória do sucesso</em>.</p>
+  <div class="tip-box">
+    <span class="tip-icon">🌟</span>
+    <div class="tip-text"><span class="tip-label">Use seu primeiro sonho como âncora</span>Escreva uma descrição detalhada do seu primeiro sonho lúcido e releia-a toda noite antes de dormir. Revivê-lo mentalmente é uma das formas mais poderosas de aumentar a frequência dos sonhos seguintes.</div>
+  </div>
+  <h3 class="section-title" style="margin-top:20px;">Evolução progressiva</h3>
+  <div class="step-item"><div class="step-number">01</div><div class="step-content"><strong>Aumentar a frequência</strong><p>Meta: 2–4 sonhos lúcidos por semana. Continue com WBTB + MILD regularmente. Adicione meditação matinal para aumentar a consciência geral.</p></div></div>
+  <div class="step-item"><div class="step-number">02</div><div class="step-content"><strong>Aumentar a duração</strong><p>Meta: sonhos de 5–20 minutos. Pratique ativamente as técnicas de estabilização toda vez que ficar lúcido, mesmo que o sonho pareça estável.</p></div></div>
+  <div class="step-item"><div class="step-number">03</div><div class="step-content"><strong>Aumentar o controle</strong><p>Meta: mover-se livremente e criar elementos intencionais. Pratique voar, criar objetos e convocar personagens de forma sistemática.</p></div></div>
+  <div class="step-item"><div class="step-number">04</div><div class="step-content"><strong>Explorar usos profundos</strong><p>Quando a estabilidade for consistente, explore autoconhecimento, prática de habilidades e resolução criativa de problemas.</p></div></div>
+  <h3 class="section-title">Recursos recomendados</h3>
+  <table class="data-table">
+    <thead><tr><th>Tipo</th><th>Recurso</th><th>Por que usar</th></tr></thead>
+    <tbody>
+      <tr><td>📚 Livro</td><td>Exploring the World of Lucid Dreaming — LaBerge</td><td>A referência científica definitiva sobre o tema</td></tr>
+      <tr><td>📚 Livro</td><td>Are You Dreaming? — Daniel Love</td><td>Moderno, prático e acessível para iniciantes</td></tr>
+      <tr><td>📱 App</td><td>Lucidity — Dream Journal</td><td>Diário digital com estatísticas e análise de padrões</td></tr>
+      <tr><td>🌐 Comunidade</td><td>r/LucidDreaming (Reddit)</td><td>500k+ praticantes, relatos e dicas diárias</td></tr>
+    </tbody>
+  </table>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">36</span></div>
+</div>
+
+<!-- MENSAGEM FINAL -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Módulo 07 — Mensagem Final</span><span style="font-size:11px;color:var(--color-text-muted);">37</span></div>
+  <h3 class="section-title">Uma mensagem para você</h3>
+  <p class="body-text">Você chegou ao final deste guia com o conhecimento completo para transformar suas noites. Tem a ciência, as técnicas, o plano e as ferramentas. O único ingrediente que falta agora é o mais importante — e é o único que só você pode fornecer: <strong>a consistência.</strong></p>
+  <div class="highlight-box">
+    <p class="highlight-text">"Não existe fracasso na prática de sonhos lúcidos. Existe apenas prática e mais prática. Cada noite que você mantém o diário, cada Reality Check que você faz com intenção genuína — tudo isso está construindo algo dentro de você."</p>
+  </div>
+  <p class="body-text" style="margin-top:16px;">Os sonhos lúcidos não são apenas entretenimento. São uma tecnologia interna que a humanidade carrega há milênios e que, por alguma razão, esquecemos de usar.</p>
+  <p class="body-text">Ao recuperar essa habilidade, você não está apenas aprendendo a controlar sonhos. Você está desenvolvendo a capacidade de <em>observar a própria mente em funcionamento</em> — de se tornar um pesquisador da sua própria consciência.</p>
+  <p class="body-text">E essa capacidade não fica dentro dos sonhos. Ela transborda para a vigília, tornando você mais presente, mais criativo, mais consciente das narrativas que sua mente cria durante o dia.</p>
+  <div style="margin-top:24px;padding:24px;background:linear-gradient(135deg,#f0eaff,#e8dcff);border-radius:14px;text-align:center;">
+    <p style="font-family:var(--font-display);font-size:22px;color:var(--color-primary);font-style:italic;line-height:1.5;">"A vida é curta demais para passar metade dela inconsciente.<br>Desperte no sonho."</p>
+    <p style="font-size:13px;color:var(--color-secondary);margin-top:12px;font-weight:600;">— Luna Vieira</p>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">37</span></div>
+</div>
+
+<!-- FAQ PARTE 1 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">FAQ — Perguntas Frequentes</span><span style="font-size:11px;color:var(--color-text-muted);">38</span></div>
+  <h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:24px;">As 10 perguntas<br>mais comuns</h2>
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-icon">01</span>Qualquer pessoa pode ter sonhos lúcidos?</div>
+    <div class="faq-a">Sim. Estudos mostram que 55% das pessoas já tiveram ao menos um sonho lúcido espontâneo. Com prática sistemática, a imensa maioria consegue induzi-los regularmente. Algumas pessoas têm mais facilidade natural, mas a prática consistente supera qualquer talento inato.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-icon">02</span>Sonhos lúcidos fazem mal à saúde?</div>
+    <div class="faq-a">Não há evidência científica de que sonhos lúcidos causem qualquer dano. A única precaução é para pessoas com histórico de distúrbios dissociativos ou psicose — nesse caso, consulte um profissional antes de iniciar a prática.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-icon">03</span>Quanto tempo leva para ter o primeiro sonho lúcido?</div>
+    <div class="faq-a">Varia muito. Alguns praticantes têm o primeiro na primeira semana. A média com prática consistente é de 2 a 4 semanas. O fator mais determinante é a regularidade — não a intensidade.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-icon">04</span>O que é paralisia do sono e ela está ligada aos sonhos lúcidos?</div>
+    <div class="faq-a">A paralisia do sono ocorre quando você acorda consciente mas o corpo ainda está em paralisia muscular REM. Pode acontecer durante WILD e WBTB. É temporária, segura e pode ser usada como porta de entrada para um sonho lúcido. Se for angustiante, mova um dedo intencionalmente.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-icon">05</span>Posso ficar "preso" no sonho?</div>
+    <div class="faq-a">Não. Você sempre acorda. Mesmo no estado de sonho mais profundo, estímulos físicos ou simplesmente o fim do ciclo REM naturalmente despertam você. A ideia de "ficar preso" é um mito popular sem base científica.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-icon">06</span>Preciso meditar para ter sonhos lúcidos?</div>
+    <div class="faq-a">Não é obrigatório, mas ajuda muito. A meditação desenvolve a metacognição — capacidade de observar os próprios processos mentais — que é exatamente o que permite reconhecer um sonho de dentro dele. Mesmo 5 minutos diários fazem diferença.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">38</span></div>
+</div>
+
+<!-- FAQ PARTE 2 -->
+<div class="page">
+  <div class="page-header"><span class="section-label">FAQ — Perguntas Frequentes</span><span style="font-size:11px;color:var(--color-text-muted);">39</span></div>
+  <div class="faq-item" style="padding-top:0;">
+    <div class="faq-q"><span class="faq-icon">07</span>Os sonhos lúcidos são diferentes da projeção astral?</div>
+    <div class="faq-a">Cientificamente, são o mesmo fenômeno neurológico — um estado de consciência durante o sono REM. A diferença está na interpretação: a tradição espiritual chama de projeção astral e acredita que a consciência viaja para outro plano; a ciência descreve como sonho com autoconsciência. A experiência subjetiva pode ser idêntica.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-icon">08</span>O que fazer se eu nunca me lembro de sonhos?</div>
+    <div class="faq-a">Comece pelo Diário de Sonhos mesmo sem ter nada para escrever. Escreva "Não lembrei de nada" — isso cria o hábito e sinaliza ao cérebro sua intenção. Em 3 a 7 dias de prática consistente, fragmentos começarão a aparecer naturalmente.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-icon">09</span>Posso usar duas técnicas ao mesmo tempo?</div>
+    <div class="faq-a">Sim — e combinar técnicas é recomendado. WBTB + MILD é a combinação mais estudada e eficaz. WBTB + SSILD também tem excelentes resultados. Experimente combinações e descubra o que funciona melhor para você.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span class="faq-icon">10</span>Por que às vezes fico lúcido mas acordo na hora?</div>
+    <div class="faq-a">A excitação da lucidez ativa o sistema nervoso de forma que pode interromper o sono REM. A solução está nas técnicas de estabilização do Módulo 05: respiração, tato, girar o corpo. Com o tempo, a resposta emocional à lucidez diminui e a estabilidade aumenta naturalmente.</div>
+  </div>
+  <div class="tip-box" style="margin-top:16px;">
+    <span class="tip-icon">💬</span>
+    <div class="tip-text"><span class="tip-label">Tem outra dúvida?</span>Entre em contato pelo contato@lunavieira.com.br. Respondo todas as perguntas sobre a prática. Também considere se juntar à comunidade r/LucidDreaming para trocar experiências com praticantes do mundo todo.</div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">39</span></div>
+</div>
+
+<!-- GLOSSÁRIO -->
+<div class="page">
+  <div class="page-header"><span class="section-label">Glossário de Termos</span><span style="font-size:11px;color:var(--color-text-muted);">40</span></div>
+  <h2 style="font-family:var(--font-display);font-size:34px;color:var(--color-primary);margin-bottom:24px;">Glossário</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 32px;">
+    <div>
+      <div class="gloss-item"><div class="gloss-term">DILD</div><div class="gloss-def">Dream Initiated Lucid Dream — sonho lúcido iniciado de dentro do próprio sonho, geralmente por um Reality Check.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Diário de Sonhos</div><div class="gloss-def">Caderno ou app onde são registrados os sonhos imediatamente após acordar, fundamental para memória e identificação de padrões.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Estado Hipnagógico</div><div class="gloss-def">Estado de transição entre vigília e sono, caracterizado por imagens, sons e sensações vívidas.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Hipnagogia</div><div class="gloss-def">Imagens, sons e alucinações que ocorrem durante a fase N1, na entrada do sono.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Lucidez</div><div class="gloss-def">Estado de autoconsciência dentro de um sonho — saber que se está sonhando enquanto o sonho acontece.</div></div>
+      <div class="gloss-item"><div class="gloss-term">MILD</div><div class="gloss-def">Mnemonic Induction of Lucid Dreams — técnica de Stephen LaBerge baseada em afirmação e visualização intencional.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Paralisia do Sono</div><div class="gloss-def">Estado temporário de incapacidade de mover o corpo ao acordar, causado pela paralisia muscular REM.</div></div>
+    </div>
+    <div>
+      <div class="gloss-item"><div class="gloss-term">Reality Check (RC)</div><div class="gloss-def">Verificação de realidade — hábito de questionar se está acordado ou sonhando, praticado tanto na vigília quanto no sonho.</div></div>
+      <div class="gloss-item"><div class="gloss-term">REM</div><div class="gloss-def">Rapid Eye Movement — fase do sono caracterizada por movimentos rápidos dos olhos, sonhos vívidos e paralisia muscular voluntária.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Sinal de Sonho</div><div class="gloss-def">Elemento recorrente nos sonhos de uma pessoa que pode servir como gatilho de lucidez quando reconhecido.</div></div>
+      <div class="gloss-item"><div class="gloss-term">Spinning</div><div class="gloss-def">Técnica de estabilização do sonho lúcido que envolve girar o corpo para reengajar os sentidos e evitar o despertar.</div></div>
+      <div class="gloss-item"><div class="gloss-term">SSILD</div><div class="gloss-def">Sense Induced Lucid Dream — técnica de indução através de ciclos de atenção sensorial (visão, audição, tato).</div></div>
+      <div class="gloss-item"><div class="gloss-term">WBTB</div><div class="gloss-def">Wake Back to Bed — técnica de acordar após 5–6h de sono e retornar ao sono após período de vigília.</div></div>
+      <div class="gloss-item"><div class="gloss-term">WILD</div><div class="gloss-def">Wake Initiated Lucid Dream — entrar diretamente em um sonho lúcido mantendo a consciência durante a transição.</div></div>
+    </div>
+  </div>
+  <div class="page-footer"><span class="footer-brand">Desperte no Sonho</span><span class="footer-page">40</span></div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="page" style="justify-content:center;align-items:center;">
+  <svg style="position:absolute;top:0;left:0;opacity:0.05;" width="794" height="1123" viewBox="0 0 794 1123"><circle cx="397" cy="561" r="400" fill="#7b2fff"/><circle cx="397" cy="561" r="280" fill="#7b2fff"/><circle cx="397" cy="561" r="160" fill="#7b2fff"/></svg>
+  <div style="width:100%;max-width:580px;margin:auto;">
+    <div style="text-align:center;margin-bottom:32px;">
+      <svg width="60" height="60" viewBox="0 0 60 60" style="margin-bottom:16px;"><circle cx="30" cy="30" r="28" fill="none" stroke="#7b2fff" stroke-width="1.5" opacity="0.5"/><circle cx="30" cy="30" r="18" fill="#7b2fff" opacity="0.2"/><circle cx="30" cy="30" r="8" fill="#7b2fff" opacity="0.5"/><circle cx="30" cy="30" r="3" fill="#f0c060"/></svg>
+      <h2 style="font-family:var(--font-display);font-size:38px;color:var(--color-primary);line-height:1.2;margin-bottom:12px;">Sua jornada<br>começa esta noite</h2>
+      <p style="font-size:15px;color:var(--color-text-muted);line-height:1.7;">Você tem tudo que precisa. Agora é hora de colocar o caderno ao lado da cama, fechar os olhos e dizer com intenção: <em>Esta noite, vou perceber que estou sonhando.</em></p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:28px 0;">
+      <div style="text-align:center;padding:16px;background:#f0eaff;border-radius:12px;"><div style="font-size:24px;margin-bottom:8px;">📔</div><div style="font-size:12px;font-weight:700;color:var(--color-primary);">Comece o Diário</div><div style="font-size:11px;color:var(--color-text-muted);margin-top:4px;">Esta noite</div></div>
+      <div style="text-align:center;padding:16px;background:#f0eaff;border-radius:12px;"><div style="font-size:24px;margin-bottom:8px;">👁️</div><div style="font-size:12px;font-weight:700;color:var(--color-primary);">Reality Checks</div><div style="font-size:11px;color:var(--color-text-muted);margin-top:4px;">A partir de amanhã</div></div>
+      <div style="text-align:center;padding:16px;background:#f0eaff;border-radius:12px;"><div style="font-size:24px;margin-bottom:8px;">🌙</div><div style="font-size:12px;font-weight:700;color:var(--color-primary);">MILD ao Dormir</div><div style="font-size:11px;color:var(--color-text-muted);margin-top:4px;">Toda noite</div></div>
+    </div>
+    <div style="background:linear-gradient(135deg,#1a0a3c,#2d1060);border-radius:16px;padding:28px;text-align:center;">
+      <p style="font-family:var(--font-display);font-size:22px;color:white;margin-bottom:8px;">Gostou deste e-book?</p>
+      <p style="font-size:13px;color:#c9a4ff;line-height:1.7;margin-bottom:16px;">Compartilhe com alguém que também quer explorar o mundo dos sonhos. Cada pessoa que você apresenta a esta prática está recebendo uma das ferramentas mais extraordinárias do desenvolvimento humano.</p>
+      <div style="background:rgba(255,255,255,0.08);border-radius:10px;padding:14px;">
+        <p style="font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;">✉️ <strong style="color:white;">contato@lunavieira.com.br</strong><br>🌐 <strong style="color:white;">lunavieira.com.br</strong></p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:24px;">
+      <p style="font-family:var(--font-display);font-size:16px;color:var(--color-text-muted);font-style:italic;">"Boa noite — e bom despertar."</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const canvas = document.getElementById('cover-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = 794, H = 1123;
+
+  function rand(a, b) { return Math.random() * (b - a) + a; }
+
+  // Stars
+  const stars = Array.from({length: 180}, () => ({
+    x: rand(0, W), y: rand(0, H),
+    r: rand(0.3, 1.6),
+    op: rand(0.2, 0.85),
+    base: rand(0.25, 0.8),
+    speed: rand(0.004, 0.018),
+    dir: Math.random() > 0.5 ? 1 : -1
+  }));
+
+  // Clouds
+  const clouds = Array.from({length: 8}, (_, i) => ({
+    x: rand(0, W),
+    y: rand(H * 0.03, H * 0.58),
+    opacity: rand(0.03, 0.07),
+    scaleX: rand(1.0, 2.6),
+    scaleY: rand(0.5, 1.0),
+    speed: rand(0.04, 0.18),
+    puffs: Array.from({length: Math.floor(rand(4,8))}, () => ({
+      ox: rand(-110, 110), oy: rand(-28, 28), r: rand(48, 105)
+    }))
+  }));
+
+  function drawFrame() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Sky gradient (identical to landing page)
+    const sky = ctx.createLinearGradient(0, 0, 0, H);
+    sky.addColorStop(0,   '#07050f');
+    sky.addColorStop(0.38,'#0d0820');
+    sky.addColorStop(1,   '#140b30');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, W, H);
+
+    // Violet glow orb bottom-left
+    const orb = ctx.createRadialGradient(160, 900, 0, 160, 900, 420);
+    orb.addColorStop(0, 'rgba(100,40,200,0.18)');
+    orb.addColorStop(1, 'rgba(100,40,200,0)');
+    ctx.fillStyle = orb;
+    ctx.fillRect(0, 0, W, H);
+
+    // Subtle orb top-right
+    const orb2 = ctx.createRadialGradient(660, 180, 0, 660, 180, 300);
+    orb2.addColorStop(0, 'rgba(80,30,160,0.12)');
+    orb2.addColorStop(1, 'rgba(80,30,160,0)');
+    ctx.fillStyle = orb2;
+    ctx.fillRect(0, 0, W, H);
+
+    // Stars
+    for (const s of stars) {
+      s.op += s.speed * s.dir;
+      if (s.op >= s.base || s.op <= 0.05) s.dir *= -1;
+      ctx.save();
+      ctx.globalAlpha = s.op;
+      ctx.fillStyle = '#e8d8ff';
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+      if (s.r > 1.1) {
+        const g = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.r * 5);
+        g.addColorStop(0, 'rgba(200,160,255,0.25)');
+        g.addColorStop(1, 'rgba(200,160,255,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r * 5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    // Clouds
+    for (const c of clouds) {
+      c.x += c.speed;
+      if (c.x > W + 420) { c.x = -420; c.y = rand(H * 0.03, H * 0.58); }
+      ctx.save();
+      ctx.translate(c.x, c.y);
+      ctx.scale(c.scaleX, c.scaleY);
+      ctx.globalAlpha = c.opacity;
+      for (const p of c.puffs) {
+        const g = ctx.createRadialGradient(p.ox, p.oy, 0, p.ox, p.oy, p.r);
+        g.addColorStop(0,   'rgba(200,170,255,1)');
+        g.addColorStop(0.5, 'rgba(155,110,230,0.5)');
+        g.addColorStop(1,   'rgba(110,70,200,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(p.ox, p.oy, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    requestAnimationFrame(drawFrame);
+  }
+
+  drawFrame();
+})();
+</script>
+</body>
+</html>
