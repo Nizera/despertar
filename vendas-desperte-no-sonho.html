@@ -17,6 +17,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1037638165674462');
 fbq('track', 'PageView');
+fbq('track', 'ViewContent');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1037638165674462&ev=PageView&noscript=1"
@@ -1319,6 +1320,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const r = btn.getBoundingClientRect();
       f.style.left = (e.clientX-r.left)+'px';
       f.style.top = (e.clientY-r.top)+'px';
+    });
+  });
+
+  // Meta Pixel - InitiateCheckout on checkout buttons
+  document.querySelectorAll('.price-card .btn-cta-large').forEach(btn => {
+    btn.addEventListener('click', () => {
+      fbq('track', 'InitiateCheckout');
     });
   });
 
