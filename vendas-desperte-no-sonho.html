@@ -474,6 +474,61 @@ section {
   padding: 100px 0;
 }
 
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 48px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.price-card {
+  border: 1px solid rgba(123,63,255,0.25);
+  border-radius: 2px;
+  padding: 48px 36px;
+  background: rgba(123,63,255,0.03);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+}
+
+.price-card:hover {
+  transform: translateY(-4px);
+}
+
+.price-card-featured {
+  border: 1px solid rgba(232,184,75,0.4);
+  background: linear-gradient(160deg, rgba(232,184,75,0.05), rgba(10,7,20,0.9));
+  box-shadow: 0 0 40px rgba(232,184,75,0.1);
+}
+
+.price-card-featured:hover {
+  border-color: rgba(232,184,75,0.6);
+  box-shadow: 0 0 60px rgba(232,184,75,0.2);
+}
+
+.price-card-featured::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.price-card-popular {
+  position: absolute;
+  top: 0; right: 0;
+  background: linear-gradient(135deg, var(--gold), #d4943a);
+  color: #0e0920;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 6px 16px;
+}
+
 .price-card {
   border: 1px solid rgba(232,184,75,0.3);
   border-radius: 2px;
@@ -691,6 +746,7 @@ footer p {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 640px) {
+  .pricing-grid { grid-template-columns: 1fr; }
   .testimonial-grid { grid-template-columns: 1fr; }
   .author-card { flex-direction: column; text-align: center; align-items: center; }
   .price-card { padding: 40px 24px; }
@@ -710,7 +766,7 @@ footer p {
   transform: translateY(100%);
 }
 
-.bonus-card, .testimonial-card, .module-item, .technique-pill {
+.bonus-card, .testimonial-card, .module-item, .technique-pill, .price-card {
   opacity: 0;
   transform: translateY(30px);
 }
@@ -765,8 +821,8 @@ footer p {
     <span class="char-wrap"><span class="char">n</span><span class="char">o</span></span> <span class="char-wrap"><span class="char">S</span><span class="char">o</span><span class="char">n</span><span class="char">h</span><span class="char">o</span></span>
   </h1>
   <p class="hero-sub">O método completo do zero ao seu primeiro sonho lúcido em 21 dias. Ciência, prática e transformação — tudo em um guia passo a passo.</p>
-  <a href="#preco" class="btn-cta-large">QUERO DESPERTAR AGORA<span class="btn-flair"></span></a>
-  <p class="hero-note">Acesso imediato · Pagamento único · Garantia de 7 dias</p>
+  <a href="#preco" class="btn-cta-large">VER PLANOS<span class="btn-flair"></span></a>
+  <p class="hero-note">Acesso imediato · Pagamento único · Garantia de 7 dias · A partir de R$ 9,90</p>
 </section>
 
 <!-- ══════════════════════════════════════ MÓDULOS -->
@@ -930,78 +986,62 @@ footer p {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════ BÔNUS -->
-<section class="section-bonus">
-  <div class="container">
-    <span class="section-label reveal">Bônus inclusos</span>
-    <h2 class="section-title reveal reveal-delay-1">Ainda tem<br><em>mais.</em></h2>
-    <p class="body-text reveal reveal-delay-2">Ao adquirir o Desperte no Sonho, você também leva estes 3 materiais exclusivos — sem custo adicional.</p>
-    <div class="bonus-grid">
-      <div class="bonus-card">
-        <div class="bonus-card-img">
-          <img src="assets/mockup_diario.png" alt="Diário dos Sonhos Premium">
-        </div>
-        <div class="bonus-card-body">
-          <span class="bonus-badge">Bônus 01</span>
-          <div class="bonus-card-title">Diário dos Sonhos Premium</div>
-          <p class="bonus-card-desc">52 páginas com layout editorial para registrar seus sonhos todas as noites. Inclui modelos prontos, prompts de reflexão e espaço para anotações rápidas ao acordar.</p>
-          <div class="bonus-card-value">Valor normal: <strong>R$ 37</strong> — agora incluso</div>
-        </div>
-      </div>
-      <div class="bonus-card">
-        <div class="bonus-card-img">
-          <img src="assets/mockup_planner.png" alt="Planner 21 Dias">
-        </div>
-        <div class="bonus-card-body">
-          <span class="bonus-badge">Bônus 02</span>
-          <div class="bonus-card-title">Planner 21 Dias para Sonhos Lúcidos</div>
-          <p class="bonus-card-desc">48 páginas com um plano dia a dia para você seguir sem pensar. Cada dia tem uma tarefa específica, checkpoints de progresso e espaço para reflexão.</p>
-          <div class="bonus-card-value">Valor normal: <strong>R$ 27</strong> — agora incluso</div>
-        </div>
-      </div>
-      <div class="bonus-card">
-        <div class="bonus-card-img">
-          <img src="assets/mockup_manual_reality_checks.png" alt="Manual Reality Checks">
-        </div>
-        <div class="bonus-card-body">
-          <span class="bonus-badge">Bônus 03</span>
-          <div class="bonus-card-title">Manual Oficial dos Reality Checks</div>
-          <p class="bonus-card-desc">35 páginas com o guia completo de Reality Checks — as técnicas de verificação de realidade que são a base dos sonhos lúcidos. Inclui cronograma e dicas práticas.</p>
-          <div class="bonus-card-value">Valor normal: <strong>R$ 27</strong> — agora incluso</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<div class="container"><div class="divider"></div></div>
 
 <!-- ══════════════════════════════════════ PREÇO -->
 <section class="section-price" id="preco">
   <div class="container">
-    <div class="price-card">
-      <span class="price-label">Acesso Completo e Imediato</span>
-      <div class="price-title">Desperte no Sonho</div>
-      <p class="price-subtitle">O guia completo do zero ao primeiro sonho lúcido</p>
-      <div class="price-value">
-        <span class="price-from">De R$ 67</span>
-        <span class="price-main"><sup>R$</sup>27</span>
-        <span class="price-once">Pagamento único · Acesso imediato e vitalício</span>
+    <span class="section-label reveal">Escolha seu plano</span>
+    <h2 class="section-title reveal reveal-delay-1">Comece sua jornada<br><em>do seu jeito.</em></h2>
+    <p class="body-text reveal reveal-delay-2" style="margin-left:auto;margin-right:auto;">Escolha o plano ideal para você. Você pode começar pelo básico e fazer upgrade depois.</p>
+    <div class="pricing-grid">
+      <!-- PLANO BÁSICO -->
+      <div class="price-card reveal">
+        <span class="price-label">Plano Básico</span>
+        <div class="price-title">E-book</div>
+        <p class="price-subtitle">O guia completo do zero ao primeiro sonho lúcido</p>
+        <div class="price-value">
+          <span class="price-from">De R$ 27</span>
+          <span class="price-main"><sup>R$</sup>9,90</span>
+          <span class="price-once">Pagamento único · Acesso imediato</span>
+        </div>
+        <div class="price-includes">
+          <div class="price-include-item"><div class="price-check">✓</div>E-book completo — +40 páginas</div>
+          <div class="price-include-item"><div class="price-check">✓</div>8 módulos do zero ao avançado</div>
+          <div class="price-include-item"><div class="price-check">✓</div>Plano de 21 dias com calendário</div>
+          <div class="price-include-item"><div class="price-check">✓</div>5 técnicas com passo a passo</div>
+          <div class="price-include-item"><div class="price-check">✓</div>Glossário + FAQ completo</div>
+          <div class="price-include-item"><div class="price-check">✓</div>Leitura em qualquer dispositivo</div>
+        </div>
+        <a href="#preco" class="btn-cta-large" style="background:linear-gradient(135deg, var(--violet), #5a1fd4);box-shadow:0 0 30px rgba(123,63,255,0.25);">QUERO SÓ O E-BOOK<span class="btn-flair"></span></a>
+        <p class="price-guarantee">🔒 Compra segura · Pagamento único</p>
       </div>
-      <div class="price-includes">
-        <div class="price-include-item"><div class="price-check">✓</div>E-book completo — +40 páginas</div>
-        <div class="price-include-item"><div class="price-check">✓</div>8 módulos do zero ao avançado</div>
-        <div class="price-include-item"><div class="price-check">✓</div>Plano de 21 dias com calendário</div>
-        <div class="price-include-item"><div class="price-check">✓</div>5 técnicas com passo a passo</div>
-        <div class="price-include-item"><div class="price-check">✓</div>Glossário + FAQ completo</div>
-        <div class="price-include-item"><div class="price-check">✓</div>Leitura em qualquer dispositivo</div>
-        <div class="price-include-item" style="margin-top:8px;padding-top:12px;border-top:1px solid rgba(232,184,75,0.15);"><div class="price-check" style="background:rgba(232,184,75,0.15);border-color:var(--gold);color:var(--gold);">+</div><strong style="color:var(--gold);">+ 3 Bônus Exclusivos (R$ 91)</strong></div>
-        <div class="price-include-item"><div class="price-check">✓</div>Diário dos Sonhos Premium</div>
-        <div class="price-include-item"><div class="price-check">✓</div>Planner 21 Dias para Sonhos Lúcidos</div>
-        <div class="price-include-item"><div class="price-check">✓</div>Manual Oficial dos Reality Checks</div>
+      <!-- PLANO COMPLETO -->
+      <div class="price-card price-card-featured reveal reveal-delay-1">
+        <div class="price-card-popular">MAIS POPULAR</div>
+        <span class="price-label">Plano Completo</span>
+        <div class="price-title">E-book + Bônus</div>
+        <p class="price-subtitle">Tudo do e-book + 3 materiais exclusivos</p>
+        <div class="price-value">
+          <span class="price-from">De R$ 91</span>
+          <span class="price-main"><sup>R$</sup>19,90</span>
+          <span class="price-once">Pagamento único · Acesso vitalício</span>
+        </div>
+        <div class="price-includes">
+          <div class="price-include-item"><div class="price-check">✓</div>E-book completo — +40 páginas</div>
+          <div class="price-include-item"><div class="price-check">✓</div>8 módulos do zero ao avançado</div>
+          <div class="price-include-item"><div class="price-check">✓</div>Plano de 21 dias com calendário</div>
+          <div class="price-include-item"><div class="price-check">✓</div>5 técnicas com passo a passo</div>
+          <div class="price-include-item"><div class="price-check">✓</div>Glossário + FAQ completo</div>
+          <div class="price-include-item"><div class="price-check">✓</div>Leitura em qualquer dispositivo</div>
+          <div class="price-include-item" style="margin-top:8px;padding-top:12px;border-top:1px solid rgba(232,184,75,0.15);"><div class="price-check" style="background:rgba(232,184,75,0.15);border-color:var(--gold);color:var(--gold);">+</div><strong style="color:var(--gold);">+ 3 Bônus Exclusivos (R$ 91)</strong></div>
+          <div class="price-include-item"><div class="price-check">✓</div>Diário dos Sonhos Premium</div>
+          <div class="price-include-item"><div class="price-check">✓</div>Planner 21 Dias para Sonhos Lúcidos</div>
+          <div class="price-include-item"><div class="price-check">✓</div>Manual Oficial dos Reality Checks</div>
+        </div>
+        <a href="#preco" class="btn-cta-large">QUERO TUDO POR R$ 19,90<span class="btn-flair"></span></a>
+        <p class="price-guarantee">🔒 Compra segura · Pagamento único · Garantia de 7 dias</p>
       </div>
-      <a href="#preco" class="btn-cta-large">QUERO MEU PRIMEIRO SONHO LÚCIDO →<span class="btn-flair"></span></a>
-      <p class="price-guarantee">🔒 Compra segura · Pagamento único · Satisfação garantida</p>
     </div>
   </div>
 </section>
@@ -1041,8 +1081,8 @@ footer p {
   <div class="container">
     <h2 class="final-title reveal">A noite mais <em>incrível</em><br>da sua vida começa hoje.</h2>
     <p class="final-sub reveal reveal-delay-1">Cada noite que passa sem praticar é uma noite de experiências extraordinárias que você não vai ter de volta. Comece esta noite.</p>
-    <a href="#preco" class="btn-primary reveal reveal-delay-2">DESPERTAR AGORA POR R$ 27<span class="btn-flair"></span></a>
-    <p style="margin-top:16px;font-size:12px;color:var(--muted);" class="reveal reveal-delay-3">Acesso imediato · Pagamento único</p>
+    <a href="#preco" class="btn-primary reveal reveal-delay-2">ESCOLHER MEU PLANO<span class="btn-flair"></span></a>
+    <p style="margin-top:16px;font-size:12px;color:var(--muted);" class="reveal reveal-delay-3">Acesso imediato · Pagamento único · A partir de R$ 9,90</p>
   </div>
 </section>
 
@@ -1210,23 +1250,26 @@ document.addEventListener("DOMContentLoaded", () => {
         scrollTrigger: { trigger: '.module-list', start: "top 80%", once: true } });
   }
 
-  // Price card
-  const priceCard = document.querySelector('.price-card');
-  if (priceCard) {
-    gsap.fromTo(priceCard, { y: 60, opacity: 0, scale: 0.95 },
-      { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "power3.out",
+  // Price cards
+  const priceCards = document.querySelectorAll('.price-card');
+  if (priceCards.length) {
+    gsap.fromTo(priceCards, { y: 60, opacity: 0, scale: 0.95 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.8, stagger: 0.15, ease: "power3.out",
         scrollTrigger: { trigger: '.section-price', start: "top 75%", once: true } });
   }
 
   // Price counter
-  const priceMain = document.querySelector('.price-main');
-  if (priceMain) {
+  const priceMains = document.querySelectorAll('.price-main');
+  if (priceMains.length >= 2) {
     ScrollTrigger.create({
       trigger: '.section-price', start: "top 75%", once: true,
       onEnter: () => {
-        let c = { v: 67 };
-        gsap.to(c, { v: 27, duration: 1.5, ease: "power2.out",
-          onUpdate: () => { priceMain.innerHTML = '<sup>R$</sup>' + Math.round(c.v); } });
+        let c1 = { v: 27 };
+        gsap.to(c1, { v: 9.9, duration: 1.5, ease: "power2.out",
+          onUpdate: () => { priceMains[0].innerHTML = '<sup>R$</sup>' + c1.v.toFixed(0).replace('.',','); } });
+        let c2 = { v: 91 };
+        gsap.to(c2, { v: 19.9, duration: 1.5, ease: "power2.out",
+          onUpdate: () => { priceMains[1].innerHTML = '<sup>R$</sup>' + c2.v.toFixed(0).replace('.',','); } });
       }
     });
   }
