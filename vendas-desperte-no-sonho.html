@@ -1262,10 +1262,10 @@ document.addEventListener("DOMContentLoaded", () => {
       onEnter: () => {
         let c1 = { v: 27 };
         gsap.to(c1, { v: 9.9, duration: 1.5, ease: "power2.out",
-          onUpdate: () => { priceMains[0].innerHTML = '<sup>R$</sup>' + c1.v.toFixed(0).replace('.',','); } });
+          onUpdate: () => { priceMains[0].innerHTML = '<sup>R$</sup>' + c1.v.toFixed(2).replace('.',','); } });
         let c2 = { v: 91 };
         gsap.to(c2, { v: 19.9, duration: 1.5, ease: "power2.out",
-          onUpdate: () => { priceMains[1].innerHTML = '<sup>R$</sup>' + c2.v.toFixed(0).replace('.',','); } });
+          onUpdate: () => { priceMains[1].innerHTML = '<sup>R$</sup>' + c2.v.toFixed(2).replace('.',','); } });
       }
     });
   }
