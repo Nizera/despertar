@@ -23,6 +23,39 @@ fbq('track', 'ViewContent');
 src="https://www.facebook.com/tr?id=1037638165674462&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<!-- UTM fallback: injeta UTMs nos CTAs imediatamente (independente do tracker.js) -->
+<script>
+(function(){
+  var UTM_KEYS=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","src","sck"];
+  var CLICK_KEYS=["fbclid","ttclid","gclid"];
+  var ALL_KEYS=UTM_KEYS.concat(CLICK_KEYS);
+  var params=new URLSearchParams(location.search);
+  var utms={};
+  var hasUrl=false;
+  for(var i=0;i<ALL_KEYS.length;i++){
+    var v=params.get(ALL_KEYS[i]);
+    if(v){utms[ALL_KEYS[i]]=v;hasUrl=true;}
+  }
+  if(!hasUrl){
+    try{var m=document.cookie.match(/(^|; )_fl_utm=([^;]*)/);if(m){var c=JSON.parse(decodeURIComponent(m[2]));for(var k in c){if(c.hasOwnProperty(k)&&ALL_KEYS.indexOf(k)!==-1)utms[k]=c[k];}}}catch(e){}
+  }
+  if(Object.keys(utms).length===0)return;
+  var qs="";for(var k in utms){if(utms.hasOwnProperty(k))qs+=(qs?"&":"")+encodeURIComponent(k)+"="+encodeURIComponent(utms[k]);}
+  var fbp=document.cookie.match(/(^|; )_fbp=([^;]*)/);if(fbp)qs+="&_fbp="+encodeURIComponent(fbp[2]);
+  var fbc=document.cookie.match(/(^|; )_fbc=([^;]*)/);if(fbc)qs+="&_fbc="+encodeURIComponent(fbc[2]);
+  var links=document.querySelectorAll('a[href*="/r/"]');
+  for(var i=0;i<links.length;i++){
+    try{
+      var u=new URL(links[i].href);
+      var changed=false;
+      for(var k in utms){if(utms.hasOwnProperty(k)&&!u.searchParams.has(k)){u.searchParams.set(k,utms[k]);changed=true;}}
+      if(!u.searchParams.has("_fbp")&&fbp){u.searchParams.set("_fbp",fbp[2]);changed=true;}
+      if(!u.searchParams.has("_fbc")&&fbc){u.searchParams.set("_fbc",fbc[2]);changed=true;}
+      if(changed)links[i].href=u.toString();
+    }catch(e){}
+  }
+})();
+</script>
 <!-- FlowynPay cross-domain tracker — rastreia visitas e preserva UTMs -->
 <script src="https://flowyn.com.br/t/395f65d1-8327-4ada-8707-036d31af523a.js?v=2" async></script>
 <style>
