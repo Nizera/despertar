@@ -804,6 +804,233 @@ footer p {
   border-radius: 50%;
   box-shadow: 5px -5px 0 0 var(--gold);
 }
+
+/* ── COUNTDOWN BANNER ── */
+.countdown-banner {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, #1a0a2e, #0d0618);
+  border-bottom: 1px solid rgba(232,184,75,0.3);
+  padding: 14px 24px;
+  text-align: center;
+}
+
+.countdown-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.countdown-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.countdown-display {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.countdown-unit {
+  background: rgba(232,184,75,0.15);
+  border: 1px solid rgba(232,184,75,0.3);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold);
+  min-width: 52px;
+  text-align: center;
+  line-height: 1;
+}
+
+.countdown-unit span {
+  animation: timerPulse 1s ease-in-out infinite;
+}
+
+.countdown-sep {
+  font-size: 18px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.countdown-banner .countdown-label-accent {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+@keyframes timerPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* ── COUNTDOWN PRICING ── */
+.countdown-pricing {
+  text-align: center;
+  margin-top: 32px;
+  padding: 20px 24px;
+  border: 1px solid rgba(232,184,75,0.25);
+  border-radius: 8px;
+  background: rgba(232,184,75,0.05);
+}
+
+.countdown-pricing-title {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.countdown-pricing .countdown-display {
+  gap: 8px;
+}
+
+.countdown-pricing .countdown-unit {
+  font-size: 28px;
+  padding: 8px 16px;
+  min-width: 64px;
+}
+
+.countdown-pricing .countdown-sep {
+  font-size: 24px;
+}
+
+.countdown-pricing-warning {
+  font-size: 12px;
+  color: var(--gold);
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* ── TRANSFORMATION ── */
+.section-transformation {
+  padding: 100px 0;
+  background: linear-gradient(180deg, transparent, rgba(123,63,255,0.03), transparent);
+}
+
+.transformation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.transformation-card {
+  border: 1px solid rgba(123,63,255,0.25);
+  border-radius: 2px;
+  padding: 32px 24px;
+  background: rgba(123,63,255,0.04);
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.transformation-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(123,63,255,0.5);
+}
+
+.transformation-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--violet), transparent);
+}
+
+.transformation-card:nth-child(2)::before {
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.transformation-card:nth-child(3)::before {
+  background: linear-gradient(90deg, transparent, var(--lilac), transparent);
+}
+
+.transformation-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  background: rgba(123,63,255,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.transformation-card:nth-child(2) .transformation-icon {
+  background: rgba(232,184,75,0.12);
+}
+
+.transformation-card:nth-child(3) .transformation-icon {
+  background: rgba(196,160,255,0.12);
+}
+
+.transformation-week {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 8px;
+}
+
+.transformation-card:nth-child(2) .transformation-week { color: var(--gold); }
+.transformation-card:nth-child(3) .transformation-week { color: var(--lilac); }
+
+.transformation-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--moon);
+  margin-bottom: 16px;
+}
+
+.transformation-list {
+  list-style: none;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.transformation-list li {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 10px;
+  padding-left: 22px;
+  position: relative;
+}
+
+.transformation-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--violet);
+  font-weight: 700;
+}
+
+.transformation-card:nth-child(2) .transformation-list li::before { color: var(--gold); }
+.transformation-card:nth-child(3) .transformation-list li::before { color: var(--lilac); }
+
+@media (max-width: 768px) {
+  .transformation-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .countdown-banner-inner {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
 </style>
 </head>
 <body>
@@ -823,6 +1050,112 @@ footer p {
   <p class="hero-sub">O método completo do zero ao seu primeiro sonho lúcido em 21 dias. Ciência, prática e transformação — tudo em um guia passo a passo.</p>
   <a href="#preco" class="btn-cta-large">QUERO COMEÇAR AGORA<span class="btn-flair"></span></a>
   <p class="hero-note">Acesso imediato · Pagamento único · Garantia de 7 dias · A partir de R$ 9,90</p>
+</section>
+
+<!-- ══════════════════════════════════════ COUNTDOWN BANNER -->
+<div class="countdown-banner">
+  <div class="countdown-banner-inner">
+    <span class="countdown-label">⏰ Esta oferta expira em:</span>
+    <div class="countdown-display">
+      <span class="countdown-unit"><span data-countdown-hours>23</span></span>
+      <span class="countdown-sep">:</span>
+      <span class="countdown-unit"><span data-countdown-minutes>59</span></span>
+      <span class="countdown-sep">:</span>
+      <span class="countdown-unit"><span data-countdown-seconds>59</span></span>
+    </div>
+    <span class="countdown-label countdown-label-accent">— Preço sobe após expirar</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════ PARA QUEM -->
+<section class="section-forwho">
+  <div class="container">
+    <span class="section-label reveal">Para quem é este guia</span>
+    <h2 class="section-title reveal reveal-delay-1">Este e-book é<br><em>para você</em> se…</h2>
+    <div class="forwho-list">
+      <div class="forwho-item reveal"><div class="forwho-dot"></div><p class="forwho-text">Você <strong>nunca teve um sonho lúcido</strong> e quer aprender do zero, sem precisar de experiência prévia.</p></div>
+      <div class="forwho-item reveal"><div class="forwho-dot"></div><p class="forwho-text">Você <strong>já tentou antes</strong> mas sem método estruturado — e ficou sem saber por que não funcionou.</p></div>
+      <div class="forwho-item reveal"><div class="forwho-dot"></div><p class="forwho-text">Você quer uma <strong>ferramenta prática de autoconhecimento</strong> que funciona enquanto você dorme.</p></div>
+      <div class="forwho-item reveal"><div class="forwho-dot"></div><p class="forwho-text">Você tem <strong>pesadelos recorrentes</strong> e quer aprender a enfrentá-los e transformá-los conscientemente.</p></div>
+      <div class="forwho-item reveal"><div class="forwho-dot"></div><p class="forwho-text">Você é <strong>curioso sobre a própria mente</strong> e quer explorar estados de consciência que poucas pessoas conhecem.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ TRANSFORMAÇÃO -->
+<section class="section-transformation">
+  <div class="container">
+    <span class="section-label reveal">Sua jornada de 21 dias</span>
+    <h2 class="section-title reveal reveal-delay-1">Do zero ao seu<br><em>primeiro sonho lúcido.</em></h2>
+    <div class="transformation-grid">
+      <div class="transformation-card reveal">
+        <div class="transformation-icon">🌙</div>
+        <div class="transformation-week">Semana 1</div>
+        <div class="transformation-title">Consciência</div>
+        <ul class="transformation-list">
+          <li>Lembre de 2 a 4 sonhos por noite</li>
+          <li>Crie o hábito do diário de sonhos</li>
+          <li>Pratique 5 reality checks por dia</li>
+          <li>Identifique seus sonhos recorrentes</li>
+          <li>Estabeleça sua rotina noturna</li>
+        </ul>
+      </div>
+      <div class="transformation-card reveal reveal-delay-1">
+        <div class="transformation-icon">✨</div>
+        <div class="transformation-week">Semana 2</div>
+        <div class="transformation-title">Primeiros Sinais</div>
+        <ul class="transformation-list">
+          <li>Sonhos cada vez mais vívidos</li>
+          <li>Experimente quase-lucidez</li>
+          <li>Pratique WBTB 3 vezes por semana</li>
+          <li>Crie sua âncora física de lucidez</li>
+          <li>Reconheça seus sinais pessoais</li>
+        </ul>
+      </div>
+      <div class="transformation-card reveal reveal-delay-2">
+        <div class="transformation-icon">🚀</div>
+        <div class="transformation-week">Semana 3</div>
+        <div class="transformation-title">Primeiro Lúcido</div>
+        <ul class="transformation-list">
+          <li>Seu primeiro sonho lúcido confirmado</li>
+          <li>Estabilize por 30+ segundos</li>
+          <li>Voe, mude cenários, crie objetos</li>
+          <li>Enfrente pesadelos conscientemente</li>
+          <li>Domine o início de uma habilidade vitalícia</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ DEPOIMENTOS -->
+<section class="section-proof">
+  <div class="container">
+    <span class="section-label reveal">Quem já despertou</span>
+    <h2 class="section-title reveal reveal-delay-1">Eles também<br>achavam <em>impossível.</em></h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Eu nunca lembrava de nenhum sonho. Com o diário de sonhos do guia, em menos de uma semana já estava lembrando de 2 ou 3 por noite. No décimo dia, tive meu primeiro sonho lúcido. Chorei de emoção quando acordei."</p>
+        <span class="testimonial-author">— Mariana R., 29 anos</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Comecei com MILD e nos primeiros dias parecia que não ia funcionar. Na terceira semana, segui o plano certinho e aconteceu. Estava voando sobre uma cidade iluminada e sabia exatamente que estava sonhando. Incrível."</p>
+        <span class="testimonial-author">— Felipe S., 34 anos</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Tenho pesadelos recorrentes há anos. Depois de aprender sonhos lúcidos, consegui enfrentar o pesadelo conscientemente pela primeira vez. Desde então, ele não voltou mais. Isso sozinho já valeu muito mais do que paguei."</p>
+        <span class="testimonial-author">— Ana Paula M., 41 anos</span>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"O plano de 21 dias é o diferencial. Não precisei me perguntar 'o que fazer hoje'. Só segui o guia. No dia 18 aconteceu. A sensação de clareza dentro do sonho é algo que não dá para descrever — você tem que experimentar."</p>
+        <span class="testimonial-author">— Lucas T., 26 anos</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ══════════════════════════════════════ MÓDULOS -->
@@ -891,7 +1224,57 @@ footer p {
   </div>
 </section>
 
-<!-- ══════════════════════════════════════ PREÇOS (movido para cima) -->
+<!-- ══════════════════════════════════════ TÉCNICAS -->
+<section class="section-techniques">
+  <div class="container">
+    <span class="section-label reveal">As técnicas que você vai dominar</span>
+    <h2 class="section-title reveal reveal-delay-1">5 caminhos para<br><em>a lucidez.</em></h2>
+    <p class="body-text reveal reveal-delay-2">Cada técnica tem um perfil ideal. Você aprende todas e encontra a combinação que funciona para você.</p>
+    <div class="technique-strip">
+      <div class="technique-pill">
+        <span class="technique-pill-name">MILD</span>
+        <span class="technique-pill-desc">Indução por memória<br>Ideal para iniciantes</span>
+      </div>
+      <div class="technique-pill">
+        <span class="technique-pill-name">WILD</span>
+        <span class="technique-pill-desc">Acordado para o sonho<br>Transição direta</span>
+      </div>
+      <div class="technique-pill">
+        <span class="technique-pill-name">WBTB</span>
+        <span class="technique-pill-desc">Acorda e volta a dormir<br>Potencializador universal</span>
+      </div>
+      <div class="technique-pill">
+        <span class="technique-pill-name">DILD</span>
+        <span class="technique-pill-desc">Lúcido de dentro<br>Via Reality Check</span>
+      </div>
+      <div class="technique-pill">
+        <span class="technique-pill-name">SSILD</span>
+        <span class="technique-pill-desc">Estimulação sensorial<br>Fácil e eficaz</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container"><div class="divider"></div></div>
+
+<!-- ══════════════════════════════════════ AUTORA -->
+<section class="section-author">
+  <div class="container">
+    <div class="author-card reveal">
+      <div class="author-avatar"><img src="assets/luna_avatar.webp" alt="Luna Vieira" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
+      <div>
+        <div class="author-name">Luna Vieira</div>
+        <span class="author-role">Pesquisadora · Praticante · Autora</span>
+        <p class="author-bio">
+          Luna Vieira é pesquisadora independente do universo onírico e praticante de sonhos lúcidos há mais de 8 anos. Formada em Psicologia e especializada em estados alterados de consciência, ela une ciência e espiritualidade para guiar iniciantes na jornada dos sonhos lúcidos de forma acessível e transformadora.<br><br>
+          <em style="color: var(--lilac);">"Tudo que está neste guia é o que eu gostaria de ter tido quando comecei. Nenhum mistério, nenhum gatekeeping — só o método que funciona."</em>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ PREÇOS -->
 <section class="section-price" id="preco">
   <div class="container">
     <span class="section-label reveal">Escolha seu plano</span>
@@ -944,100 +1327,17 @@ footer p {
         <p class="price-guarantee">🔒 Compra segura · Pagamento único · Garantia de 7 dias</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════ TÉCNICAS -->
-<section class="section-techniques">
-  <div class="container">
-    <span class="section-label reveal">As técnicas que você vai dominar</span>
-    <h2 class="section-title reveal reveal-delay-1">5 caminhos para<br><em>a lucidez.</em></h2>
-    <p class="body-text reveal reveal-delay-2">Cada técnica tem um perfil ideal. Você aprende todas e encontra a combinação que funciona para você.</p>
-    <div class="technique-strip">
-      <div class="technique-pill">
-        <span class="technique-pill-name">MILD</span>
-        <span class="technique-pill-desc">Indução por memória<br>Ideal para iniciantes</span>
+    <!-- COUNTDOWN NOS PREÇOS -->
+    <div class="countdown-pricing reveal">
+      <p class="countdown-pricing-title">Esta oferta expira em:</p>
+      <div class="countdown-display">
+        <span class="countdown-unit"><span data-countdown-hours>23</span></span>
+        <span class="countdown-sep">:</span>
+        <span class="countdown-unit"><span data-countdown-minutes>59</span></span>
+        <span class="countdown-sep">:</span>
+        <span class="countdown-unit"><span data-countdown-seconds>59</span></span>
       </div>
-      <div class="technique-pill">
-        <span class="technique-pill-name">WILD</span>
-        <span class="technique-pill-desc">Acordado para o sonho<br>Transição direta</span>
-      </div>
-      <div class="technique-pill">
-        <span class="technique-pill-name">WBTB</span>
-        <span class="technique-pill-desc">Acorda e volta a dormir<br>Potencializador universal</span>
-      </div>
-      <div class="technique-pill">
-        <span class="technique-pill-name">DILD</span>
-        <span class="technique-pill-desc">Lúcido de dentro<br>Via Reality Check</span>
-      </div>
-      <div class="technique-pill">
-        <span class="technique-pill-name">SSILD</span>
-        <span class="technique-pill-desc">Estimulação sensorial<br>Fácil e eficaz</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container"><div class="divider"></div></div>
-
-<!-- ══════════════════════════════════════ DEPOIMENTOS -->
-<section class="section-proof">
-  <div class="container">
-    <span class="section-label reveal">Quem já despertou</span>
-    <h2 class="section-title reveal reveal-delay-1">Eles também<br>achavam <em>impossível.</em></h2>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Eu nunca lembrava de nenhum sonho. Com o diário de sonhos do guia, em menos de uma semana já estava lembrando de 2 ou 3 por noite. No décimo dia, tive meu primeiro sonho lúcido. Chorei de emoção quando acordei."</p>
-        <span class="testimonial-author">— Mariana R., 29 anos</span>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Comecei com MILD e nos primeiros dias parecia que não ia funcionar. Na terceira semana, segui o plano certinho e aconteceu. Estava voando sobre uma cidade iluminada e sabia exatamente que estava sonhando. Incrível."</p>
-        <span class="testimonial-author">— Felipe S., 34 anos</span>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"Tenho pesadelos recorrentes há anos. Depois de aprender sonhos lúcidos, consegui enfrentar o pesadelo conscientemente pela primeira vez. Desde então, ele não voltou mais. Isso sozinho já valeu muito mais do que paguei."</p>
-        <span class="testimonial-author">— Ana Paula M., 41 anos</span>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">★★★★★</div>
-        <p class="testimonial-text">"O plano de 21 dias é o diferencial. Não precisei me perguntar 'o que fazer hoje'. Só segui o guia. No dia 18 aconteceu. A sensação de clareza dentro do sonho é algo que não dá para descrever — você tem que experimentar."</p>
-        <span class="testimonial-author">— Lucas T., 26 anos</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════ PARA QUEM -->
-<section class="section-forwho">
-  <div class="container">
-    <span class="section-label reveal">Para quem é este guia</span>
-    <h2 class="section-title reveal reveal-delay-1">Este e-book é<br><em>para você</em> se…</h2>
-    <div class="forwho-list">
-      <div class="forwho-item reveal"><div class="forwho-dot"></div><p class="forwho-text">Você <strong>nunca teve um sonho lúcido</strong> e quer aprender do zero, sem precisar de experiência prévia.</p></div>
-      <div class="forwho-item reveal"><div class="forwho-dot"></div><p class="forwho-text">Você <strong>já tentou antes</strong> mas sem método estruturado — e ficou sem saber por que não funcionou.</p></div>
-      <div class="forwho-item reveal"><div class="forwho-dot"></div><p class="forwho-text">Você quer uma <strong>ferramenta prática de autoconhecimento</strong> que funciona enquanto você dorme.</p></div>
-      <div class="forwho-item reveal"><div class="forwho-dot"></div><p class="forwho-text">Você tem <strong>pesadelos recorrentes</strong> e quer aprender a enfrentá-los e transformá-los conscientemente.</p></div>
-      <div class="forwho-item reveal"><div class="forwho-dot"></div><p class="forwho-text">Você é <strong>curioso sobre a própria mente</strong> e quer explorar estados de consciência que poucas pessoas conhecem.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════ AUTORA -->
-<section class="section-author">
-  <div class="container">
-    <div class="author-card reveal">
-      <div class="author-avatar"><img src="assets/luna_avatar.webp" alt="Luna Vieira" style="width:100%;height:100%;object-fit:cover;border-radius:50%;"></div>
-      <div>
-        <div class="author-name">Luna Vieira</div>
-        <span class="author-role">Pesquisadora · Praticante · Autora</span>
-        <p class="author-bio">
-          Luna Vieira é pesquisadora independente do universo onírico e praticante de sonhos lúcidos há mais de 8 anos. Formada em Psicologia e especializada em estados alterados de consciência, ela une ciência e espiritualidade para guiar iniciantes na jornada dos sonhos lúcidos de forma acessível e transformadora.<br><br>
-          <em style="color: var(--lilac);">"Tudo que está neste guia é o que eu gostaria de ter tido quando comecei. Nenhum mistério, nenhum gatekeeping — só o método que funciona."</em>
-        </p>
-      </div>
+      <p class="countdown-pricing-warning">⏰ Após expiração, o preço volta ao normal</p>
     </div>
   </div>
 </section>
@@ -1338,6 +1638,56 @@ if (typeof gsap !== 'undefined') {
 } else {
   window.addEventListener('load', initGSAP);
 }
+</script>
+
+<!-- ══════════════════════════════════════ COUNTDOWN TIMER ═══ -->
+<script>
+(function(){
+  "use strict";
+  var KEY = '_fl_countdown';
+  var DURATION = 24 * 60 * 60 * 1000; // 24h em ms
+
+  function getTarget() {
+    var stored = localStorage.getItem(KEY);
+    if (stored && !isNaN(parseInt(stored))) {
+      var t = parseInt(stored);
+      if (Date.now() < t) return t;
+    }
+    var newTarget = Date.now() + DURATION;
+    localStorage.setItem(KEY, newTarget);
+    return newTarget;
+  }
+
+  var target = getTarget();
+
+  function update() {
+    var remaining = target - Date.now();
+    if (remaining <= 0) {
+      target = Date.now() + DURATION;
+      localStorage.setItem(KEY, target);
+      remaining = target - Date.now();
+    }
+
+    var h = Math.floor(remaining / 3600000);
+    var m = Math.floor((remaining % 3600000) / 60000);
+    var s = Math.floor((remaining % 60000) / 1000);
+
+    var hStr = h < 10 ? '0' + h : '' + h;
+    var mStr = m < 10 ? '0' + m : '' + m;
+    var sStr = s < 10 ? '0' + s : '' + s;
+
+    var hoursEls = document.querySelectorAll('[data-countdown-hours]');
+    var minsEls = document.querySelectorAll('[data-countdown-minutes]');
+    var secsEls = document.querySelectorAll('[data-countdown-seconds]');
+
+    for (var i = 0; i < hoursEls.length; i++) hoursEls[i].textContent = hStr;
+    for (var i = 0; i < minsEls.length; i++) minsEls[i].textContent = mStr;
+    for (var i = 0; i < secsEls.length; i++) secsEls[i].textContent = sStr;
+  }
+
+  update();
+  setInterval(update, 1000);
+})();
 </script>
 
 <!-- Tracking scripts — loaded after page content -->
