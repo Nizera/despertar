@@ -102,13 +102,14 @@ section {
 /* ── HERO ── */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 80px 24px 60px;
-  gap: 32px;
+  padding: 60px 16px 40px;
+  gap: 28px;
 }
 
 .hero-content {
@@ -119,12 +120,13 @@ section {
 .hero-video-container {
   position: relative;
   z-index: 2;
+  width: 100%;
+  max-width: 420px;
 }
 
 .hero-video-frame {
   position: relative;
   width: 100%;
-  max-width: 400px;
   border-radius: 12px;
   overflow: hidden;
   border: 2px solid rgba(232,184,75,0.25);
@@ -134,6 +136,44 @@ section {
 .hero-video {
   width: 100%;
   display: block;
+}
+
+.hero-play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7,5,15,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  cursor: pointer;
+  transition: opacity 0.4s;
+}
+
+.hero-play-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-play-btn {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(232,184,75,0.9);
+  border: none;
+  color: #0e0920;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 40px rgba(232,184,75,0.4);
+  padding-left: 4px;
+}
+
+.hero-play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 60px rgba(232,184,75,0.6);
 }
 
 .hero-sound-btn {
@@ -158,49 +198,6 @@ section {
 .hero-sound-btn:hover {
   background: rgba(10,7,20,0.9);
   border-color: var(--gold);
-}
-
-.hero-sound-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(7,5,15,0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-  cursor: pointer;
-  transition: opacity 0.4s;
-}
-
-.hero-sound-overlay.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.hero-sound-overlay-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  color: var(--moon);
-  animation: overlayPulse 2s ease-in-out infinite;
-}
-
-.hero-sound-overlay-inner svg {
-  width: 56px;
-  height: 56px;
-  color: var(--gold);
-}
-
-.hero-sound-overlay-inner span {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-@keyframes overlayPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.8; }
 }
 
 .hero-video-glow {
@@ -228,6 +225,24 @@ section {
 @keyframes ctaPulse {
   0%, 100% { box-shadow: 0 0 30px rgba(232,184,75,0.25); }
   50% { box-shadow: 0 0 50px rgba(232,184,75,0.5), 0 0 80px rgba(232,184,75,0.2); }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 12px 32px;
+    gap: 24px;
+  }
+  .hero-video-container {
+    max-width: 100%;
+  }
+  .hero-play-btn {
+    width: 64px;
+    height: 64px;
+  }
+  .hero-play-btn svg {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 .hero-eyebrow {
@@ -1166,33 +1181,29 @@ footer p {
       <video
         id="hero-video"
         src="https://eqqpnhqyggunrvjvmxyx.supabase.co/storage/v1/object/public/video%20vsl/hero-video.mp4"
-        autoplay
-        muted
         playsinline
         preload="auto"
         poster="assets/hero-poster.jpg"
         class="hero-video"
       ></video>
-      <div id="hero-sound-overlay" class="hero-sound-overlay">
-        <div class="hero-sound-overlay-inner">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      <audio id="hero-audio" src="audio%20ugc.mp3" preload="auto"></audio>
+      <div id="hero-play-overlay" class="hero-play-overlay">
+        <button id="hero-play-btn" class="hero-play-btn" aria-label="Assistir vídeo">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="6 3 20 12 6 21 6 3"></polygon>
           </svg>
-          <span>Toque para ativar o som</span>
-        </div>
+        </button>
       </div>
       <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Ativar/desativar som" style="display:none;">
-        <svg id="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-          <line x1="23" y1="9" x2="17" y2="15"></line>
-          <line x1="17" y1="9" x2="23" y2="15"></line>
-        </svg>
-        <svg id="icon-sound" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+        <svg id="icon-sound-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
           <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
           <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+        <svg id="icon-sound-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
         </svg>
       </button>
     </div>
@@ -1650,36 +1661,56 @@ function draw() {
 initScene();
 draw();
 
-// ── HERO SOUND TOGGLE ──
+// ── HERO VIDEO + AUDIO SYNC ──
 (function() {
   var video = document.getElementById('hero-video');
-  var overlay = document.getElementById('hero-sound-overlay');
-  var btn = document.getElementById('hero-sound-toggle');
-  var iconMuted = document.getElementById('icon-muted');
-  var iconSound = document.getElementById('icon-sound');
-  if (!video) return;
+  var audio = document.getElementById('hero-audio');
+  var playOverlay = document.getElementById('hero-play-overlay');
+  var playBtn = document.getElementById('hero-play-btn');
+  var soundBtn = document.getElementById('hero-sound-toggle');
+  var iconOn = document.getElementById('icon-sound-on');
+  var iconOff = document.getElementById('icon-sound-off');
+  var started = false;
 
-  function unmute() {
-    video.muted = false;
-    if (overlay) overlay.classList.add('hidden');
-    if (btn) btn.style.display = '';
-    if (iconMuted) iconMuted.style.display = 'none';
-    if (iconSound) iconSound.style.display = '';
-  }
+  if (!video || !audio) return;
 
-  function toggleSound() {
-    video.muted = !video.muted;
-    if (video.muted) {
-      if (iconMuted) iconMuted.style.display = '';
-      if (iconSound) iconSound.style.display = 'none';
-    } else {
-      if (iconMuted) iconMuted.style.display = 'none';
-      if (iconSound) iconSound.style.display = '';
+  // Sync audio with video on every time update
+  video.addEventListener('play', function() { if (started) audio.play(); });
+  video.addEventListener('pause', function() { audio.pause(); });
+  video.addEventListener('seeking', function() { audio.currentTime = video.currentTime; });
+  video.addEventListener('timeupdate', function() {
+    // Keep audio in sync (drift correction)
+    if (Math.abs(audio.currentTime - video.currentTime) > 0.3) {
+      audio.currentTime = video.currentTime;
     }
+  });
+  video.addEventListener('ended', function() { audio.pause(); audio.currentTime = 0; });
+
+  // Play button click
+  if (playOverlay) {
+    playOverlay.addEventListener('click', function() {
+      started = true;
+      audio.currentTime = 0;
+      video.play();
+      audio.play();
+      playOverlay.classList.add('hidden');
+      if (soundBtn) soundBtn.style.display = '';
+    });
   }
 
-  if (overlay) overlay.addEventListener('click', unmute);
-  if (btn) btn.addEventListener('click', toggleSound);
+  // Sound toggle
+  if (soundBtn) {
+    soundBtn.addEventListener('click', function() {
+      audio.muted = !audio.muted;
+      if (audio.muted) {
+        if (iconOn) iconOn.style.display = 'none';
+        if (iconOff) iconOff.style.display = '';
+      } else {
+        if (iconOn) iconOn.style.display = '';
+        if (iconOff) iconOff.style.display = 'none';
+      }
+    });
+  }
 })();
 
 // ── FAQ TOGGLE ──
