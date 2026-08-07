@@ -229,11 +229,18 @@ section {
 
 @media (max-width: 480px) {
   .hero {
-    padding: 40px 12px 32px;
-    gap: 24px;
+    min-height: auto;
+    padding: 32px 12px 24px;
+    gap: 20px;
+    justify-content: flex-start;
+    padding-top: 40px;
   }
   .hero-video-container {
     max-width: 100%;
+    width: 100%;
+  }
+  .hero-video-frame {
+    border-radius: 8px;
   }
   .hero-play-btn {
     width: 64px;
@@ -242,6 +249,18 @@ section {
   .hero-play-btn svg {
     width: 48px;
     height: 48px;
+  }
+  .hero-cta-wrap {
+    width: 100%;
+  }
+  .hero-cta-btn {
+    width: 100%;
+    max-width: 360px;
+    padding: 16px 32px;
+    font-size: 14px;
+  }
+  .hero-note {
+    font-size: 11px;
   }
 }
 
