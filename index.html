@@ -101,7 +101,6 @@ section {
 
 /* ── HERO ── */
 .hero {
-  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -109,14 +108,48 @@ section {
   justify-content: center;
   text-align: center;
   padding: 80px 24px 60px;
-  overflow: hidden;
+  gap: 48px;
 }
 
-.hero-video-wrap {
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-mockup {
+  position: relative;
+  z-index: 2;
+}
+
+.phone-mockup {
+  position: relative;
+  width: 280px;
+  height: 560px;
+  border-radius: 36px;
+  border: 3px solid rgba(232,184,75,0.3);
+  background: #0a0714;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(123,63,255,0.2), 0 20px 60px rgba(0,0,0,0.5);
+}
+
+.phone-notch {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 1;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 24px;
+  background: #0a0714;
+  border-radius: 0 0 16px 16px;
+  z-index: 3;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 33px;
 }
 
 .hero-video {
@@ -128,31 +161,51 @@ section {
 
 .hero-sound-btn {
   position: absolute;
-  bottom: 24px;
-  right: 24px;
-  width: 48px;
-  height: 48px;
+  bottom: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(10,7,20,0.6);
-  border: 1px solid rgba(232,184,75,0.3);
+  background: rgba(10,7,20,0.7);
+  border: 1px solid rgba(232,184,75,0.4);
   color: var(--gold);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 5;
+  z-index: 4;
   transition: background 0.3s, border-color 0.3s;
   backdrop-filter: blur(8px);
 }
 
 .hero-sound-btn:hover {
-  background: rgba(10,7,20,0.8);
+  background: rgba(10,7,20,0.9);
   border-color: var(--gold);
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
+.phone-home-bar {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  z-index: 3;
+}
+
+.phone-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 600px;
+  border-radius: 40px;
+  background: radial-gradient(ellipse, rgba(123,63,255,0.15) 0%, transparent 70%);
+  z-index: -1;
+  filter: blur(40px);
 }
 
 .hero-eyebrow {
@@ -1086,30 +1139,6 @@ footer p {
 
 <!-- ══════════════════════════════════════ HERO -->
 <section class="hero">
-  <div class="hero-video-wrap">
-    <video
-      id="hero-video"
-      src="assets/hero-video.mp4"
-      autoplay
-      muted
-      playsinline
-      preload="auto"
-      poster="assets/hero-poster.jpg"
-      class="hero-video"
-    ></video>
-    <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Ativar/desativar som">
-      <svg id="icon-muted" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-        <line x1="23" y1="9" x2="17" y2="15"></line>
-        <line x1="17" y1="9" x2="23" y2="15"></line>
-      </svg>
-      <svg id="icon-sound" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
-        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-      </svg>
-    </button>
-  </div>
   <div class="hero-content">
     <span class="hero-eyebrow">Guia de Sonhos Lúcidos</span>
     <h1 class="hero-title">
@@ -1119,6 +1148,37 @@ footer p {
     <p class="hero-sub">O método completo do zero ao seu primeiro sonho lúcido em 21 dias. Ciência, prática e transformação — tudo em um guia passo a passo.</p>
     <a href="#preco" class="btn-cta-large">QUERO COMEÇAR AGORA<span class="btn-flair"></span></a>
     <p class="hero-note">Acesso imediato · Pagamento único · Garantia de 7 dias · A partir de R$ 9,90</p>
+  </div>
+  <div class="hero-mockup">
+    <div class="phone-mockup">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <video
+          id="hero-video"
+          src="https://eqqpnhqyggunrvjvmxyx.supabase.co/storage/v1/object/public/video%20vsl/hero-video.mp4"
+          autoplay
+          muted
+          playsinline
+          preload="auto"
+          poster="assets/hero-poster.jpg"
+          class="hero-video"
+        ></video>
+        <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Ativar/desativar som">
+          <svg id="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+          <svg id="icon-sound" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="phone-home-bar"></div>
+    </div>
+    <div class="phone-glow"></div>
   </div>
 </section>
 
