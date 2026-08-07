@@ -21,3 +21,11 @@ Thumbs.db
 # Temp
 *.tmp
 _temp_*
+
+# Unused files
+entregaveis/
+pdfs/
+*.mp4
+*.rar
+*.png
+!src/
