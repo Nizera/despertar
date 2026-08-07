@@ -181,6 +181,49 @@ section {
   border-color: var(--gold);
 }
 
+.hero-sound-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7,5,15,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  cursor: pointer;
+  transition: opacity 0.4s;
+}
+
+.hero-sound-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-sound-overlay-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--moon);
+  animation: overlayPulse 2s ease-in-out infinite;
+}
+
+.hero-sound-overlay-inner svg {
+  width: 56px;
+  height: 56px;
+  color: var(--gold);
+}
+
+.hero-sound-overlay-inner span {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@keyframes overlayPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
 .hero-video-glow {
   position: absolute;
   top: 50%;
@@ -912,14 +955,6 @@ footer p {
 
 <!-- ══════════════════════════════════════ HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <span class="hero-eyebrow">Guia de Sonhos Lúcidos</span>
-    <h1 class="hero-title">
-      <span class="char-wrap"><em class="char">D</em><em class="char">e</em><em class="char">s</em><em class="char">p</em><em class="char">e</em><em class="char">r</em><em class="char">t</em><em class="char">e</em></span><br>
-      <span class="char-wrap"><span class="char">n</span><span class="char">o</span></span> <span class="char-wrap"><span class="char">S</span><span class="char">o</span><span class="char">n</span><span class="char">h</span><span class="char">o</span></span>
-    </h1>
-    <p class="hero-sub">O método completo do zero ao seu primeiro sonho lúcido em 21 dias. Ciência, prática e transformação — tudo em um guia passo a passo.</p>
-  </div>
   <div class="hero-video-container">
     <div class="hero-video-frame">
       <video
@@ -932,7 +967,17 @@ footer p {
         poster="assets/hero-poster.jpg"
         class="hero-video"
       ></video>
-      <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Ativar/desativar som">
+      <div id="hero-sound-overlay" class="hero-sound-overlay">
+        <div class="hero-sound-overlay-inner">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <span>Toque para ativar o som</span>
+        </div>
+      </div>
+      <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Ativar/desativar som" style="display:none;">
         <svg id="icon-muted" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
           <line x1="23" y1="9" x2="17" y2="15"></line>
@@ -1332,20 +1377,33 @@ draw();
 // ── HERO SOUND TOGGLE ──
 (function() {
   var video = document.getElementById('hero-video');
+  var overlay = document.getElementById('hero-sound-overlay');
   var btn = document.getElementById('hero-sound-toggle');
   var iconMuted = document.getElementById('icon-muted');
   var iconSound = document.getElementById('icon-sound');
-  if (!video || !btn) return;
-  btn.addEventListener('click', function() {
+  if (!video) return;
+
+  function unmute() {
+    video.muted = false;
+    if (overlay) overlay.classList.add('hidden');
+    if (btn) btn.style.display = '';
+    if (iconMuted) iconMuted.style.display = 'none';
+    if (iconSound) iconSound.style.display = '';
+  }
+
+  function toggleSound() {
     video.muted = !video.muted;
     if (video.muted) {
-      iconMuted.style.display = '';
-      iconSound.style.display = 'none';
+      if (iconMuted) iconMuted.style.display = '';
+      if (iconSound) iconSound.style.display = 'none';
     } else {
-      iconMuted.style.display = 'none';
-      iconSound.style.display = '';
+      if (iconMuted) iconMuted.style.display = 'none';
+      if (iconSound) iconSound.style.display = '';
     }
-  });
+  }
+
+  if (overlay) overlay.addEventListener('click', unmute);
+  if (btn) btn.addEventListener('click', toggleSound);
 })();
 
 // ── FAQ TOGGLE ──
