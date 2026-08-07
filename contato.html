@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contato — Desperte no Sonho</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = { darkMode: "class", theme: { extend: { colors: { "midnight-void": "#07050F", "on-surface": "#e7dff1", "on-surface-variant": "#cbc3d9", "primary": "#cfbdff", "lucid-magenta": "#FF2EF0" }, fontFamily: { "display": ["Libre Caslon Text"], "body": ["Inter"] } } } }
+</script>
+<style>body { background: #07050f; color: #e7dff1; }</style>
+</head>
+<body class="min-h-screen">
+<header class="border-b border-white/10 py-6 px-6">
+  <a href="index.html" class="font-display text-2xl text-lucid-magenta hover:opacity-80 transition-opacity">Desperte no Sonho</a>
+</header>
+<main class="max-w-3xl mx-auto px-6 py-16">
+  <h1 class="font-display text-4xl mb-8">Contato</h1>
+  <div class="space-y-8 text-on-surface-variant leading-relaxed">
+    <p>Tem alguma duvida, sugestao ou precisa de ajuda? Estamos aqui para voce.</p>
+
+    <div class="glass-card p-8 rounded-xl border border-white/10" style="background:rgba(33,30,42,0.6);backdrop-filter:blur(20px);">
+      <h2 class="font-display text-2xl text-on-surface mb-4">E-mail</h2>
+      <p class="mb-2">Para duvidas sobre o produto, compras ou suporte:</p>
+      <a href="mailto:contato@flowyn.com.br" class="text-lucid-magenta font-bold text-lg hover:underline">contato@flowyn.com.br</a>
+    </div>
+
+    <div class="glass-card p-8 rounded-xl border border-white/10" style="background:rgba(33,30,42,0.6);backdrop-filter:blur(20px);">
+      <h2 class="font-display text-2xl text-on-surface mb-4">Suporte</h2>
+      <p class="mb-2">Problemas com acesso ao produto, reembolso ou outros assuntos:</p>
+      <a href="suporte.html" class="text-lucid-magenta font-bold hover:underline">Acessar pagina de suporte →</a>
+    </div>
+
+    <div class="glass-card p-8 rounded-xl border border-white/10" style="background:rgba(33,30,42,0.6);backdrop-filter:blur(20px);">
+      <h2 class="font-display text-2xl text-on-surface mb-4">Tempo de Resposta</h2>
+      <p>Respondemos todos os e-mails em ate 48 horas uteis.</p>
+    </div>
+  </div>
+</main>
+<footer class="border-t border-white/5 py-8 px-6 text-center text-sm text-on-surface-variant opacity-60">
+  <a href="index.html" class="hover:text-lucid-magenta transition-colors">← Voltar para o site</a>
+</footer>
+</body>
+</html>
