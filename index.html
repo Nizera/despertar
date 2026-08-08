@@ -37,36 +37,13 @@
 
   <picture>
     <source srcset="sonhos-lucidos.webp" type="image/webp">
-    <img src="sonhos%20lucidos.png" alt="Desperte no Sonho" class="w-40 md:w-56 mb-2 object-contain fade-up" loading="eager" width="400" height="266">
+    <img src="sonhos%20lucidos.png" alt="Desperte no Sonho" class="w-48 md:w-64 mb-4 object-contain fade-up" loading="eager" width="400" height="266">
   </picture>
 
-  <div class="hero-video-container mb-4 fade-up fade-up-delay-1">
-    <div class="hero-video-frame">
-      <video id="hero-video"
-        src="https://eqqpnhqyggunrvjvmxyx.supabase.co/storage/v1/object/public/video%20vsl/hero-video.mp4"
-        playsinline preload="none" poster="assets/hero-poster.webp" class="hero-video"></video>
-      <audio id="hero-audio" src="audio%20ugc.mp3" preload="none"></audio>
-      <div id="hero-play-overlay" class="hero-play-overlay">
-        <button id="hero-play-btn" class="hero-play-btn" aria-label="Assistir video">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-        </button>
-      </div>
-      <button id="hero-sound-toggle" class="hero-sound-btn" aria-label="Ativar/desativar som" style="display:none;">
-        <svg id="icon-sound-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
-          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-        </svg>
-        <svg id="icon-sound-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-          <line x1="23" y1="9" x2="17" y2="15"></line>
-          <line x1="17" y1="9" x2="23" y2="15"></line>
-        </svg>
-      </button>
-    </div>
-  </div>
+  <h1 class="font-display-lg text-display-lg md:text-6xl max-w-4xl mx-auto mb-2 fade-up fade-up-delay-1">A noite mais <span class="italic text-lucid-magenta">incrivel</span> da sua vida comeca hoje.</h1>
+  <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-6 fade-up fade-up-delay-2">O guia completo do zero ao primeiro sonho lucido. Sem misterios, apenas metodo.</p>
 
-  <a class="bg-tertiary-container text-on-tertiary-container font-label-bold text-label-bold px-10 py-4 rounded-full text-lg cta-pulse transition-all mb-4 fade-up fade-up-delay-2" href="#precos" >QUERO COMECAR AGORA</a>
+  <a class="bg-tertiary-container text-on-tertiary-container font-label-bold text-label-bold px-10 py-4 rounded-full text-lg cta-pulse transition-all mb-4 fade-up fade-up-delay-2" href="#precos">QUERO COMECAR AGORA</a>
   <p class="font-caption text-caption text-on-surface-variant fade-up fade-up-delay-3">Acesso imediato · Pagamento unico · Garantia de 7 dias · A partir de R$ 9,90</p>
 </section>
 <!-- PARA QUEM E -->
@@ -364,49 +341,6 @@ function updateCountdown() {
 }
 setInterval(updateCountdown, 1000);
 updateCountdown();
-
-// Hero Video + Audio Sync
-(function() {
-  var video = document.getElementById('hero-video');
-  var audio = document.getElementById('hero-audio');
-  var overlay = document.getElementById('hero-play-overlay');
-  var playBtn = document.getElementById('hero-play-btn');
-  var soundBtn = document.getElementById('hero-sound-toggle');
-  var iconOn = document.getElementById('icon-sound-on');
-  var iconOff = document.getElementById('icon-sound-off');
-  var started = false;
-  if (!video || !audio) return;
-
-  video.addEventListener('play', function() { if (started) audio.play(); });
-  video.addEventListener('pause', function() { audio.pause(); });
-  video.addEventListener('seeking', function() { audio.currentTime = video.currentTime; });
-  video.addEventListener('timeupdate', function() {
-    if (Math.abs(audio.currentTime - video.currentTime) > 0.3) audio.currentTime = video.currentTime;
-  });
-  video.addEventListener('ended', function() { audio.pause(); audio.currentTime = 0; });
-
-  if (overlay) {
-    overlay.addEventListener('click', function() {
-      started = true;
-      audio.currentTime = 0;
-      audio.muted = false;
-      video.play();
-      audio.play();
-      overlay.classList.add('hidden');
-      if (soundBtn) soundBtn.style.display = '';
-      if (iconOn) iconOn.style.display = '';
-      if (iconOff) iconOff.style.display = 'none';
-    });
-  }
-
-  if (soundBtn) {
-    soundBtn.addEventListener('click', function() {
-      audio.muted = !audio.muted;
-      if (iconOn) iconOn.style.display = audio.muted ? 'none' : '';
-      if (iconOff) iconOff.style.display = audio.muted ? '' : 'none';
-    });
-  }
-})();
 
 // Scroll animations (IntersectionObserver)
 (function() {
