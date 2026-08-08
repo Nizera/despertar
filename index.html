@@ -265,6 +265,61 @@
   </div>
 </section>
 
+<!-- WHATSAPP DEPOIMENTOS -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop px-grid-margin bg-surface-container-lowest/50" id="whatsapp">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="font-label-bold text-label-bold text-primary mb-2 uppercase tracking-wider">Conversas Reais</p>
+      <h2 class="font-headline-lg text-headline-lg md:text-5xl">Veja o que nossos<br/><span class="italic text-lucid-magenta">alunos dizem.</span></h2>
+      <p class="font-body-md text-body-md text-on-surface-variant mt-4 max-w-2xl mx-auto">Mensagens reais de quem ja esta vivenciando sonhos lucidos com nosso metodo.</p>
+    </div>
+    
+    <div class="relative">
+      <!-- Carousel Container -->
+      <div id="whatsapp-carousel" class="overflow-hidden">
+        <div id="whatsapp-track" class="flex transition-transform duration-500 ease-in-out">
+          <!-- Slide 1 -->
+          <div class="w-full flex-shrink-0 px-4">
+            <div class="max-w-md mx-auto">
+              <img src="assets/whatsapp_iphone_transparent.png" alt="Depoimento WhatsApp - Primeiro Sonho Lucido" class="w-full rounded-2xl shadow-2xl fade-up">
+              <p class="text-center mt-4 font-body-sm text-on-surface-variant italic fade-up">"Luna!!! Tive 2 sonhos ontem e lembrei de TODOS"</p>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="w-full flex-shrink-0 px-4">
+            <div class="max-w-md mx-auto">
+              <img src="assets/whatsapp_ana_paula_transparent.png" alt="Depoimento WhatsApp - Pesadelos Transformados" class="w-full rounded-2xl shadow-2xl fade-up">
+              <p class="text-center mt-4 font-body-sm text-on-surface-variant italic fade-up">"Consegui enfrentar o pesadelo conscientemente"</p>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="w-full flex-shrink-0 px-4">
+            <div class="max-w-md mx-auto">
+              <img src="assets/whatsapp_felipe_consistent.png" alt="Depoementos WhatsApp - Primeiro Sonho Lucido" class="w-full rounded-2xl shadow-2xl fade-up">
+              <p class="text-center mt-4 font-body-sm text-on-surface-variant italic fade-up">"EU CONSEGUI!!! MEU PRIMEIRO SONHO LUCIDO!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Navigation Arrows -->
+      <button id="whatsapp-prev" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 rounded-full bg-surface-container border border-white/10 flex items-center justify-center text-on-surface hover:bg-primary-container transition-colors shadow-lg z-10">
+        <span class="material-symbols-outlined">chevron_left</span>
+      </button>
+      <button id="whatsapp-next" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 rounded-full bg-surface-container border border-white/10 flex items-center justify-center text-on-surface hover:bg-primary-container transition-colors shadow-lg z-10">
+        <span class="material-symbols-outlined">chevron_right</span>
+      </button>
+      
+      <!-- Dots Navigation -->
+      <div class="flex justify-center gap-3 mt-8">
+        <button class="whatsapp-dot w-3 h-3 rounded-full bg-primary transition-colors" data-slide="0"></button>
+        <button class="whatsapp-dot w-3 h-3 rounded-full bg-white/20 transition-colors" data-slide="1"></button>
+        <button class="whatsapp-dot w-3 h-3 rounded-full bg-white/20 transition-colors" data-slide="2"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRECOS -->
 <section class="py-section-gap-mobile md:py-section-gap-desktop px-grid-margin max-w-7xl mx-auto" id="precos">
   <div class="text-center mb-16 fade-up">
@@ -434,6 +489,54 @@ function toggleFaq(el) {
     icon.style.transform = 'rotate(45deg)';
   }
 }
+
+// WhatsApp Carousel
+(function() {
+  const track = document.getElementById('whatsapp-track');
+  const dots = document.querySelectorAll('.whatsapp-dot');
+  const prevBtn = document.getElementById('whatsapp-prev');
+  const nextBtn = document.getElementById('whatsapp-next');
+  let currentSlide = 0;
+  const totalSlides = 3;
+  
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((dot, index) => {
+      if (index === currentSlide) {
+        dot.classList.remove('bg-white/20');
+        dot.classList.add('bg-primary');
+      } else {
+        dot.classList.remove('bg-primary');
+        dot.classList.add('bg-white/20');
+      }
+    });
+  }
+  
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    });
+  }
+  
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      currentSlide = parseInt(dot.dataset.slide);
+      updateCarousel();
+    });
+  });
+  
+  // Auto-advance every 5 seconds
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+  }, 5000);
+})();
 
 // Countdown (end of day)
 function updateCountdown() {
