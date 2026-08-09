@@ -444,6 +444,16 @@
       totalSteps: 9
     };
 
+    // Clear any cached selections on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      document.querySelectorAll('[id^="btn-step-"]').forEach(btn => {
+        btn.disabled = true;
+      });
+    });
+
     // Flowyn Checkout URLs
     const CHECKOUTS = {
       basic: 'https://www.flowyn.com.br/r/395f65d1-8327-4ada-8707-036d31af523a?dest=/checkout/8927dbb7-5bd0-444d-a8f3-a45c13d5ab23',
@@ -508,8 +518,20 @@
       document.getElementById('progressBar').style.width = `${progress}%`;
     }
 
-    // Option Selection
+    // Option Selection (toggle)
     function selectOption(el, category, value) {
+      // Check if already selected
+      if (el.classList.contains('selected')) {
+        // Deselect
+        el.classList.remove('selected');
+        delete quizState.answers[category];
+        
+        // Disable next button
+        const stepNum = quizState.currentStep;
+        document.getElementById(`btn-step-${stepNum}`).disabled = true;
+        return;
+      }
+      
       // Remove previous selection
       el.parentElement.querySelectorAll('.quiz-option').forEach(opt => {
         opt.classList.remove('selected');
