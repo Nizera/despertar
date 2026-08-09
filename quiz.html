@@ -397,7 +397,8 @@
         <div class="quiz-result-card fade-in" id="resultCard">
           <div class="quiz-result-badge" id="resultBadge">SEU PERFIL</div>
           <h3 class="quiz-result-title" id="resultTitle">Carregando...</h3>
-          <p class="quiz-result-desc" id="resultDesc"></p>
+          <div class="quiz-result-desc" id="resultDesc"></div>
+          <ul id="resultFeatures" style="margin-top:16px; padding-left:20px;"></ul>
         </div>
 
         <div class="quiz-social-proof" style="margin:20px 0;">
@@ -409,10 +410,10 @@
           <span class="quiz-social-text"><strong id="buyerCount">847</strong> pessoas compraram hoje</span>
         </div>
 
-        <div class="quiz-price-box fade-in" style="animation-delay: 0.3s;">
-          <p class="quiz-price-old">De R$ 91</p>
-          <p class="quiz-price-new">R$ 19,90</p>
-          <p class="quiz-price-period">Pagamento único · Acesso vitalício</p>
+        <div class="quiz-price-box fade-in" style="animation-delay: 0.3s;" id="priceBox">
+          <p class="quiz-price-old" id="priceOld">De R$ 27</p>
+          <p class="quiz-price-new" id="priceNew">R$ 9,90</p>
+          <p class="quiz-price-period">Pagamento único · Acesso imediato</p>
         </div>
 
         <div class="quiz-guarantee" style="margin-bottom:16px;">
@@ -451,20 +452,23 @@
       beginner: {
         badge: '🌙 PERFIL INICIANTE',
         title: 'Sonhador Iniciante',
-        desc: 'Você está no início da jornada e isso é ótimo! Com o método certo, você pode ter seu primeiro sonho lúcido em até 21 dias. O Plano Básico é perfeito para você.',
-        plan: 'basic'
+        desc: '', // Will be populated dynamically
+        plan: 'basic',
+        features: ['E-book completo do zero ao primeiro sonho', 'Plano de 21 dias passo a passo', '5 técnicas comprovadas']
       },
       intermediate: {
         badge: '✨ PERFIL EVOLUÇÃO',
         title: 'Sonhador em Evolução',
-        desc: 'Você já deu os primeiros passos mas precisa de um método estruturado. Os bônus do Plano Completo vão acelerar seus resultados e trazer consistência.',
-        plan: 'complete'
+        desc: '', // Will be populated dynamically
+        plan: 'complete',
+        features: ['Tudo do plano básico', 'Diário dos Sonhos Premium', 'Planner 21 Dias', 'Manual Reality Checks']
       },
       advanced: {
         badge: '🚀 PERFIL EXPLORADOR',
         title: 'Explorador Onírico',
-        desc: 'Você já tem experiência mas quer dominar técnicas avançadas e ter consistência. O Plano Completo vai levar seu nível ao máximo.',
-        plan: 'complete'
+        desc: '', // Will be populated dynamically
+        plan: 'complete',
+        features: ['Técnicas avançadas de estabilização', 'Scripts de sonhos personalizados', 'Acesso vitalício a atualizações']
       }
     };
 
@@ -528,23 +532,90 @@
     function generateResult() {
       const { answers } = quizState;
       
-      // Logic to determine profile
-      let profile = 'beginner';
+      // Scoring system
+      let score = 0;
+      let profileType = '';
+      let recommendation = '';
+      let personalizedMsg = '';
       
-      if (answers.experience === 'often' || (answers.experience === 'sometimes' && answers.tried === 'some')) {
-        profile = 'advanced';
-      } else if (answers.experience === 'once' || answers.experience === 'sometimes' || answers.tried === 'failed') {
-        profile = 'intermediate';
+      // Experience scoring
+      if (answers.experience === 'never') score += 1;
+      else if (answers.experience === 'once') score += 2;
+      else if (answers.experience === 'sometimes') score += 3;
+      else if (answers.experience === 'often') score += 4;
+      
+      // Remember scoring
+      if (answers.remember === 'rarely') score += 1;
+      else if (answers.remember === 'sometimes') score += 2;
+      else if (answers.remember === 'always') score += 3;
+      else if (answers.remember === 'idk') score += 0;
+      
+      // Tried scoring
+      if (answers.tried === 'no') score += 0;
+      else if (answers.tried === 'failed') score += 2;
+      else if (answers.tried === 'some') score += 3;
+      
+      // Motivation impact
+      let motivationBonus = '';
+      if (answers.motivation === 'self') motivationBonus = 'autoconhecimento';
+      else if (answers.motivation === 'fun') motivationBonus = 'diversão e criatividade';
+      else if (answers.motivation === 'nightmares') motivationBonus = 'superar pesadelos';
+      else if (answers.motivation === 'creativity') motivationBonus = 'exploração criativa';
+      
+      // Fear impact
+      let fearMsg = '';
+      if (answers.fear === 'stuck') fearMsg = 'Nossos alunos relatam que sonhos lúcidos são seguros e controláveis. O guia ensina técnicas de segurança.';
+      else if (answers.fear === 'fail') fearMsg = 'Com garantia de 7 dias, você testa sem risco. Se não funcionar, devolvemos 100% do valor.';
+      else if (answers.fear === 'sleep') fearMsg = 'Na verdade, sonhos lúcidos melhoram a qualidade do sono. Você acorda mais descansado.';
+      else if (answers.fear === 'none') fearMsg = 'Sua atitude é perfeita para conseguir resultados rápidos!';
+      
+      // Time impact on plan
+      let planRecommendation = '';
+      if (answers.time === '5min') planRecommendation = 'Plano Básico';
+      else if (answers.time === '15min') planRecommendation = 'Plano Completo';
+      else if (answers.time === '20min') planRecommendation = 'Plano Completo';
+      
+      // Determine profile based on score
+      if (score <= 3) {
+        profileType = 'beginner';
+        personalizedMsg = `Você está começando do zero, e isso tem uma vantagem: aprender do jeito certo desde o início. Seu foco em ${motivationBonus} vai te guiar.`;
+      } else if (score <= 6) {
+        profileType = 'intermediate';
+        personalizedMsg = `Você já tem alguma experiência, o que é ótimo! Com um método estruturado, seus resultados vão acelerar. Seu interesse em ${motivationBonus} vai se intensificar.`;
+      } else {
+        profileType = 'advanced';
+        personalizedMsg = `Você já deu os primeiros passos e quer ir além. Suas técnicas atuais podem estar te limitando. Um sistema completo vai destravar seu potencial.`;
       }
       
-      const result = results[profile];
+      const result = results[profileType];
       
+      // Update UI with personalized content
       document.getElementById('resultBadge').textContent = result.badge;
       document.getElementById('resultTitle').textContent = result.title;
-      document.getElementById('resultDesc').textContent = result.desc;
+      document.getElementById('resultDesc').innerHTML = `
+        <p style="margin-bottom:12px;">${personalizedMsg}</p>
+        <p style="margin-bottom:12px;">${fearMsg}</p>
+        <p><strong>Recomendação:</strong> ${planRecommendation} é ideal para você.</p>
+      `;
       
-      // Set checkout URL
-      document.getElementById('checkoutBtn').setAttribute('data-plan', result.plan);
+      // Update features list
+      const featuresList = document.getElementById('resultFeatures');
+      featuresList.innerHTML = result.features.map(f => `<li style="margin-bottom:8px; color:#a89cb8;">✓ ${f}</li>`).join('');
+      
+      // Set checkout URL based on recommendation
+      const plan = planRecommendation === 'Plano Básico' ? 'basic' : 'complete';
+      document.getElementById('checkoutBtn').setAttribute('data-plan', plan);
+      
+      // Update CTA text based on plan
+      if (plan === 'basic') {
+        document.getElementById('checkoutBtn').textContent = 'QUERO COMEÇAR COM O E-BOOK';
+        document.getElementById('priceOld').textContent = 'De R$ 27';
+        document.getElementById('priceNew').textContent = 'R$ 9,90';
+      } else {
+        document.getElementById('checkoutBtn').textContent = 'QUERO O PLANO COMPLETO';
+        document.getElementById('priceOld').textContent = 'De R$ 91';
+        document.getElementById('priceNew').textContent = 'R$ 19,90';
+      }
       
       // Randomize buyer count
       document.getElementById('buyerCount').textContent = Math.floor(Math.random() * 200) + 700;
