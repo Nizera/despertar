@@ -14,6 +14,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <!-- Flowyn Tracker.js — injeta pixel Meta e gerencia eventos automaticamente -->
+  <script src="https://flowyn.com.br/t/395f65d1-8327-4ada-8707-036d31af523a.js" async></script>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background-color: #0e0920; color: #e8e0f0; font-family: 'Inter', sans-serif; min-height: 100vh; }
@@ -479,7 +481,15 @@
       document.getElementById(`step-${quizState.currentStep}`).classList.add('active');
       updateProgress();
       
+      // Flowyn/Meta Pixel Events
+      if (quizState.currentStep === 1) {
+        // Quiz started
+        if (typeof fbq !== 'undefined') fbq('track', 'ViewContent', { content_name: 'Quiz Iniciado' });
+      }
+      
       if (quizState.currentStep === 8) {
+        // Email capture page - trigger Lead event
+        if (typeof fbq !== 'undefined') fbq('track', 'Lead', { content_name: 'Quiz Email Capture' });
         generateResult();
         startTimer();
       }
@@ -522,6 +532,16 @@
         quizState.email = email;
         // Here you would send to your email service
         console.log('Email captured:', email);
+        
+        // Flowyn/Meta Pixel - CompleteRegistration event
+        if (typeof fbq !== 'undefined') {
+          fbq('track', 'CompleteRegistration', { 
+            content_name: 'Quiz Completo',
+            value: 19.90,
+            currency: 'BRL'
+          });
+        }
+        
         nextStep();
       } else {
         alert('Por favor, insira um email válido.');
