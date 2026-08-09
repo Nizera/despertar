@@ -595,27 +595,18 @@
       document.getElementById('resultDesc').innerHTML = `
         <p style="margin-bottom:12px;">${personalizedMsg}</p>
         <p style="margin-bottom:12px;">${fearMsg}</p>
-        <p><strong>Recomendação:</strong> ${planRecommendation} é ideal para você.</p>
+        <p><strong>Plano Completo</strong> é ideal para você.</p>
       `;
       
       // Update features list
       const featuresList = document.getElementById('resultFeatures');
       featuresList.innerHTML = result.features.map(f => `<li style="margin-bottom:8px; color:#a89cb8;">✓ ${f}</li>`).join('');
       
-      // Set checkout URL based on recommendation
-      const plan = planRecommendation === 'Plano Básico' ? 'basic' : 'complete';
-      document.getElementById('checkoutBtn').setAttribute('data-plan', plan);
-      
-      // Update CTA text based on plan
-      if (plan === 'basic') {
-        document.getElementById('checkoutBtn').textContent = 'QUERO COMEÇAR COM O E-BOOK';
-        document.getElementById('priceOld').textContent = 'De R$ 27';
-        document.getElementById('priceNew').textContent = 'R$ 9,90';
-      } else {
-        document.getElementById('checkoutBtn').textContent = 'QUERO O PLANO COMPLETO';
-        document.getElementById('priceOld').textContent = 'De R$ 91';
-        document.getElementById('priceNew').textContent = 'R$ 19,90';
-      }
+      // Always set to Complete plan (R$19,90)
+      document.getElementById('checkoutBtn').setAttribute('data-plan', 'complete');
+      document.getElementById('checkoutBtn').textContent = 'QUERO MEU PRIMEIRO SONHO LUCIDO';
+      document.getElementById('priceOld').textContent = 'De R$ 91';
+      document.getElementById('priceNew').textContent = 'R$ 19,90';
       
       // Randomize buyer count
       document.getElementById('buyerCount').textContent = Math.floor(Math.random() * 200) + 700;
