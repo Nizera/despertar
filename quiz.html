@@ -40,7 +40,8 @@
     .quiz-option { background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 16px 20px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 12px; }
     .quiz-option:hover { border-color: #FF2EF0; background: rgba(255,46,240,0.1); transform: translateY(-2px); }
     .quiz-option.selected { border-color: #FF2EF0; background: rgba(255,46,240,0.15); }
-    .quiz-option-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,46,240,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .quiz-option-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,46,240,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .quiz-option-icon .material-symbols-outlined { font-size: 20px; color: #FF2EF0; }
     .quiz-option-text { flex: 1; }
     .quiz-option-text h4 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
     .quiz-option-text p { font-size: 13px; color: #a89cb8; }
@@ -106,7 +107,7 @@
     <!-- Step 1: Intro -->
     <div id="step-0" class="quiz-step active">
       <div style="flex:1; display:flex; flex-direction:column; justify-content:center; text-align:center;">
-        <div style="font-size:64px; margin-bottom:24px;">🌙</div>
+        <span class="material-symbols-outlined" style="font-size:72px; color:#FF2EF0; margin-bottom:24px; font-variation-settings: 'FILL' 1;">bedtime</span>
         <h2 class="quiz-question" style="font-size:28px;">Você está pronto para <span>despertar</span> nos seus sonhos?</h2>
         <p style="color:#a89cb8; margin-bottom:32px;">Responda 7 perguntas rápidas e descubra o plano perfeito para você.</p>
         <div class="quiz-social-proof">
@@ -129,28 +130,28 @@
         <h3 class="quiz-question">Você já teve um <span>sonho lúcido</span> na vida?</h3>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOption(this, 'experience', 'never')">
-            <div class="quiz-option-icon">😴</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">sleep</span></div>
             <div class="quiz-option-text">
               <h4>Nunca</h4>
               <p>Nem sei se já sonhei lúcido</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'experience', 'once')">
-            <div class="quiz-option-icon">✨</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">visibility</span></div>
             <div class="quiz-option-text">
               <h4>Uma vez</h4>
               <p>Acho que sim, mas não tenho certeza</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'experience', 'sometimes')">
-            <div class="quiz-option-icon">🌟</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">auto_awesome</span></div>
             <div class="quiz-option-text">
               <h4>Às vezes</h4>
               <p>Já tive alguns, mas sem controle</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'experience', 'often')">
-            <div class="quiz-option-icon">🚀</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">rocket_launch</span></div>
             <div class="quiz-option-text">
               <h4>Frequentemente</h4>
               <p>Já tenho sonhos lúcidos regulares</p>
@@ -168,28 +169,28 @@
         <h3 class="quiz-question">Com que frequência você <span>lembra</span> dos seus sonhos?</h3>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOption(this, 'remember', 'rarely')">
-            <div class="quiz-option-icon">🤔</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">psychology_alt</span></div>
             <div class="quiz-option-text">
               <h4>Raramente</h4>
               <p>Talvez 1x por mês</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'remember', 'sometimes')">
-            <div class="quiz-option-icon">💭</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">edit_note</span></div>
             <div class="quiz-option-text">
               <h4>Às vezes</h4>
               <p>Alguns sonhos por semana</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'remember', 'always')">
-            <div class="quiz-option-icon">📖</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">book</span></div>
             <div class="quiz-option-text">
               <h4>Sempre</h4>
               <p>Lembro de vários toda noite</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'remember', 'idk')">
-            <div class="quiz-option-icon">❓</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">help</span></div>
             <div class="quiz-option-text">
               <h4>Não sei</h4>
               <p>Nunca prestei atenção nisso</p>
@@ -207,21 +208,21 @@
         <h3 class="quiz-question">Você já <span>tentou</span> techniques de sonhos lúcidos?</h3>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOption(this, 'tried', 'no')">
-            <div class="quiz-option-icon">🆕</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">new_releases</span></div>
             <div class="quiz-option-text">
               <h4>Não, nunca</h4>
               <p>Não sei nem por onde começar</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'tried', 'failed')">
-            <div class="quiz-option-icon">😤</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">block</span></div>
             <div class="quiz-option-text">
               <h4>Sim, mas não funcionou</h4>
               <p>Tentei sozinho e desisti</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'tried', 'some')">
-            <div class="quiz-option-icon">📈</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">trending_up</span></div>
             <div class="quiz-option-text">
               <h4>Sim, com algum sucesso</h4>
               <p>Tive resultados mas inconsistente</p>
@@ -239,28 +240,28 @@
         <h3 class="quiz-question">O que mais te <span>atrai</span> em sonhos lúcidos?</h3>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOption(this, 'motivation', 'self')">
-            <div class="quiz-option-icon">🧠</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">psychology</span></div>
             <div class="quiz-option-text">
               <h4>Autoconhecimento</h4>
               <p>Explorar minha mente</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'motivation', 'fun')">
-            <div class="quiz-option-icon">🎮</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">sports_esports</span></div>
             <div class="quiz-option-text">
               <h4>Diversão</h4>
               <p>Voar, criar mundos, me divertir</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'motivation', 'nightmares')">
-            <div class="quiz-option-icon">🛡️</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">shield</span></div>
             <div class="quiz-option-text">
               <h4>Superar pesadelos</h4>
               <p>Enfrentar medos conscientemente</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'motivation', 'creativity')">
-            <div class="quiz-option-icon">🎨</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">palette</span></div>
             <div class="quiz-option-text">
               <h4>Criatividade</h4>
               <p>Inspiração para arte e ideias</p>
@@ -278,21 +279,21 @@
         <h3 class="quiz-question">Quanto tempo você pode <span>dedicar</span> por dia?</h3>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOption(this, 'time', '5min')">
-            <div class="quiz-option-icon">⏱️</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">bolt</span></div>
             <div class="quiz-option-text">
               <h4>5 minutos</h4>
               <p>Só o básico, sem frescura</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'time', '15min')">
-            <div class="quiz-option-icon">⏰</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">schedule</span></div>
             <div class="quiz-option-text">
               <h4>10-15 minutos</h4>
               <p>Uma prática decente</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'time', '20min')">
-            <div class="quiz-option-icon">🎯</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">flag</span></div>
             <div class="quiz-option-text">
               <h4>20+ minutos</h4>
               <p>Quero resultados rápidos</p>
@@ -310,28 +311,28 @@
         <h3 class="quiz-question">Qual seu <span>maior medo</span> sobre sonhos lúcidos?</h3>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOption(this, 'fear', 'stuck')">
-            <div class="quiz-option-icon">😱</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">lock</span></div>
             <div class="quiz-option-text">
               <h4>Ficar preso no sonho</h4>
               <p>Não conseguir acordar</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'fear', 'fail')">
-            <div class="quiz-option-icon">😔</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">trending_down</span></div>
             <div class="quiz-option-text">
               <h4>Não conseguir</h4>
               <p>Investir e não funcionar</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'fear', 'sleep')">
-            <div class="quiz-option-icon">😴</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">hotel</span></div>
             <div class="quiz-option-text">
               <h4>Perder sono</h4>
               <p>Dormir mal ou acordar cansado</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'fear', 'none')">
-            <div class="quiz-option-icon">💪</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">fitness_center</span></div>
             <div class="quiz-option-text">
               <h4>Nenhum medo</h4>
               <p>Estou pronto para tudo</p>
@@ -349,21 +350,21 @@
         <h3 class="quiz-question">Em quanto tempo você quer seu <span>primeiro sonho lúcido</span>?</h3>
         <div class="quiz-options">
           <div class="quiz-option" onclick="selectOption(this, 'urgency', '7days')">
-            <div class="quiz-option-icon">🔥</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">local_fire_department</span></div>
             <div class="quiz-option-text">
               <h4>7 dias</h4>
               <p>Quero resultados AGORA</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'urgency', '14days')">
-            <div class="quiz-option-icon">⚡</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">flash_on</span></div>
             <div class="quiz-option-text">
               <h4>14 dias</h4>
               <p>Um prazo razoável</p>
             </div>
           </div>
           <div class="quiz-option" onclick="selectOption(this, 'urgency', '21days')">
-            <div class="quiz-option-icon">🌙</div>
+            <div class="quiz-option-icon"><span class="material-symbols-outlined">calendar_month</span></div>
             <div class="quiz-option-text">
               <h4>21 dias</h4>
               <p>No meu próprio ritmo</p>
@@ -378,7 +379,7 @@
     <div id="step-8" class="quiz-step">
       <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
         <div style="text-align:center; margin-bottom:32px;">
-          <div style="font-size:48px; margin-bottom:16px;">🎁</div>
+          <span class="material-symbols-outlined" style="font-size:64px; color:#FF2EF0; margin-bottom:16px;">mail</span>
           <h2 class="quiz-question" style="font-size:24px;">Quase lá! Guarde seu <span>resultado personalizado</span></h2>
           <p style="color:#a89cb8; font-size:14px;">Digite seu email para receber o plano completo + bônus exclusivos.</p>
         </div>
