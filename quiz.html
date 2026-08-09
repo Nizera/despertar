@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Descubra seu perfil de sonhos lucidos e receba um plano personalizado em 2 minutos."/>
+  <title>Quiz: Qual é o seu perfil de sonhos lúcidos? — Desperte no Sonho</title>
+  <meta property="og:title" content="Quiz: Qual é o seu perfil de sonhos lúcidos?"/>
+  <meta property="og:description" content="Descubra seu perfil e receba um plano personalizado para ter seu primeiro sonho lúcido."/>
+  <meta property="og:image" content="https://despertarnosonho.vercel.app/sonhos-lucidos.webp"/>
+  <meta property="og:url" content="https://despertarnosonho.vercel.app/quiz.html"/>
+  <link rel="stylesheet" href="dist/output.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: #0e0920; color: #e8e0f0; font-family: 'Inter', sans-serif; min-height: 100vh; }
+    
+    .quiz-container { max-width: 640px; margin: 0 auto; padding: 20px; min-height: 100vh; display: flex; flex-direction: column; }
+    
+    .quiz-progress { position: fixed; top: 0; left: 0; right: 0; height: 4px; background: rgba(255,255,255,0.1); z-index: 100; }
+    .quiz-progress-bar { height: 100%; background: linear-gradient(90deg, #FF2EF0, #9d66ff); transition: width 0.5s ease; }
+    
+    .quiz-header { text-align: center; padding: 40px 0 20px; }
+    .quiz-header h1 { font-family: 'Libre Caslon Text', serif; font-size: 28px; margin-bottom: 8px; }
+    .quiz-header p { color: #a89cb8; font-size: 14px; }
+    
+    .quiz-step { display: none; flex: 1; }
+    .quiz-step.active { display: flex; flex-direction: column; }
+    
+    .quiz-question { font-family: 'Libre Caslon Text', serif; font-size: 22px; text-align: center; margin-bottom: 24px; line-height: 1.4; }
+    .quiz-question span { color: #FF2EF0; font-style: italic; }
+    
+    .quiz-options { display: flex; flex-direction: column; gap: 12px; }
+    
+    .quiz-option { background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 16px 20px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 12px; }
+    .quiz-option:hover { border-color: #FF2EF0; background: rgba(255,46,240,0.1); transform: translateY(-2px); }
+    .quiz-option.selected { border-color: #FF2EF0; background: rgba(255,46,240,0.15); }
+    .quiz-option-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,46,240,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+    .quiz-option-text { flex: 1; }
+    .quiz-option-text h4 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+    .quiz-option-text p { font-size: 13px; color: #a89cb8; }
+    
+    .quiz-btn { width: 100%; padding: 16px; border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; margin-top: auto; }
+    .quiz-btn-primary { background: linear-gradient(135deg, #FF2EF0, #9d66ff); color: white; }
+    .quiz-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,46,240,0.3); }
+    .quiz-btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .quiz-btn-secondary { background: transparent; border: 2px solid rgba(255,255,255,0.2); color: white; }
+    .quiz-btn-secondary:hover { border-color: #FF2EF0; }
+    
+    .quiz-email-input { width: 100%; padding: 16px; border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; background: rgba(255,255,255,0.05); color: white; font-size: 16px; margin-bottom: 12px; }
+    .quiz-email-input:focus { outline: none; border-color: #FF2EF0; }
+    .quiz-email-input::placeholder { color: #6b5c7a; }
+    
+    .quiz-timer { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; background: rgba(255,46,240,0.1); border-radius: 8px; margin-bottom: 20px; }
+    .quiz-timer-icon { color: #FF2EF0; }
+    .quiz-timer-text { font-size: 14px; color: #FF2EF0; font-weight: 700; }
+    
+    .quiz-result-card { background: rgba(255,255,255,0.05); border: 2px solid rgba(255,46,240,0.3); border-radius: 16px; padding: 24px; margin-bottom: 20px; }
+    .quiz-result-badge { display: inline-block; padding: 6px 12px; background: rgba(255,46,240,0.2); border-radius: 20px; font-size: 12px; font-weight: 700; color: #FF2EF0; margin-bottom: 12px; }
+    .quiz-result-title { font-family: 'Libre Caslon Text', serif; font-size: 24px; margin-bottom: 8px; }
+    .quiz-result-desc { color: #a89cb8; font-size: 14px; line-height: 1.6; }
+    
+    .quiz-price-box { background: linear-gradient(135deg, rgba(255,46,240,0.1), rgba(157,102,255,0.1)); border: 2px solid #FF2EF0; border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 16px; }
+    .quiz-price-old { text-decoration: line-through; color: #6b5c7a; font-size: 14px; }
+    .quiz-price-new { font-family: 'Libre Caslon Text', serif; font-size: 48px; color: #FF2EF0; }
+    .quiz-price-period { font-size: 14px; color: #a89cb8; }
+    
+    .quiz-guarantee { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; background: rgba(34,197,94,0.1); border-radius: 8px; color: #22c55e; font-size: 13px; }
+    
+    .quiz-social-proof { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 20px; }
+    .quiz-avatars { display: flex; }
+    .quiz-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #0e0920; margin-left: -8px; }
+    .quiz-avatar:first-child { margin-left: 0; }
+    .quiz-social-text { font-size: 13px; color: #a89cb8; }
+    .quiz-social-text strong { color: white; }
+    
+    .quiz-counter { text-align: center; padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px; margin-bottom: 20px; }
+    .quiz-counter-number { font-size: 32px; font-weight: 700; color: #FF2EF0; }
+    .quiz-counter-label { font-size: 12px; color: #a89cb8; }
+    
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeIn 0.5s ease forwards; }
+    
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+    .pulse { animation: pulse 2s infinite; }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="quiz-progress">
+    <div id="progressBar" class="quiz-progress-bar" style="width: 10%"></div>
+  </div>
+
+  <div class="quiz-container">
+    <!-- Header -->
+    <div class="quiz-header">
+      <h1><span class="text-lucid-magenta">Sonhos Lúcidos</span></h1>
+      <p>Descubra seu perfil em 2 minutos</p>
+    </div>
+
+    <!-- Step 1: Intro -->
+    <div id="step-0" class="quiz-step active">
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; text-align:center;">
+        <div style="font-size:64px; margin-bottom:24px;">🌙</div>
+        <h2 class="quiz-question" style="font-size:28px;">Você está pronto para <span>despertar</span> nos seus sonhos?</h2>
+        <p style="color:#a89cb8; margin-bottom:32px;">Responda 7 perguntas rápidas e descubra o plano perfeito para você.</p>
+        <div class="quiz-social-proof">
+          <div class="quiz-avatars">
+            <img src="https://i.pravatar.cc/32?img=1" class="quiz-avatar" alt="">
+            <img src="https://i.pravatar.cc/32?img=5" class="quiz-avatar" alt="">
+            <img src="https://i.pravatar.cc/32?img=8" class="quiz-avatar" alt="">
+            <img src="https://i.pravatar.cc/32?img=11" class="quiz-avatar" alt="">
+          </div>
+          <span class="quiz-social-text"><strong>+2.847 pessoas</strong> já responderam</span>
+        </div>
+      </div>
+      <button class="quiz-btn quiz-btn-primary pulse" onclick="nextStep()">COMEÇAR O QUIZ →</button>
+    </div>
+
+    <!-- Step 2: Experiência -->
+    <div id="step-1" class="quiz-step">
+      <div style="flex:1;">
+        <p class="quiz-counter"><span class="quiz-counter-number">1</span> de 7</p>
+        <h3 class="quiz-question">Você já teve um <span>sonho lúcido</span> na vida?</h3>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this, 'experience', 'never')">
+            <div class="quiz-option-icon">😴</div>
+            <div class="quiz-option-text">
+              <h4>Nunca</h4>
+              <p>Nem sei se já sonhei lúcido</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'experience', 'once')">
+            <div class="quiz-option-icon">✨</div>
+            <div class="quiz-option-text">
+              <h4>Uma vez</h4>
+              <p>Acho que sim, mas não tenho certeza</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'experience', 'sometimes')">
+            <div class="quiz-option-icon">🌟</div>
+            <div class="quiz-option-text">
+              <h4>Às vezes</h4>
+              <p>Já tive alguns, mas sem controle</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'experience', 'often')">
+            <div class="quiz-option-icon">🚀</div>
+            <div class="quiz-option-text">
+              <h4>Frequentemente</h4>
+              <p>Já tenho sonhos lúcidos regulares</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="btn-step-1" class="quiz-btn quiz-btn-primary" disabled onclick="nextStep()">PRÓXIMA →</button>
+    </div>
+
+    <!-- Step 3: Lembrete -->
+    <div id="step-2" class="quiz-step">
+      <div style="flex:1;">
+        <p class="quiz-counter"><span class="quiz-counter-number">2</span> de 7</p>
+        <h3 class="quiz-question">Com que frequência você <span>lembra</span> dos seus sonhos?</h3>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this, 'remember', 'rarely')">
+            <div class="quiz-option-icon">🤔</div>
+            <div class="quiz-option-text">
+              <h4>Raramente</h4>
+              <p>Talvez 1x por mês</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'remember', 'sometimes')">
+            <div class="quiz-option-icon">💭</div>
+            <div class="quiz-option-text">
+              <h4>Às vezes</h4>
+              <p>Alguns sonhos por semana</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'remember', 'always')">
+            <div class="quiz-option-icon">📖</div>
+            <div class="quiz-option-text">
+              <h4>Sempre</h4>
+              <p>Lembro de vários toda noite</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'remember', 'idk')">
+            <div class="quiz-option-icon">❓</div>
+            <div class="quiz-option-text">
+              <h4>Não sei</h4>
+              <p>Nunca prestei atenção nisso</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="btn-step-2" class="quiz-btn quiz-btn-primary" disabled onclick="nextStep()">PRÓXIMA →</button>
+    </div>
+
+    <!-- Step 4: Tentativas -->
+    <div id="step-3" class="quiz-step">
+      <div style="flex:1;">
+        <p class="quiz-counter"><span class="quiz-counter-number">3</span> de 7</p>
+        <h3 class="quiz-question">Você já <span>tentou</span> techniques de sonhos lúcidos?</h3>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this, 'tried', 'no')">
+            <div class="quiz-option-icon">🆕</div>
+            <div class="quiz-option-text">
+              <h4>Não, nunca</h4>
+              <p>Não sei nem por onde começar</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'tried', 'failed')">
+            <div class="quiz-option-icon">😤</div>
+            <div class="quiz-option-text">
+              <h4>Sim, mas não funcionou</h4>
+              <p>Tentei sozinho e desisti</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'tried', 'some')">
+            <div class="quiz-option-icon">📈</div>
+            <div class="quiz-option-text">
+              <h4>Sim, com algum sucesso</h4>
+              <p>Tive resultados mas inconsistente</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="btn-step-3" class="quiz-btn quiz-btn-primary" disabled onclick="nextStep()">PRÓXIMA →</button>
+    </div>
+
+    <!-- Step 5: Motivação -->
+    <div id="step-4" class="quiz-step">
+      <div style="flex:1;">
+        <p class="quiz-counter"><span class="quiz-counter-number">4</span> de 7</p>
+        <h3 class="quiz-question">O que mais te <span>atrai</span> em sonhos lúcidos?</h3>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this, 'motivation', 'self')">
+            <div class="quiz-option-icon">🧠</div>
+            <div class="quiz-option-text">
+              <h4>Autoconhecimento</h4>
+              <p>Explorar minha mente</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'motivation', 'fun')">
+            <div class="quiz-option-icon">🎮</div>
+            <div class="quiz-option-text">
+              <h4>Diversão</h4>
+              <p>Voar, criar mundos, me divertir</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'motivation', 'nightmares')">
+            <div class="quiz-option-icon">🛡️</div>
+            <div class="quiz-option-text">
+              <h4>Superar pesadelos</h4>
+              <p>Enfrentar medos conscientemente</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'motivation', 'creativity')">
+            <div class="quiz-option-icon">🎨</div>
+            <div class="quiz-option-text">
+              <h4>Criatividade</h4>
+              <p>Inspiração para arte e ideias</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="btn-step-4" class="quiz-btn quiz-btn-primary" disabled onclick="nextStep()">PRÓXIMA →</button>
+    </div>
+
+    <!-- Step 6: Tempo -->
+    <div id="step-5" class="quiz-step">
+      <div style="flex:1;">
+        <p class="quiz-counter"><span class="quiz-counter-number">5</span> de 7</p>
+        <h3 class="quiz-question">Quanto tempo você pode <span>dedicar</span> por dia?</h3>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this, 'time', '5min')">
+            <div class="quiz-option-icon">⏱️</div>
+            <div class="quiz-option-text">
+              <h4>5 minutos</h4>
+              <p>Só o básico, sem frescura</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'time', '15min')">
+            <div class="quiz-option-icon">⏰</div>
+            <div class="quiz-option-text">
+              <h4>10-15 minutos</h4>
+              <p>Uma prática decente</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'time', '20min')">
+            <div class="quiz-option-icon">🎯</div>
+            <div class="quiz-option-text">
+              <h4>20+ minutos</h4>
+              <p>Quero resultados rápidos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="btn-step-5" class="quiz-btn quiz-btn-primary" disabled onclick="nextStep()">PRÓXIMA →</button>
+    </div>
+
+    <!-- Step 7: Medo -->
+    <div id="step-6" class="quiz-step">
+      <div style="flex:1;">
+        <p class="quiz-counter"><span class="quiz-counter-number">6</span> de 7</p>
+        <h3 class="quiz-question">Qual seu <span>maior medo</span> sobre sonhos lúcidos?</h3>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this, 'fear', 'stuck')">
+            <div class="quiz-option-icon">😱</div>
+            <div class="quiz-option-text">
+              <h4>Ficar preso no sonho</h4>
+              <p>Não conseguir acordar</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'fear', 'fail')">
+            <div class="quiz-option-icon">😔</div>
+            <div class="quiz-option-text">
+              <h4>Não conseguir</h4>
+              <p>Investir e não funcionar</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'fear', 'sleep')">
+            <div class="quiz-option-icon">😴</div>
+            <div class="quiz-option-text">
+              <h4>Perder sono</h4>
+              <p>Dormir mal ou acordar cansado</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'fear', 'none')">
+            <div class="quiz-option-icon">💪</div>
+            <div class="quiz-option-text">
+              <h4>Nenhum medo</h4>
+              <p>Estou pronto para tudo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="btn-step-6" class="quiz-btn quiz-btn-primary" disabled onclick="nextStep()">PRÓXIMA →</button>
+    </div>
+
+    <!-- Step 8: Urgência -->
+    <div id="step-7" class="quiz-step">
+      <div style="flex:1;">
+        <p class="quiz-counter"><span class="quiz-counter-number">7</span> de 7</p>
+        <h3 class="quiz-question">Em quanto tempo você quer seu <span>primeiro sonho lúcido</span>?</h3>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="selectOption(this, 'urgency', '7days')">
+            <div class="quiz-option-icon">🔥</div>
+            <div class="quiz-option-text">
+              <h4>7 dias</h4>
+              <p>Quero resultados AGORA</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'urgency', '14days')">
+            <div class="quiz-option-icon">⚡</div>
+            <div class="quiz-option-text">
+              <h4>14 dias</h4>
+              <p>Um prazo razoável</p>
+            </div>
+          </div>
+          <div class="quiz-option" onclick="selectOption(this, 'urgency', '21days')">
+            <div class="quiz-option-icon">🌙</div>
+            <div class="quiz-option-text">
+              <h4>21 dias</h4>
+              <p>No meu próprio ritmo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button id="btn-step-7" class="quiz-btn quiz-btn-primary" disabled onclick="nextStep()">VER MEU RESULTADO →</button>
+    </div>
+
+    <!-- Step 9: Email Capture -->
+    <div id="step-8" class="quiz-step">
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center;">
+        <div style="text-align:center; margin-bottom:32px;">
+          <div style="font-size:48px; margin-bottom:16px;">🎁</div>
+          <h2 class="quiz-question" style="font-size:24px;">Quase lá! Guarde seu <span>resultado personalizado</span></h2>
+          <p style="color:#a89cb8; font-size:14px;">Digite seu email para receber o plano completo + bônus exclusivos.</p>
+        </div>
+        <input type="email" id="emailInput" class="quiz-email-input" placeholder="Seu melhor email" required>
+        <p style="font-size:12px; color:#6b5c7a; text-align:center; margin-bottom:16px;">Prometemos: sem spam. Apenas dicas úteis sobre sonhos lúcidos.</p>
+        <button class="quiz-btn quiz-btn-primary" onclick="submitEmail()">ENVIAR E VER RESULTADO →</button>
+      </div>
+    </div>
+
+    <!-- Step 10: Resultado -->
+    <div id="step-9" class="quiz-step">
+      <div style="flex:1;">
+        <div class="quiz-timer">
+          <span class="material-symbols-outlined quiz-timer-icon">timer</span>
+          <span class="quiz-timer-text">Oferta expira em: <span id="quizTimer">14:59</span></span>
+        </div>
+        
+        <div class="quiz-result-card fade-in" id="resultCard">
+          <div class="quiz-result-badge" id="resultBadge">SEU PERFIL</div>
+          <h3 class="quiz-result-title" id="resultTitle">Carregando...</h3>
+          <p class="quiz-result-desc" id="resultDesc"></p>
+        </div>
+
+        <div class="quiz-social-proof" style="margin:20px 0;">
+          <div class="quiz-avatars">
+            <img src="https://i.pravatar.cc/32?img=32" class="quiz-avatar" alt="">
+            <img src="https://i.pravatar.cc/32?img=25" class="quiz-avatar" alt="">
+            <img src="https://i.pravatar.cc/32?img=44" class="quiz-avatar" alt="">
+          </div>
+          <span class="quiz-social-text"><strong id="buyerCount">847</strong> pessoas compraram hoje</span>
+        </div>
+
+        <div class="quiz-price-box fade-in" style="animation-delay: 0.3s;">
+          <p class="quiz-price-old">De R$ 91</p>
+          <p class="quiz-price-new">R$ 19,90</p>
+          <p class="quiz-price-period">Pagamento único · Acesso vitalício</p>
+        </div>
+
+        <div class="quiz-guarantee" style="margin-bottom:16px;">
+          <span class="material-symbols-outlined">verified</span>
+          <span>Garantia de 7 dias ou seu dinheiro de volta</span>
+        </div>
+
+        <button id="checkoutBtn" class="quiz-btn quiz-btn-primary pulse" onclick="goToCheckout()" style="margin-bottom:12px;">
+          QUERO MEU PRIMEIRO SONHO LUCIDO
+        </button>
+        
+        <button class="quiz-btn quiz-btn-secondary" onclick="restartQuiz()">
+          ← Refazer quiz
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Quiz State
+    const quizState = {
+      currentStep: 0,
+      answers: {},
+      email: '',
+      totalSteps: 9
+    };
+
+    // Flowyn Checkout URLs
+    const CHECKOUTS = {
+      basic: 'https://www.flowyn.com.br/r/395f65d1-8327-4ada-8707-036d31af523a?dest=/checkout/8927dbb7-5bd0-444d-a8f3-a45c13d5ab23',
+      complete: 'https://www.flowyn.com.br/r/395f65d1-8327-4ada-8707-036d31af523a?dest=/checkout/3bdb2005-f0c2-40b1-8d89-6c51f35e83a1'
+    };
+
+    // Results Database
+    const results = {
+      beginner: {
+        badge: '🌙 PERFIL INICIANTE',
+        title: 'Sonhador Iniciante',
+        desc: 'Você está no início da jornada e isso é ótimo! Com o método certo, você pode ter seu primeiro sonho lúcido em até 21 dias. O Plano Básico é perfeito para você.',
+        plan: 'basic'
+      },
+      intermediate: {
+        badge: '✨ PERFIL EVOLUÇÃO',
+        title: 'Sonhador em Evolução',
+        desc: 'Você já deu os primeiros passos mas precisa de um método estruturado. Os bônus do Plano Completo vão acelerar seus resultados e trazer consistência.',
+        plan: 'complete'
+      },
+      advanced: {
+        badge: '🚀 PERFIL EXPLORADOR',
+        title: 'Explorador Onírico',
+        desc: 'Você já tem experiência mas quer dominar técnicas avançadas e ter consistência. O Plano Completo vai levar seu nível ao máximo.',
+        plan: 'complete'
+      }
+    };
+
+    // Navigation
+    function nextStep() {
+      document.getElementById(`step-${quizState.currentStep}`).classList.remove('active');
+      quizState.currentStep++;
+      document.getElementById(`step-${quizState.currentStep}`).classList.add('active');
+      updateProgress();
+      
+      if (quizState.currentStep === 8) {
+        generateResult();
+        startTimer();
+      }
+    }
+
+    function prevStep() {
+      document.getElementById(`step-${quizState.currentStep}`).classList.remove('active');
+      quizState.currentStep--;
+      document.getElementById(`step-${quizState.currentStep}`).classList.add('active');
+      updateProgress();
+    }
+
+    function updateProgress() {
+      const progress = ((quizState.currentStep) / quizState.totalSteps) * 100;
+      document.getElementById('progressBar').style.width = `${progress}%`;
+    }
+
+    // Option Selection
+    function selectOption(el, category, value) {
+      // Remove previous selection
+      el.parentElement.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      
+      // Select current
+      el.classList.add('selected');
+      
+      // Store answer
+      quizState.answers[category] = value;
+      
+      // Enable next button
+      const stepNum = quizState.currentStep;
+      document.getElementById(`btn-step-${stepNum}`).disabled = false;
+    }
+
+    // Email Capture
+    function submitEmail() {
+      const email = document.getElementById('emailInput').value;
+      if (email && email.includes('@')) {
+        quizState.email = email;
+        // Here you would send to your email service
+        console.log('Email captured:', email);
+        nextStep();
+      } else {
+        alert('Por favor, insira um email válido.');
+      }
+    }
+
+    // Generate Result
+    function generateResult() {
+      const { answers } = quizState;
+      
+      // Logic to determine profile
+      let profile = 'beginner';
+      
+      if (answers.experience === 'often' || (answers.experience === 'sometimes' && answers.tried === 'some')) {
+        profile = 'advanced';
+      } else if (answers.experience === 'once' || answers.experience === 'sometimes' || answers.tried === 'failed') {
+        profile = 'intermediate';
+      }
+      
+      const result = results[profile];
+      
+      document.getElementById('resultBadge').textContent = result.badge;
+      document.getElementById('resultTitle').textContent = result.title;
+      document.getElementById('resultDesc').textContent = result.desc;
+      
+      // Set checkout URL
+      document.getElementById('checkoutBtn').setAttribute('data-plan', result.plan);
+      
+      // Randomize buyer count
+      document.getElementById('buyerCount').textContent = Math.floor(Math.random() * 200) + 700;
+    }
+
+    // Checkout
+    function goToCheckout() {
+      const plan = document.getElementById('checkoutBtn').getAttribute('data-plan');
+      const url = CHECKOUTS[plan] || CHECKOUTS.complete;
+      
+      // Track event (Meta Pixel)
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'InitiateCheckout', {
+          content_name: plan === 'basic' ? 'Plano Básico' : 'Plano Completo',
+          value: plan === 'basic' ? 9.90 : 19.90,
+          currency: 'BRL'
+        });
+      }
+      
+      window.location.href = url;
+    }
+
+    // Timer
+    function startTimer() {
+      let time = 15 * 60; // 15 minutes
+      const timerEl = document.getElementById('quizTimer');
+      
+      const interval = setInterval(() => {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        if (time <= 0) {
+          clearInterval(interval);
+          timerEl.textContent = '00:00';
+        }
+        time--;
+      }, 1000);
+    }
+
+    // Restart
+    function restartQuiz() {
+      quizState.currentStep = 0;
+      quizState.answers = {};
+      quizState.email = '';
+      
+      document.querySelectorAll('.quiz-step').forEach(step => {
+        step.classList.remove('active');
+      });
+      document.getElementById('step-0').classList.add('active');
+      
+      document.querySelectorAll('.quiz-option').forEach(opt => {
+        opt.classList.remove('selected');
+      });
+      
+      document.querySelectorAll('[id^="btn-step-"]').forEach(btn => {
+        btn.disabled = true;
+      });
+      
+      document.getElementById('emailInput').value = '';
+      updateProgress();
+    }
+
+    // Meta Pixel (fallback if not loaded)
+    if (typeof fbq === 'undefined') {
+      window.fbq = function() { console.log('Meta Pixel not loaded'); };
+    }
+  </script>
+  
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1037638165674462');
+    fbq('track', 'PageView');
+  </script>
+</body>
+</html>
